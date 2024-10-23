@@ -50,7 +50,7 @@ class Multi_Eurlex(Dataset):
         :param language: the language for which data should be retrieved
         :return: the data corresponding to the language parameter
         """
-        dataset = load_dataset('multi_eurlex', language, split='test')
+        dataset = load_dataset('multi_eurlex', language, split='test', trust_remote_code=True)
         if language == 'all_languages':
             data = self.extract_text_all_languages(dataset)
         else:
@@ -73,7 +73,12 @@ class Multi_Eurlex(Dataset):
         :return: a list of text data in the specified language
         """
         data = []
+        print(type(dataset))
+        count=0
         for item in dataset:
+            if count == 3:
+                break
+            count += 1
             data.append({"text": item['text'], "labels": item['labels']})
         return data
 
