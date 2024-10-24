@@ -1,4 +1,7 @@
 from datasets import load_dataset
+from sklearn.metrics import precision_recall_fscore_support
+from sklearn.preprocessing import MultiLabelBinarizer
+import numpy as np
 
 class Dataset:
     """
@@ -35,6 +38,7 @@ class Multi_Eurlex(Dataset):
     """
     Child class of Dataset representing the Multi-EUR-Lex dataset.
     """
+
     def __init__(self):
         self.label_options = [
             "POLITICS", "INTERNATIONAL RELATIONS", "EUROPEAN UNION", "LAW", "ECONOMICS",
@@ -44,6 +48,9 @@ class Multi_Eurlex(Dataset):
             "PRODUCTION, TECHNOLOGY AND RESEARCH", "ENERGY", "INDUSTRY", "GEOGRAPHY",
             "INTERNATIONAL ORGANISATIONS"
         ]
+        self.prompt = "<|endoftext|>" + (
+            "Question: Which of the following labels apply? (You can select more than one): {', '.join(label_options)} "
+            "Answer:")
 
     def get_data(self, language):
         """
@@ -67,6 +74,7 @@ class Multi_Eurlex(Dataset):
             documents = item['text']
             texts = documents.keys()
             data.append({"text:": text, "labels": item['labels']} for text in texts)
+
     def extract_text(self, dataset):
         """
         :param dataset: the dataset containing the text data
@@ -74,9 +82,9 @@ class Multi_Eurlex(Dataset):
         """
         data = []
         print(type(dataset))
-        count=0
+        count = 0
         for item in dataset:
-            if count == 3:
+            if count == 1:
                 break
             count += 1
             data.append({"text": item['text'], "labels": item['labels']})
@@ -88,3 +96,26 @@ class Multi_Eurlex(Dataset):
         """
         true_labels = [entry['labels'] for entry in data]
         return true_labels
+
+    def evaluate(self, true_labels, predicted_labels):
+        mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
+
+        # Binarize the true and predicted labels
+        binary_true = mlb.fit_transform(true_labels)
+        binary_pred = mlb.transform(predicted_labels)
+
+        # Get indices of labels with non-zero true or predicted samples
+        relevant_labels = np.where((binary_true.sum(axis=0) + binary_pred.sum(axis=0)) > 0)[0]
+
+        # Filter binary_true and binary_pred to only include relevant labels
+        filtered_binary_true = binary_true[:, relevant_labels]
+        filtered_binary_pred = binary_pred[:, relevant_labels]
+        # Calculate precision, recall, F1-score
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
+        )
+
+        # Print the results
+        print(f"Precision: {precision}")
+        print(f"Recall: {recall}")
+        print(f"F1 Score: {f1}")
