@@ -1,7 +1,8 @@
 from datasets import load_dataset
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from sklearn.preprocessing import MultiLabelBinarizer
 import numpy as np
+import re
 
 class Dataset:
     """
@@ -30,8 +31,19 @@ class Dataset:
         """
         if name.lower() == 'multi_eurlex':
             return Multi_Eurlex()
+        elif name.lower() == 'go_emotions':
+            return Go_Emotions()
+        elif name.lower() == 'casehold':
+            return CaseHOLD()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
+
+    def extract_labels_from_generated_text(self, generated_text, label_options):
+        relevant_labels = []
+        for label in label_options:
+            if label.lower() in generated_text.lower():
+                relevant_labels.append(label)
+        return relevant_labels
 
 
 class Multi_Eurlex(Dataset):
@@ -49,8 +61,10 @@ class Multi_Eurlex(Dataset):
             "INTERNATIONAL ORGANISATIONS"
         ]
         self.prompt = "<|endoftext|>" + (
-            "Question: Which of the following labels apply? (You can select more than one): {', '.join(label_options)} "
-            "Answer:")
+            "Question: Which of the following labels apply? (You can select more than one): "
+            + ', '.join(self.label_options) + " "
+            "Answer:"
+        )
 
     def get_data(self, language):
         """
@@ -70,10 +84,14 @@ class Multi_Eurlex(Dataset):
         :return: a list of text data from all languages
         """
         data = []
+        count = 0
         for item in dataset:
+            if count == 50:
+                break
             documents = item['text']
             texts = documents.keys()
             data.append({"text:": text, "labels": item['labels']} for text in texts)
+            count += 1
 
     def extract_text(self, dataset):
         """
@@ -81,10 +99,9 @@ class Multi_Eurlex(Dataset):
         :return: a list of text data in the specified language
         """
         data = []
-        print(type(dataset))
         count = 0
         for item in dataset:
-            if count == 1:
+            if count == 50:
                 break
             count += 1
             data.append({"text": item['text'], "labels": item['labels']})
@@ -119,3 +136,153 @@ class Multi_Eurlex(Dataset):
         print(f"Precision: {precision}")
         print(f"Recall: {recall}")
         print(f"F1 Score: {f1}")
+
+class Go_Emotions(Dataset):
+    """
+    Child class of Dataset representing the GoEmotions dataset.
+    """
+
+    def __init__(self):
+        self.label_options = [
+            "admiration", "amusement", "anger", "annoyance", "approval",
+            "caring", "confusion", "curiosity", "desire", "disappointment",
+            "disapproval", "disgust", "embarrassment", "excitement", "fear",
+            "gratitude", "grief", "joy", "love", "nervousness", "optimism",
+            "pride", "realization", "relief", "remorse", "sadness", "surprise"
+        ]
+        self.prompt = "<|endoftext|>" + (
+            "Question: Which of the following emotions apply to this text? (You can select more than one): "
+            + ', '.join(self.label_options) + " "
+            "Answer:"
+        )
+
+    def get_data(self, language=None):
+        """
+        Loads the GoEmotions dataset.
+        :return: the data and label options
+        """
+        dataset = load_dataset('go_emotions', split='test')
+        return self.extract_text(dataset), self.label_options
+
+    def extract_text(self, dataset):
+        """
+        Extracts and formats the data from the GoEmotions dataset.
+        :param dataset: the dataset containing the text data
+        :return: a list of text data and labels
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 50:
+                break
+            count += 1
+            data.append({"text": item['text'], "labels": item['labels']})
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :param data: list of data entries
+        :return: list of true labels for the dataset
+        """
+        true_labels = [entry['labels'] for entry in data]
+        return true_labels
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using precision, recall, and F1 score.
+        :param true_labels: list of true labels
+        :param predicted_labels: list of predicted labels
+        """
+        mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
+
+        binary_true = mlb.fit_transform(true_labels)
+        binary_pred = mlb.transform(predicted_labels)
+
+        relevant_labels = np.where((binary_true.sum(axis=0) + binary_pred.sum(axis=0)) > 0)[0]
+        filtered_binary_true = binary_true[:, relevant_labels]
+        filtered_binary_pred = binary_pred[:, relevant_labels]
+
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
+        )
+
+        print(f"Precision: {precision}")
+        print(f"Recall: {recall}")
+        print(f"F1 Score: {f1}")
+
+
+class CaseHOLD(Dataset):
+    """
+    Child class of Dataset representing the CaseHOLD dataset.
+    """
+
+    def __init__(self):
+        self.label_options = ["A", "B", "C", "D", "E"]
+        self.prompt = (
+            "<|endoftext|> Question: Based on the case description, select the most appropriate legal answer by only "
+            "stating the appropriate character:\n"
+        )
+
+    def get_data(self, language=None):
+        """
+        Loads the CaseHOLD dataset.
+        :return: the data and label options
+        """
+        dataset = load_dataset('lex_glue', 'case_hold', split='test')
+        return self.extract_text(dataset), self.label_options
+
+    def extract_text(self, dataset):
+        """
+        Extracts and formats the data from the CaseHOLD dataset.
+        :param dataset: the dataset containing the text data
+        :return: a list of text data and labels
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 100:
+                break
+            count += 1
+
+            # Create choices formatted with corresponding letters
+            choices = "\n".join([f"{letter}) {ending}" for letter, ending in zip(self.label_options, item['endings'])])
+            # Combine context and choices into the text
+            text_with_choices = f"{item['context']}\n\n{choices}"
+
+            data.append({
+                "text": text_with_choices,  # Choices are now included in the text
+                "label": item['label']  # Keep the label for evaluation
+            })
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :param data: list of data entries
+        :return: list of true labels for the dataset
+        """
+        true_labels = [entry['label'] for entry in data]
+        return true_labels
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using precision, recall, F1 score, and accuracy.
+        :param true_labels: list of true labels
+        :param predicted_labels: list of predicted labels
+        """
+        flat_predicted_labels = [item for sublist in predicted_labels for item in sublist]
+        accuracy = accuracy_score(true_labels, flat_predicted_labels)
+
+        print(f"Accuracy: {accuracy}")
+
+    def extract_labels_from_generated_text(self, generated_text, label_options):
+        """
+        Extracts the first predicted label from the model's response.
+        :param response: The model's output as a string
+        :return: The first valid label (A, B, C, D, E) found in the response, or None if not found
+        """
+        # Find the first capital letter in the response within the range A-E
+        print("Reached extract_labels in CaseHOLD class")
+        match = re.search(r'\b([A-E])\b', generated_text)
+        if match:
+            return match.group(1)  # Return the first matched capital letter
+        return None  # Return None if no valid label is found

@@ -1,16 +1,10 @@
-from datasets import load_dataset
+import ollama
 
-dataset_all_languages = load_dataset('multi_eurlex', 'all_languages', split='test')
-print(dataset_all_languages)
+stream = ollama.chat(
+    model="llama3.2",
+    messages=[{"role": "user", "content": "What is the capital of France?"}],
+    stream=True
+)
 
-for item in dataset_all_languages:
-    print(item)
-    break
-
-dataset_en = load_dataset('multi_eurlex', 'en', split='test')
-print(dataset_en)
-
-for item in dataset_en:
-    print(item['labels'])
-    break
-
+for message in stream:
+    print(message['message']['content'], end='', flush=True)
