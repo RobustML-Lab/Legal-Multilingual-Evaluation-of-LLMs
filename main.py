@@ -5,7 +5,6 @@ import os
 file_name = "Pipeline/parsed_classification_metrics_2.csv"
 data = pd.read_csv(file_name)
 languages = ['en', 'da', 'de', 'nl', 'sv', 'es', 'fr', 'it', 'pt', 'ro', 'bg', 'cs', 'hr', 'pl', 'sl', 'et', 'fi', 'hu', 'lt', 'lv', 'el']
-
 output_folder = "multi_eurlex_plots"
 os.makedirs(output_folder, exist_ok=True)
 

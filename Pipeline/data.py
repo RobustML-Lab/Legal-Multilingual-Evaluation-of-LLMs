@@ -5,6 +5,8 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from sklearn.preprocessing import MultiLabelBinarizer
 import numpy as np
 import re
+from deep_translator import GoogleTranslator
+
 
 class Dataset:
     """
@@ -37,6 +39,8 @@ class Dataset:
             return Go_Emotions()
         elif name.lower() == 'casehold':
             return CaseHOLD()
+        elif name.lower() == 'xnli':
+            return XNLI()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -54,7 +58,8 @@ class Multi_Eurlex(Dataset):
     """
 
     def __init__(self):
-        self.languages = ['en', 'da', 'de', 'nl', 'sv', 'es', 'fr', 'it', 'pt', 'ro', 'bg', 'cs', 'hr', 'pl', 'sl', 'et', 'fi', 'hu', 'lt', 'lv', 'el']
+        self.languages = ['en', 'da', 'de', 'nl', 'sv', 'es', 'fr', 'it', 'pt', 'ro', 'bg', 'cs', 'hr', 'pl', 'sl',
+                          'et', 'fi', 'hu', 'lt', 'lv', 'el']
         self.label_options = [
             "POLITICS", "INTERNATIONAL RELATIONS", "EUROPEAN UNION", "LAW", "ECONOMICS",
             "TRADE", "FINANCE", "SOCIAL QUESTIONS", "EDUCATION AND COMMUNICATIONS", "SCIENCE",
@@ -64,9 +69,9 @@ class Multi_Eurlex(Dataset):
             "INTERNATIONAL ORGANISATIONS"
         ]
         self.prompt = "<|endoftext|>" + (
-            "Question: Which of the following labels apply? (You can select more than one): "
-            + ', '.join(self.label_options) + " "
-            "Answer:"
+                "Question: Which of the following labels apply? (You can select more than one): "
+                + ', '.join(self.label_options) + " "
+                                                  "Answer:"
         )
 
     def get_data(self, language):
@@ -149,6 +154,7 @@ class Multi_Eurlex(Dataset):
                 writer.writerow(["Language", "Precision", "Recall", "F1 Score"])
             writer.writerow([self.language, precision, recall, f1])
 
+
 class Go_Emotions(Dataset):
     """
     Child class of Dataset representing the GoEmotions dataset.
@@ -163,9 +169,9 @@ class Go_Emotions(Dataset):
             "pride", "realization", "relief", "remorse", "sadness", "surprise"
         ]
         self.prompt = "<|endoftext|>" + (
-            "Question: Which of the following emotions apply to this text? (You can select more than one): "
-            + ', '.join(self.label_options) + " "
-            "Answer:"
+                "Question: Which of the following emotions apply to this text? (You can select more than one): "
+                + ', '.join(self.label_options) + " "
+                                                  "Answer:"
         )
 
     def get_data(self, language=None):
@@ -288,7 +294,7 @@ class CaseHOLD(Dataset):
 
         print(f"Accuracy: {accuracy}")
 
-    def extract_labels_from_generated_text(self, generated_text, label_options):
+    def extract_labels_from_generated_text(self, generated_text):
         """
         Extracts the first predicted label from the model's response.
         :param response: The model's output as a string
@@ -302,3 +308,102 @@ class CaseHOLD(Dataset):
             print(match)
             return match.group(1)  # Return the first matched capital letter
         return ["F"]
+
+
+class XNLI(Dataset):
+    """
+    Child class of Dataset representing the XNLI dataset.
+    """
+
+    def __init__(self):
+        self.label_options = ["0", "1", "2"]
+        self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
+        self.prompt = ("<|endoftext|>"
+                       "Decide if the hypothesis logically follows from the premise (entailment), is "
+                       "contradictory (contradiction),"
+                       "or is neutral with respect to the hypothesis (neutral). "
+                       "Answer only with one of the following options: 0 for entailment, 1 for neutral, "
+                       "or 2 contradiction. Give no further explanation."
+                       )
+
+    def get_data(self, language):
+        """
+        Loads the XNLI dataset for the specified language.
+        :param language: the language of the dataset
+        :return: the data and label options
+        """
+        dataset = load_dataset('xnli', language, split='test', trust_remote_code=True)
+        print(dataset)
+        self.language = language
+        if language == 'all_languages':
+            data = self.extract_text_all_languages(dataset)
+        else:
+            data = self.extract_text(dataset)
+        return data, self.label_options
+
+    def extract_text_all_languages(self, dataset):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data from all languages
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 5:
+                break
+            documents = item['text']
+            texts = documents.keys()
+            data.append({"text:": text, "labels": item['labels']} for text in texts)
+            count += 1
+
+    def extract_text(self, dataset):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 300:
+                break
+            text = "Premise: " + item["premise"] + " Hypothesis: " + item["hypothesis"]
+            data.append({"text": text, "label": item['label']})
+            count += 1
+        print(f"Data extracted: {data}")
+        return data
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using precision, recall, F1 score, and accuracy.
+        :param true_labels: list of true labels
+        :param predicted_labels: list of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        file_path = "XNLI_evaluation.csv"
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, mode='w', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["Language", "Accuracy"])
+            writer.writerow([self.language, accuracy])
+
+        print(f"Accuracy: {accuracy}")
+
+    def extract_labels_from_generated_text(self, generated_text):
+        """
+        Extracts the first predicted label from the model's response.
+        :param response: The model's output as a string
+        :return: The first valid label (Entailment, Contradiction, Neutral) found in the response, or None if not found
+        """
+        print(f"Reached extract_labels in XNLI class for generated text {generated_text}")
+        for i, label in enumerate(self.label_options):
+            if label in generated_text.lower():
+                return i
+        return -1
+
+    def get_true_labels(self, data):
+        """
+        :return: list of true labels for the dataset
+        """
+        return [entry['label'] for entry in data]
+

@@ -1,6 +1,7 @@
 import httpx
 from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
     LlamaTokenizer, LlamaForCausalLM
+from deep_translator import GoogleTranslator
 import ollama
 
 
@@ -10,7 +11,7 @@ class Model:
     """
 
 
-    def predict(self, dataset: list, prompt: str) -> list:
+    def predict(self, dataset, prompt, language):
         """
         Predict labels for a dataset.
 
@@ -18,7 +19,7 @@ class Model:
         :param prompt: The prompt for label prediction.
         :return: A list of lists, where each inner list contains the predicted label indices for each text sample.
         """
-        return [self.classify_text(item['text'], prompt) for item in dataset]
+        return [self.classify_text(item['text'], prompt, language) for item in dataset]
 
     @staticmethod
     def get_model(name, dataset, multi_class=False):
@@ -167,15 +168,17 @@ class OLLaMa(Model):
     #     print("Response: ", response_text)
     #     return response_text
 
-    def classify_text(self, text, prompt):
+    def classify_text(self, text, prompt, language='en'):
         """
         :param text: the text that needs to be classified
         :return: a list of all the labels corresponding to the given text
         """
         print("Reached classify_text")
-        complete_prompt = text + prompt
+        translator = GoogleTranslator(source="en", target=language)
+        translated_prompt = translator.translate(prompt)
+        complete_prompt = text + translated_prompt
         # print("Complete prompt: ", complete_prompt)
         generated_text = self.generate_text(complete_prompt)
-        prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
-        predicted_labels_indexed = self.map_labels_to_indices(prediction, self.label_options)
-        return predicted_labels_indexed
+        prediction = self.dataset.extract_labels_from_generated_text(generated_text)
+        # predicted_labels_indexed = self.map_labels_to_indices(prediction, self.label_options)
+        return prediction
