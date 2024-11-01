@@ -3,20 +3,22 @@ from models import *
 from data import *
 
 # Get the dataset
-dataset = Dataset.get_dataset('casehold')
+dataset = Dataset.get_dataset('multi_eurlex')
 
-# Initialize the model
-data, label_options = dataset.get_data('en')
-prompt = dataset.prompt
-model = Model.get_model('ollama', dataset, multi_class=True)
+languages = dataset.languages
 
-# Get the predicted labels
-predicted_labels = model.predict(data, prompt)
-true_labels = dataset.get_true_labels(data)
-print("Number of predicted_labels:", len(predicted_labels))
-print("Number of true labels: ", len(true_labels))
-print("Predicted labels: ", predicted_labels)
-print("True labels: ", true_labels)
+for language in languages:
+    print(f"-----------------------------------------------{language}----------------------------------------------")
+    # Initialize the model
+    data, label_options = dataset.get_data('en')
+    print(f"Length of the data: {len(data)}")
+    prompt = dataset.prompt
+    model = Model.get_model('ollama', dataset, multi_class=True)
 
-# Evaluate the performance
-dataset.evaluate(true_labels, predicted_labels)
+    # Get the predicted labels
+    predicted_labels = model.predict(data, prompt)
+    true_labels = dataset.get_true_labels(data)
+    print(f"Statistics for {language}: ")
+
+    # Evaluate the performance
+    dataset.evaluate(true_labels, predicted_labels)

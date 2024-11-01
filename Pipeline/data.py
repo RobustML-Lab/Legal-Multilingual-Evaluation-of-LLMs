@@ -1,3 +1,5 @@
+import os
+import csv
 from datasets import load_dataset
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -52,6 +54,7 @@ class Multi_Eurlex(Dataset):
     """
 
     def __init__(self):
+        self.languages = ['en', 'da', 'de', 'nl', 'sv', 'es', 'fr', 'it', 'pt', 'ro', 'bg', 'cs', 'hr', 'pl', 'sl', 'et', 'fi', 'hu', 'lt', 'lv', 'el']
         self.label_options = [
             "POLITICS", "INTERNATIONAL RELATIONS", "EUROPEAN UNION", "LAW", "ECONOMICS",
             "TRADE", "FINANCE", "SOCIAL QUESTIONS", "EDUCATION AND COMMUNICATIONS", "SCIENCE",
@@ -72,6 +75,7 @@ class Multi_Eurlex(Dataset):
         :return: the data corresponding to the language parameter
         """
         dataset = load_dataset('multi_eurlex', language, split='test', trust_remote_code=True)
+        self.language = language
         if language == 'all_languages':
             data = self.extract_text_all_languages(dataset)
         else:
@@ -86,7 +90,7 @@ class Multi_Eurlex(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 50:
+            if count == 5:
                 break
             documents = item['text']
             texts = documents.keys()
@@ -101,10 +105,10 @@ class Multi_Eurlex(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 50:
+            if count == 100:
                 break
-            count += 1
             data.append({"text": item['text'], "labels": item['labels']})
+            count += 1
         return data
 
     def get_true_labels(self, data):
@@ -136,6 +140,14 @@ class Multi_Eurlex(Dataset):
         print(f"Precision: {precision}")
         print(f"Recall: {recall}")
         print(f"F1 Score: {f1}")
+
+        file_path = "MultiEurlex_evaluation.csv"
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, mode='w', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["Language", "Precision", "Recall", "F1 Score"])
+            writer.writerow([self.language, precision, recall, f1])
 
 class Go_Emotions(Dataset):
     """
@@ -222,6 +234,7 @@ class CaseHOLD(Dataset):
             "<|endoftext|> Question: Based on the case description, select the most appropriate legal answer by only "
             "stating the appropriate character:\n"
         )
+        self.languages = ['en']
 
     def get_data(self, language=None):
         """
@@ -239,8 +252,9 @@ class CaseHOLD(Dataset):
         """
         data = []
         count = 0
+        print("Length of the dataset: ", len(dataset))
         for item in dataset:
-            if count == 100:
+            if count == 200:
                 break
             count += 1
 
@@ -284,5 +298,7 @@ class CaseHOLD(Dataset):
         print("Reached extract_labels in CaseHOLD class")
         match = re.search(r'\b([A-E])\b', generated_text)
         if match:
+            print("Mathced response: ")
+            print(match)
             return match.group(1)  # Return the first matched capital letter
-        return None  # Return None if no valid label is found
+        return ["F"]

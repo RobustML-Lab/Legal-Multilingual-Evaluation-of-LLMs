@@ -1,3 +1,4 @@
+import httpx
 from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
     LlamaTokenizer, LlamaForCausalLM
 import ollama
@@ -38,9 +39,12 @@ class Model:
         """
         :param label_names: the names of the labels predicted
         :param label_options: a list of all the labels
-        :return: the indices of the predicted labels
+        :return: the indices of the predicted labels, or -1 for labels not in label_options
         """
-        label_indices = [label_options.index(label) for label in label_names if label in label_options]
+        label_indices = [
+            label_options.index(label) if label in label_options else -1
+            for label in label_names
+        ]
         return label_indices
 
 
@@ -115,16 +119,53 @@ class OLLaMa(Model):
         self.multi_class = multi_class
 
     def generate_text(self, prompt):
-        stream = ollama.chat(
+        generated_stream = ollama.chat(
             model="llama3.2",
             messages=[{"role": "user", "content": prompt}],
             stream=True
         )
         response = ""
-        for chunk in stream:
+        for chunk in generated_stream:
             response += chunk["message"]["content"]
         print("Response: ", response)
         return response
+
+    # def generate_text(self, prompt):
+    #     # API endpoint for the Ollama model
+    #     url = "http://localhost:11434/api/generate"
+    #
+    #     # Setting up the payload for the request
+    #     data = {
+    #         "model": "llama3.2",
+    #         "messages": [{"role": "user", "content": prompt}]
+    #     }
+    #
+    #     # Create an HTTP client with proxy configuration
+    #     proxy_address = "http://81.171.3.101:3128"
+    #     proxies = {
+    #         "http://": proxy_address,
+    #         "https://": proxy_address
+    #     }
+    #
+    #     # Make the request to Ollama through the proxy
+    #     response_text = ""
+    #     try:
+    #         with httpx.Client(proxies=proxies) as client:
+    #             response = client.post(url, json=data)
+    #             response.raise_for_status()  # Raise an exception if the request failed
+    #             response_data = response.json()
+    #
+    #             # Extract the generated text from the response
+    #             for message in response_data.get("choices", []):
+    #                 response_text += message["message"]["content"]
+    #
+    #     except httpx.RequestError as e:
+    #         print(f"An error occurred while making the request: {e}")
+    #     except httpx.HTTPStatusError as e:
+    #         print(f"Request returned an unsuccessful status code: {e}")
+    #
+    #     print("Response: ", response_text)
+    #     return response_text
 
     def classify_text(self, text, prompt):
         """
