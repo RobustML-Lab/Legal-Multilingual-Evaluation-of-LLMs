@@ -18,6 +18,7 @@ def parse_file_with_markers(content):
 
         # Extract global metrics
         global_match = global_metrics_pattern.search(metrics_block)
+        global_precision = global_recall = global_f1_score = length = None
         if global_match:
             global_precision = float(global_match.group(1))
             global_recall = float(global_match.group(2))
@@ -33,7 +34,7 @@ def parse_file_with_markers(content):
             true_num = int(match.group(5))
             predicted_num = int(match.group(6))
 
-            # Add to data list
+            # Add to data list with global metrics
             data.append({
                 'Language': language,
                 'Category': category,
@@ -42,9 +43,12 @@ def parse_file_with_markers(content):
                 'F1 Score': f1_score,
                 'True Num': true_num,
                 'Predicted Num': predicted_num,
+                'Global Precision': global_precision,
+                'Global Recall': global_recall,
+                'Global F1 Score': global_f1_score
             })
 
-    # Convert the collected data to a.py DataFrame
+    # Convert the collected data to a DataFrame
     return pd.DataFrame(data)
 
 # Reading the content from the new file
@@ -57,5 +61,5 @@ parsed_data_with_markers = parse_file_with_markers(content)
 # Show the first few rows of the parsed data to confirm correct extraction
 print(parsed_data_with_markers.head())
 
-# Save the parsed data to a.py CSV for further analysis if needed
-parsed_data_with_markers.to_csv("parsed_classification_metrics_2.csv", index=False)
+# Save the parsed data to a CSV for further analysis if needed
+parsed_data_with_markers.to_csv("parsed_classification_metrics.csv", index=False)
