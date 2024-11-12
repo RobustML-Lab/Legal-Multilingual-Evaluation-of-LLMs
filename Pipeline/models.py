@@ -128,7 +128,6 @@ class OLLaMa(Model):
         response = ""
         for chunk in generated_stream:
             response += chunk["message"]["content"]
-        print("Response: ", response)
         return response
 
     # def generate_text(self, prompt):
@@ -177,8 +176,8 @@ class OLLaMa(Model):
         translator = GoogleTranslator(source="en", target=language)
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
-        # print("Complete prompt: ", complete_prompt)
         generated_text = self.generate_text(complete_prompt)
+        with open("responses.txt", "a", encoding="utf-8") as file:
+            file.write(generated_text+"\n")
         prediction = self.dataset.extract_labels_from_generated_text(generated_text)
-        # predicted_labels_indexed = self.map_labels_to_indices(prediction, self.label_options)
         return prediction

@@ -1,5 +1,7 @@
 import os
 import csv
+
+import unicodedata
 from datasets import load_dataset
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -44,10 +46,21 @@ class Dataset:
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
+    def normalize_text(self, text):
+        # Convert to lowercase and remove accents
+        text = text.lower()
+        return ''.join(
+            c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn'
+        )
+
     def extract_labels_from_generated_text(self, generated_text, label_options):
+        cleaned_text = self.normalize_text(generated_text.replace("\u200B", ""))
         relevant_labels = []
         for label in label_options:
-            if label.lower() in generated_text.lower():
+            cleaned_label = self.normalize_text(label.replace("\u200B", ""))
+            # Use \b to ensure the label is a.py standalone word or phrase
+            pattern = r'\b' + re.escape(cleaned_label) + r'\b'
+            if re.search(pattern, cleaned_text, re.IGNORECASE):
                 relevant_labels.append(label)
         return relevant_labels
 
@@ -323,7 +336,7 @@ class XNLI(Dataset):
                        "contradictory (contradiction),"
                        "or is neutral with respect to the hypothesis (neutral). "
                        "Answer only with one of the following options: 0 for entailment, 1 for neutral, "
-                       "or 2 contradiction. Give no further explanation."
+                       "or 2 contradiction. It is very important that you give no further explanation."
                        )
 
     def get_data(self, language):
@@ -364,9 +377,13 @@ class XNLI(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 300:
+            if count == 100:
                 break
-            text = "Premise: " + item["premise"] + " Hypothesis: " + item["hypothesis"]
+            translator = GoogleTranslator(source="en", target=self.language)
+            if self.language == "ar":
+                text = item["hypothesis"] + translator.translate("Hypothesis: ") + item["premise"] + translator.translate("Premise: ")
+            else:
+                text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
             data.append({"text": text, "label": item['label']})
             count += 1
         print(f"Data extracted: {data}")
@@ -381,7 +398,7 @@ class XNLI(Dataset):
         accuracy = accuracy_score(true_labels, predicted_labels)
         file_path = "XNLI_evaluation.csv"
         file_exists = os.path.isfile(file_path)
-        with open(file_path, mode='w', newline='') as f:
+        with open(file_path, mode='a', newline='') as f:
             writer = csv.writer(f)
             if not file_exists:
                 writer.writerow(["Language", "Accuracy"])
