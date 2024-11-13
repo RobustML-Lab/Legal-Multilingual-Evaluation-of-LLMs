@@ -56,12 +56,12 @@ class Dataset:
     def extract_labels_from_generated_text(self, generated_text, label_options):
         cleaned_text = self.normalize_text(generated_text.replace("\u200B", ""))
         relevant_labels = []
-        for label in label_options:
+        for i, label in enumerate(label_options):
             cleaned_label = self.normalize_text(label.replace("\u200B", ""))
             # Use \b to ensure the label is a.py standalone word or phrase
             pattern = r'\b' + re.escape(cleaned_label) + r'\b'
             if re.search(pattern, cleaned_text, re.IGNORECASE):
-                relevant_labels.append(label)
+                relevant_labels.append(i)
         return relevant_labels
 
 
@@ -81,11 +81,10 @@ class Multi_Eurlex(Dataset):
             "PRODUCTION, TECHNOLOGY AND RESEARCH", "ENERGY", "INDUSTRY", "GEOGRAPHY",
             "INTERNATIONAL ORGANISATIONS"
         ]
-        self.prompt = "<|endoftext|>" + (
-                "Question: Which of the following labels apply? (You can select more than one): "
-                + ', '.join(self.label_options) + " "
-                                                  "Answer:"
-        )
+        self.prompt = ("<|endoftext|>Question: Which of the following labels apply? Only answer with the numbers of "
+                       "the labels that are relevant and no"
+                       "further explanation! (You can select more than one): ") + \
+                      ', '.join(f"{i}: {label}" for i, label in enumerate(self.label_options)) + " Answer:"
 
     def get_data(self, language):
         """
@@ -123,7 +122,7 @@ class Multi_Eurlex(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 100:
+            if count == 200:
                 break
             data.append({"text": item['text'], "labels": item['labels']})
             count += 1
@@ -161,11 +160,25 @@ class Multi_Eurlex(Dataset):
 
         file_path = "MultiEurlex_evaluation.csv"
         file_exists = os.path.isfile(file_path)
-        with open(file_path, mode='w', newline='') as f:
+        with open(file_path, mode='a', newline='') as f:
             writer = csv.writer(f)
             if not file_exists:
                 writer.writerow(["Language", "Precision", "Recall", "F1 Score"])
             writer.writerow([self.language, precision, recall, f1])
+
+    def extract_labels_from_generated_text(self, generated_text, label_options):
+        """
+        :param generated_text: the generated text
+        :param label_options: the list of label options
+        :return: a list of predicted labels for the generated text
+        """
+        labels = []
+        for i in range(len(label_options)):
+            # Use regex to match only whole words for each index, avoiding partial matches
+            if re.search(rf'\b{i}\b', generated_text):
+                labels.append(i)
+
+        return labels
 
 
 class Go_Emotions(Dataset):
@@ -307,7 +320,7 @@ class CaseHOLD(Dataset):
 
         print(f"Accuracy: {accuracy}")
 
-    def extract_labels_from_generated_text(self, generated_text):
+    def extract_labels_from_generated_text(self, generated_text, label_options):
         """
         Extracts the first predicted label from the model's response.
         :param response: The model's output as a string
@@ -377,7 +390,7 @@ class XNLI(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 100:
+            if count == 300:
                 break
             translator = GoogleTranslator(source="en", target=self.language)
             if self.language == "ar":
@@ -406,7 +419,7 @@ class XNLI(Dataset):
 
         print(f"Accuracy: {accuracy}")
 
-    def extract_labels_from_generated_text(self, generated_text):
+    def extract_labels_from_generated_text(self, generated_text, label_options):
         """
         Extracts the first predicted label from the model's response.
         :param response: The model's output as a string
@@ -423,4 +436,5 @@ class XNLI(Dataset):
         :return: list of true labels for the dataset
         """
         return [entry['label'] for entry in data]
+
 
