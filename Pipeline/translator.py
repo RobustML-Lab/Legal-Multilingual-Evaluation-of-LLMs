@@ -22,7 +22,7 @@ language_map = {
     'lithuanian': 'lt',
     'latvian': 'lv',
     'greek': 'el',
-    'irish': 'ir',
+    'irish': 'ga',
 }
 
 
