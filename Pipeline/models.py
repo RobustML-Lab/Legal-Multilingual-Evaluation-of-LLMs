@@ -22,7 +22,7 @@ class Model:
         return [self.classify_text(item['text'], prompt, language) for item in dataset]
 
     @staticmethod
-    def get_model(name, dataset, multi_class=False):
+    def get_model(name, dataset, multi_class=False, task="classification"):
         """
         :param name: the name of the model
         :return: the model object
@@ -30,9 +30,9 @@ class Model:
         if name.lower() == 'bart':
             return Bart(dataset, multi_class)
         elif name.lower() == 'llama':
-            return LLaMa(dataset, multi_class)
+            return LLaMa(dataset, multi_class, task)
         elif name.lower() == 'ollama':
-            return OLLaMa(dataset, multi_class)
+            return OLLaMa(dataset, multi_class, task)
         else:
             raise ValueError(f"Model '{name}' is not available")
 
@@ -83,7 +83,7 @@ class LLaMa(Model):
     The LLaMA model
     """
 
-    def __init__(self, dataset, multi_class=False):
+    def __init__(self, dataset, multi_class=False, task="classification"):
         self.dataset = dataset
         self.label_options = dataset.label_options
         self.multi_class = multi_class
@@ -92,6 +92,7 @@ class LLaMa(Model):
         self.model = AutoModelForCausalLM.from_pretrained(model_dir)
         # self.tokenizer = LlamaTokenizer.from_pretrained(model_dir)
         # self.model = LlamaForCausalLM.from_pretrained(model_dir)
+        self.task = task
 
     def generate_text(self, prompt):
         inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
@@ -114,10 +115,11 @@ class OLLaMa(Model):
     """
     Using the OLLaMa models
     """
-    def __init__(self, dataset, multi_class=False):
+    def __init__(self, dataset, multi_class=False, task="classification"):
         self.dataset = dataset
         self.label_options = dataset.label_options
         self.multi_class = multi_class
+        self.task = task
 
     def generate_text(self, prompt):
         generated_stream = ollama.chat(
@@ -177,7 +179,10 @@ class OLLaMa(Model):
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
         generated_text = self.generate_text(complete_prompt)
-        with open("responses.txt", "a", encoding="utf-8") as file:
+        with open("../Results/Multi_Eurlex/Run2/responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text+"\n###################################################\n")
-        prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
+        if self.task == "classification":
+            prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
+        elif self.task == "generation":
+            prediction = generated_text
         return prediction

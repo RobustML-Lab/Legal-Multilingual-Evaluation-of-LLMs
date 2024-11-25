@@ -8,6 +8,9 @@ from sklearn.preprocessing import MultiLabelBinarizer
 import numpy as np
 import re
 from deep_translator import GoogleTranslator
+import evaluate
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Dataset:
@@ -36,13 +39,15 @@ class Dataset:
         :return: the dataset object
         """
         if name.lower() == 'multi_eurlex':
-            return Multi_Eurlex()
+            return Multi_Eurlex(), "classification"
         elif name.lower() == 'go_emotions':
-            return Go_Emotions()
+            return Go_Emotions(), "classification"
         elif name.lower() == 'casehold':
-            return CaseHOLD()
+            return CaseHOLD(), "classification"
         elif name.lower() == 'xnli':
-            return XNLI()
+            return XNLI(), "classification"
+        elif name.lower() == 'eurlex_sum':
+            return Eurlex_Sum(), "generation"
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -97,7 +102,7 @@ class Multi_Eurlex(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset)
-        return data, self.label_options
+        return data
 
     def extract_text_all_languages(self, dataset):
         """
@@ -122,7 +127,7 @@ class Multi_Eurlex(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 200:
+            if count == 250:
                 break
             data.append({"text": item['text'], "labels": item['labels']})
             count += 1
@@ -158,7 +163,7 @@ class Multi_Eurlex(Dataset):
         print(f"Recall: {recall}")
         print(f"F1 Score: {f1}")
 
-        file_path = "MultiEurlex_evaluation.csv"
+        file_path = "../Results/Multi_Eurlex/Run2/MultiEurlex_evaluation.csv"
         file_exists = os.path.isfile(file_path)
         with open(file_path, mode='a', newline='') as f:
             writer = csv.writer(f)
@@ -206,7 +211,7 @@ class Go_Emotions(Dataset):
         :return: the data and label options
         """
         dataset = load_dataset('go_emotions', split='test')
-        return self.extract_text(dataset), self.label_options
+        return self.extract_text(dataset)
 
     def extract_text(self, dataset):
         """
@@ -274,7 +279,7 @@ class CaseHOLD(Dataset):
         :return: the data and label options
         """
         dataset = load_dataset('lex_glue', 'case_hold', split='test')
-        return self.extract_text(dataset), self.label_options
+        return self.extract_text(dataset)
 
     def extract_text(self, dataset):
         """
@@ -365,7 +370,7 @@ class XNLI(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset)
-        return data, self.label_options
+        return data
 
     def extract_text_all_languages(self, dataset):
         """
@@ -437,4 +442,98 @@ class XNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
+class Eurlex_Sum(Dataset):
+    """
+    Child class of Dataset representing the Eur-Lex-Sum dataset.
+    """
 
+    def __init__(self):
+        self.languages = ['bulgarian', 'czech', 'dutch', 'estonian', 'french', 'greek', 'irish',
+                          'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
+                          'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
+                          'polish', 'romanian', 'slovenian', 'swedish']
+        self.prompt = ("<|endoftext|>Summarize the text above. Summary: ")
+
+    def get_data(self, language):
+        """
+        Loads the XNLI dataset for the specified language.
+        :param language: the language of the dataset
+        :return: the data and label options
+        """
+        dataset = load_dataset('eur-lex-sum', language, split='test', trust_remote_code=True)
+        print(dataset)
+        self.language = language
+        if language == 'all_languages':
+            data = self.extract_text_all_languages(dataset)
+        else:
+            data = self.extract_text(dataset)
+        return data
+
+    def extract_text_all_languages(self, dataset):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data from all languages
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 5:
+                break
+            documents = item['reference']
+            texts = documents.keys()
+            data.append({"text:": text, "labels": item['summary']} for text in texts)
+            count += 1
+
+    def extract_text(self, dataset):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 250:
+                break
+            data.append({"text": item['reference'], "labels": item['summary']})
+            count += 1
+        return data
+
+    def evaluate(self, reference_summaries, generated_summaries):
+        """
+        Evaluates the model using rouge_l score and cosine similarity.
+        :param reference_summaries: list of reference summaries
+        :param generated_summaries: list of generated summaries
+        """
+        rouge_scores = self.rouge_l_score(reference_summaries, generated_summaries)
+        cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
+        print(f"Rouge-L Score: {rouge_scores}")
+        print(f"Cosine Similarity: {cosine_similarities}")
+        file_path = "EUR_Lex_Sum_evaluation.csv"
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, mode='a', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
+            writer.writerow([self.language, rouge_scores, cosine_similarities])
+
+    def rouge_l_score(self, reference_summaries, generated_summaries):
+        """
+        :param reference_summaries: list of official summaries
+        :param generated_summaries: list of generated summaries
+        :return: rouge-l score
+        """
+        rouge = evaluate.load("rouge")
+        scores = rouge.compute(predictions=generated_summaries, references=reference_summaries)
+        return scores["rougeL"]
+
+    def cosine_similarity(self, reference_summaries, generated_summaries):
+        """
+        :param reference_summaries: list of reference summaries
+        :param generated_summaries: list of generated summaries
+        :return: cosine similarity score
+        """
+        vectorizer = TfidfVectorizer()
+        reference_vectors = vectorizer.fit_transform(reference_summaries)
+        generated_vectors = vectorizer.transform(generated_summaries)
+        cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
+        return cosine_similarities

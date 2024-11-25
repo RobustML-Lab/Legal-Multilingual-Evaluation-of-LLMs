@@ -1,9 +1,6 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-data = pd.read_csv("Results/XNLI/Run3/XNLI_evaluation.csv")
+import os
+os.environ["PYTHONIOENCODING"] = "utf-8"
+from datasets import load_dataset
 
-plt.bar(data["Language"], data["Accuracy"])
-plt.xlabel("Language")
-plt.ylabel("Accuracy")
-plt.title("Results for 100 items")
-plt.show()
+dataset = load_dataset('dennlinger/eur-lex-sum', 'english', split='test', trust_remote_code=True)
+print(dataset)
