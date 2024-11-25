@@ -1,11 +1,15 @@
+import csv
 import json
 import os
+import re
 
 from datasets import load_dataset
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.preprocessing import MultiLabelBinarizer
 from translator import translate
 import numpy as np
+import evaluate
+import textwrap
 
 
 class Dataset:
@@ -13,16 +17,16 @@ class Dataset:
     Base Dataset class with a.py factory method to return the appropriate dataset object.
     """
 
-    def get_data(self, language):
+    def get_data(self, language, dataset_name, points_per_language):
         """
         Abstract method to get data in a.py specific language.
         This should be implemented by child classes.
         """
         raise NotImplementedError("Child class must implement this method")
 
-    def get_true_labels(self):
+    def get_true(self, data):
         """
-        Abstract method to get the true labels for the dataset.
+        Abstract method to get the true labels/text for the dataset.
         This should be implemented by child classes.
         """
         raise NotImplementedError("Child class must implement this method")
@@ -35,6 +39,8 @@ class Dataset:
         """
         if name.lower() == 'multi_eurlex':
             return Multi_Eurlex()
+        elif name.lower() == 'eur_lex_sum':
+            return Eur_Lex_Sum()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -47,7 +53,9 @@ class Multi_Eurlex(Dataset):
     label_options = None
 
     def __init__(self):
-        self.prompt = "ONLY GIVE THE CATEGORIES IN YOUR ANSWER.Classify the following text into one or more of these categories: "
+        self.prompt = ("<|endoftext|>Question: Which of the following labels apply? Only answer with the numbers of "
+                       "the labels that are relevant and no"
+                       "further explanation! (You can select more than one): ")
 
     def load_label_options(self, lang_code):
         with open("output/eurovoc_categories.json", "r", encoding="utf-8") as file:
@@ -72,8 +80,8 @@ class Multi_Eurlex(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset)
-        inst, txt = translate(language, self.prompt)
-        return data[:points_per_language], self.label_options, inst, txt
+        inst = translate(language, self.prompt)
+        return data[:points_per_language], self.label_options, inst
 
     def extract_text_all_languages(self, dataset):
         """
@@ -99,12 +107,29 @@ class Multi_Eurlex(Dataset):
             preprocessed_data.append({"text": text, "labels": labels})
         return preprocessed_data
 
-    def get_true_labels(self, data):
+    def get_true(self, data):
         """
         :return: a.py list of true labels for the dataset
         """
         true_labels = [entry['labels'] for entry in data]
         return true_labels
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        :param generated_text: the generated text
+        :param label_options: the list of label options
+        :return: a list of predicted labels for the generated text
+        """
+        all_labels = []
+        for text in generated_texts:
+            labels = []
+            for i in range(21):
+                # Use regex to match only whole words for each index, avoiding partial matches
+                if re.search(rf'\b{i}\b', text):
+                    labels.append(i)
+            all_labels.append(labels)
+
+        return all_labels
 
     def evaluate(self, true_labels, predicted_labels):
         mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
@@ -187,3 +212,84 @@ class Multi_Eurlex(Dataset):
 
                 # Format the data to write
                 file.write(f"{text}\t{', '.join(true_label_names)}\t{', '.join(predicted_label_names)}\n\n\n")
+
+
+class Eur_Lex_Sum(Dataset):
+    """
+    Child class of Dataset representing the Eur-Lex-sum dataset.
+    """
+
+    def __init__(self):
+        self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        :param language: the language for which data should be retrieved
+        :return: the data corresponding to the language parameter
+        """
+        dataset = load_dataset('dennlinger/eur-lex-sum', language, streaming=True, split='test', trust_remote_code=True)
+        self.language = language
+        data = self.extract_text(dataset, points_per_language)
+        inst = translate(language, self.prompt)
+        return data, inst
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == points_per_language:
+                break
+            data.append({"text": item['reference'], "summary": item['summary']})
+            count += 1
+        return data
+
+    def get_true(self, data):
+        """
+        :return: the true summary of the data
+        """
+        summary = [entry['summary'] for entry in data]
+        return summary
+
+    def format_text_to_width(self, text, width):
+        """
+        Splits a text into lines of a given width.
+        """
+        return "<br>".join(textwrap.wrap(text, width))
+
+    def evaluate(self, references, predictions):
+        rouge = evaluate.load("rouge")
+
+        results = rouge.compute(predictions=predictions, references=references)
+
+        file_path = "output/Eur_Lex_Sum_evaluation.md"
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, mode='a', encoding='utf-8') as f:
+            if not file_exists:
+                f.write("| Language | Reference Summary                          | Predicted Summary                           |\n")
+                f.write("|----------|------------------------------------------|--------------------------------------------|\n")
+            count = 0
+            for reference, prediction in zip(references, predictions):
+                # Wrap text to fit within 50 characters
+                formatted_reference = self.format_text_to_width(reference, 50)
+                formatted_prediction = self.format_text_to_width(prediction, 50)
+                # Write formatted text into md table
+                f.write(f"| {self.language} | {formatted_reference} | {formatted_prediction} |\n")
+                count += 1
+                if count == 3:
+                    break
+
+        return results
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        # Print out the results for each language
+        for lang, metrics in results.items():
+            print(f"Results for {lang}:")
+            print(f"Rouge1: {metrics['rouge1']}")
+            print(f"Rouge2: {metrics['rouge2']}")
+            print(f"RougeL: {metrics['rougeL']}")
+            print(f"RougeL sum: {metrics['rougeLsum']}")
+            print("-------------------------------------------------------------")
