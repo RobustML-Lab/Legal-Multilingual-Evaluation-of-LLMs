@@ -231,7 +231,6 @@ class Eur_Lex_Sum(Dataset):
         self.language = language
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
-        print(len(data))
         return data, inst
 
     def extract_text(self, dataset, points_per_language):
@@ -262,7 +261,7 @@ class Eur_Lex_Sum(Dataset):
         return "<br>".join(textwrap.wrap(text, width))
 
     def evaluate(self, references, predictions):
-        rouge = evaluate.load("rouge")
+        rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
 
         results = rouge.compute(predictions=predictions, references=references)
 
