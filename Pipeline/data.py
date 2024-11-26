@@ -227,10 +227,11 @@ class Eur_Lex_Sum(Dataset):
         :param language: the language for which data should be retrieved
         :return: the data corresponding to the language parameter
         """
-        dataset = load_dataset('dennlinger/eur-lex-sum', language, streaming=True, split='test', trust_remote_code=True)
+        dataset = load_dataset('dennlinger/eur-lex-sum', language, streaming=True, split='train', trust_remote_code=True)
         self.language = language
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
+        print(len(data))
         return data, inst
 
     def extract_text(self, dataset, points_per_language):

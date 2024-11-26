@@ -41,7 +41,10 @@ for lang in languages:
 
     true = dataset.get_true(data)
 
-    results[lang] = dataset.evaluate(true, predicted)
+    filtered_true = [x for x in true if x is not None]
+    filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None]
+
+    results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
     all_true[lang] = true
     all_predicted[lang] = predicted
 

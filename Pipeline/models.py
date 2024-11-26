@@ -158,6 +158,7 @@ class Google(Model):
                 time.sleep(60)  # Sleep for 60 seconds before retrying
                 count = 0  # Reset the request count
                 false_count += 1
+                all_predicted.append(None)
 
         return all_predicted, first_ten_answers
 
