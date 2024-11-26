@@ -122,7 +122,7 @@ class Google(Model):
         false_count = 0
         count_ten = 0
 
-        for entry in dataset:
+        for index, entry in enumerate(dataset):
             text = entry['text']
             if self.generation:
                 complete_prompt = f"{text}{prompt}"
@@ -130,6 +130,9 @@ class Google(Model):
                 quoted_labels = "', '".join(f"{i}: {label}" for i, label in enumerate(self.label_options))
                 complete_prompt = f"{text}{prompt}'{quoted_labels}'."
             if false_count > 20:
+                print(f"More than 20 errors.\n{index}\n{prompt}")
+                for i in range(index, len(dataset)):
+                    all_predicted.append(None)
                 break
             try:
                 # Rate limiting: Ensure no more than 15 requests per minute
