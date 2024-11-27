@@ -48,9 +48,14 @@ for lang in languages:
     missing_in_true = sum(1 for ref in filtered_true if ref is None)
     missing_in_predicted = sum(1 for pred in filtered_predicted if pred is None)
 
-    # Replace None with empty strings
-    filtered_true = [ref if ref is not None else "" for ref in filtered_true]
-    filtered_predicted = [pred if pred is not None else "" for pred in filtered_predicted]
+    # Filter both lists together
+    filtered_true, filtered_predicted = zip(*[
+        (ref, pred) for ref, pred in zip(filtered_true, filtered_predicted) if ref is not None and pred is not None
+    ])
+
+    # Convert back to lists
+    filtered_true = list(filtered_true)
+    filtered_predicted = list(filtered_predicted)
 
     # Print the counts
     if missing_in_true or missing_in_predicted:
@@ -65,7 +70,6 @@ for lang in languages:
         dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
 
 dataset.evaluate_results(results, all_true, all_predicted)
-
 
 
 
