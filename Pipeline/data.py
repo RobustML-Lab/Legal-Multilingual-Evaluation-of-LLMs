@@ -163,7 +163,7 @@ class Multi_Eurlex(Dataset):
         print(f"Recall: {recall}")
         print(f"F1 Score: {f1}")
 
-        file_path = "../Results/Multi_Eurlex/Run2/MultiEurlex_evaluation.csv"
+        file_path = "MultiEurlex_evaluation.csv"
         file_exists = os.path.isfile(file_path)
         with open(file_path, mode='a', newline='') as f:
             writer = csv.writer(f)
@@ -452,7 +452,8 @@ class Eurlex_Sum(Dataset):
                           'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
                           'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
                           'polish', 'romanian', 'slovenian', 'swedish']
-        self.prompt = ("<|endoftext|>Summarize the text above. Summary: ")
+        self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
+        self.label_options = []
 
     def get_data(self, language):
         """
@@ -460,7 +461,7 @@ class Eurlex_Sum(Dataset):
         :param language: the language of the dataset
         :return: the data and label options
         """
-        dataset = load_dataset('eur-lex-sum', language, split='test', trust_remote_code=True)
+        dataset = load_dataset('dennlinger/eur-lex-sum', language, split='test', trust_remote_code=True, streaming=True)
         print(dataset)
         self.language = language
         if language == 'all_languages':
@@ -477,11 +478,11 @@ class Eurlex_Sum(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 5:
+            if count == 100:
                 break
             documents = item['reference']
             texts = documents.keys()
-            data.append({"text:": text, "labels": item['summary']} for text in texts)
+            data.append({"text:": text, "summary": item['summary']} for text in texts)
             count += 1
 
     def extract_text(self, dataset):
@@ -492,9 +493,9 @@ class Eurlex_Sum(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 250:
+            if count == 100:
                 break
-            data.append({"text": item['reference'], "labels": item['summary']})
+            data.append({"text": item['reference'], "summary": item['summary']})
             count += 1
         return data
 
@@ -504,9 +505,12 @@ class Eurlex_Sum(Dataset):
         :param reference_summaries: list of reference summaries
         :param generated_summaries: list of generated summaries
         """
-        rouge_scores = self.rouge_l_score(reference_summaries, generated_summaries)
+        metrics = self.rouge_l_score(reference_summaries, generated_summaries)
         cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
-        print(f"Rouge-L Score: {rouge_scores}")
+        print(f"Rouge1: {metrics['rouge1']}")
+        print(f"Rouge2: {metrics['rouge2']}")
+        print(f"RougeL: {metrics['rougeL']}")
+        print(f"RougeL sum: {metrics['rougeLsum']}")
         print(f"Cosine Similarity: {cosine_similarities}")
         file_path = "EUR_Lex_Sum_evaluation.csv"
         file_exists = os.path.isfile(file_path)
@@ -514,7 +518,7 @@ class Eurlex_Sum(Dataset):
             writer = csv.writer(f)
             if not file_exists:
                 writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
-            writer.writerow([self.language, rouge_scores, cosine_similarities])
+            writer.writerow([self.language, metrics, cosine_similarities])
 
     def rouge_l_score(self, reference_summaries, generated_summaries):
         """
@@ -523,8 +527,8 @@ class Eurlex_Sum(Dataset):
         :return: rouge-l score
         """
         rouge = evaluate.load("rouge")
-        scores = rouge.compute(predictions=generated_summaries, references=reference_summaries)
-        return scores["rougeL"]
+        metrics = rouge.compute(predictions=generated_summaries, references=reference_summaries)
+        return metrics
 
     def cosine_similarity(self, reference_summaries, generated_summaries):
         """
@@ -537,3 +541,9 @@ class Eurlex_Sum(Dataset):
         generated_vectors = vectorizer.transform(generated_summaries)
         cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
         return cosine_similarities
+
+    def get_true_labels(self, data):
+        """
+        :return: list of true labels for the dataset
+        """
+        return [entry['summary'] for entry in data]

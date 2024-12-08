@@ -1,35 +1,23 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-import os
+import ast
+import numpy as np
 
-file_name = "Pipeline/parsed_classification_metrics_2.csv"
+file_name = "TODO" # Chane this!!
 data = pd.read_csv(file_name)
-languages = ['en', 'da', 'de', 'nl', 'sv', 'es', 'fr', 'it', 'pt', 'ro', 'bg', 'cs', 'hr', 'pl', 'sl', 'et', 'fi', 'hu', 'lt', 'lv', 'el']
-output_folder = "multi_eurlex_plots"
-os.makedirs(output_folder, exist_ok=True)
+output_folder = "eur_lex_sum_plots"
+# os.makedirs(output_folder, exist_ok=True)
+languages = data['language']
+rouge_categories = ["rouge1", "rouge2", "rougeL", "rougeLsum"]
+bar_width = 0.2
+x = np.arange(len(languages))
+for i, category in enumerate(rouge_categories):
+    rouge_scores = [ast.literal_eval(data['rouge_scores'][j]) for j in range(len(languages))]
+    print(rouge_scores)
+    rouge_scores_list = [dict[category] for dict in rouge_scores]
+    print(rouge_scores_list)
+    plt.bar(x+i*bar_width, rouge_scores_list, bar_width)
+plt.xticks(x + (len(rouge_categories) - 1) * bar_width / 2, languages)
+plt.legend(rouge_categories, title="Rouge categories")
+plt.show()
 
-for language in languages:
-    # Filter data for the current language
-    predicted_label_distribution = data[data["Language"] == language].groupby("Category")["Predicted Num"].sum()
-    true_label_distribution = data[data["Language"] == language].groupby("Category")["True Num"].sum()
-
-    # Combine both distributions into a single DataFrame
-    combined_df = pd.DataFrame({
-        "Predicted": predicted_label_distribution,
-        "True": true_label_distribution
-    })
-
-    # Plotting
-    plt.figure(figsize=(12, 6))
-    combined_df.plot(kind='bar', color=['skyblue', 'salmon'], width=0.8)
-    plt.title(f"Distribution of True and Predicted Labels for {language}")
-    plt.xlabel('Category')
-    plt.ylabel('Count')
-    plt.xticks(rotation=90)
-    plt.legend(["Predicted", "True"])
-    plt.tight_layout()
-    plt.show()
-
-    plot_filename = os.path.join(output_folder, f"{language}_label_distribution.png")
-    plt.savefig(plot_filename)
-    plt.close()

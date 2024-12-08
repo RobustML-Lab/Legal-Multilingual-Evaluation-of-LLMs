@@ -179,7 +179,7 @@ class OLLaMa(Model):
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
         generated_text = self.generate_text(complete_prompt)
-        with open("../Results/Multi_Eurlex/Run2/responses.txt", "a", encoding="utf-8") as file:
+        with open("responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text+"\n###################################################\n")
         if self.task == "classification":
             prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
