@@ -1,22 +1,29 @@
+#%%
 # Imports
 import sys
 import ast
+import os
 
 from models import *
 from data import *
 
-arguments = sys.argv[1:]
-
-dataset_name = arguments[0]
-languages = ast.literal_eval(arguments[1])
-points_per_language = int(arguments[2])
-generation = bool(int(arguments[3]))
-
-model_name = arguments[4]
+dataset_name = "eur_lex_sum"
+languages = ["english", "greek", "polish", "french", "bulgarian"]
+points_per_language = 2
+generation = True
+model_name = "ollama"
 api_key = None
-if model_name == 'google':
-    api_key = arguments[5]
 
+# arguments = sys.argv[1:]
+# dataset_name = arguments[0]
+# languages = ast.literal_eval(arguments[1])
+# points_per_language = int(arguments[2])
+# generation = bool(int(arguments[3]))
+# model_name = arguments[4]
+# api_key = None
+# if model_name == 'google':
+#     api_key = arguments[5]
+#%%
 # Get the dataset
 dataset = Dataset.get_dataset(dataset_name)
 
@@ -32,6 +39,7 @@ for lang in languages:
     else:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
+    print("Prompt: ", prompt)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)

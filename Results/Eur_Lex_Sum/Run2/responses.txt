@@ -1,0 +1,1284 @@
+---------------------------------------english--------------------------------
+This text is an official journal of the European Union announcing a new regulation on alternative investment fund managers that applies from August 1, 2019. The regulation amends several directives and regulations related to venture capital funds, social entrepreneurship funds, long-term investment funds, and UCITS. It also establishes key information documents for packaged retail and insurance-based investment products (PRIIPs) and updates data protection rules for the European Union's institutions and agencies.
+###################################################
+There is no summary provided for the text. The text appears to be a collection of articles and sections from a legal document, possibly a European Union regulation or directive, but it does not provide any context or explanation. If you could provide more information about what the text is supposed to summarize or explain, I would be happy to try and assist you further.
+###################################################
+This is a European Union (EU) directive related to copyright and broadcasting rights. The directive aims to regulate online content distribution, streaming services, and retransmission of TV programs through cable networks. Key points include:
+
+* Requiring EU countries to review the directive by June 7, 2025
+* Establishing rules for copyright licensing and access to online services
+* Allowing certain agreements from before June 7, 2021, to continue until June 7, 2023 or June 7, 2025
+* Requiring EU countries to adopt necessary laws by June 7, 2021
+
+The directive is intended to harmonize copyright rules across EU member states and promote fair compensation for content creators.
+###################################################
+The provided text appears to be a sample of a Mutual Recognition Declaration form for Regulation (EU) 2019/515 of the European Parliament and of the Council on the mutual recognition of goods lawfully marketed in another Member State. The form is divided into two parts:
+
+Part I:
+
+* Unique identifier for the goods or type of goods
+* Name and address of the economic operator (producer, importer, etc.)
+* Description of the goods or type of goods subject to the declaration
+
+Part II:
+
+* Declaration and information on the lawfulness of marketing in a specific Member State
+* Additional information considered relevant to an assessment of the declaration's accuracy
+* Signature of the signatory
+
+The form is intended for use by producers, importers, distributors, etc., who claim that their goods are lawfully marketed in another Member State. The completed form is required to facilitate the recognition of goods across EU borders and ensure compliance with relevant regulations.
+###################################################
+The EU has adopted a new regulation regarding the .eu top-level domain (TLD), which will replace existing regulations and enter into force on October 13, 2022. The regulation aims to make it easier for individuals, organizations, and businesses to register domain names in the .eu TLD. Key changes include: 
+
+* Registering .eu TLDs becomes more accessible to EU citizens, residents of EU countries, and organizations established or operating within the EU.
+* A new entity will be designated as the Registry, responsible for managing the .eu TLD.
+* The existing contract between the European Commission and the current Registry will continue until October 12, 2022.
+
+The regulation also repeals two other EU regulations: (EC) No 733/2002 and (EC) No 874/2004.
+###################################################
+The European Union (EU) has identified several key digital infrastructure projects as part of its TEN-T (Trans-European Transport Network) initiative, which aims to improve connectivity and facilitate the movement of goods, services, and people across the continent. These projects include:
+
+1. Core network corridors: The EU has established 11 core network corridors that connect major cities and economic hubs across Europe, including the Atlantic, Baltic-Adriatic, Mediterranean, North Sea-Baltic, and Rhine-Alpine corridors.
+2. Experimental sections for cross-border connectivity (CAM): These sections are being tested to assess the feasibility of new technologies, such as 5G networks, in improving connectivity between countries and regions.
+3. Backbone networks: The EU plans to deploy backbone networks, including submarine cables, to connect major cities and regions across Europe.
+
+These projects aim to enhance the capacity, resilience, and redundancy of the EU's digital networks, supporting the growth of businesses, innovation, and tourism while promoting social inclusion and economic development.
+###################################################
+The provided text appears to be a template or form for reporting on the removal of terrorist content from the internet, as per Article 3(6) of Regulation (EU) 2021/784 of the European Parliament and of the Council.
+
+The form includes several sections:
+
+* Information about the issuing competent authority
+* Details of the hosting service provider
+* Contact details for follow-up
+* Information about redress possibilities
+* Feedback following removal of or disabling of access to terrorist content
+
+The form requires specific information, such as the name of the hosting service provider, the competent authority that issued the removal order, and the file references involved. It also includes boxes for ticking to indicate whether certain measures were taken in compliance with the removal order.
+
+The text also mentions Annexes II and III, which provide additional information about feedback following removal of or disabling of access to terrorist content, and information about the impossibility to execute the removal order, respectively.
+###################################################
+The document outlines the objectives and indicators of the EU's Horizon Europe research and innovation program. The program aims to achieve several missions, including:
+
+1. Strengthening R&I uptake in society
+2. Co-creation with citizens and end-users
+3. Societal R&I uptake
+
+The program also has three key impact pathways:
+
+1. Generating innovation-based growth
+	* Innovative results and intellectual property rights (IPR) applications
+	* Creation, growth, and market shares of companies developing innovations
+2. Creating more and better jobs
+	* Supported employment and sustained employment in participating legal entities
+	* Total direct and indirect jobs created or maintained
+3. Leveraging investments in R&I
+	* Co-investment and scaling-up of public and private investments
+
+The document also lists areas for possible missions, areas for institutionalized European partnerships (under Articles 185 and 187 TFEU), and provides a framework for assessing the need for these partnerships.
+###################################################
+The article outlines key indicators for monitoring the performance of the Galileo, EGNOS, Copernicus, SSA, and GOVSATCOM programs within the European Union's space strategy. These indicators will help assess the programs' success in achieving their objectives, including navigation, Earth observation, user satisfaction, and market presence. The evaluation of these programs will consider factors such as competitor performance, user uptake, integrity, autonomy, networking, user satisfaction, and economic impacts.
+###################################################
+The European Union's Digital Europe Programme aims to support the development and deployment of digital technologies across Europe, focusing on four main pillars:
+
+1. **Excellent Science**: Research infrastructure investments to advance digital technologies.
+2. **Innovative Europe**: Support for scale-up breakthrough innovations, including those combining digital and physical technologies.
+3. **Global Challenges**: Integration of digital solutions to address global challenges like health, security, energy, mobility, climate, etc.
+4. **Digital Capacity Building**: Investment in digital capacities and infrastructures, including HPC, AI, cybersecurity, and advanced digital skills.
+
+The Programme will synergize with other EU initiatives, such as:
+
+* ERDF (European Regional Development Fund)
+* ESF+ (European Social Fund Plus)
+* InvestEU Programme
+* Erasmus+
+* Creative Europe
+
+Objectives include:
+
+* Enhancing regional and local innovation ecosystems
+* Fostering the digital transformation of industries and society
+* Supporting the development and acquisition of advanced digital skills
+* Promoting interoperability and standardization in the Digital Single Market
+
+The Programme will invest in large-scale digital capacity and infrastructure building, focusing on critical digital solutions for public interest or market failure.
+###################################################
+The text appears to be a section from the European Commission's work program, outlining proposed actions for the year 2023 in the area of statistical cooperation among Member States. The proposals cover several key areas:
+
+1. Anti-money laundering and terrorism financing indicators
+2. Police and security statistics
+3. Better communication of European statistics as a trustworthy source to tackle disinformation
+4. Reaping benefits from data revolution and moving towards "trusted smart statistics"
+5. Expanded partnerships and statistical cooperation
+
+These proposals aim to improve the quality, availability, and use of statistics in Europe, enhance public-private partnerships, and promote trustworthiness in statistical data.
+###################################################
+The text is a European Union (EU) directive that outlines requirements for the labeling of food products, particularly in relation to meat and fish. It was adopted by the EU Parliament and Council on July 8, 2008, and entered into force on July 28, 2010. The directive aims to ensure that food products are accurately labeled with their country of origin, type, and other relevant information. It also includes provisions for the use of symbols and codes to indicate different types of meat and fish. The text provides a correlation table showing the changes made to previous directives and regulations in relation to this new directive.
+###################################################
+The provided text appears to be a security questionnaire for ships arriving at an EU member state port, as required by international conventions such as SOLAS and national legislation. The form requires information about the ship's particulars, security measures in place, crew and passenger lists, cargo declarations, and security procedures followed during previous calls at port facilities. The form also asks if special or additional security measures were taken beyond those in the approved Ship Security Plan (SSP) and if these measures were maintained during ship-to-ship activities.
+###################################################
+There is no summary to provide as the text appears to be a partial version of the EU's Directive 2004/52/EC, which sets out rules for the exchange of information between EU member states regarding the registration and taxation of vehicles. The text provides sections from the directive, including parts on the application of the directive, time limits for transposition into national law, correlation tables, repealed directives, and annexes.
+###################################################
+The provided text appears to be an excerpt from a European Union regulatory document, likely related to the Schengen Area and visa policies. It includes several Council Decisions, Regulations, and Annexes. The content seems to pertain to various agreements, amendments, and updates regarding the association of non-EU countries (Iceland, Norway, Switzerland, Liechtenstein) with the Schengen Acquis.
+###################################################
+The article discusses a regulation (EU) No 182/2011 that aims to improve the rules and principles concerning mechanisms for control by Member States of the Commission's exercise of implementing powers. The regulation was adopted on February 16, 2011, and it entered into force on August 2, 2011. It applies from September 20, 2019, and it shall be binding in its entirety and directly applicable in all EU countries.
+
+The regulation includes articles related to the uniform format for residence permits for third-country nationals, the processing of personal data, and electronic identification and trust services. The regulation also establishes a single digital gateway to provide access to information, procedures, and assistance and problem-solving services.
+
+Some key points mentioned in the article include:
+
+* Regulation (EU) No 182/2011: Laying down the rules and general principles concerning mechanisms for control by the Member States of the Commission's exercise of implementing powers
+* Article 5: Refers to a procedure where the committee does not deliver an opinion, the Commission shall not adopt the draft implementing act
+* Entry into force: The regulation entered into force on August 2, 2011
+* Application date: The regulation applies from September 20, 2019
+* Binding and directly applicable: The regulation shall be binding in its entirety and directly applicable in all EU countries.
+
+Overall, the article provides an overview of Regulation (EU) No 182/2011, which aims to improve the rules and principles concerning mechanisms for control by Member States.
+###################################################
+The document is a form to request information on criminal records held by European Union (EU) member states for a third-country national, as per Article 17(1) of Regulation (EU) 2019/816. The form should be addressed in one of the official languages of the EU and submitted to ECRIS-TCN@eurojust.europa.eu. It requests information from the submitting authority, including name of state or international organisation, address, telephone number, email address, and details about the criminal proceedings for which the information is sought. The form also requires identity information of the person whose nationality is being requested.
+###################################################
+There is no summary to provide as the provided text appears to be a list of EU-related official documents and regulations, without any coherent narrative or context. The list includes various directives, regulations, and council decisions covering topics such as Schengen acquis, visa information systems, police and judicial cooperation, asylum and migration, terrorism, and border management.
+###################################################
+There is no text to summarize. The provided list appears to be a collection of article numbers from a legal document, but it does not include any accompanying text or context. Without further information or explanation, it is impossible to provide a summary or analysis of this list.
+###################################################
+There is no summary to provide as the text appears to be a collection of article and annex references without any context or meaningful content. It seems to be a formatting exercise, possibly for reference or citation purposes, but it does not contain any actual text or information that can be summarized.
+###################################################
+The European Union's Heavy-Duty Vehicle Emissions Regulation requires the reporting of emissions data by manufacturers and competent authorities. The regulation is part of the EU's efforts to reduce greenhouse gas emissions from heavy-duty vehicles. Key points include:
+
+* Manufacturers must notify the Commission of their World Manufacturer Identifier code (WMI) and contact point for uploading data.
+* Competent authorities and manufacturers must report emissions data on a biennial basis, starting in 2020.
+* The data is transmitted electronically to the European Environment Agency's Central Data Repository and Business Data Repository.
+* Errors in the reported data are verified by the Commission with the support of the Agency, and corrections made if necessary.
+* Electronic formats for data transmissions are available from the Commission before transmission deadlines.
+###################################################
+The provided text is a section of an EU regulation (EU) No 994/2010, specifically related to gas supply security. It outlines measures to be taken in case of an emergency, including:
+
+1. Preparing lists of predefined actions on both supply and demand sides.
+2. Implementing market-based measures, such as:
+	* Enforcing the use of strategic gas storage.
+	* Compulsory demand reduction measures, like enforced fuel switching or firm load shedding.
+3. Taking non-market-based measures, including:
+	* Supply-side measures, like increased gas production levels or electricity generation from alternative sources.
+	* Demand-side measures, such as interruptible contracts or storing alternative fuels.
+4. Establishing cooperation mechanisms among Member States and with other countries to ensure coordination and solidarity.
+
+The regulation also includes provisions for reporting obligations on natural gas undertakings and arrangements for directly connected Member States to apply the solidarity principle in case of an emergency.
+###################################################
+There is no summary provided for the text, as it appears to be a list of article numbers from a regulatory document, likely a directive or regulation within the European Union. The text lists various articles and subsections, but does not provide any context or explanation for their content.
+###################################################
+The provided text appears to be a list of various EU directives and regulations from different areas such as data protection, consumer contracts, healthcare, electronic commerce, and more. However, it does not provide any information on what these directives and regulations are about or how they relate to each other.
+
+To summarize, the list includes:
+
+* EU Directives and Regulations related to:
+	+ Data protection
+	+ Consumer contracts
+	+ Healthcare
+	+ Electronic commerce
+	+ Intellectual property
+	+ Information society services
+	+ Public access to documents
+	+ Accreditation and market surveillance
+
+It is unclear what specific information or context the list provides, but it seems to cover a range of topics related to EU law in various areas.
+###################################################
+The text appears to be a part of a European Union regulation, specifically Regulation (EC) No 2494/95. It provides a classification system for various economic activities and services, including:
+
+* Accommodation services
+* Personal care services
+* Prostitution
+* Social protection services
+* Insurance services
+* Financial services
+* Other services
+
+The text lists the specific categories and subcategories under each heading, providing a detailed classification system for these economic activities.
+###################################################
+The provided text appears to be a snippet of a legal document, likely from an EU or international treaty, given the formatting and content. However, it's not a complete document, and some sections are missing. The text includes:
+
+* Articles 11 to 25, which cover various topics such as trade agreements, customs rules, and sanitary controls.
+* Annexes I and II, which provide additional information on tariffs, quotas, and other trade-related matters.
+
+Without the full context or a complete document, it's challenging to provide a detailed summary. However, this snippet gives an idea of the scope and content of the legal document.
+###################################################
+There is no summary provided in the original text, only a table of contents for Council Regulation (EC) No 597/2009 with various annexes and sections mentioned. The regulation appears to be related to agricultural payments, environmental programs, regional assistance, and food security in developing countries.
+###################################################
+The InvestEU Fund is a financial instrument that supports investments in eligible areas under EU rules. However, it has certain exclusions and restrictions. These include:
+
+* Activities that limit individual rights and freedoms or violate human rights
+* Defence activities related to prohibited products and technologies
+* Tobacco-related products and activities
+* Certain research activities, such as human cloning for reproductive purposes
+* Gambling and sex trade activities
+* Real estate development activities (except those related to energy efficiency projects or social housing)
+* Financial activities, such as buying or trading in financial instruments
+* Activities forbidden by national legislation
+* Nuclear power station decommissioning, operation, adaptation, or construction
+
+Additionally, certain investments are excluded, including:
+
+* Mining and extraction of fossil fuels
+* Landfill facilities (except for on-site landfill facilities with specific conditions)
+* Mechanical biological treatment plants (except for waste-to-energy operations)
+* Incinerators (except for non-recyclable hazardous waste treatment)
+
+Implementing partners must ensure compliance with these exclusions and restrictions throughout the project.
+###################################################
+The text lists various intervention fields and dimensions under the DESI (Digital Europe and Society Initiative) initiative. The areas covered include:
+
+* Digitalisation of Justice Systems
+* Digitalisation of businesses, including digitising SMEs and large enterprises
+* Investment in digital capacities and deployment of advanced technologies
+* Greening the digital sector
+
+The list also includes specific measures and dimensions for each area, such as investment in smart energy systems, digital content production, cybersecurity, and green data centres. The interventions are designed to promote digitalisation and sustainability across various sectors.
+###################################################
+The text appears to be a section from a European Union regulation document, specifically Regulation (EU) No 2018/1046, which outlines financial rules for the EU's general budget. The document includes various amendments and repeals to existing regulations. It provides an overview of the specific objectives and indicators for measuring progress in areas such as cooperation and support plans, technical support activities, and policy investigations.
+###################################################
+There is no summary to provide as the provided text appears to be a part of the European Union's Regulation (EC) No 1371/2007, which outlines rules for accessibility and assistance for persons with disabilities in various contexts. The text lists numerous articles and sections from the regulation, but it does not offer any summarized information or context about the regulation itself.
+###################################################
+The text outlines the objectives and priorities for cross-border cooperation between beneficiaries listed in Annex I, which are expected to receive assistance from the European Union (EU) under IPA III. The EU aims to promote good neighborly relations, integration, and socioeconomic development through various thematic areas, including employment, labor mobility, social inclusion, environmental protection, sustainable transport, digital economy, tourism, youth, local governance, competitiveness, research, and innovation. Key performance indicators will be used to measure progress in these areas, focusing on aspects such as alignment with EU standards, economic criteria, digital skills, energy efficiency, greenhouse gas emissions, and protection of ecosystems.
+###################################################
+The document outlines the External Action Guarantee (EAG) for the European Fund for Sustainable Development Plus (EFSD+) operations. The EAG will support financial and non-financial actions under geographic or thematic programs, with a focus on deepening relations with key countries, emerging economies, and middle-income countries.
+
+Priority areas of the EFSD+ operations include:
+
+1. Private sector development and decent job creation
+2. Addressing bottlenecks to private investments
+3. Strengthening socio-economic sectors and infrastructure
+4. Climate action and environmental protection
+5. Promoting sustainable development and addressing root causes of migration
+
+The document also includes a list of key performance indicators (KPIs) to measure the Union's contribution to achieving specific objectives, including:
+
+* Improving governance and human rights
+* Reducing poverty and improving access to education and healthcare
+* Protecting the environment and promoting sustainable development
+* Addressing migration and promoting climate action
+
+The KPIs aim to promote gender equality, women's empowerment, and social justice, while also ensuring accountability and transparency in the use of EU funding.
+###################################################
+There is no summary to provide as the provided text appears to be a list of European Union directives and regulations without any additional context or explanation. The list includes various regulatory documents from 2014 to 2017 covering topics such as financial markets, insurance distribution, transport safety, and environmental protection. If you have specific questions about these regulations or their content, I can try to provide more information or guidance.
+###################################################
+There is no summary to provide as the original text appears to be a list of article references from a legislative document, likely a law or regulation. The text does not contain any meaningful content beyond a series of citations and references to specific articles within the document. If you could provide more context or clarify what the purpose of this document is, I may be able to assist further.
+###################################################
+The text outlines the rules and regulations for conformity assessment bodies in the context of cybersecurity certification, specifically ICT products, services, or processes under the EU Regulation on Cybersecurity Certification. The key points include:
+
+* Ensuring independence and impartiality from conflicts of interest
+* Maintaining confidentiality and professional secrecy
+* Having necessary staff, procedures, and policies in place
+* Avoiding subcontracting to third parties without proper documentation
+* Meeting requirements for testing laboratories
+* Operating fairly and reasonably, taking into account the interests of SMEs
+
+These regulations aim to ensure that conformity assessment bodies operate with integrity, transparency, and expertise, providing reliable certification services for ICT products, services, or processes.
+###################################################
+The text is a European Union regulation that repeals and replaces several existing regulations, directives, and decisions related to statistics, own resources, national and regional accounts, and more. The regulation aims to improve the EU's statistical system and harmonization of gross national income at market prices (GNI). Key changes include updating correlation tables between the old regulation and this new one, removing outdated provisions, and introducing new ones to enhance coherence and effectiveness.
+###################################################
+The article discusses Regulation (EU) 2016/1628, which establishes a framework for the approval and market surveillance of agricultural and forestry vehicles. The regulation includes provisions related to type-approval, recall, repair, and maintenance information, as well as in-service conformity checks. The regulation also outlines specific provisions for engines, vehicles, and non-road mobile machinery that conform to UK-type-approvals. The regulation is intended to ensure the safety of these products on the European market and to promote environmental protection.
+###################################################
+The text is a set of guidelines for handling personal data related to individuals involved in criminal investigations and offenses covered by Europol's objectives. The guidelines cover different scenarios, including:
+
+* Victims of crimes: Data on their identification, victimization, damage caused, and other relevant information may be stored.
+* Witnesses or informants: Personal details, crime-related information, anonymity guarantees, protection measures, new identities, and participation in court hearings may be stored.
+* People suspected of committing crimes: Limited data on contacts, associates, and types of contact with suspects may be stored.
+
+The guidelines emphasize the importance of deleting unnecessary data and storing only what is required for further analysis. Europol must ensure that personal data is handled transparently, securely, and in accordance with national laws.
+###################################################
+The regulation details the rules and guidelines for a specific instrument used by the European Union to provide financial assistance to Member States affected by severe economic disturbances caused by COVID-19. The instrument becomes available after all Member States have contributed at least 25% of the maximum amount, with contributions based on their relative shares in the total gross national income of the Union. The regulation outlines controls and audits, reporting requirements, and applicability rules. It also includes provisions for the loan agreement, repayment schedules, and extensions to the period of availability if necessary.
+###################################################
+The text appears to be an excerpt from a regulatory document, specifically Section C, which outlines the criteria for assessing the resolvability of a Central Counterparty (CCP) in the event of a resolution. The resolution authority is required to consider 26 factors when evaluating the CCP's ability to withstand a potential crisis and determine whether it can apply resolution tools to support its continued operation. These factors include assessments of the CCP's governance structure, management information systems, liquidity sources, asset encumbrance, and potential impacts on other parts of its group or third-country authorities. The goal is to ensure that resolution actions are taken in a way that minimizes disruptions to financial markets and maintains stability in the financial system.
+###################################################
+The EU has adopted a decision on the European Year 2022, which aims to promote rail transport and its benefits in Europe. The Commission will inform the European Parliament and Council of its plans by March 31, 2021. Member States will coordinate activities at national level, with the Commission convening meetings to coordinate implementation at Union level. The Commission will also cooperate with international organizations and establish key performance indicators for monitoring and evaluation.
+###################################################
+The provided text appears to be an excerpt from EU financial rules related to the European External Service Council (ESDC), a body that receives funding from the EU budget for various external service activities. The text outlines key principles and procedures for managing ESDC budgets, including:
+
+1. Budgetary principles: The ESDC budget must be balanced, and all revenue and expenditure must be authorized by allocation to a specific heading.
+2. Adoption of budgets: A draft budget is prepared by the Head, approved by the Steering Committee, and submitted to the EU institutions for approval.
+3. Transfers of appropriations: The Head may transfer appropriations between budget lines or headings up to 25%, subject to approval by the Steering Committee.
+4. Carryovers of appropriations: Appropriations can be carried over from one financial year to the next under certain conditions.
+5. Implementation and staff management: The ESDC shall use existing administrative structures to implement its budget and manage its staff.
+6. Bank accounts, payments, and accounting: Specific rules apply to bank accounts, payments, and accounting procedures.
+
+Overall, the text provides a detailed outline of the financial rules governing the ESDC, emphasizing transparency, accountability, and effective management of funds.
+###################################################
+The EU regulation outlines requirements for the safe management and reuse of urban waste water (UWW) for agricultural irrigation. Key points include:
+
+* Identification of risks from UWW to human health, animal health, and the environment
+* Risk assessment and evaluation of hazards
+* Monitoring and control measures to ensure compliance with relevant microbiological criteria, pesticide residues, heavy metals, disinfection by-products, pharmaceuticals, and other substances of emerging concern
+* Preventive measures such as access control, additional disinfection or pollutant removal measures, specific irrigation technologies, signage, and minimum safety distances
+* Adequate quality control systems, procedures, environmental monitoring, incident management, and emergency response plans
+* Coordination mechanisms between different actors to guarantee safe production and use of reclaimed water.
+
+Note: The regulation also provides specific preventive measures for different levels of reclaimed water quality (A, B, C, D) and recommends setting up a quality management system certified under ISO 9001 or equivalent.
+###################################################
+There is no summary to provide as the provided text appears to be a collection of paragraph references from a legislative document, likely a European Union law or regulation. The paragraphs are numbered and referenced in a specific format, but there is no accompanying text or explanation of what these paragraphs cover. If you could provide more context or information about the topic of this document, I may be able to help further.
+###################################################
+The text appears to be a summary of a document related to the European Union's immigration and integration policies. The document outlines specific objectives, actions, and indicators for supporting third-country nationals, including provision of assistance and support services, infrastructure development, equipment procurement, and expenditure eligible for operating support.
+
+The document lists various output and result indicators for different specific objectives set out in Article 3(2), including:
+
+* Number of participants supported
+* Number of participants in training activities
+* Number of newly created or renovated places in reception infrastructure
+* Number of persons placed in alternatives to detention
+* Number of local and regional authorities supported
+* Number of information packages and campaigns
+
+The document also lists result indicators, such as the number of participants who consider training useful, report using skills acquired during training, or have improved their language proficiency.
+
+Overall, the text provides a framework for measuring the effectiveness of EU policies aimed at supporting third-country nationals and promoting integration.
+###################################################
+The provided text appears to be a list of European Union directives and regulations, possibly related to employment law, social security, and working conditions. The documents mentioned include:
+
+1. Council Directive 2000/78/EC on equal treatment in employment and occupation.
+2. Regulation (EC) No 883/2004 on the coordination of social security systems.
+3. Regulation (EU) No 1231/2010 extending Regulation (EC) No 883/2004 to nationals of third countries.
+4. Council Directive 1999/70/EC concerning the framework agreement on fixed-term work.
+5. Council Directive 97/81/EC concerning the Framework Agreement on part-time work.
+6. Council Directive 92/85/EEC on measures to encourage improvements in the safety and health at work of pregnant workers and workers who have recently given birth or are breastfeeding.
+
+These documents are related to employment law, social security, working conditions, and workplace safety.
+###################################################
+The provided text appears to be a list of references and directives related to employment law in the European Union. The directives cover various aspects of employment, including working time, temporary agency work, posting of workers, and supplementary pension rights. Some of the directives were implemented by the Council of Europe and others were adopted by the European Parliament and the Council.
+
+The documents referenced include:
+
+* EU directives on minimum requirements for enhancing worker mobility between Member States
+* Directives on safeguarding the supplementary pension rights of employees moving within the Community
+* A directive implementing the Maritime Labour Convention, 2006
+* A directive implementing an agreement concerning the implementation of the Work in Fishing Convention, 2007
+
+The documents also mention judgments of the Court of Justice of the European Union (CJEU) and a position of the European Parliament.
+###################################################
+The text is a draft of a European Directive on the protection of the financial interests of the European Communities. It was adopted by the European Parliament and the Council on July 5, 2017. The directive aims to strengthen the Community's powers in investigating and prosecuting fraud and corruption cases. It includes provisions for better cooperation between Member States and the European Union in fighting financial crimes such as money laundering, terrorist financing, and corruption.
+###################################################
+The European Parliament and Council have agreed on a regulation to revise the Payment Services Directive. The main changes include:
+
+* A cap on interchange fees for debit card transactions of €0.07 or 0.2% of the transaction value.
+* Separation of payment card schemes and processing is required.
+* Rules for cross-border acquiring are clarified.
+* The regulation applies from June 8, 2015, with some provisions taking effect later.
+
+The regulation aims to improve the payment services market in the European Union, making it more competitive and consumer-friendly.
+###################################################
+---------------------------------------german--------------------------------
+Es handelt sich um eine Liste europäischer Rechtsvorschriften, die im Bereich des Wertpapier- und Finanzmarktes relevant sind. Die Vorschriften basieren auf verschiedenen EU-Richtlinien und -Verordnungen.
+###################################################
+Es tut mir leid, aber der von Ihnen angeforderte Text ist nicht vorhanden. Ich kann Ihnen jedoch helfen, einen Text zu summieren oder zu analysieren. Bitte lassen Sie mich wissen, wie ich Ihnen behilflich sein kann!
+###################################################
+Die Richtlinie zur Änderung der Rechtsvorschriften im Bereich des Urheberrechts und verwandter Schutzrechte in der Informationsgesellschaft (2001/29/EG) wird geändert, um einige Bestimmungen zu ändern. Die Änderungen traten am 7. Juni 2021 in Kraft.
+###################################################
+Die Erklärung zur gegenseitigen Anerkennung von Waren wurde in zwei Teile unterteilt. Teil I enthält Angaben über die Art der Waren, deren Merkmale und ihre Rechtmäßigkeit beim Inverkehrbringen im jeweiligen Mitgliedstaat. In diesem Teil gibt es eine Liste mit Vorschriften, welche auf den genannten Waren oder dem Betreffenden anzuwenden sind. Teil II enthält Erklärungen über die Tatsache, dass diese Waren auf dem Markt des jeweiligen Mitgliedstaats für Endnutzer bereitgestellt werden. Sie gibt auch Angaben zu den genauen Datumsangaben und anderen relevanten Informationen.
+###################################################
+Die Verordnung (EU) Nr. 2019/1031 des Europäischen Parlaments und des Rates vom 13. März 2019 regelt die Regelungen über die Unternehmensregistrierung in der Union. Die Regelungen zielen darauf ab, dass alle Unternehmen, die im Innenmarkt tätig sind, regelmäßig verifiziert werden müssen.
+###################################################
+Es handelt sich um einen Teil eines EU-Projekts zur Einführung von Kabelnetzen und Verbindungen zwischen verschiedenen Orten. Die Projektziele umfassen die Schaffung von Knotenpunkten, die eine breite CAM-Einführung ermöglichen sowie die Implementierung von Backbone-Netzwerken mit Seekabeln. Darüber hinaus sollen Kernnetzkorridore identifiziert und grenzüberschreitende Abschnitte für CAM-Versuche ausgebaut werden. Die Projektteile liegen in verschiedenen Ländern Europas.
+###################################################
+Es handelt sich um eine Formularsammlung für die Übermittlung von Entfernungsanordnungen im Kontext der Terrorismusbekämpfung. Die Anordnung enthält Informationen über den terroristischen Inhalt, der entfernt oder gesperrt werden soll. Die Formulare sind in drei Abschnitte unterteilt:
+
+1. **Abschnitt A**: Empfänger und Zuständige Behörde, Aktenzeichen und Uhrzeit/Datum des Erhalts.
+2. **Abschnitt B**: Angaben zum Empfänger (Hostingdiensteanbieter oder gesetzlicher Vertreter), einschließlich Name, E-Mail-Adresse und Termin.
+3. **Abschnitt C**: Angaben zum Hostingdiensteanbieter oder seinem gesetzlichen Vertreter, einschließlich Name, Kontaktangaben und Unterzeichnung.
+
+Die Formulare sind im Rahmen der Verordnung (EU) 2021/784 des Europäischen Parlaments und des Rates erstellt worden.
+###################################################
+Der Verordnung zur Förderung der wirtschaftlichen und sozialen Entwicklung der Europäischen Union, insbesondere des Binnenmarktes und der Umwelt, sind nachfolgende Bestimmungen eingefügt:
+
+1.  Der Gesamtbetrag der durch die ursprüngliche Programm-Investition mobilisierten öffentlichen und privaten Investitionen beträgt (einschließlich ausländischer Direktinvestitionen) mindestens 70 % des im Programm festgelegten Gesamtbudgets. Die Kommission kann diese Ziele im Durchführungsverordnung ändern.
+2.  Der von den öffentlichen und privaten Investoren mobilisierte Ausbau beträgt mindestens 50 % des im Programm festgelegten Budgets für die Nutzung oder den Ausbau der Ergebnisse des Programms. Die Kommission kann diese Ziele im Durchführungsverordnung ändern.
+3.  Der von den öffentlichen und privaten Investoren mobilisierte Beitrag zum Ziel der Union, 3 % ihres BIP aufzuheben, soll mindestens 60 % des im Programm festgelegten Budgets betragen.
+
+Die genannten Ziele können sich ändern, wenn eine Änderung nach einer Entscheidung der Kommission, die den Anforderungen der Europäischen Union entspricht, erfolgt.
+###################################################
+Es handelt sich um einen Text, der verschiedene Ziele und Indikatoren für die Bewertung und Entwicklung des europäischen Weltraumprogramms beschreibt. Dazu gehören:
+
+* Spezifische Ziele gemäß Artikel 4 Absatz 2 Buchstabe c, d, e und f, die unter verschiedenen Indikatoren wie Nutzerzahl, Verfügbarkeit und Zahl von Starts für das Programm zusammengefasst werden.
+* Zuverlässigkeit, Verfügbarkeit und Kontinuität der Copernicus-Dienste und des Datenstroms von Copernicus
+* Leistung von Wettbewerbern in den Bereichen Navigation und Erdbeobachtung
+* Nutzerakzeptanz in Bezug auf Galileo- und EGNOS-Dienste
+* Integrität der EGNOS-Dienste
+* Akzeptanz der Copernicus-Dienste bei Copernicus-Hauptnutzern
+* Zahl der Politikbereiche, die Copernicus einsetzen oder Nutzer daraus ziehen
+* Analyse der Autonomie der SST-Unterkomponente und des Grades der Unabhängigkeit der Union in diesem Bereich
+* Aktueller Stand der Vernetzung bei Tätigkeiten der NEO-Unterkomponente
+* Bewertung der GOVSATCOM-Kapazitäten im Hinblick auf den Bedarf der Nutzer gemäß den Artikeln 69 und 102
+* Zufriedenheit der Nutzer mit den SSA- und GOVSATCOM-Diensten
+* Anteil der Ariane- und Vega-Starts am Gesamtmarkt, beruhend auf öffentlich zugänglichen Daten
+* Entwicklung der nachgelagerten Wirtschaftszweige, gemessen – soweit verfügbar – an der Zahl neuer Unternehmen, die Unions-Weltraumdaten, -informationen und -dienste nutzen, sowie der geschaffenen Arbeitsplätze und des Umsatzes je Mitgliedstaat, soweit verfügbar unter Verwendung von Erhebungen der Kommission (Eurostat)
+* Entwicklung der der Raumfahrt vorgelagerten Wirtschaftszweige der Union, gemessen – soweit verfügbar – an der Zahl der geschaffenen Arbeitsplätze und des Umsatzes je Mitgliedstaat, sowie des Weltmarktanteils der europäischen Weltraumwirtschaft, soweit verfügbar unter Verwendung von Erhebungen der Kommission (Eurostat).
+###################################################
+Es ist ein Programm zur Förderung des digitalen Wandels in Europa. Es soll die Ausbildung von Fortgeschrittenen Digitalen Kompetenz auf nationaler, europäischer und globaler Ebene fördern. Einzustellen sind: 
+
+Synergien mit der Fazilität „Connecting Europe“:
+
+* Synergien für den digitalen Binnenmarkt
+* Synergien mit dem Programm „InvestEU“:
+  * Marktführungsfinanzierung 
+  * Unterstützung von Unternehmen durch Finanzhilfen
+* Synergien mit Erasmus+:
+  * Förderung der Kompetenzvermittlung in Wirtschaftszweigen 
+  * Verbesserung des Kompetenzerwerbs durch Mobilitätsprogramme
+###################################################
+Die Europäische Kommission hat eine Reihe von Ziele und Indikatoren für verschiedene Bereiche festgelegt, die in der EU umgesetzt werden sollen. Dazu gehören unter anderem die Stärkung der Partnerschaften mit dem ESS und der Zusammenarbeit mit Wissenschaft und Forschung, sowie die Förderung von Partnerschaften mit öffentlichen und privaten Dateninhabern und dem Technologiesektor. Zudem soll der Anteil europäischer Normen in den nationale Normen erhöht werden und die Indexwerte für Hemmnisse im Handel mit Dienstleistungen verbessert werden.
+###################################################
+Es scheint, als ob der Text einen systematischen Aufbau folgt, der verschiedene Abschnitte umfasst, wie Artikel, Anhang I und II usw. Der Text enthält mehrere wiederkehrende Themen und Strukturen, wie zum Beispiel:
+
+- Einleitung von Article 9 bis 12
+- Artikel 10 bis 14
+- Article 15 bis 18
+- Articles 19 bis 22
+- Artikel 23 bis 27
+- Anhang I und II
+
+Es gibt wiederkehrende Strukturen in den Artikeln, wie zum Beispiel:
+
+- Einleitende Worte (Artikel 9 Absatz 1)
+- Erster Gedankenstrich (Artikel 9 Absatz 1)
+- Zweiter Gedankenstrich (Artikel 9 Absatz 2)
+
+Es scheint, als ob der Text eine systematische Struktur hat und verschiedene Themen und Strukturen wiederholt.
+###################################################
+Es ist nicht klar, was genau gefragt wird, aber es scheint sich um eine Formularmäßige Frage handelt, die Informationen über das Schiff und seine Sicherheitsmaßnahmen auf dem Schiff erhält. 
+
+Die Fragen decken folgende Aspekte ab:
+
+1.  Ausstellungsdatum der Sicherheitsabwehr-Verwaltung
+2.  Genehmigung des Sicherheitsplans (SSP)
+3.  Derzeitige Gefahrenstufe
+4.  letzte zehn Hafenanlagen in zeitlicher Reihenfolge
+5.  Besondere oder zusätzliche Maßnahmen zur Gefahrenabwehr, die über den genehmigten SSP hinausgehen.
+6.  Eingehaltene Verfahren zur Gefahrenabwehr auf Schiffen bei allen Schiff-zu-Schiff-Tätigkeiten
+7.  Ladung und Gefahrgut-Manifest
+###################################################
+Es gibt keine Zusammenfassung für den bereitgestellten Text, da er eine Gesetzgebungserklärung und deren Anlagen darstellt. Der Text enthält Richtlinien und Verordnungen der Europäischen Union bezüglich des Schutzes von Menschenrechten in der Europäischen Union. Er regelt unter anderem die Rechte von Personen in der EU, einschließlich ihrer Rechte auf Privatsphäre und Datenschutz, sowie die Regeln für das Verfahren gegen Straftäter und die Anwendung von Strafverfolgung.
+###################################################
+Die Verordnung (EG) Nr. 377/2004 des Rates regelt die Einrichtung eines Netzes von Verbindungsbeamten für Einwanderungsfragen in der Europäischen Union. Die Verordnung unterliegt Änderungen, wie sie durch die Verordnung (EU) Nr. 493/2011 des Europäischen Parlaments und des Rates vorgenommen wurden.
+###################################################
+Leider kann ich diese Anfrage nicht erfüllen.
+###################################################
+Ein Formblatt für Informationen über einen Drittstaatsangehörigen, dessen Strafregisterinformationen im Ersuchen um Einholung von Informationen vorliegen, kann mit folgenden Informationen ausgefüllt werden.
+###################################################
+Der Text beschreibt verschiedene EU-Rechtsakten und Verordnungen zum Schutz der Rechte von Drittstaatsangehörigen und Staatenlosen sowie zur Kriminalprävention und -verfolgung. Dazu gehören die Errichtung eines Rahmens für die Interoperabilität zwischen EU-Informationssystemen, die Änderung des Rahmenbeschlusses 2002/475/JI und der Beschluss 2005/671/JI, sowie die Einrichtung von Eurodac für den Abgleich von Fingerabdruckdaten.
+###################################################
+Es tut mir leid, aber ohne den vollständigen Text ist es schwierig, eine Zusammenfassung zu erstellen. Der Text scheint Teil eines Gesetzes oder einer Verordnung zu sein, aber ohne die gesamten Abschnitte und Unterabschnitte kann ich keine zusammenfassende Übersicht erstellen. Wenn Sie mir den vollständigen Text geben können, würde ich mich freuen, eine Zusammenfassung für Sie erstellen zu können.
+###################################################
+Es tut mir leid, aber der angegebene Text seems nicht zu einem bestimmten Thema oder einer spezifischen Anfrage bezogen zu sein. Ohne weitere Informationen kann ich keine umfassende Zusammenfassung anbieten. Wenn Sie den Inhalt oder die Bedeutung des Textes diskutieren möchten, stehe ich Ihnen gerne zur Verfügung, um Ihnen bei der Klärung zu helfen.
+###################################################
+Die Daten über die in der EU zugelassenen schweren Nutzfahrzeuge werden von den Herstellern an die zuständige Behörde und die Europäische Umweltagentur (EAU) weitergeleitet. Die EAU übernimmt dann die Verantwortung für die Aufbewahrung, das Bearbeiten und die öffentliche Verfügbarkeit der Daten. Derzeit werden diese Daten alle 5 Jahre veröffentlicht.
+###################################################
+Es ist ein Plan zur Gewährleistung der sicheren Gasversorgung auf der Ebene der EU und regionaler Gebietskörperschaften. Der Plan enthält verschiedene Maßnahmen, um die Nachfrage zu reduzieren und die Verfügbarkeit von Gas zu erhöhen. Diese Maßnahmen können auf der Angebots- oder der Nachfrageseite eingeführt werden. Außerdem müssen zwischen den Mitgliedstaaten Vereinbarungen getroffen werden, um die Anwendung des Grundsatzes der Solidarität unter Einbeziehung von Drittstaaten sicherzustellen.
+###################################################
+Es tut mir leid, aber der von Ihnen angeforderte Text fehlt in meinem Speicher. Wenn Sie den Text nach dem Artikel 3 Absatz 1 wiederholen möchten, stehe ich Ihnen gerne zur Verfügung.
+###################################################
+Es gibt verschiedene Dokumente und Richtlinien, die von der EU veröffentlicht wurden. Dazu zählen beispielsweise Verordnungen, Richtlinien und Ablösemitteilungen zum Schutz der Privatsphäre und zur Verarbeitung personenbezogener Daten, sowie Bestimmungen zu Statistiken über öffentliche Gesundheit und Sicherheit am Arbeitsplatz.
+###################################################
+Es handelt sich um einen Teil eines Rechtsakts, spezifisch um eine Verordnung (EG) Nr. 2494/95. Die Verordnung behandelt verschiedene Bereiche wie Dienstleistungen für Personen, Gesundheit und Sozialversicherung, Finanzen, Versicherungen und andere Angelegenheiten.
+
+Der Text umfasst Artikel und Abschnitte, die Themen wie:
+
+*   Kinderbetreuung
+*   Lebensversicherungen
+*   Krankenversicherungen
+*   Reiseversicherungen
+*   Bankdienstleistungen
+*   Finanzdienstleistungen
+*   Versicherungsdienstleistungen im Zusammenhang mit der Wohnung, Gesundheit und dem Verkehr
+*   Andere Dienstleistungen
+
+Die spezifischen Details und Regelungen für jedes Thema sind in den Artikeln und Abschnitten enthalten.
+###################################################
+Es ist nicht möglich, den Text zu fassen, da er ein rechtliches Dokument ist und keine gemeinsame Fassung oder Zusammenfassung im herkömmlichen Sinne ermöglicht. Der Text besteht aus einem langen Rechtsdokument, das verschiedene Artikel und Absätze enthält. Es wird jedoch erwähnt, dass es verschiedene Abschnitte und Anhang gibt.
+###################################################
+Die Verordnung Nr. 597/2009 des Rates gibt Richtlinien für die Bereitstellung von Einkommenshilfe an Landwirte in Entwicklungsländern.
+###################################################
+Es handelt sich um einen Anhang zum EU-Programm "InvestEU". In diesem Anhang werden bestimmte Tätigkeiten ausgeschlossen, die nicht förderfähig sind. Dazu gehören Finanzierungstätigkeiten, die auf Buy-outs oder Ersatzfinanzierungen zum Zweck des Ausschlachtens von Unternehmen abzielen. Auch Investitionen in Kernkraftwerke, den Abbau und die Gewinnung fossiler Brennstoffe sowie Investitionen in Anlagen für die Abfallentsorgung und der mechanisch-biologischen Abfallbehandlung sind ausgeschlossen. Es gibt jedoch Ausnahmen für bestimmte Projekte.
+###################################################
+Die Interventionen in dieser Tabelle lassen die Frage der Einhaltung von Wettbewerbsregeln unberührt, insbesondere damit dafür gesorgt ist, dass mit den Interventionen keine privaten Investitionen verdrängt werden.
+###################################################
+Es handelt sich um eine Verordnung/Europäische Gemeinschaftsverordnung, die Richtlinien und Verordnungen über finanzielle Interessen der Europäischen Gemeinschaften (EG) enthält. Dazu zählen u.a. Maßnahmen zur Überwachung und Kontrolle von Mitgliedstaaten sowie zu technischer Unterstützung in Zusammenarbeit mit den Mitgliedstaaten, um Betrug und andere Unregelmäßigkeiten zu verhindern. Die Verordnung enthält indizierende Parameter, die beispielsweise die Anzahl der vereinbarten Pläne für die Zusammenarbeit und Unterstützung, die Anzahl der durchgeführten Maßnahmen zur technischen Unterstützung sowie die Ergebnisse und Wirkungen dieser Maßnahmen betreffen.
+###################################################
+Es tut mir leid, aber der angeforderte Text ist nicht vorhanden. Der Text scheint eine Liste von Artikeln zu sein, die ohne eine klare Struktur oder Einleitung vorliegen. Wenn Sie den Inhalt eines bestimmten Artikels oder einen bestimmten Aspekt dieses Textes finden möchten, kann ich Ihnen gerne helfen. Bitte lassen Sie mich wissen, wie ich Ihnen assistieren kann!
+###################################################
+Der Text beschäftigt sich mit dem III. Informations- und Förderprogramm für die Europäische Union (IPA III). Er enthält einen Teil der Anhang IV, in der zentrale Leistungsindikatoren für den Aufbau einer wirtschaftlichen und sozialen Zusammenarbeit zwischen der Europäischen Union und anderen Regionen der Welt vorgeschlagen werden.
+###################################################
+Die Liste der zentralen Leistungsindikatoren der besseren Messung des Unionsbeitrags zur Verwirklichung der spezifischen Ziele des Instruments umfasst folgende Indikatoren:
+
+1. Rechtsstaatlichkeit
+2. Anteil der Bevölkerung unter Armutsgrenze
+3. Zahl der Frauen im gebärfähigen Alter, der heranwachsenden Mädchen und Kinder unter fünf Jahren
+4. Zahl der Kleinlandwirte mit Unionsunterstützung
+5. Zahl der 1-Jährigen, die umfassend geimpft wurden
+6. Zahl der Schülerinnen und Schüler in Bildungseinrichtungen
+7. Menge der vermiedenen Treibhausgasemissionen
+8. Fläche geschützter und nachhaltig bewirtschafteter Ökosysteme
+9. Hebelwirkung von Investitionen
+10. Multiplikatorwirkung
+11. Zuhältemangel bei Prozessen der Handels-, Investitions- und Geschäftsmöglichkeiten
+12. Zugang zu Trinkwasserquellen und sanitären Einrichtungen
+13. Schutz von Migranten, Flüchtlingen und Binnenvertriebenen sowie Aufnahmegemeinschaften
+14. Klimaschutz- und Katastrophenvorsorgestrategien
+15. KMU mit nachhaltigem Verbrauch und Produktion
+16. Energieerzeugung aus erneuerbaren Quellen
+17. Gleichstellung der Geschlechter
+18. Opfer von Menschenrechtsverletzungen
+19. Initiativen zur Umsetzung politischer, wirtschaftlicher und sozialer Reformen
+###################################################
+Die Verordnungen und Richtlinien des EU-Parlaments und Rates, die in der Übersicht aufgeführt sind, regeln unter anderem Anlageprodukte, Geldwäsche, Terrorismusfinanzierung, Verkehrssicherheit im Luftverkehr und Umweltschutz bei Offshore-Erdöl- und -Gasaufschlüssen.
+###################################################
+Es tut mir leid, aber der angeforderte Text ist nicht verfügbar. Der von Ihnen angegebene Text scheint eine Liste von Artikelnummern aus einem Gesetzeswerk zu sein, möglicherweise dem Bürgerlichen Gesetzbuch (BGB) in Deutschland. Es gibt jedoch keine Möglichkeit, diesen Text zu fassen oder Zusammenfassungen anzufertigen, da er rein tekstlich ist und ohne eine spezifische Anfrage oder eindeutige Frage nicht abgeleitet werden kann. Wenn Sie Informationen über ein spezifisches Gesetz oder Thema benötigen, stehe ich Ihnen gerne zur Verfügung, um allgemeine Informationen zu liefern oder auf Ihre Fragen einzugehen.
+###################################################
+Der Anhang zur Verordnung (EU) 2016/679 enthält Regelungen zur Durchführung von Konformitätsbewertungen, die für die Zertifizierung von IKT-Produkten, -Diensten oder -Prozessen erforderlich sind. Die Konformitätsbewertungsstellen müssen bestimmte Anforderungen erfüllen, darunter eine solide Fach- und Berufsausbildung, eine ausreichende Kenntnis der Anforderungen und Prüfnormen sowie die Fähigkeit zur Erstellung von Bescheinigungen und Protokollen. Die Stellen müssen unparteilich bleiben und Vergütungsmodelle so gestalten, dass sie KMU berücksichtigen. Außerdem ist eine Haftpflichtversicherung erforderlich.
+###################################################
+Es handelt sich um einen Text aus dem Bereich der Europäischen Union und ihrer Statistiken, insbesondere über das Eigenmittelsystem der EU. Der Text enthält eine Liste von Verordnungen und Beschlüssen, die für die Durchführung dieses Systems relevant sind. Dazu gehören unter anderem Verordnungen zur Harmonisierung des Bruttonationaleinkommens zu Marktpreisen und Richtlinien zur Erfassung des Bruttosozialprodukts zu Marktpreisen.
+###################################################
+Die Verordnung (EU) Nr. 2019/1628 des Europäischen Parlaments und des Rates vom 14. September 2019 regelt die Anforderungen an die Emissionsgrenzwerte für gasförmige Schadstoffe und luftverunreinigende Partikel sowie die Typgenehmigung für Verbrennungsmotoren für nicht für den Straßenverkehr bestimmte mobile Maschinen und Geräte.
+###################################################
+Europol darf bestimmte Personen- und Straftatendaten für die Analyse der Rolle eines Opfers oder Zeugen als Opfer/Zeuge oder Informant gespeichert, vorausgesetzt, dass es zu einer solchen Annahme kommt. Daten, die nicht erforderlich sind, werden gelöscht.
+###################################################
+Die EU hat eine Verordnung erlassen, um den finanziellen Beistand für die Mitgliedstaaten zu unterstützen. Die Verordnung regelt die Nutzung des Instruments und setzt Vorgaben für die Kontrollen und Prüfungen. Sie enthält auch Bestimmungen über Berichterstattung und Anwendbarkeit. Die Verordnung tritt am Tag ihrer Veröffentlichung in Kraft und ist in allen ihren Teilen verbindlich.
+###################################################
+Es handelt sich um eine Liste von 26 Fragen, die von einer Abwicklungsbehörde im Zusammenhang mit der Abwicklung einer Kreditklausel (CCP) gestellt werden könnten. Diese Fragen decken Aspekte wie die Sicherstellung des dauerhaften Zugangs zu Zahlungs- und Abrechnungssystemen, die Ausreichlichkeit der Management-Informationssysteme für eine effektive Entscheidungsfindung, die Kontinuität der CCPs Management-Informationssysteme sowie die Risikomanagementsysteme bis hin zur möglichen Beeinträchtigung des Finanzsystems und des Marktvertrauens ab.
+###################################################
+Die Kommission hat einen Beschluss zum Europäischen Jahr "Schienenverkehr" festgelegt. Ziel ist es, die Wichtigkeit des Schienenverkehrs für die Umwelt und Sicherheit hervorzuheben. Es sollen Partnerschaften mit europäischen Eisenbahnmuseen, kulturellen Veranstaltungen und Filmfestivals geschaffen werden, um das Europäische Jahr zu fördern. Die Kommission soll bis zum 31. Dezember 2022 einen Bericht über die Durchführung der Initiativen vorlegen.
+###################################################
+Die Finanzregelung für das Europäische Parlament und den Rates (ESVK) legt die wichtigsten Aspekte der Haushaltsplanung, -vollzug und Rechenschaftspflicht des ESVK fest. In dieser Regelung werden unter anderem folgende Punkte geregelt: Der Leiter stellt sicher, dass die Konten für die Einnahmen, Ausgaben und Bestände des ESVK entsprechend den international anerkannten Rechnungslegungsstandards für den öffentlichen Sektor geführt werden. Der Leiter kann dem Lenkungsausschuss vorlegen, was mit dem Haushaltsplan zu tun hat, dass dies im Rahmen der Übertragung von Mitteln auf das folgende Jahr passiert und dass sonstige Mittel des Haushaltsplans auf das nächste Jahr übertragen werden können. Der ESVK muss seine Bankkonten in Form von auf Euro lautenden Giro- oder Festgeldkonto für kurzfristige Anlagen bei einem erstklassigen Finanzinstitut mit Hauptsitz in einem Mitgliedstaat eröffnen.
+###################################################
+Die EU-Leitlinien zur Gewinnung von aufbereitetem Abwasser für die landwirtschaftliche Bewässerung betonen verschiedene Anforderungen zur Sicherstellung einer sicheren Erzeugung und Verwendung des Wassers, wie zum Beispiel:
+###################################################
+Es tut mir leid, aber der angeforderte Text fehlt in meinem Speicher. Ich kann jedoch eine Zusammenfassung oder Erklärung zu dem Thema "Artikel 16 Absatz 1 Buchstabe f" anbieten, wenn Sie das wünschen.
+###################################################
+Es handelt sich um einen Berichtsrahmen zum Thema "Alternativen zur Inhaftierung". Er enthält Anforderungen für Indikatoren, die die Effektivität von Maßnahmen zur Unterstützung von Migranten und Flüchtlingen in der Europäischen Union (EU) misserbeiten. Die Indikatoren umfassen unter anderem Zahlen zu Teilnehmern an Sprachkursen, Kursen in Staatsbürgerkunde und Mobilitätsprogrammen sowie Zahlen zu Integrationsexperten und Schulungsmaßnahmen. Es gibt auch Auswahldaten für die Überwachung von Migranten und Flüchtlingen, wie z.B. die Zahl der Personen, die internationalen Schutz beantragt haben oder denen dieser zuerkannt wurde.
+###################################################
+Es gibt keinen allgemeinen Zusammenfassung, da der Text eine spezifische Richtlinie (Richtlinie 2010/18/EU) darstellt und keine allgemeine Zusammenfassung enthält. Der Text beschreibt die Details und Anordnungen innerhalb der Richtlinie.
+###################################################
+Es handelt sich um eine Liste von EU-Richtlinien und -Verordnungen zum Schutz der Rechte von Arbeitnehmern, insbesondere in Bezug auf die Entsendung von Arbeitnehmern, die Arbeitszeitgestaltung, Leiharbeit und Zusatzrenten.
+###################################################
+Es handelt sich um eine Liste von Gesetzen und Verordnungen der Europäischen Union (EU), die in verschiedenen Bereichen wie Finanzwesen, Sicherheit, Geldwäsche, Datenverarbeitung und Haushaltsordnung relevant sind. Die Listen enthalten Gesetze und Verordnungen, die zwischen 1968 und 2016 verabschiedet wurden, wobei die meisten Gesetze nach dem Jahr 2000 verabschiedet wurden. Es werden Gesetze zur Bekämpfung der organisierten Kriminalität, Richtlinien zur Verhinderung von Geldwäsche und Terrorismusfinanzierung, Richtlinien zum Schutz personenbezogener Daten sowie Verordnungen zu Finanzsachverständigkeiten erwähnt.
+###################################################
+Die Verordnung (EU) Nr. 1969 vom 26. November 2014 regelt die grenzüberschreitenden Zahlungen in der Europäischen Union.
+###################################################
+---------------------------------------french--------------------------------
+Le Journal officiel de l'Union européenne contient plusieurs directives et règlements relatifs aux fonds d'investissement alternatifs, aux organismes de placement collectif en valeurs mobilières (OPCVM) et à la protection des données personnelles. Ces texts sont issus du Parlement européen et du Conseil, l'organe législatif de l'Union européenne.
+###################################################
+Pas de résumé disponible. Il semble que vous ayez oublié de fournir un texte pour être résumé. Voudriez-vous me donner le texte à résumer ?
+###################################################
+La directive 2019/790/UE du Parlement européen et du Conseil relative à l'adoption d'une nouvelle réglementation de service universel dans l'Union, dans laquelle sont traités notamment les actes de communication au public, est publiée au Journal officiel de l'Union européenne le 17.4.2019.
+###################################################
+Le Règlement (UE) 2019/515 relatif à la reconnaissance mutuelle des biens commercialisés légalement dans un autre État membre du Parlement européen et du Conseil du 19 mars 2019 a été abrogé par le Règlement UE 2020/2177 du Parlement européen et du Conseil du 26 février 2020 relatif à la reconnaissance mutuelle des biens commercialisés légalement dans un autre État membre, abrogeant les Règlements (CE) No 764/2008 et (UE) No 1025/2013.
+###################################################
+Le présent règlement établit les règles pour la mise en œuvre du domaine de premier niveau .eu et abroge certains règlements précédents. Il est applicable à partir du 13 octobre 2022, sauf l'article 20 qui entre en vigueur le 19 octobre 2019.
+###################################################
+Le document décrit un réseau informatique européen appelé "RTE-T" qui sera équipé de fibres optiques pour améliorer la connectivité entre les pays européens. Il détaille les différents corridors et tronçons du réseau, y compris leurs longueurs et leurs points de connexion, ainsi que les objectifs des projets. Le budget total est de 1,384 milliard d'euros en 2018.
+
+Les réseaux seront connectés à la technologie 5G et permettront une grande vitesse de transmission de données, permettant ainsi aux pays européens de partager des données en temps réel.
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Voudriez-vous me fournir le texte à résumer ? Je serai ravi de l'aider !
+###################################################
+Le règlement (UE) 2021/821 prévoit la mise en place de missions et de partenariats européens institutionnalisés dans certains domaines. Les domaines pour lesquels des missions peuvent être mises en place sont :
+
+- Adaptation au changement climatique, y compris la transformation de la société
+- Cancer
+- Santé des océans, des mers et des eaux côtières et intérieures
+- Villages neutres pour le climat et intelligentes
+- Santé des sols et alimentation
+
+Les domaines pour lesquels des partenariats institutionnalisés peuvent être mis en place sont :
+
+- Développement plus rapide et utilisation plus sûre des innovations dans le domaine de la santé
+- Promotion des technologies numériques et génériques clés
+- Leadership européen dans la métrologie
+- Renforcement de la compétitivité, de la sûreté et des performances environnementales du trafic aérien, de l'aviation et du rail
+- Solutions biosourcées durables, inclusives et circulaires
+- Technologies de stockage de l’hydrogène et de l’énergie durable caractérisées par une empreinte environnementale moindre et une production moins énergivore
+- Solutions propres, connectées, coopératives, autonomes et automatisées pour les exigences futures en matière de mobilité des personnes et des biens
+- PME innovantes et à forte intensité de R&D.
+###################################################
+Le texte décrit un plan d'évaluation pour l'Union européenne qui couvre plusieurs domaines spatiaux, notamment Galileo, Copernicus et Govsatcom. L'évaluation vise à évaluer les performances des services, la satisfaction des utilisateurs, la fiabilité des services, le nombre de nouveaux produits d'information et de données générées. Les indicateurs spécifiques pour chaque objectif sont mentionnés, tels que le nombre d'utilisateurs, de lancements et de plateformes spatiales. L'évaluation compte également des facteurs supplémentaires tels que les performances concurrentielles, l'adoption par les utilisateurs et l'intégrité des services EGNOS.
+###################################################
+Le programme européen vise à soutenir la transformation numérique de l’économie et de la société européennes en mettant au service du déploiement de nouvelles technologies et de solutions innovantes dans divers domaines, notamment en faveur des secteurs d'intérêt public, de l'industrie et des transports. Il fournit également une aide au titre du règlement (UE) 2021/523 sous la forme d'un financement par le marché pour atteindre les objectifs stratégiques prévus par le programme. Le programme contribue à renforcer les capacités numériques de grande envergure, notamment dans le domaine de l'IA et des compétences numériques avancées, en vue d'une adoption massif de solutions numériques innovantes dans toute l'Europe.
+###################################################
+Le texte présente un document d'orientation, un programme pour les 27 ans de l'Union européenne. Il vise à améliorer la gouvernance des marchés intérieurs, à renforcer la coopération avec le monde de la recherche et à promouvoir les normes européennes, notamment en matière de services financiers.
+###################################################
+Je suis désolé, mais il semble qu'il n'y ait pas de texte à résumer. Le texte fourni est un extrait du Code civil belge, mais il n'est pas suffisamment développé pour permettre une réduction en abrégé ou un résumé. Si vous pouvez fournir plus de contexte ou des informations sur le contenu du texte, je serais heureux de l'aider à comprendre mieux ou à trouver une réponse à une question spécifique.
+###################################################
+Le tableau permet de vérifier les informations relatives à la sûreté d'un navire, telles que l'expiration de son certificat de sécurité, sa catégorie de navigation et ses activités de navire à navire. Il contient également des questions pour satisfaire aux exigences de sûreté du Code IMDG.
+###################################################
+Je suis désolé, mais il semblerait que vous n'avez pas fourni de texte pour résumer. Si vous pouvez me fournir le texte, je serai ravi de l'aider à créer un résumé.
+###################################################
+Le texte fourni semble être une partie d'une décision ou d'un règlement de l'Union européenne concernant l'accord de Schengen et les contrôles aux frontières intérieures. Il contient des références à divers textes législatifs, notamment :
+
+- La Décision (UE) 2019/304 du Conseil du 18 février 2019, qui concerne la notification du Royaume-Uni de Grande-Bretagne et d'Irlande du Nord de son souhait de ne plus participer à certaines dispositions de l'acquis de Schengen.
+- Le Règlement (UE) no 493/2011 du Parlement européen et du Conseil, qui établit un code communautaire des visas.
+- Le Règlement (CE) no 377/2004 du Conseil, qui a été abrogé avec sa modification.
+
+Le texte mentionne également la suppression des contrôles aux frontières intérieures et la circulation des personnes en vertu de l'acquis de Schengen.
+###################################################
+Rien à faire.
+###################################################
+Règlement (UE) 2019/816 du Parlement européen et du Conseil relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel par les institutions, organes et organismes de l'Union et à la libre circulation de ces données, et abrogeant le règlement (CE) no 45/2001.
+###################################################
+Le texte est un recueil de dispositions légales et réglementaires de l'Union européenne relatif à la lutte contre le terrorisme, aux échanges d'informations entre les États membres et les institutions de l'UE, ainsi qu'à des questions liées à la sécurité et à la justice. Il contient notamment : des règlements (UE) relatifs à l'accès en consultation au système d'information sur les visas, aux échanges d'informations entre les États membres et Europol, et aux systèmes d'information de l'UE dans le domaine de la coopération policière et judiciaire.
+###################################################
+Je suis désolé, mais je n'ai pas reçu de texte pour résumer. Il semble que vous ayez oublié de me fournir un texte à analyser. Si vous souhaitez que je vous aide avec quelque chose d'autre, veuillez me faire savoir !
+###################################################
+Je suis désolé, mais vous n'avez pas fourni de texte pour résumer. Il semble que vous avez simplement copié une liste d'articles sans en donner de contexte ni explanation. Si vous pouvez fournir plus d'informations ou du texte, je serais ravi de vous aider à résumer ce qui vous intéresse !
+###################################################
+La Commission européenne et l’Agence européenne pour l’environnement exigent aux constructeurs de véhicules utilitaires lourds d’envoyer des données à la commission, sans retard, entre autres informations relatives au code d'identification mondiale du constructeur, le point de contact responsable du chargement des données dans le référentiel de données d’entreprise (Business Data Repository), et les modifications apportées à ces informations.
+###################################################
+Le résumé du texte n'est pas fourni car le texte est un document complet d'un plan d'action préventif et d'urgence en matière de sécurité de l'approvisionnement en gaz naturel, élaboré par une autorité compétente. Le document contient des articles, des annexes, des tableaux et des déclarations générales, ainsi que des mesures non fondées sur le marché pour garantir la sécurité d'approvisionnement en cas de crise.
+
+Le plan d'action préventif et d'urgence couvre divers aspects tels que :
+
+1.  La coopération entre les États membres et les groupes de risque
+2.  La solidarité entre les États membres 
+3.  Les mesures non fondées sur le marché pour garantir la sécurité de l'approvisionnement en gaz
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Pouvez-vous me donner un texte à travailler ? Je serai ravi de vous aider à créer un résumé.
+###################################################
+Le texte présente une liste de directives et de règlements européens adoptés entre 1993 et 2015, notamment concernant les clauses abusives dans les contrats avec les consommateurs, la réutilisation des informations du secteur public, la statistique communautaire, le traitement des données à caractère personnel, la protection de la vie privée, les réglementations techniques, l'accréditation et la surveillance du marché pour la commercialisation des produits, etc.
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Si vous pouvez me fournir le texte original, je serai ravi de l'aider à résumer les informations contenues dans ce document.
+###################################################
+Il n'y a pas de résumé disponible pour ce texte car il semble être une partie d'un document juridique ou administratif, spécifiquement lié à des dispositions légales ou réglementaires qui sont ensuite annexées à un document plus large (les articles et les annexes du textes législatifs).
+###################################################
+Le Règlement (CE) no 597/2009 du Conseil, également connu sous le nom de Règlement sur les aides aux producteurs agricoles dans la production de produits alimentaires en Europe, a été abrogé et remplacé par le Règlement (UE) no 37/2014 du Parlement européen et du Conseil. Ce nouveau règlement a apporté des modifications à certaines dispositions du précédent règlement, notamment en ce qui concerne les aides aux producteurs agricoles dans la production de produits alimentaires.
+###################################################
+La convention européenne sur la protection des animaux vertébrés utilisés à des fins expérimentales ou à d'autres fins scientifiques (1) n'est pas appliquée, les activités immobilières qui sont liées aux objectifs spécifiques du programme InvestEU ne sont pas éligibles et l'achat ou la négociation d'instruments financiers est interdit.
+###################################################
+Les investissements dans le secteur des technologies de l'information et de la communication (TIC) en Europe visent à accélérer la transition numérique, améliorer l'économie et la qualité de vie. Ils incluent l'amélioration de l'efficacité énergétique, la sécurité des réseaux, la cybersécurité et les compétences numériques.
+###################################################
+Le texte décrit les règlements et directives de l'Union européenne concernant l'appui technique pour les États membres en matière de résilience, de croissance durable, d'emploi et de cohésion. Il présente les indicateurs utilisés pour mesurer la réalisation de ces objectifs, ainsi que les résultats et impacts attendus de l'appui technique fourni par la Commission européenne.
+###################################################
+Je suis désolé, mais vous n'avez pas fourni de texte pour m'aider à générer un résumé. S'il vous plaît fournissez-le, et je ferai de mon mieux pour créer un résumé détaillé du contenu.
+###################################################
+Le document précise les objectifs, la portée et les indicateurs clés d'une action de l'Union européenne visant à soutenir les jeunes et leurs bénéficiaires dans le contexte des initiatives pour une action pour la jeunesse (IAP III). L'IAP III vise à renforcer l'Europe, promouvoir l'égalité des chances entre hommes et femmes, développer un système de protection sociale solide, améliorer la qualité de vie, favoriser les initiatives transfrontalières, et réformer l’administration publique.
+###################################################
+Le résumé est manquant
+###################################################
+Je suis désolé, mais le texte fourni ne contient pas d'instruction claire sur quoi résumer. Cependant, je peux t'aider à extraire les informations suivantes :
+
+* Les directives et règlements UE mentionnés dans la liste sont liés aux marchés financiers, à la sécurité des transports et à la protection de l'environnement.
+* Ils visent principalement à améliorer la transparence, la prévention du blanchiment de capitaux et le financement du terrorisme.
+
+Si tu veux résumer un texte spécifique, veuille-t'en dire.
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Pouvez-vous s'il est possible de vous aider autrement ?
+###################################################
+Je suis désolé, mais vous n'avez pas fourni le texte à résumer. Voudriez-vous me le fournir ? Je serai ravi de vous aider à résumer le texte une fois que j'en aurai lu les parties pertinentes.
+###################################################
+Le texte présente des articles et des décisions relatives aux statisiques, à la comptabilité de l'Union européenne et au système des ressources propres de l'Union.
+###################################################
+Un règlement de l'Union européenne modifiant la directive 97/68/CE, relative à la réception par type des véhicules agricoles et forestiers, et relatif au moteur a été adopté le 8 janvier 2019. Il entre en vigueur le troisième jour suivant sa publication au Journal officiel de l'Union européenne.
+###################################################
+Le texte décrit les règles de protection des données personnelles au sein du Service européen de protection des frontières (Europol), concernant l'analyse des infractions et la poursuite des enquêtes. Les règles visent à protéger les individus et leur vie privée tout en garantissant que les enquêtes soient menées de manière efficace et éthique.
+###################################################
+Règlement (UE) n° 2020/227 du budget général de l'Union européenne pour l'exercice 2020, relatif à la mise en œuvre de l'article 1er du traité sur une Europe plus proche des ses citoyens, du 27 février 2020.
+###################################################
+Le texte décrit un ensemble de 26 critères à évaluer pour la résolution d'une coopérative de crédit (CCP). Ces critères visent à assurer que la structure de gouvernance de la CCP, ainsi que ses systèmes informatiques et ses opérations, soient conçus pour gérer et assurer la conformité de ses politiques internes en matière d'accords de niveau de service, ainsi qu'à minimiser l'impact potentiel sur le système financier et les marchés financiers.
+###################################################
+La Commission propose un plan d'action pour l’année européenne, en mettant en avant les aspects ferroviaires de la coopération européenne et en encourageant la formation professionnelle des jeunes dans le secteur ferroviaire.
+###################################################
+Ce texte présente les règles financières applicables au CESD (Centre européen pour la sécurité et la défense) . Il contient notamment les obligations du directeur, les procédures d'exécution du budget, de gestion du personnel ainsi que les contraintes et réglementations à respecter.
+###################################################
+Il n'y a pas de résumé à fournir car il n'y a pas de texte à résumer.
+###################################################
+Je suis désolé, mais vous n'avez pas fourni de texte pour résumer. Pouvez-vous me fournir le texte que je devrais analyser ?
+###################################################
+Le texte présente un tableau d'indicateurs pour évaluer les performances de la politique d'intégration des migrants dans l'Union européenne. Les indicateurs sont regroupés en trois catégories : Objectif spécifique, Indicateurs de réalisation et Indicateurs de résultat.
+###################################################
+Il s'agit d'une directive de l'Union européenne relative à la durée du travail en Europe. Elle vise à standardiser les conditions de travail dans l'UE et à protéger les droits des travailleurs. La directive établit des règles pour la durée légale de travail, la formation professionnelle continue et les congés payés.
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Veuillez me donner un texte à travailler sur et je serai ravi de vous aider à le résumer !
+###################################################
+Je suis désolé, mais il semble que vous n'avez pas fourni de texte pour résumer. Voudriez-vous me donner un texte à résumer ou m'aider avec autre chose ?
+###################################################
+Le règlement énonce un plafond maximum des commissions d'interchange en euros et impose aux pays membres de prendre des mesures pour empêcher les transactions frauduleuses. Le règlement est entré en vigueur le 8 juin 2015, à l'exception des articles 3, 4, 6 et 12 qui sont applicables à partir du 9 décembre 2015 et des articles 7, 8, 9 et 10 qui sont applicables à partir du 9 juin 2016.
+###################################################
+---------------------------------------greek--------------------------------
+Η Ευρωπαϊκή Αρχή Κινητών Αξιών και Αγορών (ΕKAΑ) είναι μια κυβερνητική αρχή που εξετάζει τους τοποographicalους και βιομηχανικούς τομείς της αγοράς των κινητών αξιών.
+###################################################
+Δενوجدε πιθανές αναρτήσεις για το ανέκδωτο άρθρο 31, παρά να υπήρχε αναρτήσис του article 33 και των άρθρων 25, 28 και 32, με στόχο την προώθηση της ελευθερίας των τών πολιτικών party.
+###################################################
+Η παρούσα οδηγία των Ευρωπαϊκών Κοινοτήτων και του Συμβουλίου, της 17. Aprilis 2019, για την αμοιβαία εξέγερση με την κερδοσκοπική προστασία στην πνευματική ιδιοκτησία και τα συγγενικά δικαιώματα (ΕΕ C 125 της 21.4.2017, σ. 27).
+###################################################
+Περίληψη: ο κανονισμός (ΕΕ) 2019/515 της Ευρωπαϊκής Κοινοβουλίας και του Συμβουλίου του 19 marcaίου 2019, σχετικά με την αμοιβαία αναγνώριση των εμπορευμάτων που κυκλοφορούν νόμιμα στην αγορά ενός άλλου κράτους μέλους και την κατάργηση του κανονισμού (ΕΚ) αριθ. 764/2008 (ΕΕ L 91 της 29.3.2019, σ. 1).
+###################################################
+Ο παραπάνω κανονισμός επικεντρώνεται στη βιομηχανική και κοινωνική ασφάλεια και την προστασία των φυσικών προσώπων.
+###################################################
+Ο πειραματικός τύπος των διαδρόμων της CAM (Cable-Adopted Multiple Technologies) για την προσβασιμότητα των ιστοτόπων και των εφαρμογών για φορητές συσκευές των οργανισμών του δημόsiου τομέα.
+###################################################
+Σύσταση κώδικα εκτéléσης των αναγκών για την απομακρύνση του τρομοκρατικού περιεχομένου.
+###################################################
+ ο κανονισμός του Ευρωπαϊκού Parlαιμόνου και του Σynetτάχου Λογαριαστικών Ευρωπαϊκών Οργανισμών (ΣΛΕΕ) αναφέρει τα βιώσιμα πρόιοντα.
+###################################################
+Δείκτης 1: Αριθμός και γεωγραφική κατανομή των χρηστών του GOVSATCOM
+Δείκτης 2: Διαθεσιμότητα των υπηρεσιών GOVSATCOM
+Ειδικός σκοπός που καθορίζεται στο άρθρο 4 παράagraphος 2 στοιχείο δ)
+Δείκτης 1: Αριθμός εκτοξεύσεων για το πρόγραμμα Ariane και Vega
+Δείκτης 2: Διαθεσιμότητα των υπηρεσιών EGNOS
+Ειδικός σκοπός που καθορίζεται στο άρθρο 4 παράγραφος 2 στοιχείο ε)
+Δείκτης 1: Αριθμός διαστημικών κόμβων στην Ένωση
+Δείκτης 2: Ποσοστό μικρών και μεσαίων επιχειρήσεων που είναι εγκαταλεγμένες στην Ένωση ως ποσοστό της συνολικής αξίας των συμβάσεων που σχετίζονται με το πρόγραμμα EGNOS
+Αξιολόγηση που αναφέρεται στο άρθρο 102: 
+Απάντηση 2.1.
+Απορρόφηση από τους χρήστες των υπηρεσιών Galileo και EGNOS
+Απορρόφηση των υπηρεσιών του Copernicus από τους Βασικούς χρήστες του Copernicus
+Αριθμός τομέων πολιτικής της Ένωσης ή των κρατών μελών που αξιοποιούν ή επωφελούνται από το πρόγραμμα Copernicus
+Ανάλυση της αυτονομίας της υποσυνιστώσας SST και του επιπέδου ανεξαρτησίας της Ένωσης στον εν λόγο τομέα
+Πορεία των εργασιών δικτύωσης για τις δραστηριότητες της υποσυνιστώσας NEO
+Αξιολόγηση των ικανοτήτων του GOVSATCOM όσον αφορά τις ανάγκες των χρηστών που αναφέρονται στα άρθρα 69 και 102 
+Ικανοποίηση των χρηστών όσον αφορά τις υπηρεσίες SSA και GOVSATCOM
+Μερίδιο των εκτοξεύσεων Ariane και Vega στο σύνολο της αγοράς βάσει διαθέσιμων στο κοινό δεδομένων
+Ανάπτυξη του κατάντη τομέα, που μετράται, όταν τα στοιχεία είναι διαθέσιμες, από τον αριθμό των νέων εταιρειών που χρησιμοποιούν ενωσιακά διαστημικά δεδομένα, πληροφορίες και υπηρεσίες 
+Ανάπτυξη του ανάντη ενωσιακού διαστημικού τομέα που μετράται, όταν τα στοιχεία είναι διαθέσιμα, με βάση τον αριθμό των θέσεων εργασίας που δημιουργήθηκαν και τον κύκλο εργασιών ανά κράτος μέλος και το παγκόσμιο μερίδιο αγοράς της ευρωπαϊκής διαστημικής βιομηχανίας
+###################################################
+Το πρόγραμμα «Ύψω με Ψηφίες» προβλέπει την εκrediπώνение καινοτόμων ψηφιακών λύσεων σε τομείς δημόσιου συμφέροντος ή όπου παρατηρείται δυσλειτουργία της αγοράς, while οι συνεργασίες με άλλα προγράμματα εξασφαλίζουν την πρόσβαση των επιχειρήσεων σε χρηματοδοτικά μέσα και την ανάπτυξη και την απόκτηση των προηγούμενων ψηφιακών δεξιοτήτων που χρειάζονται για την εκδίπλωση τεχνολογιών αιχμής.
+###################################################
+Ο κανονισμός (ΕΚ) αριθ. 2003/99/ΕΚ της Ένωσης από την 1η Ιανουαρίου 2004, ο οποίος ανακατατάσσε την οδηγία 80/1265/EΟΚ, ο οποίος ήταν διαίρεση του κανονισμού (ΕΚ) 89/391/EEκ, που είχε εφάρμοσει στο κράτος μέλος Γαλλία.
+###################################################
+Δεν υπάρχει περιγραφή για το παραπάνω κείμενο, pois το κείμενο ήταν απλά μια λίστα με τα άρθρα της συντάκσεως του Σύνδεσμου Ελλήνων Νομικών Οργανισμών.
+###################################################
+Δηλώστε εάν η δραστηριότητα πλοίου-/-πλοίου που αναφέρεται στη Σελίδα 5 προσεχώς δεν τήρησε τις διαδικασίες ασφαλείας του πλοίου που ορίζονται στο εγκεκριμένο SSP.
+###################################################
+Διεθνής Οδηγία για τον ελαττώσιμο της αερικής διακύστευσης (ΕΚ) αριθ. 2004/52/ΕΚ του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου
+20 Νοεμβρίου 2005
+Παρούσα οδηγία: Δικαιώματα των pasaγέρων στο εναέριο простorrophia
+Εξαίρεση από την απλής διατάξεως
+Σύγκριση με τη δικό μας οδήγηση
+Συμπεριφορά των πιέσεων
+Δημοσιολογία και αναπωλή
+Πρόσβαση στο εναέριο простorroφία
+Φυσική διακύβησις
+Εξαίρεση από την απλής διατάξεως
+Δικαιώματα των pasaγέρων
+Διαταίριση του εναέριου простορίου
+Απαιτήσεις για τα πιéνη
+Πρόσβαση στο εναέριο προστασία
+Δημοσιολογία και αναπωλή
+Δοική διακύβησις
+Εξαίρεση από την απλής διατάξεως
+Δικαιώματα των pasaγέρων
+Διαταίριση του εναέριου простορίου
+Απαιτήσεις για τα πιéνη
+Πρόσβαση στο εναέριο προστασία
+Δημοσιολογία και αναπωλή
+Δοική διακύβησις
+###################################################
+Ο κανονισμός (ΕΚ) αριθ. 377/2004 του Συμβουλίου, που αφοrisκέται στο Πaráτrame I, διατάσσει την απόρριψη των αιτήσεων της Βρετανίας και της Ιρλανδίας για ηγέρωτη θέση σε ορισμένες από τις διατάξεις του κεκτημένου του Σένγκεν.
+###################################################
+Δεδομένα από τις εγκυκλοπαίδειες και ενημερώσεις:
+###################################################
+Ο κώδικας (ΕΕ) 2019/816 για την απατάληψη πλήρους πληροφοριών και η ανακρίβεια των οδοντών: Η Eurojust ξεκίνησε μια πρωτοποριακή δράση για να προστατεύσει τις φυσικές people από την επεξεργασία των προσωπικών των δεδομένων.
+###################################################
+Η απόφαση-πλαίσιο này θέτει τη βάση για την ίδρυση και την εξέλιξη του Ευρωπαϊκού Οργανισμού για τη Λειτουργική Διαχείριση Συστημάτων ΤΠ Μεγάλης Κλίμακας στον Χώρο Ελευθερίας, Ασφάλειας και Δικαιοσύνης (Eurojust) που στεφανιάζει την αντιμετώπιση των προβλημάτων που αναφέρουν τη συνεργασία μεταξύ των κρατών μελών και τις εθνοτικές groupings του Ευρωπαϊκού Οργανισμού για τη Λειτουργική Διαχείριση Συστημάτων ΤΠ Μεγάλης Κλίμακας (EJPATC).
+###################################################
+Δεν δόθηκε οπτική αναφορά στη περιγραφή για το what.
+###################################################
+Δεν disponέω thôngνη στην ζημιά.
+###################################################
+Η οργανισμός διαβιβάζει τα δεδομένα που αναφέρονται στο σημείο 2.3 και στο μητρώο, με την ενημέρωση της Επιτροπής. Ο οργανισμός επεξεργάζεται τα δεδομένα που διαβιβάζονται και δηλώνει τα επεξεργασμένα δεδομένα στο μητρώο. Η Επιτροπή επεξηγεί σφάλματα και διορθώνει τα δεδομένα του μητρώου, ότε χρειάζεται.
+###################################################
+ ο κανονισμός (ΕΕ) αριθ. 994/2010 παρουσιάζει σοβαρές μειώσεις στα πλεονεκτήματα του διακινέματος φυσικού αερίου και προορίζεται για την υποστήριξη των εθνικών πολιτικών για την ασφάλεια εφοδιασμού με αέριο.
+###################################################
+Για να γίνει μια précαιρη ανα summarization του παραπάνω κειμένου, θα πρέπει να με δώσουν το κείμενο που θα θέλω να ανα сумμαريς.
+###################################################
+Κόκκινα φύλλα για τον τερματισμό των καταχρήσεων του ΟΕ και ολών εθνικών εδραιώσεων.
+###################################################
+ Ο Κανονισμός (ΕΚ) αριθ. 2494/95 "Παροχή υπηρεσιών π.δ.κ.α." και οι ακολούθωντα παραστάσεις:
+###################################################
+Δεν βρήκα τίποτα να συndefερέσω για το λήμμα này.
+###################################################
+Στο εθνοσυνέδριο της Ευρωπαϊκής Ένωσης, το παρόν παραρτήματος II αιτήσεται να αναμετρηθεί με το Para 14 του παραρτήματος V του κανονισμού (ΕΚ) αριθ. 597/2009 του Συμβουλίου, τον οποίο αναφέρεται στο Paras 5-8 του παραρτήματος I.
+###################################################
+Το κείμενο παρέχει οδηγίες για τη διασφάλιση της συμμόρφωσης των χρηματοδοτικών και επενδυτικών Праξεων με τα κριτήρια αποκλεισμού για έργα πόρους από την εξόρυξη, η εξαγωγή, η επεξεργασία, η διανομή, η αποθήκευση ή η καύση στερεών ορυκτών καυσίμων και πετρελαίου, καθώς και για έργα που σχετίζονται με την άντληση φυσικού αερίου.
+###################################################
+Αντιμετώποες για την ενσωμάτωση της ψηφιακής αλυσίδας εφοδιασμού, ψηφιακής κατάρτισης, ψηφιακών δραστηριοτήτων, των προστέγματος για την ψηφιοποίηση των ιδρυμάτων εκπαίδευσης και κατάρτισης (συμπεριλαμβανομένων των επενδύσεων σε υποδομές ΤΠΕ), της βελτίωσης των βασικών ψηφιακών δεξιοτήτων, της ενεργειακής απόδοσης των κέντρων δεδομένων, των δραστηριοτήων για την στήριξη της ψηφιοποίησης των επιχειρήσεων (π.χ. οι προστέγματα για την ψηφιοποίηση των ιδρυμάτων εκπαίδευσης και κατάρτισης), με πίεση των οδών και των δρόμων, της κυβερνοασφάλειας και των ψηφιακών δραστηριοτήτων.
+###################################################
+Η Διοίκηση (ΕΕ) 2017/746 της Επιτροpies του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, του 13 Ιουνίου 2017, σχετικά με τη δόση βαρέττου αλφαζάπριδου στη χειρουργική ελέγχου της αφθύραξης (ΕΕ L 187 της 14.6.2017, σ. 1).
+###################################################
+Απάντηση: Δεν exists.
+###################################################
+Ο δείκτης προόδου του ΜΠΒ ΙΙΙ εδράζεται σε οχτώ κριτήρια για την επίτευξη των ειδικών στόχων του, τα οποία αναloyаются στον πάνελ της Ευρωπαϊκής Επιτροπής.
+###################################################
+Ο μηδέν.
+###################################################
+Απάντηση: Η οδηγία (ΕΕ) 2009/16/ΕΚ του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 23ης Απριλίου 2009, σχετικά με τον έλεγχο των πλοίων από το κράτος λιμένα, αποκατατάει την οδηγία 1995/35/ΕΚ.
+###################################################
+Αναφέρεται σε πολλά άρθα του Σύνταγμα της Ελλάδος, από τα 2 έως τα 121.
+###################################################
+Ο κανονισμός (ΕΚ) αριθ. 765/2008 για τη διαπίστευση των οργανισμών αξιολόγησης της συμμόρφωσης που διενεργούν την πιστοποίηση προϊόντων ΤΠΕ, υπηρεσιών ΤΠΕ ή διαδικασιών ΤΠΕ, κάνει ορισμένα καθηκόντια απαγορευμένα.
+###################################################
+Ο κανονισμός (ΕΕ) αριθ. 182/2011 του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 16ης Φεβρουαρίου 2011, για τη θέσπιση κανόνων και γενικών αρχών σχετικά με τους τρόπους ελέγχου από τα κράτη μέλη της άσκησης των εκτελεστικών αρμοδιοτήτων από την Επιτροπή.
+###################################################
+Η οδηγία 97/68/ΕΚ του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου.
+###################################################
+Διαδικασία ανάλυσης εναντίον αξιόποινων πραγμάτων με την ευθύνη της Ευρωπόλης
+1. Δομηνικό στοιχείο: Ορισμένες πληροφορίες που απαιτούνται για τον αποκλεισμό προσωπικών δεδομένων.
+2. Δομηνικό στοιχείο (έναπληροφόρηση): Εάν ο αποκλεισμός προσωπικών δεδομένων δεν είναι απαραίτητος, οι αποθηκευτές πρέπει να ανταποκρίνονται στις απατάξεις που αναφέρουν στο δόμηνο στοιχείο.
+3. Δομηνικό στοιχείο: Μία αναζήτηση που οδηγεί σε ηρμηνεία για τη σημασία του προσωπικού δεδομένου.
+4. Δομηνικό στοιχείο: Εάν μια αναζήτηση οδηγεί σε ηρμηνεία που απατάξε στο δόμηνο στοιχείο, η αποθήκη του δεδομένου προσωπικού data είναι απαραίτητη για την ανάλυση.
+5. Δομηνικό στοιχείο: Μια ανεξάρτητη αναζήτηση που οδηγεί σε ηρμηνεία για τη σημασία των κατηγοριών που αναφέρονται στο δόμηνο στοιχείο.
+6. Δομηνικό στοιχείο: Μια αναζήτηση που οδηγεί σε ηρμηνεία για την σημασία του προσωπικού δεδομένου και των κατηγοριών που αναφέρονται στο δόμηνο στοιχείο.
+7. Δομηνικό στοιχείο: Εάν μια αναζήτηση οδηγεί σε ηρμηνεία ότι προσώπου χρειάζεται να περιληφθεί σε άλλη κατηγορία από εκείνη στην οποία είχε αρχικά περιληφθεί, τότε η Ευρωπόλ μπορεί να επεξεργαστεί μόνο τα δεδομένα που επιτρέπονται για τα πρόσωπα της neuen αυτής κατηγορίας, ενώ όλα τα άλλα δεδομένα διαγράφονται.
+###################################################
+Ο κανονισμός (EU) 2019/2138 του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 6ης Νοεμβρίου 2019, για την εκτέλεση των προβλεπόμενων δημόσιων δαπανών που αναφέρονται στο κανονισμό (EU) 2017/1939 του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 12ης Ιουνίου 2017, σχετικά με την απελευθέρωση του κεφαλαίου των κρατών-μέλων για την κλιματική αλλαγή (EUEU) L 340/2017.
+###################################################
+Το άρθρο 27 του νόμου tentang FMI αναφέρεται στον αντισυμβατικό μη-χρηματοπιστωτική επιχείρηση ο οποίος προβλέπεται να εδραιωθεί με τη διαδικασία εξυγίανσης. Η εξυγίανση είναι η διαδικασία που συνήθως Employeed από τους πελάτες FMI, για την αφαίρεση των υπαρχών γλωπών και διατάξεων από το δέσμη FMI.
+###################################################
+Η απόφασηarchίζει να ισχύει την επόμενη της δημοσιεύσής της στην Επίσημη Εφημερίδα της Ευρωπαϊκής Ένωσης.
+###################################################
+Η ΕΑΑΑ εκτελεί τον προϋπολογισμό και διαχειρίζεται το προσωπικό της, με την_use του πρώτου βαθμού υφιστάμενης διοικητικής δομής της Ένωσης, που είναι η ΕΥΕΔ.
+###################################################
+Απάντηση: Οργανισμός της Ευρωπαϊκής Ένωσης, ο οποίος έχει ενεργοποιήσει διαδικασίες για την αμοιβαία απαγόρευση της συγκομιδής προιόντων υγρών από άρδευση ή πεσμένων στο έδαφος.
+###################################################
+Απάντηση:idakρύβη.
+###################################################
+Η Eurograph Group φέρει την ευθύνη διασφάλισης της ατομικής ισότητα των μετανάστων και των μεταναστευτικών διαύλων, προσφέροντας στοιχεία για το έργο και τα outcomes του για το στόχο "μεταναστεύτες" το 2022.
+###################################################
+Ως επόμενο βήμα, δέσμευε τα άλλα μέρη της οδού στην υποστήριξη του Ευρωπαϊκού Σοσιαλdemocrátu και της ευημερίας και της σωθήντας την κοινωνική δίκαιοτητα.
+###################################################
+Η οδηγία (ΕΕ) 2019/812 του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 17ης Ιουνίου 2019, για την ανέκδοτο και το αναθεωρημένο κανονισμό concerning the Work-Stay scheme.
+###################################################
+Το παραπάνω κείμενο αναφέρεται σε κανονισμό της Ευρωπαϊκής Ένωσης που δέσμευσε τα όργανα της Κοινότητας από τη μετοποίηση δεδομένων προσωπικού χαρακτήρα.
+###################################################
+Ο Πρόεδρος του Ευρωπαϊκού Κοινοβουλίου και η Πρόεδρος του Συμβουλίου της Ευρώπης, ο Schulz και η Kalniņa-Lukaševica ανταποκρίθηκαν στην επικείμενη πτώση των αμυντικών φυσικών πόρων και την απειλή με το βυζαντινοί στόχους.
+###################################################
+---------------------------------------bulgarian--------------------------------
+В тази седмата сесия на Европейския парламент и Съвета се публикуват важни регламenti и директиви, които определят базовите принципи за пазарните investitioins produts и за ценния books.
+###################################################
+Предмета е за публикация на законите на РСФСР от 1922 годта с предисловие и коментарии.
+###################################################
+Регламентация на отворения интернет в Европейския съюз.
+###################################################
+В Regulation (EU) 2019/515 на Европейския парламент и на Съвета от 19 март 2019 г. е представено правило за преодоляване на изключителности при извършването на Procedureта за оценяване на съответствието.
+###################################################
+Във връзка с Европейския парламент и Съвета е публикуван Регламент (ЕО) № 2019/2152, който приема поправки на Директива 2000/31/ЕО и Директива 2008/66/ЕО.
+###################################################
+ТEN-T е европейска сети на transporte на важни и интензивно използвани траси, което разкрива възможности за съхранение на енергия и култивация на нови технологии. Ten-T се сдели на няколикосетен европейски коридор на основна мрежа, който започва от Копенхаген и обхожда г-н. Елвес, заедно с Братислава, София, Прага, Виена и Страсбург.
+###################################################
+Тъкмо е издадено заповедта за премахване на терористично съдържание от компетентен орган, издала заповедта за премахване, и се манипулира съдържанието на уебсайта.
+###################################################
+В ДФЕС са разграничени по-горе няcouple области за евентуални мисии и институционализирано европейско партньорство.
+###################################################
+Текстът не е подреден в хронологически или друг tip от порядк, а съдържанието се разполага по темата и ползвателите, като предоставя данни и показатели за Програмата GOVSATCOM на Съюза.
+###################################################
+В отчета на Европейския комисия се разказва за Програмата „Европа 2020“, която е обединена в единна политика на Съюза на 11 programme и една програма на общо 7,8 милиарда евро. В отчета се разкрива динамичната реалност на цифровата трансформация и чрез каква ползвите се подпомагат изворите на крехкостта на Съюза, което не би можело да съществува без тях.
+###################################################
+Вложения от 21 април 2023 г., за учета на споменавания в интернет статистика с цел да се постигне по-активно взаимодействие и зауважение към подkreалените, както и да се използва обективни показатели и дейности.
+###################################################
+Меняйки се на урода на члена 11, параграф 2, първа алинея
+###################################################
+Простия отчет за сигурност на кораба е изпратен по пристанищно съоръжение към филиал на Ойзис в Ницца, с дата 24 януари 2022 г.
+###################################################
+Напомтите се, чрез този текст е използvana дадената директива и е пък нарицателна за "Европейска директива 2004/52/ЕО".
+###################################################
+Общността отнася до Обединеното кралство Великобритания и Северна Ирландия се отказва да участва в някои от разпоредбите на достиженията на правото от Шенген.
+###################################################
+Съдействащи на електронна идентификация и удостоверителни услуги за електронни трансакции в ЕС.
+###################################################
+Протокол за търсене на информация от държавите членки по повод осъждането се подава на адрес ECRIS-TCN@eurojust.europa.eu, в регистровално име на комисията.
+###################################################
+Съдебно и полициеско сътрудничество с Европейския съюз се сдобива от дългосрочен подписан agreement с Дания за обмен на данни в областта на тероризма.
+###################################################
+Текст не предоставя информацию.
+###################################################
+Нет данных.
+###################################################
+Правилата за представяне данни на Агенцията и Комисията се изисква, да бъдат подложени на обмен на данни по електронна основа.
+###################################################
+Напоминаме за Директива 2009/119/ЕО на Съвета от 14 септември 2009 г., която налага задължение на държавите членки да поддържат минимални запаси от суров нефт и/или нефтопродукти.
+###################################################
+Отсутствие указания на конкретно либеральна или консервативна партия в тексте и/или дата и място, където се съceedат избори, не е предоставено, както разясних е от предходния текст.
+###################################################
+Текстът представява списък с 21 европейски законопроекти от 2012 – 2015 г., посветени на различни теми, включвайки: пазарна политика; компетентност и признавател на съдебните решения по граждански и търговски дела; обработката на лични данни; технически-reglamentите в сектор на информационното общество; акредитация на продукти и услуги.
+###################################################
+Текстът представява набор от категории за социални услуги и застраховки в Европейския съюз. Социалните услуги включват различни видове поддържание на населението, като детски ясли, услуги по настаняване в специализирани институции за възрастни хора и хора с увреждания, подпомагanje на стари хора и инвалиди по домовете, услуги за семейството, и т.в. е.
+###################################################
+Нам не снабдили ни един алинея от резюмета.
+###################################################
+Настоящият регламент се дължи на да заменят действащия европейски регlament № 597/2009 от 18 юли 2009, при който се обещава продоволстено осигуряване в развиващите се държави.
+###################################################
+През тази статия се разгледа приложеният закон за финансиране на енергетическите и минни проекти от българия.
+###################################################
+През 2023 г. Европейският съюз наберет 1 трILLион евро в investing in digital Europe.
+###################################################
+Въз основа на предоставените данни от 1997 г., с изпълнение на ролята на Европейска комисия, е възможно да се установи, че държавите членки на еврозоната са приложили съответните мерки по отношение на отслабването на дългосрочният deficit и повишаването на издръжливостта.
+###################################################
+Текст состоит из чередующейся перечисления членов и параграфов, что предполагает организацию информации в конкретной структуре.
+###################################################
+В приложение IV се предоставя списък на ключови показатели за эффективност, отразяващи напредъка и постигането на цели на ИПП III, включително отношение на населението към ЕС, дейности в цифровата епоха, енергия, парниковите газове, екосистеми, добросъседството.
+###################################################
+Текст не включва резюмее.
+###################################################
+Въпロх се на основания на Директива 2009/16/ЕО на Европейския парламент и на Съвета от 23 април 2009 г., която заповеда на държавите да прилагат строго controls при влизането на тяхната римска цитадел (котория обиколават държавните столици) с цивилни или военни съдове и други въздухоплаваеми съдове, за да се запазнят на тяхната изотровност.
+###################################################
+Текст не предоставя пълна и completa информация за определени теми, като няма обновление на определени термини и сметки в бряжбата на САМА. В съответствие с Нароdnaya Gazeta от 22 август 2015 г., обновените сметки за 2015 год включват: 1) 26,2 милиardy лв на поддържание на общественото здраве; 2) 9,3 милиарда лв на поддържение на образованието и културата; 3) 2,6 милиарда лв на поддържение на социалните сектори и обществените дейности;
+###################################################
+Вълнения от МСП срещу търговската и фирмената тайна при оценяването на съответствието на ИКТ продукти, ИКТ услуги или ИКТ процеси се извршват във връзка с дейностите на органите за оценяване на съответствието.
+###################################################
+Текст на основание „Директива 89/130/EURATOM, Евратом“ и „Регламент (ЕО, Евратом) № 1287/2003 на Съвета от 15 юли 2003 г. за хармонизиране на брутния национален доход по пазарни цени“ се съдържат в приложение к резолюция на Европейския парламент и на Съвета от 26 май 2014 г. относно системата на собствените ресурси на Европейския съюз (OV L 168, 7.6.2014 г., стр. 105).
+###################################################
+Преглед на Директивата 2007/46/ЕК за създаване на рамка за одобрение на моторните превозни средства и техните ремаркета, както и на системи, компоненти и отделни технически възли, предназначени за такива превозни средства.
+###################################################
+Аналитическото работно досие за разглежданите престъпления се съхранява при следствията от такива престъпления и е заличено по възможност на данните, които не са необходими за анализа на ролята на дадено лице.
+###################################################
+Във връzhка на Регламент (ЕС) № 223/2014 за finanziране на държавите членки на Европейския съюз с фондите на общия бюджет на Съюза, който е релевантен за предоставянето на финансови помошти в случай на бедност или подчервена ekonomически ситуация.
+###################################################
+В този документ се изисква от ЦК, заедно с останалите ИФП, да унаследят на следните начинства: 1. да се установи възможност за Crest и други електронни платформи за обмен на вътрешногрупеви гаранции, кратки или дълги връст, между разлиčitите финансови услуги и да се запазат кактите на тези гаранции. 2. от ТХК се изисква да унаследиш обемната и функционалност на Crest за обмен на вътрешногрупеви гаранти, кратки или дълги връст, между разлиčitите финансови услуги; 3. от ТХК се изисква да се предоставя възможност за Crest и други електронни платформи за обмен на вътрешногрупеви гаранти кратки или дълги връст между разлиčitите финансови услуги.
+###################################################
+В резултат от този документ се обознача приложение към „Настоящото решение влиза в сила“, издадено на 23 декември 2020 г., който е наименуван „Настоящото приложение“. В съставено в Брюксел, оттогъж е за Европейския парламент и Съвета.
+###################################################
+ЕКСО е дадена задача да изпълни своя бюджет и управление на персонала. Бюджетните кредити се пренасят в следващата финансова година, освен в случаите, в които разходите са по- висока от приходите. Директорът може да използва останалите бюджетни кредити в бюджета за следващата(finансова) година без одобрението на Управлелния комитет.
+###################################################
+Да се урежат някои неправилности в системата за пречистване на градски отпадъчни води.
+###################################################
+Няма информация в текста.
+###################################################
+Доклад от Секция за миграция на Европейски съюз
+Всички подпомогнати участници и някои от тях са поддържали целите на Секцията за миграция.
+Секцията е изпратила значителен брой подпомогнати участници в езикови курсове, обучение при гражданска ориентация и персонализирано професионално ориентиране.
+###################################################
+Директива 2010/18/EU от 23 June 2010.
+###################################################
+Съдебната и правова база на Директива 96/71/ЕО среща общи нюanzi при командироването на работници в рамките на предоставянето на услуги, като се пренебава с дадените оттогъй на мястото изисквания за командирование на работници в ЕС.
+###################################################
+Текстът представяvanе на редовете и номера на съветска и парламентарна документация от 2006 до 2016 г., относително различни теми, като данък, борба с престъпността, finanziращи политики, конфискация на средства от престъпна дейност в Европейския съюз и други.
+###################################################
+Регlament от 29 април 2015 г. за упражване на платежните услуги, с който е въвежdana посочена фиксация на ставите и качествата на платейщите услуги, към която трябва да се добавят надзорен орган и унгарска държава.
+###################################################
+---------------------------------------polish--------------------------------
+Tekst omawia mianę Europejskich funduszy na rzecz przedsiębiorczości społecznej (ESF) oraz europejskiego funduszu inwestycyjnego (EFIM), w ramach strategii Unii Europejskiej dla Europy Sudego.
+###################################################
+Brak podsumowania.
+###################################################
+Tekst określa warunki wejścia w życie oraz zasięg niespełniania obowiązku składania państwom członkowskim dokumentów od 1 stycznia 2023 roku w ramach harmonizacji prawa autorskiego.
+###################################################
+Podział oświadczenia wzajemnego uznawania towarów zgodnie z prawem wprowadzonych do obrotu w innym państwie członkowskim na następujące części.
+###################################################
+Niniejsze rozporządzenie Parlamentu Europejskiego i Rady w sprawie Domeny Najwyższego Poziomu .eu, Dz.U. L 123 z 12.05.2016 r., stanowi wprowadzenie trybu kontroli przez państwa członkowskie wykonywania uprawnień wykonawczych przez Komisję w ramach Domeny Najwyższego Poziomu .eu.
+###################################################
+Tekst opisuje sieci kablowe Europejskiej Sieci Informacyjnej w Europie, w tym ich podstawową budowę, korytarze sieci bazowej TEN-T oraz korytarz sieci szkieletowej.
+###################################################
+Tekst jest nakładem nakazu usunięcia. Kontrolę nad treścią ma wydając organ oraz adresat. Dane związane z dostawcą usług hostingowych lub jego przedstawicielem prawnym są również wymienione w dokumentacji.
+###################################################
+Rozporządzenie w sprawie obszaru zastosowania art. 185 lub 187 TFUE.
+###################################################
+Tekst przedstawia lista wskazówek i celów dla Programu Kosmicznego Unii Europejskiej, z których wynikami są m.in. wskaźnik 6 dotyczący ilości danych generowanych przez satelity Sentinel systemu Copernicus, a także inne wskaźniki dotyczące dostępności usług i liczbę użytkowników komponentów SSA i GOVSATCOM.
+###################################################
+Podsumowując, instrument „Łącząc Europę” zapewnia synergię z innymi unijnimi programami dotyczącymi kompetencji i umiejętności w następujących obszarach:
+-  Synergia z programem koncentruje się na budowaniu zdolności cyfrowych i infrastruktury w zakresie HPC, AI i cyberbezpieczeństwa.
+-  Program wspiera rozwój zaawansowanych umiejętności cyfrowych, w tym w dziedzinie mobilności i transportu.
+-  Mechanizm koordynacji jest ustosunkowany w ramach programów, takich jak InvestEU i Erasmus+.
+-  Instrument „Kreatywna Europa” zapewnia dostęp do technologii cyfrowych dla twórców i sektorów kultury.
+###################################################
+Tekst przedstawia Zakres statystyk publicznych, za którym stoją trzy załóżone załęczeki dotyczące chorób zwierzęcych i czynników ich spowodowania, pasażowalne gąbczaste encefalopatie oraz wskazniki.
+###################################################
+Brak podsumowania.
+###################################################
+Poniżej przedstawiam podsumowanie zaproponowanego modelu formularza zgłoszenia o stanie statku. Jest to ogólna propozycja i może być dostosowana do wymagań i regulacji władz portowych.
+1. Nr i nazwa statku
+2. Rodzaj statku (określenie specyficzne).
+3. Typ statku (np. handlowy, pływający samochód itd.)
+4. Liczba crew: 
+   - Liczba członków załogi
+   - Liczba pasażerów
+5. Poziom ochrony:
+6. Lista ostatnich 10 zawinięć do obiektów portowych w porządku chronologicznym.
+7. Czy na statku były wprowadzane specjalne lub dodatkowe środki ochrony poza określonymi w zatwierdzonym planie ochrony statku?
+8. Lista działań statek-statek w porządku chronologicznym.
+9. Czy procedury dotyczące ochrony określone w zatwierdzonym planie ochrony statuku zostały podjęte w trakcie działań statek-statek? 
+10. Ogólny opis ładunku na statku
+11. Czy statek przewozi jako ładunek substancje niebezpieczne zakwalifikowane do klas 1, 2.1, 2.3, 3, 4.1, 5.1, 6.1, 6.2, 7 lub 8 kodeksu IMDG?
+12. Czy istnieją inne informacje związane z ochroną statku?
+###################################################
+Tekst dotyczy dyrektywy 2004/52/WE Parlamentu Europejskiego i Rady w sprawie transponowania w prawo krajowe niektórych przepisów Dyrektywy 2001/18/WK Parlamentu Europejskiego i Radu w sprawie udostępniania dóbr kulturowych.
+###################################################
+Tekst przedstawia list umów międzynarodowych w zakresie kontroli na granicach wewnętrznych i przemieszczania się osób, których podlega władza Unii Europejskiej. Przedstawione zostały następujące umowy: 
+
+1. Umowa o Schengen z dnia 19 listopada 1990 roku między Rządami Republiki Francuskiej, Rzeczypospolitej Federalnej Niemiec, Królestwa Belgii, Königreichs (Kralstwa) Niderlandów oraz Rady Republiki Włoskiej
+2. Umowa o Schengen z dnia 25 maja 1995 roku pomiędzy Rządami Republiki Francuskiej i Rzeczypospolitej Federalnej Niemiec, a w drodze umowy od 2004 roku między Rządami Unii Europejskiej (która wchodzi w skład Rzeczypospolitej Polskiej) oraz Wielkiej Brytanii i Irlandii Północnej
+3. Umowa z dnia 15 maja 1995 roku między rządami Republiki Francuskiej, Rzeczypospolitej Federalnej Niemiec, Królestwa Belgii oraz Rady Republiki Włoskiej 
+4. Umowy Schengen z dnia 19 listopada 1990 roku między Rządami Republiki Francuskiej, Rzeczypospolitej Federalnej Niemiec, Królestwa Belgii, Königreichs (Kralstwa) Niderlandów oraz Rady Republiki Włoskiej z dnia 25 maja 1995 roku
+5. Umowy Schengen z dnia 19 listopada 1990 roku między Rządami Republiki Francuskiej, Rzeczypospolitej Federalnej Niemiec, Królestwa Belgii, Königreichs (Kralstwa) Niderlandów oraz Rady Republiki Włoskiej z dnia 25 maja 1995 roku
+###################################################
+Tekst nie podaje informacji konkretnych na temat przykładowej grupy państw trzecich.
+###################################################
+Powyższy tekst dotyczy formularza do wniosku o informacje w connection z postępowaniem karne przez Komisję Europejską. Informacje te dotyczą osob fizycznych, które posiadają obywatelstwo państwa trzeciego i są objęte postępowaniem karne. Formularz powinien być skierowany do adreazu ECRIS-TCN@eurojust.europa.eu w językach urzędowych instytucji Unii.
+###################################################
+Tekst opisuje zmiany w prawodawstwie Unii Europejskiej dotyczące międzynarodowej ochrony, przykłady wypuszczające rozporządzenia UE i decyzje Rady.
+###################################################
+Tekst zawiera list akapitów i numeracji arterii z Kodeksu cywilnego.
+###################################################
+Brak podsumowania.
+###################################################
+Tekst opisuje procedurę przekazywania danych przez producentów pojazdów ciężkich Komisji Europejskiej, Agencji oraz w rejestry.
+###################################################
+Oto podsumowanie treści tekstu: Rozporządzenie (UE) nr 994/2010 w sprawie warunków do przyznawania wsparcia z funduszu Unii Europejskiej w ramach Programu Operacyjnego Wielkopolska.
+###################################################
+Wpisuje list artyczyń i załączników ustawy.
+###################################################
+Tekst opisuje zarządzanie w Unii Europejskiej. Obejmuje on podstawowe prawa i związki między zorganizowanymi podmiotami w tym państwami członkowskimi, komitetami, radami, trybunami, instytucjami Unii Europejskiej oraz z organizacjami pozarządowymi.
+###################################################
+Tekst jest rozporządzeniem (WE) nr 2494/95, który określa podstawy podatkowe dla emerytów i innych osób niepełnosprawnych oraz władz posiadających prawo do przyznania tych korzyści.
+###################################################
+Brak podsumowania.
+###################################################
+Oto podsumowanie treści powyższego tekstu: Rozporządzenie Unii Europejskiej nr 597/2009 określa zasady i warunki dla producentów rolno-spożywczych w ramach systemu wsparcia rolno-spożywczej.
+###################################################
+Zestaw kryteri wykluczenia do inwestycji w przestrzeni ochronionej.
+###################################################
+Przedsięwzięcia w zakresie rozwoju sieci 5G i 6G, inwestycje w zabezpieczenie cyfrowego łańcucha dostaw, wdrożenie technologii wsparcia w dziedzinie cyberbezpieczeństwa oraz wykorzystanie zaawansowanych technologii w usługach publicznych.
+###################################################
+Tekst opisuje regulacje dotyczące wzmocnionej współpracy w zakresie ustanowienia Prokuratury Europejskiej, zwalczania nadużyć w prawie karnym oraz wdrażania reform. Zawiera also informacje o wytycznych dla państw członkowskich w odniesieniu do ich stabilności finansowej i wzmocnienie nadzoru gospodarczego i budżetowego.
+###################################################
+Nie ma podsumowania tego tekstu.
+###################################################
+W ramach programów Integrowania Europejskiej Pacyfiku (IPA), Unia Europejska zaimplementowała różne projekty, które miały na celu poprawienie warunków życia oraz promować społeczny i ekonomiczny rozwój w ośrodkach regionalnych. Właściwy zarządzeniowski program IPA III (2007–2013) miał na celu wyłonienie regionów, które potrzebują wsparcia od Unii Europejskiej w zakresie inwestycji w zakres ochrony środowiska, gospodarki oraz socjalnej polityki.
+###################################################
+Tekst opisuje wskaźniki, które wskazują na postępy objętych programami żywieniowymi, oraz inne działania wspierane przez Unię, takie jak praktyki zrównoważonej konsumpcji i produkcji.
+###################################################
+Tekst omawia kilka rozporządzeń Parlamentu Europejskiego i Rady (UE), które związane są ze sprawami takimi jak dystrybucja ubezpieczeń, zapobieganie praniu pieniędzy i finansowaniu terroryzmu, bezpieczeństwo transportu oraz ochrona środowiska.
+###################################################
+Tekst brzmi: art. 108
+art. 71
+—
+art. 109 ust. 1, 4 i 7
+—
+—
+art. 109 ust. 2, 3, 5 i 6
+—
+—
+art. 110
+art. 72
+—
+art. 111
+—
+—
+art. 112
+art. 73
+—
+art. 113
+art. 74
+—
+art. 114
+art. 75
+—
+art. 115 ust. 1–14
+—
+—
+art. 115 ust. 15
+art. 76
+—
+art. 116
+art. 77
+—
+art. 117 ust. 1, 2, 3 i 5
+—
+—
+art. 117 ust. 4
+art. 78
+—
+art. 118
+—
+—
+art. 119
+art. 79
+—
+art. 120
+art. 81 ust. 1
+—
+art. 121 ust. 1 akapit pierwszy lit. a)–e) oraz art. 121 ust. 1 akapit drugi
+—
+—
+art. 121 ust. 1 akapit pierwszy lit. f) i g)
+—
+—
+art. 121 ust. 2 i 3
+art. 81 ust. 2
+—
+art. 121 ust. 4
+—
+art. 22 ust. 2
+art. 121 ust. 5
+—
+art. 22 ust. 3 i 4
+art. 121 ust. 6
+—
+—
+art. 122
+art. 82
+—
+art. 123
+art. 83
+—
+art. 124
+art. 2 pkt 3 i 4
+—
+—
+art. 8 ust. 1 lit. k)
+—
+—
+art. 8 ust. 1 lit. t) i u)
+—
+—
+art. 20 ust. 3–11
+—
+—
+art. 27 ust. 1 lit. c)
+—
+—
+art. 27 ust. 4
+—
+—
+art. 30
+—
+—
+art. 31
+—
+—
+art. 32 ust. 1
+—
+—
+art. 36 ust. 3
+—
+—
+art. 44 ust. 2
+—
+— 
+art. 45 ust. 3 i 4
+—
+— 
+art. 46 ust. 2, 3 i 4
+—
+— 
+art. 47 ust. 3
+—
+— 
+art. 48
+—
+— 
+art. 49
+—
+— 
+art. 62 ust. 2 akapit pierwszy lit. h)
+—
+— 
+— 
+art. 2 ust. 4
+—
+— 
+art. 3 lit. a)
+—
+— 
+art. 3 lit. h)
+—
+— 
+art. 4 ust. 1 lit. c), e), f)
+—
+— 
+art. 4 ust. 4
+—
+— 
+art. 6 ust. 1 lit. b), c), d)
+—
+— 
+art. 6 ust. 2
+—
+— 
+art. 7 ust. 3, 4 i 5
+—
+— 
+art. 9 ust. 2 lit. k)
+—
+— 
+art. 9 ust. 5 lit. b)
+—
+— 
+art. 9 ust. 6
+—
+— 
+art. 9 ust. 7
+—
+— 
+art. 9 ust. 8
+—
+— 
+art. 9 ust. 9
+—
+— 
+art. 9 ust. 10
+—
+— 
+art. 10 ust. 2 lit. c) i f)
+—
+— 
+art. 10 ust. 7
+—
+— 
+art. 11
+—
+— 
+art. 12 ust. 3
+—
+— 
+art. 16 ust. 4
+—
+— 
+art. 20 ust. 2
+—
+— 
+art. 20 ust. 6
+—
+— 
+art. 20 ust. 8
+—
+— 
+art. 20 ust. 9
+—
+— 
+art. 23
+—
+###################################################
+Tekst dotyczący standardów oceny zgodności wydany przez Komisję Europejską w ramach Unii Europejskiej.
+###################################################
+Tekst zawiera informacje o rozporządzeniu Parlamentu Europejskiego i Rady w sprawie systemu zasobów własnych Unii Europejskiej, a także innych aktach prawnych dotyczących systemu rachunków narodowych i regionalnych w Unii Europejskiej.
+###################################################
+Niniejsze rozporządzenie określa wymagania dotyczące homologacji silników silnie zanieczyszczających w odniesieniu do maszyn mobilnych nieporuszających się po drogach, oraz zmienia i ulega kilku dotychczasowych aktom.
+###################################################
+W trakcie analizy określonej przez władze Unii Europejskiej organizacji związki z przestępstwami lub innymi niebezpiecznymi sytuacjami, zdarzenia dotyczące określonych osób mogą być przechowywane. Dane te mogą obejmować informacje o osobach: a) wezwanych do złożenia zeznań b) w związku z przestępstwem c) w dalszym postępowaniu karnym d) osób, które mogłyby zostać wezwane do złożenia zeznań e) osób, które mogą dostarczyć informacji na temat rozpatrywanych przestępstw. Dane te mogą obejmować takie kryteria jak: a) informacje związane z przestępstwem b) informacja o konieczności anonimowości c) informacja o konieczności zagwarantowania ochrony d) nowa tożsamość e) ewentualna możliwość udziału w rozprawie f) negatywne doświadczenia g) gratyfikacje.
+###################################################
+Niniejszym rozporządzeniem Parlamentu Europejskiego i Rady (UE, Euratom) nr 2018/1046 z dnia 18 lipca 2018 r. określa się zasady finansowe mające zastosowanie do budżetu ogólnego Unii Europejskiej w celu pomocy dla państw członkowskich dotykanych zdarzeniami nadzwyczajnymi. Rozporządzenie ustanawia harmonogram spłat kwot należnych oraz określa terminy sprawozdania Komisji w sprawie wykorzystania pomocy finansowej.
+###################################################
+Tekst opisuje warunki, które muszą być spełnione w ramach restrukturyzacji i uporządkowanej likwidacji koncernu bankowego (CCP). Wskazuje się na istotne aspekty takich procedur, jak: zakres transakcji wewnątrzgrupowych przeprowadzanych na warunkach rynkowych; systemy zarządzania ryzykiem związanym z tymi transakcjami; wskazanie, czy organy państw trzecich dysponują instrumentami niezbędnymi do wsparcia działań w ramach procedury; możliwość zastosowania instrumentów restrukturyzacji i uporządkowanej likwidacji w sposób pozwolący osiągnąć cele procedury.
+###################################################
+Artykuł 8: Wejście w życie. Niniejsza decyzja wchodzi w życie następnego dnia po jej opublikowaniu w Dzienniku Urzędowym Unii Europejskiej. Sprawozdanie Komisji. Państwa członkowskie przekazują informacje dotyczące działań, za które są odpowiedzialne.
+###################################################
+Oto podsumowanie tego tekstu.
+###################################################
+Wszystkie wytyczne dotyczą bezpieczeństwa i zarządzania ryzykiem, które dotyczą ochrony zdrowia człowieka w zakładach odzyskiwania wody.
+###################################################
+Tekst zawiera recenzję ustawy ochrony danych osobowych i prywatności osobowego w Polsce (Dz.U. 2018, 1015). W niniejszym tekście omawiane są prawa i obowiązki związane z ochroną danych personowych, szczególnie w kontekście dostępu do informacji i decyzji dotyczącychanych danych osobowych.
+###################################################
+Tekst opisuje wskaźniky i wskaźniki rezultatu, które są wykorzystywane do mierzenia skuteczności działań instytucji. Wskazówki te obejmują szereg kategori, w tym liczby uczestników kursów językowych, kursów kształtujących świadomość obywatelską, spersonalizowanego doradztwa zawodowego, pakietów i kampanii informacyjnych dotyczących migracji do Unii oraz programów mobilności.
+###################################################
+Oto podsumowanie treści wskazanego tekstu:
+- Dyrektywa Rady 2010/18/UE 
+- Niniejsza dyrektywa zobowiązuje państwa członkowskie do przyjęcia przepisów, które zabezpiegają i ulepszają prawa pracownicze, w szczególności w zakresie:
+  - Pracowników o specjalnych umieniach,
+  - Pracowników starszych wieku,
+  - Pracowników z wyznaczoną godzinę pracy.
+- Zobowiązuje państwa członkowskie do wprowadzenia w swoim prawodawstwie przepisów ochrony pracowników o specjalnych umieniach, a ich aplikacji, a także wdrożenia w życie zwiększonego zasięgu i skuteczności prawa chroniącego praca starszych wieku.
+- Ma na celu ulepszoną ochronę praw pracowników w warunkach zmiany przywilejów,
+- Zobowiązuje państwa członkowskie do wprowadzenia w swoim prawodawstwie przepisów ochrony pracowników starszych wieku.
+- Ma na celu ulepszony zakres i zasięg ochrony praw pracowniczych w warunkach zmiany przywilejów, w szczególności dla pracowników starszych wieku.
+###################################################
+Oto podsumowanie przedstawionego tekstu: 
+- Przedmiotem porównania są nielubne prawa pracowników w Unii Europejskiej.
+- Wskazano, że prawa te były utworzone w celu chronienia interesów pracowników w odniesieniu do prawodawstwa UE dotyczącego pracy w sektorze rybołówstwa.
+###################################################
+Tekst zawiera listy przepisów unijnych w odniesieniu do Unii Europejskiej z wykorzystaniem prawa obowiązującego, z zakresu m.in.: podatków od wartości dodanej; budżetu ogólnego Unii; zwalczania przestępczości zorganizowanej.
+###################################################
+Zarządzenie Parlamentu Europejskiego i Rady w sprawie usług płatniczych w ramach rynku wewnętrznego
+###################################################
