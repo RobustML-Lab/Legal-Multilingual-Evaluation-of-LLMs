@@ -21,7 +21,7 @@ class Model:
         :param prompt: The prompt for label prediction.
         :return: A list of lists, where each inner list contains the predicted label indices for each text sample.
         """
-        return [self.classify_text(item['text'], prompt) for item in dataset], None
+        return [self.classify_text(item['text'], prompt=prompt) for item in dataset], None
 
     @staticmethod
     def get_model(name, label_options, multi_class=False, api_key = None, generation = False):
@@ -34,7 +34,7 @@ class Model:
         elif name.lower() == 'google':
             return Google(label_options, multi_class, api_key, generation)
         elif name.lower() == 'ollama':
-            return OLLaMa(multi_class, multi_class, generation)
+            return OLLaMa(label_options, multi_class, generation)
         else:
             raise ValueError(f"Model '{name}' is not available")
 
@@ -78,9 +78,9 @@ class LLaMa(Model):
         model_dir = "meta-llama/Meta-Llama-3.1-8B-Instruct"
         self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
         self.model = AutoModelForCausalLM.from_pretrained(model_dir)
+        self.generation = generation
         # self.tokenizer = LlamaTokenizer.from_pretrained(model_dir)
         # self.model = LlamaForCausalLM.from_pretrained(model_dir)
-        self.task = task
 
     def generate_text(self, prompt):
         inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
@@ -104,11 +104,10 @@ class OLLaMa(Model):
     """
     Using the OLLaMa models
     """
-    def __init__(self, dataset, multi_class=False, generation=False):
-        self.dataset = dataset
-        self.label_options = dataset.label_options
+    def __init__(self, label_options, multi_class=False, generation=False):
+        self.label_options = label_options
         self.multi_class = multi_class
-        self.task = task
+        self.generation = generation
 
     def generate_text(self, prompt):
         generated_stream = ollama.chat(
@@ -165,15 +164,16 @@ class OLLaMa(Model):
         """
         print("Reached classify_text")
         translator = GoogleTranslator(source="en", target=language)
+        print("Type of the prompt: ", type(prompt))
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
         generated_text = self.generate_text(complete_prompt)
         with open("responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text+"\n###################################################\n")
-        if self.task == "classification":
-            prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
-        elif self.task == "generation":
+        if self.generation:
             prediction = generated_text
+        else:
+            prediction = self.extract_labels_from_generated_text(generated_text, self.label_options)
         return prediction
 
 class Google(Model):

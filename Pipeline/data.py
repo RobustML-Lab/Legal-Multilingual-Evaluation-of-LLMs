@@ -48,15 +48,15 @@ class Dataset:
         :return: the dataset object
         """
         if name.lower() == 'multi_eurlex':
-            return Multi_Eurlex(), "classification"
+            return Multi_Eurlex()
         elif name.lower() == 'go_emotions':
-            return Go_Emotions(), "classification"
+            return Go_Emotions()
         elif name.lower() == 'casehold':
-            return CaseHOLD(), "classification"
+            return CaseHOLD()
         elif name.lower() == 'xnli':
-            return XNLI(), "classification"
+            return XNLI()
         elif name.lower() == 'eur_lex_sum':
-            return Eur_Lex_Sum(), "generation"
+            return Eur_Lex_Sum()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -265,11 +265,12 @@ class Eur_Lex_Sum(Dataset):
         :param language: the language for which data should be retrieved
         :return: the data corresponding to the language parameter
         """
+        print("Reached get_data")
         dataset = load_dataset('dennlinger/eur-lex-sum', language, streaming=True, split='train', trust_remote_code=True)
         self.language = language
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
-        return data, inst
+        return data, inst[0]
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -332,13 +333,6 @@ class Eur_Lex_Sum(Dataset):
             print(f"RougeL sum: {metrics['rougeLsum']}")
             print("-------------------------------------------------------------")
 
-        file_path = "MultiEurlex_evaluation.csv"
-        file_exists = os.path.isfile(file_path)
-        with open(file_path, mode='a', newline='') as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(["Language", "Precision", "Recall", "F1 Score"])
-            writer.writerow([self.language, precision, recall, f1])
 
     def extract_labels_from_generated_text(self, generated_text, label_options):
         """
@@ -611,108 +605,108 @@ class XNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-class Eurlex_Sum(Dataset):
-    """
-    Child class of Dataset representing the Eur-Lex-Sum dataset.
-    """
-
-    def __init__(self):
-        self.languages = ['bulgarian', 'czech', 'dutch', 'estonian', 'french', 'greek', 'irish',
-                          'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
-                          'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
-                          'polish', 'romanian', 'slovenian', 'swedish']
-        self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
-        self.label_options = []
-
-    def get_data(self, language):
-        """
-        Loads the XNLI dataset for the specified language.
-        :param language: the language of the dataset
-        :return: the data and label options
-        """
-        dataset = load_dataset('dennlinger/eur-lex-sum', language, split='test', trust_remote_code=True, streaming=True)
-        print(dataset)
-        self.language = language
-        if language == 'all_languages':
-            data = self.extract_text_all_languages(dataset)
-        else:
-            data = self.extract_text(dataset)
-        return data
-
-    def extract_text_all_languages(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a list of text data from all languages
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == 100:
-                break
-            documents = item['reference']
-            texts = documents.keys()
-            data.append({"text:": text, "summary": item['summary']} for text in texts)
-            count += 1
-
-    def extract_text(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a list of text data in the specified language
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == 100:
-                break
-            data.append({"text": item['reference'], "summary": item['summary']})
-            count += 1
-        return data
-
-    def evaluate(self, reference_summaries, generated_summaries):
-        """
-        Evaluates the model using rouge_l score and cosine similarity.
-        :param reference_summaries: list of reference summaries
-        :param generated_summaries: list of generated summaries
-        """
-        metrics = self.rouge_l_score(reference_summaries, generated_summaries)
-        cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
-        print(f"Rouge1: {metrics['rouge1']}")
-        print(f"Rouge2: {metrics['rouge2']}")
-        print(f"RougeL: {metrics['rougeL']}")
-        print(f"RougeL sum: {metrics['rougeLsum']}")
-        print(f"Cosine Similarity: {cosine_similarities}")
-        file_path = "EUR_Lex_Sum_evaluation.csv"
-        file_exists = os.path.isfile(file_path)
-        with open(file_path, mode='a', newline='') as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
-            writer.writerow([self.language, metrics, cosine_similarities])
-
-    def rouge_l_score(self, reference_summaries, generated_summaries):
-        """
-        :param reference_summaries: list of official summaries
-        :param generated_summaries: list of generated summaries
-        :return: rouge-l score
-        """
-        rouge = evaluate.load("rouge")
-        metrics = rouge.compute(predictions=generated_summaries, references=reference_summaries)
-        return metrics
-
-    def cosine_similarity(self, reference_summaries, generated_summaries):
-        """
-        :param reference_summaries: list of reference summaries
-        :param generated_summaries: list of generated summaries
-        :return: cosine similarity score
-        """
-        vectorizer = TfidfVectorizer()
-        reference_vectors = vectorizer.fit_transform(reference_summaries)
-        generated_vectors = vectorizer.transform(generated_summaries)
-        cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
-        return cosine_similarities
-
-    def get_true_labels(self, data):
-        """
-        :return: list of true labels for the dataset
-        """
-        return [entry['summary'] for entry in data]
+# class Eur_Lex_Sum(Dataset):
+#     """
+#     Child class of Dataset representing the Eur-Lex-Sum dataset.
+#     """
+#
+#     def __init__(self):
+#         self.languages = ['bulgarian', 'czech', 'dutch', 'estonian', 'french', 'greek', 'irish',
+#                           'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
+#                           'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
+#                           'polish', 'romanian', 'slovenian', 'swedish']
+#         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
+#         self.label_options = []
+#
+#     def get_data(self, language, dataset_name, points_per_language):
+#         """
+#         Loads the XNLI dataset for the specified language.
+#         :param language: the language of the dataset
+#         :return: the data and label options
+#         """
+#         dataset = load_dataset('dennlinger/eur-lex-sum', language, split='test', trust_remote_code=True, streaming=True)
+#         print(dataset)
+#         self.language = language
+#         if language == 'all_languages':
+#             data = self.extract_text_all_languages(dataset)
+#         else:
+#             data = self.extract_text(dataset)
+#         return data[:points_per_language], self.prompt
+#
+#     def extract_text_all_languages(self, dataset):
+#         """
+#         :param dataset: the dataset containing the text data
+#         :return: a list of text data from all languages
+#         """
+#         data = []
+#         count = 0
+#         for item in dataset:
+#             if count == 100:
+#                 break
+#             documents = item['reference']
+#             texts = documents.keys()
+#             data.append({"text:": text, "summary": item['summary']} for text in texts)
+#             count += 1
+#
+#     def extract_text(self, dataset):
+#         """
+#         :param dataset: the dataset containing the text data
+#         :return: a list of text data in the specified language
+#         """
+#         data = []
+#         count = 0
+#         for item in dataset:
+#             if count == 100:
+#                 break
+#             data.append({"text": item['reference'], "summary": item['summary']})
+#             count += 1
+#         return data
+#
+#     def evaluate(self, reference_summaries, generated_summaries):
+#         """
+#         Evaluates the model using rouge_l score and cosine similarity.
+#         :param reference_summaries: list of reference summaries
+#         :param generated_summaries: list of generated summaries
+#         """
+#         metrics = self.rouge_l_score(reference_summaries, generated_summaries)
+#         cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
+#         print(f"Rouge1: {metrics['rouge1']}")
+#         print(f"Rouge2: {metrics['rouge2']}")
+#         print(f"RougeL: {metrics['rougeL']}")
+#         print(f"RougeL sum: {metrics['rougeLsum']}")
+#         print(f"Cosine Similarity: {cosine_similarities}")
+#         file_path = "EUR_Lex_Sum_evaluation.csv"
+#         file_exists = os.path.isfile(file_path)
+#         with open(file_path, mode='a', newline='') as f:
+#             writer = csv.writer(f)
+#             if not file_exists:
+#                 writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
+#             writer.writerow([self.language, metrics, cosine_similarities])
+#
+#     def rouge_l_score(self, reference_summaries, generated_summaries):
+#         """
+#         :param reference_summaries: list of official summaries
+#         :param generated_summaries: list of generated summaries
+#         :return: rouge-l score
+#         """
+#         rouge = evaluate.load("rouge")
+#         metrics = rouge.compute(predictions=generated_summaries, references=reference_summaries)
+#         return metrics
+#
+#     def cosine_similarity(self, reference_summaries, generated_summaries):
+#         """
+#         :param reference_summaries: list of reference summaries
+#         :param generated_summaries: list of generated summaries
+#         :return: cosine similarity score
+#         """
+#         vectorizer = TfidfVectorizer()
+#         reference_vectors = vectorizer.fit_transform(reference_summaries)
+#         generated_vectors = vectorizer.transform(generated_summaries)
+#         cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
+#         return cosine_similarities
+#
+#     def get_true(self, data):
+#         """
+#         :return: list of true labels for the dataset
+#         """
+#         return [entry['summary'] for entry in data]
