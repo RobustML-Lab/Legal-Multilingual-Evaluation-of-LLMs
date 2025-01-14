@@ -5,12 +5,15 @@ import re
 
 import os
 import csv
+from collections import Counter
 
 import unicodedata
 from datasets import load_dataset
-from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from nltk.translate.meteor_score import meteor_score
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, average_precision_score
 from sklearn.preprocessing import MultiLabelBinarizer
 from translator import translate
+from itertools import islice
 import numpy as np
 import evaluate
 import textwrap
@@ -18,8 +21,8 @@ import textwrap
 import re
 from deep_translator import GoogleTranslator
 import evaluate
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from rapidfuzz import fuzz
 
 
 class Dataset:
@@ -57,6 +60,10 @@ class Dataset:
             return XNLI()
         elif name.lower() == 'eur_lex_sum':
             return Eur_Lex_Sum()
+        elif name.lower() == 'multi_legal_pile':
+            return Multi_Legal_Pile()
+        elif name.lower() == 'europa_random_split':
+            return Europa_Random_Split()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -605,50 +612,29 @@ class XNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-# class Eur_Lex_Sum(Dataset):
+# class Multi_Legal_Pile(Dataset):
 #     """
-#     Child class of Dataset representing the Eur-Lex-Sum dataset.
+#     Child class of Dataset representing the Eur-Lex-sum dataset.
 #     """
 #
 #     def __init__(self):
-#         self.languages = ['bulgarian', 'czech', 'dutch', 'estonian', 'french', 'greek', 'irish',
-#                           'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
-#                           'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
-#                           'polish', 'romanian', 'slovenian', 'swedish']
 #         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
-#         self.label_options = []
 #
 #     def get_data(self, language, dataset_name, points_per_language):
 #         """
-#         Loads the XNLI dataset for the specified language.
-#         :param language: the language of the dataset
-#         :return: the data and label options
+#         :param language: the language for which data should be retrieved
+#         :return: the data corresponding to the language parameter
 #         """
-#         dataset = load_dataset('dennlinger/eur-lex-sum', language, split='test', trust_remote_code=True, streaming=True)
-#         print(dataset)
+#         config = f"{language}_legal-mc4"
+#         dataset = load_dataset('joelniklaus/Multi_Legal_Pile', config, streaming=True, split='train', trust_remote_code=True)
+#         limited_data = list(islice(dataset, points_per_language))
+#         print(limited_data[0])
 #         self.language = language
-#         if language == 'all_languages':
-#             data = self.extract_text_all_languages(dataset)
-#         else:
-#             data = self.extract_text(dataset)
-#         return data[:points_per_language], self.prompt
+#         data = self.extract_text(limited_data, points_per_language)
+#         inst = translate(language, self.prompt)
+#         return data, inst[0]
 #
-#     def extract_text_all_languages(self, dataset):
-#         """
-#         :param dataset: the dataset containing the text data
-#         :return: a list of text data from all languages
-#         """
-#         data = []
-#         count = 0
-#         for item in dataset:
-#             if count == 100:
-#                 break
-#             documents = item['reference']
-#             texts = documents.keys()
-#             data.append({"text:": text, "summary": item['summary']} for text in texts)
-#             count += 1
-#
-#     def extract_text(self, dataset):
+#     def extract_text(self, dataset, points_per_language):
 #         """
 #         :param dataset: the dataset containing the text data
 #         :return: a list of text data in the specified language
@@ -656,57 +642,228 @@ class XNLI(Dataset):
 #         data = []
 #         count = 0
 #         for item in dataset:
-#             if count == 100:
+#             if count == points_per_language:
 #                 break
 #             data.append({"text": item['reference'], "summary": item['summary']})
 #             count += 1
 #         return data
 #
-#     def evaluate(self, reference_summaries, generated_summaries):
-#         """
-#         Evaluates the model using rouge_l score and cosine similarity.
-#         :param reference_summaries: list of reference summaries
-#         :param generated_summaries: list of generated summaries
-#         """
-#         metrics = self.rouge_l_score(reference_summaries, generated_summaries)
-#         cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
-#         print(f"Rouge1: {metrics['rouge1']}")
-#         print(f"Rouge2: {metrics['rouge2']}")
-#         print(f"RougeL: {metrics['rougeL']}")
-#         print(f"RougeL sum: {metrics['rougeLsum']}")
-#         print(f"Cosine Similarity: {cosine_similarities}")
-#         file_path = "EUR_Lex_Sum_evaluation.csv"
-#         file_exists = os.path.isfile(file_path)
-#         with open(file_path, mode='a', newline='') as f:
-#             writer = csv.writer(f)
-#             if not file_exists:
-#                 writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
-#             writer.writerow([self.language, metrics, cosine_similarities])
-#
-#     def rouge_l_score(self, reference_summaries, generated_summaries):
-#         """
-#         :param reference_summaries: list of official summaries
-#         :param generated_summaries: list of generated summaries
-#         :return: rouge-l score
-#         """
-#         rouge = evaluate.load("rouge")
-#         metrics = rouge.compute(predictions=generated_summaries, references=reference_summaries)
-#         return metrics
-#
-#     def cosine_similarity(self, reference_summaries, generated_summaries):
-#         """
-#         :param reference_summaries: list of reference summaries
-#         :param generated_summaries: list of generated summaries
-#         :return: cosine similarity score
-#         """
-#         vectorizer = TfidfVectorizer()
-#         reference_vectors = vectorizer.fit_transform(reference_summaries)
-#         generated_vectors = vectorizer.transform(generated_summaries)
-#         cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
-#         return cosine_similarities
-#
 #     def get_true(self, data):
 #         """
-#         :return: list of true labels for the dataset
+#         :return: the true summary of the data
 #         """
-#         return [entry['summary'] for entry in data]
+#         summary = [entry['summary'] for entry in data]
+#         return summary
+#
+#     def format_text_to_width(self, text, width):
+#         """
+#         Splits a text into lines of a given width.
+#         """
+#         return "<br>".join(textwrap.wrap(text, width))
+#
+#     def evaluate(self, references, predictions):
+#         rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
+#
+#         results = rouge.compute(predictions=predictions, references=references)
+#
+#         file_path = "output/Eur_Lex_Sum_evaluation.md"
+#         file_exists = os.path.isfile(file_path)
+#         with open(file_path, mode='a', encoding='utf-8') as f:
+#             if not file_exists:
+#                 f.write("| Language | Reference Summary                          | Predicted Summary                           |\n")
+#                 f.write("|----------|------------------------------------------|--------------------------------------------|\n")
+#             count = 0
+#             for reference, prediction in zip(references, predictions):
+#                 # Wrap text to fit within 50 characters
+#                 formatted_reference = self.format_text_to_width(reference, 50)
+#                 formatted_prediction = self.format_text_to_width(prediction, 50)
+#                 # Write formatted text into md table
+#                 f.write(f"| {self.language} | {formatted_reference} | {formatted_prediction} |\n")
+#                 count += 1
+#                 if count == 3:
+#                     break
+#
+#         return results
+#
+#     def evaluate_results(self, results, all_true, all_predicted):
+#         # Print out the results for each language
+#         for lang, metrics in results.items():
+#             print(f"Results for {lang}:")
+#             print(f"Rouge1: {metrics['rouge1']}")
+#             print(f"Rouge2: {metrics['rouge2']}")
+#             print(f"RougeL: {metrics['rougeL']}")
+#             print("-------------------------------------------------------------")
+
+
+class Europa_Random_Split(Dataset):
+    """
+    Child class of Dataset representing the Eur-Lex-sum dataset.
+    """
+
+    def __init__(self):
+        self.prompt = "\n<|endoftext|>\nTask: Give me a list of keyphrases for the text above. Only give me the keyphrases seperated by a new line. Include all the important information."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        :param language: the language for which data should be retrieved
+        :return: the data corresponding to the language parameter
+        """
+
+        print("Reached get_data")
+        dataset = load_dataset('NCube/europa-random-split', streaming=True, split='train', trust_remote_code=True)
+        filtered_dataset = (example for example in dataset if example["lang"] == language)
+        self.language = language
+        data = self.extract_text(filtered_dataset, points_per_language)
+        inst = translate(language, self.prompt)
+        return data, inst[0]
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == points_per_language:
+                break
+            data.append({"text": item['input_text'], "keyphrases": item['keyphrases']})
+            count += 1
+        return data
+
+    def get_true(self, data):
+        """
+        :return: the true summary of the data
+        """
+        summary = [entry['keyphrases'] for entry in data]
+        return summary
+
+    def format_text_to_width(self, text, width):
+        """
+        Splits a text into lines of a given width.
+        """
+        return "<br>".join(textwrap.wrap(text, width))
+
+    def calculate_f1(self, true_set, pred_list, k=None, threshold=80):
+        """
+        Calculate F1 score using fuzzy matching to account for order insensitivity.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: If specified, use only the top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: Precision, Recall, and F1 score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        matched_pred = set()
+
+        # Iterate over predicted keyphrases
+        for pred in pred_list:
+            # Find the best match in the true set
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    matched_pred.add(pred)
+                    break
+
+        # Calculate true positives
+        true_positives = len(matched_true)
+
+        # Calculate precision and recall
+        precision = true_positives / len(pred_list) if len(pred_list) > 0 else 0.0
+        recall = true_positives / len(true_set) if len(true_set) > 0 else 0.0
+
+        # Calculate F1 score
+        f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+
+        return precision, recall, f1
+
+    def calculate_map(self, true_set, pred_list, k=50, threshold=80):
+        """
+        Calculate Mean Average Precision (MAP) at k using fuzzy matching.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: Use only top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: MAP score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        binary_relevance = []
+
+        # Iterate over predictions to calculate binary relevance
+        for pred in pred_list:
+            match_found = False
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    match_found = True
+                    break
+            binary_relevance.append(1 if match_found else 0)
+
+        if not binary_relevance:
+            return 0.0
+
+        # Calculate precision at each relevant index
+        relevant_indices = [i + 1 for i, rel in enumerate(binary_relevance) if rel == 1]
+        precisions = [sum(binary_relevance[:i]) / i for i in relevant_indices]
+
+        # Calculate MAP
+        return sum(precisions) / len(true_set) if len(true_set) > 0 else 0.0
+
+    def evaluate(self, references, predictions):
+        """
+        Evaluate predictions using F1@k, F1@M, and MAP@50 for present and absent keyphrases.
+        :param references: List of lists, where each sublist contains true keyphrases for an instance.
+        :param predictions: List of strings, where each string contains predicted keyphrases separated by newlines.
+        :return: Dictionary of evaluation metrics.
+        """
+        metrics = {
+            "F1@5": [],
+            "F1@10": [],
+            "F1@M": [],
+            "MAP@50": []
+        }
+
+        for ref, pred_str in zip(references, predictions):
+            # Convert predictions to a list of keyphrases
+            pred_list = [phrase.strip() for phrase in pred_str.split('\n') if phrase.strip()]
+
+            # Convert references to a set for comparison
+            true_set = set(ref)
+
+            # Calculate F1@5, F1@10, and F1@M
+            _, _, f1_5 = self.calculate_f1(true_set, pred_list, k=5)
+            _, _, f1_10 = self.calculate_f1(true_set, pred_list, k=10)
+            _, _, f1_m = self.calculate_f1(true_set, pred_list)
+
+            # Calculate MAP@50
+            map_50 = self.calculate_map(true_set, pred_list, k=50)
+
+            # Append metrics for this instance
+            metrics["F1@5"].append(f1_5)
+            metrics["F1@10"].append(f1_10)
+            metrics["F1@M"].append(f1_m)
+            metrics["MAP@50"].append(map_50)
+
+        # Aggregate metrics across all instances
+        aggregated_metrics = {metric: sum(scores) / len(scores) if scores else 0.0 for metric, scores in metrics.items()}
+
+        return aggregated_metrics
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Display aggregated F1@k, F1@M, and MAP@50 results.
+
+        :param results: Dictionary where each key is a language (e.g., en, el)
+                        and the value is a map of metrics and scores.
+        """
+        print("\nAggregated Keyphrase Generation Metrics:\n")
+        for language, scores in results.items():
+            print(f"{language}: {scores}")
+        print("-" * 40)
+
