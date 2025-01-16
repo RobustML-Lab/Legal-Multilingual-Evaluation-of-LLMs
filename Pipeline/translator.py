@@ -23,6 +23,8 @@ language_map = {
     'latvian': 'lv',
     'greek': 'el',
     'irish': 'ga',
+    'maltese': 'mt',
+    'slovak': 'sk',
 }
 
 
