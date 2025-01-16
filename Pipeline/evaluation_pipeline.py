@@ -7,8 +7,8 @@ import os
 from models import *
 from data import *
 
-dataset_name = "eur_lex_sum"
-languages = ["english", "greek", "polish", "french", "bulgarian"]
+dataset_name = "europa_random_split"
+languages = ["english", "greek"]
 points_per_language = 2
 generation = True
 model_name = "ollama"

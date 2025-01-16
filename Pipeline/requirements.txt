@@ -1,0 +1,4 @@
+ollama
+deep_translator
+datasets
+evaluate

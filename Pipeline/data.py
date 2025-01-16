@@ -57,6 +57,8 @@ class Dataset:
             return XNLI()
         elif name.lower() == 'eur_lex_sum':
             return Eur_Lex_Sum()
+        elif name.lower() == 'europa_random_split':
+            return Europa_Random_Split()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -710,3 +712,174 @@ class XNLI(Dataset):
 #         :return: list of true labels for the dataset
 #         """
 #         return [entry['summary'] for entry in data]
+
+class Europa_Random_Split(Dataset):
+    """
+    Child class of Dataset representing the Eur-Lex-sum dataset.
+    """
+
+    def __init__(self):
+        self.prompt = "\n<|endoftext|>\nTask: Give me a list of keyphrases for the text above. Only give me the keyphrases seperated by a new line. Include all the important information."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        :param language: the language for which data should be retrieved
+        :return: the data corresponding to the language parameter
+        """
+
+        print("Reached get_data")
+        dataset = load_dataset('NCube/europa-random-split', streaming=True, split='train', trust_remote_code=True)
+        filtered_dataset = (example for example in dataset if example["lang"] == language)
+        self.language = language
+        data = self.extract_text(filtered_dataset, points_per_language)
+        inst = translate(language, self.prompt)
+        return data, inst[0]
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == points_per_language:
+                break
+            data.append({"text": item['input_text'], "keyphrases": item['keyphrases']})
+            count += 1
+        return data
+
+    def get_true(self, data):
+        """
+        :return: the true summary of the data
+        """
+        summary = [entry['keyphrases'] for entry in data]
+        return summary
+
+    def format_text_to_width(self, text, width):
+        """
+        Splits a text into lines of a given width.
+        """
+        return "<br>".join(textwrap.wrap(text, width))
+
+    def calculate_f1(self, true_set, pred_list, k=None, threshold=80):
+        """
+        Calculate F1 score using fuzzy matching to account for order insensitivity.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: If specified, use only the top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: Precision, Recall, and F1 score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        matched_pred = set()
+
+        # Iterate over predicted keyphrases
+        for pred in pred_list:
+            # Find the best match in the true set
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    matched_pred.add(pred)
+                    break
+
+        # Calculate true positives
+        true_positives = len(matched_true)
+
+        # Calculate precision and recall
+        precision = true_positives / len(pred_list) if len(pred_list) > 0 else 0.0
+        recall = true_positives / len(true_set) if len(true_set) > 0 else 0.0
+
+        # Calculate F1 score
+        f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+
+        return precision, recall, f1
+
+    def calculate_map(self, true_set, pred_list, k=50, threshold=80):
+        """
+        Calculate Mean Average Precision (MAP) at k using fuzzy matching.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: Use only top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: MAP score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        binary_relevance = []
+
+        # Iterate over predictions to calculate binary relevance
+        for pred in pred_list:
+            match_found = False
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    match_found = True
+                    break
+            binary_relevance.append(1 if match_found else 0)
+
+        if not binary_relevance:
+            return 0.0
+
+        # Calculate precision at each relevant index
+        relevant_indices = [i + 1 for i, rel in enumerate(binary_relevance) if rel == 1]
+        precisions = [sum(binary_relevance[:i]) / i for i in relevant_indices]
+
+        # Calculate MAP
+        return sum(precisions) / len(true_set) if len(true_set) > 0 else 0.0
+
+    def evaluate(self, references, predictions):
+        """
+        Evaluate predictions using F1@k, F1@M, and MAP@50 for present and absent keyphrases.
+        :param references: List of lists, where each sublist contains true keyphrases for an instance.
+        :param predictions: List of strings, where each string contains predicted keyphrases separated by newlines.
+        :return: Dictionary of evaluation metrics.
+        """
+        metrics = {
+            "F1@5": [],
+            "F1@10": [],
+            "F1@M": [],
+            "MAP@50": []
+        }
+
+        for ref, pred_str in zip(references, predictions):
+            # Convert predictions to a list of keyphrases
+            pred_list = [phrase.strip() for phrase in pred_str.split('\n') if phrase.strip()]
+
+            # Convert references to a set for comparison
+            true_set = set(ref)
+
+            # Calculate F1@5, F1@10, and F1@M
+            _, _, f1_5 = self.calculate_f1(true_set, pred_list, k=5)
+            _, _, f1_10 = self.calculate_f1(true_set, pred_list, k=10)
+            _, _, f1_m = self.calculate_f1(true_set, pred_list)
+
+            # Calculate MAP@50
+            map_50 = self.calculate_map(true_set, pred_list, k=50)
+
+            # Append metrics for this instance
+            metrics["F1@5"].append(f1_5)
+            metrics["F1@10"].append(f1_10)
+            metrics["F1@M"].append(f1_m)
+            metrics["MAP@50"].append(map_50)
+
+        # Aggregate metrics across all instances
+        aggregated_metrics = {metric: sum(scores) / len(scores) if scores else 0.0 for metric, scores in metrics.items()}
+
+        return aggregated_metrics
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Display aggregated F1@k, F1@M, and MAP@50 results.
+        :param results: Dictionary where each key is a language (e.g., en, el)
+                        and the value is a map of metrics and scores.
+        """
+        print("\nAggregated Keyphrase Generation Metrics:\n")
+        for language, scores in results.items():
+            print(f"{language}: {scores}")
+        print("-" * 40)

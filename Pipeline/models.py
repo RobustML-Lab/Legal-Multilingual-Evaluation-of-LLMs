@@ -95,7 +95,10 @@ class LLaMa(Model):
         :param text: the text that needs to be classified
         :return: a.py list of all the labels corresponding to the given text
         """
-        quoted_labels = "', '".join(f"{i}: {label}" for i, label in enumerate(self.label_options))
+        try:
+            quoted_labels = "', '".join(f"{i}: {label}" for i, label in enumerate(self.label_options))
+        except Exception as e:
+            quoted_labels = ""
         complete_prompt = f"{text}{prompt}'{quoted_labels}'."
         generated_text = self.generate_text(complete_prompt)
         prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
