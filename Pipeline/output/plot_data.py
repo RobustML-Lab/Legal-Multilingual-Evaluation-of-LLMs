@@ -1,87 +1,163 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-# Load the data
-parsed_data = pd.read_csv('parsed_classification_metrics.csv')
+def process_and_plot_drop(file_google4, file_google_before):
+    # Load the data from the files
+    google4_data = pd.read_csv(file_google4, sep=":", header=None, names=["Metric", "Value"], skip_blank_lines=True)
+    google_before_data = pd.read_csv(file_google_before, sep=":", header=None, names=["Metric", "Value"], skip_blank_lines=True)
 
-# 1. Category-Level Performance by Language (Single Figure with Subplots)
-languages = parsed_data['Language'].unique()
-fig, axes = plt.subplots(len(languages), 3, figsize=(18, 5 * len(languages)))
-fig.suptitle("Category-Level Performance by Language", fontsize=16)
+    # Preprocess the data
+    def extract_results(data):
+        results = {}
+        current_language = None
+        for _, row in data.iterrows():
+            if row["Metric"].startswith("Results for"):
+                current_language = row["Metric"].split("Results for ")[1].strip().lower()
+                results[current_language] = {}
+            elif current_language:
+                metric_name, value = row["Metric"].strip(), row["Value"]
+                if metric_name and value:
+                    results[current_language][metric_name] = float(value)
+        return pd.DataFrame(results).T
 
-for i, language in enumerate(languages):
-    lang_data = parsed_data[parsed_data['Language'] == language]
-    categories = lang_data['Category']
+    df_google4 = extract_results(google4_data)
+    df_google_before = extract_results(google_before_data)
 
-    # Precision plot
-    sns.barplot(x='Precision', y=categories, data=lang_data, ax=axes[i, 0], palette='viridis')
-    axes[i, 0].set_title(f"{language.upper()} - Precision")
-    axes[i, 0].set_xlabel("Precision")
-    axes[i, 0].set_ylabel("Category")
+    # Merge the data based on languages
+    merged_df = pd.merge(df_google4, df_google_before, left_index=True, right_index=True, suffixes=("_google4", "_before"))
 
-    # Recall plot
-    sns.barplot(x='Recall', y=categories, data=lang_data, ax=axes[i, 1], palette='plasma')
-    axes[i, 1].set_title(f"{language.upper()} - Recall")
-    axes[i, 1].set_xlabel("Recall")
-    axes[i, 1].set_ylabel("")
+    # Calculate the percentage drop for each metric
+    metrics = ["Rouge1", "Rouge2", "RougeL", "RougeL sum"]
+    for metric in metrics:
+        merged_df[f"{metric}_drop_percentage"] = (
+                (merged_df[f"{metric}_before"] - merged_df[f"{metric}_google4"]) / merged_df[f"{metric}_before"] * 100
+        )
 
-    # F1 Score plot
-    sns.barplot(x='F1 Score', y=categories, data=lang_data, ax=axes[i, 2], palette='magma')
-    axes[i, 2].set_title(f"{language.upper()} - F1 Score")
-    axes[i, 2].set_xlabel("F1 Score")
-    axes[i, 2].set_ylabel("")
+    # Separate English and non-English for graph
+    non_english_df = merged_df.drop(index="english", errors='ignore')
+    english_df = merged_df.loc["english"] if "english" in merged_df.index else pd.DataFrame()
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-plt.show()
+    # Calculate average drop percentages for English and non-English
+    average_drops = {
+        "Metric": metrics,
+        "English": [english_df[f"{metric}_drop_percentage"].mean() if not english_df.empty else 0 for metric in metrics],
+        "Non-English": [non_english_df[f"{metric}_drop_percentage"].mean() for metric in metrics],
+    }
 
-# 2. Global Metric Comparison Across Languages
-global_metrics = parsed_data[['Language', 'Global Precision', 'Global Recall', 'Global F1 Score']].drop_duplicates()
-global_metrics.set_index('Language', inplace=True)
-global_metrics.plot(kind='bar', figsize=(12, 8))
-plt.title("Global Precision, Recall, and F1 Score Across Languages")
-plt.xlabel("Language")
-plt.ylabel("Score")
-plt.legend(title="Metrics")
-plt.tight_layout()
-plt.show()
+    # Create a DataFrame for the average drops
+    average_drops_df = pd.DataFrame(average_drops)
 
-# 3. Precision vs. Recall Scatter Plot by Category
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='Precision', y='Recall', hue='Language', data=parsed_data, style='Category', s=100)
-plt.title("Precision vs Recall by Category")
-plt.xlabel("Precision")
-plt.ylabel("Recall")
-plt.legend(title="Language and Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
+    # Bar plot for average drop percentages
+    x = np.arange(len(metrics))  # Number of metrics
+    width = 0.35  # Width of the bars
 
-# 4. True vs Predicted Counts by Category with x=y line
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='True Num', y='Predicted Num', hue='Language', data=parsed_data, style='Category', s=100)
-plt.plot([parsed_data['True Num'].min(), parsed_data['True Num'].max()],
-         [parsed_data['True Num'].min(), parsed_data['True Num'].max()],
-         color='gray', linestyle='--', linewidth=1)  # x=y line
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars1 = ax.bar(x - width / 2, average_drops_df["English"], width, label="English", color="red")
+    bars2 = ax.bar(x + width / 2, average_drops_df["Non-English"], width, label="Non-English", color="blue")
 
-plt.title("True vs Predicted Number of Instances by Category")
-plt.xlabel("True Number of Instances")
-plt.ylabel("Predicted Number of Instances")
-plt.legend(title="Language and Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
+    # Add labels and formatting
+    ax.set_xlabel("Metrics")
+    ax.set_ylabel("Average Drop Percentage")
+    ax.set_title("Average Drop Percentage by Metric (English vs Non-English)")
+    ax.set_xticks(x)
+    ax.set_xticklabels(metrics)
+    ax.legend()
 
-# 5. True vs Predicted Counts by Category with x=y line (all languages combined)
-mean_data = parsed_data.groupby('Category').agg({'True Num': 'mean', 'Predicted Num': 'mean'}).reset_index()
+    # Show the plot
+    plt.tight_layout()
+    plt.show()
 
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='True Num', y='Predicted Num', hue='Category', data=mean_data, s=100, alpha=0.7)
-plt.plot([mean_data['True Num'].min(), mean_data['True Num'].max()],
-         [mean_data['True Num'].min(), mean_data['True Num'].max()],
-         color='gray', linestyle='--', linewidth=1)  # x=y line
+def calculate_average_results(file_google4, file_google_before):
+    # Load the data from the files
+    google4_data = pd.read_csv(file_google4, sep=":", header=None, names=["Metric", "Value"], skip_blank_lines=True)
+    google_before_data = pd.read_csv(file_google_before, sep=":", header=None, names=["Metric", "Value"], skip_blank_lines=True)
 
-plt.title("Average True vs Predicted Number of Instances by Category (Across All Languages)")
-plt.xlabel("Average True Number of Instances")
-plt.ylabel("Average Predicted Number of Instances")
-plt.legend(title="Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
+    # Preprocess the data
+    def extract_results(data):
+        results = {}
+        current_language = None
+        for _, row in data.iterrows():
+            if row["Metric"].startswith("Results for"):
+                current_language = row["Metric"].split("Results for ")[1].strip().lower()
+                results[current_language] = {}
+            elif current_language:
+                metric_name, value = row["Metric"].strip(), row["Value"]
+                if metric_name and value:
+                    results[current_language][metric_name] = float(value)
+        return pd.DataFrame(results).T
+
+    df_google4 = extract_results(google4_data)
+    df_google_before = extract_results(google_before_data)
+
+    # Separate English and non-English
+    non_english_google4 = df_google4.drop(index="english", errors='ignore')
+    english_google4 = df_google4.loc[["english"]] if "english" in df_google4.index else pd.DataFrame()
+
+    non_english_before = df_google_before.drop(index="english", errors='ignore')
+    english_before = df_google_before.loc[["english"]] if "english" in df_google_before.index else pd.DataFrame()
+
+    # Calculate average results for each metric
+    metrics = ["Rouge1", "Rouge2", "RougeL", "RougeL sum"]
+    average_results_google4 = {
+        "Metric": metrics,
+        "English": [english_google4[metric].mean() if not english_google4.empty else 0 for metric in metrics],
+        "Non-English": [non_english_google4[metric].mean() for metric in metrics],
+    }
+
+    average_results_before = {
+        "Metric": metrics,
+        "English": [english_before[metric].mean() if not english_before.empty else 0 for metric in metrics],
+        "Non-English": [non_english_before[metric].mean() for metric in metrics],
+    }
+
+    avg_results_google4_df = pd.DataFrame(average_results_google4)
+    avg_results_before_df = pd.DataFrame(average_results_before)
+
+    # Plot results for Google4 (with attack) and Before (without attack)
+    x = np.arange(len(metrics))  # Number of metrics
+    width = 0.35  # Width of the bars
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars1 = ax.bar(x - width / 2, avg_results_before_df["Non-English"], width, label="Non-English (Without Attack)", color="blue")
+    bars2 = ax.bar(x + width / 2, avg_results_google4_df["Non-English"], width, label="Non-English (With Attack)", color="orange")
+
+    ax.set_xlabel("Metrics")
+    ax.set_ylabel("Average Scores")
+    ax.set_title("Average Results for Non-English (With vs Without Attack)")
+    ax.set_xticks(x)
+    ax.set_xticklabels(metrics)
+    ax.legend()
+    plt.tight_layout()
+    plt.show()
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars1 = ax.bar(x - width / 2, avg_results_before_df["English"], width, label="English (Without Attack)", color="red")
+    bars2 = ax.bar(x + width / 2, avg_results_google4_df["English"], width, label="English (With Attack)", color="green")
+
+    ax.set_xlabel("Metrics")
+    ax.set_ylabel("Average Scores")
+    ax.set_title("Average Results for English (With vs Without Attack)")
+    ax.set_xticks(x)
+    ax.set_xticklabels(metrics)
+    ax.legend()
+    plt.tight_layout()
+    plt.show()
+
+    # Plot Google4 results (With attack) for English and Non-English
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars1 = ax.bar(x - width / 2, avg_results_google4_df["Non-English"], width, label="Non-English", color="blue")
+    bars2 = ax.bar(x + width / 2, avg_results_google4_df["English"], width, label="English", color="red")
+
+    ax.set_xlabel("Metrics")
+    ax.set_ylabel("Average Scores")
+    ax.set_title("Google4 Results (With Attack) for English and Non-English")
+    ax.set_xticks(x)
+    ax.set_xticklabels(metrics)
+    ax.legend()
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+process_and_plot_drop("attacks/google_prompt1.log", "attacks/google_before.log")
+calculate_average_results("attacks/google_prompt1.log", "attacks/google_before.log")

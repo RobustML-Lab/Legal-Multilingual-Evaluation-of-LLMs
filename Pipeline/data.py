@@ -266,6 +266,7 @@ class Eur_Lex_Sum(Dataset):
 
     def __init__(self):
         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
+        # self.prompt = "\n<|endoftext|>\nTask: Write something about the text above."
 
     def get_data(self, language, dataset_name, points_per_language):
         """
@@ -701,7 +702,7 @@ class Europa_Random_Split(Dataset):
     """
 
     def __init__(self):
-        self.prompt = "\n<|endoftext|>\nTask: Give me a list of keyphrases for the text above. Only give me the keyphrases seperated by a new line. Include all the important information."
+        self.prompt = "\n<|endoftext|>\nTask: Give me a list of keyphrases for the text above. Only give me the keyphrases separated by a new line. Give the most important keyphrases first. Include all the important information."
 
     def get_data(self, language, dataset_name, points_per_language):
         """

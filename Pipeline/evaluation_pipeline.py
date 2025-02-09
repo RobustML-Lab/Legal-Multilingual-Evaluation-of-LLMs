@@ -6,13 +6,16 @@ import os
 
 from models import *
 from data import *
+from adversarial_attack import attack
+from huggingface_hub import login
 
 # dataset_name = "eur_lex_sum"
-# languages = ["english", "greek", "polish", "french", "bulgarian"]
-# points_per_language = 2
+# languages = ["english"]
+# points_per_language = 1
 # generation = True
-# model_name = "ollama"
+# model_name = "llama"
 # api_key = None
+# adversarial_attack = 0
 
 arguments = sys.argv[1:]
 dataset_name = arguments[0]
@@ -21,8 +24,9 @@ points_per_language = int(arguments[2])
 generation = bool(int(arguments[3]))
 model_name = arguments[4]
 api_key = None
+adversarial_attack = int(arguments[5])
 if model_name == 'google':
-    api_key = arguments[5]
+    api_key = arguments[6]
 #%%
 # Get the dataset
 dataset = Dataset.get_dataset(dataset_name)
@@ -31,7 +35,6 @@ results = {}
 all_true = {}
 all_predicted = {}
 
-
 for lang in languages:
     if generation:
         data, prompt = dataset.get_data(lang, dataset_name, points_per_language)
@@ -39,6 +42,9 @@ for lang in languages:
     else:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
+
+    if adversarial_attack:
+        data = attack(data, adversarial_attack, lang)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)
