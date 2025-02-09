@@ -1,0 +1,798 @@
+Results for en:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE
+Results for de:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE
+Results for fr:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE
+Results for el:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE
+Results for bg:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE
+Results for pl:
+Precision: 0.0
+Recall: 0.0
+F1 Score: 0.0
+Length: 100
+ENDMETRICS
+życie polityczne Precision: 0
+życie polityczne Recall: 0.0
+życie polityczne F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+stosunki międzynarodowe Precision: 0
+stosunki międzynarodowe Recall: 0.0
+stosunki międzynarodowe F1 Score: 0
+True Num: 15
+Predicted Num: 0
+ENDCLASS
+unia europejska Precision: 0
+unia europejska Recall: 0.0
+unia europejska F1 Score: 0
+True Num: 16
+Predicted Num: 0
+ENDCLASS
+prawo Precision: 0
+prawo Recall: 0.0
+prawo F1 Score: 0
+True Num: 58
+Predicted Num: 0
+ENDCLASS
+ekonomia Precision: 0
+ekonomia Recall: 0.0
+ekonomia F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+handel Precision: 0
+handel Recall: 0.0
+handel F1 Score: 0
+True Num: 26
+Predicted Num: 0
+ENDCLASS
+finanse Precision: 0
+finanse Recall: 0.0
+finanse F1 Score: 0
+True Num: 44
+Predicted Num: 0
+ENDCLASS
+zagadnienia społeczne Precision: 0
+zagadnienia społeczne Recall: 0.0
+zagadnienia społeczne F1 Score: 0
+True Num: 7
+Predicted Num: 0
+ENDCLASS
+oświata i komunikacja Precision: 0
+oświata i komunikacja Recall: 0.0
+oświata i komunikacja F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+nauka Precision: 0
+nauka Recall: 0.0
+nauka F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+przedsiębiorstwo i konkurencja Precision: 0
+przedsiębiorstwo i konkurencja Recall: 0.0
+przedsiębiorstwo i konkurencja F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+zatrudnienie i praca Precision: 0
+zatrudnienie i praca Recall: 0.0
+zatrudnienie i praca F1 Score: 0
+True Num: 8
+Predicted Num: 0
+ENDCLASS
+transport Precision: 0
+transport Recall: 0.0
+transport F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+środowisko Precision: 0
+środowisko Recall: 0.0
+środowisko F1 Score: 0
+True Num: 2
+Predicted Num: 0
+ENDCLASS
+rolnictwo, leśnictwo i rybołówstwo Precision: 0
+rolnictwo, leśnictwo i rybołówstwo Recall: 0.0
+rolnictwo, leśnictwo i rybołówstwo F1 Score: 0
+True Num: 3
+Predicted Num: 0
+ENDCLASS
+sektor rolno-spożywczy Precision: 0
+sektor rolno-spożywczy Recall: 0.0
+sektor rolno-spożywczy F1 Score: 0
+True Num: 30
+Predicted Num: 0
+ENDCLASS
+produkcja, technologia i badania Precision: 0
+produkcja, technologia i badania Recall: 0
+produkcja, technologia i badania F1 Score: 0
+True Num: 0
+Predicted Num: 0
+ENDCLASS
+energia Precision: 0
+energia Recall: 0.0
+energia F1 Score: 0
+True Num: 36
+Predicted Num: 0
+ENDCLASS
+przemysł Precision: 0
+przemysł Recall: 0.0
+przemysł F1 Score: 0
+True Num: 45
+Predicted Num: 0
+ENDCLASS
+geografia Precision: 0
+geografia Recall: 0.0
+geografia F1 Score: 0
+True Num: 12
+Predicted Num: 0
+ENDCLASS
+organizacje międzynarodowe Precision: 0
+organizacje międzynarodowe Recall: 0.0
+organizacje międzynarodowe F1 Score: 0
+True Num: 9
+Predicted Num: 0
+ENDCLASS
+ENDLANGUAGE

@@ -1,453 +1,1958 @@
-The European Parliament and Council have agreed on a regulation regarding alternative investment fund managers. The regulation aims to improve the rules and guidelines for these funds, which are used by wealthy individuals and institutional investors to invest in various assets.
-
-Key points of the regulation include:
-
-* It applies from August 1, 2019, with some provisions taking effect later.
-* Some specific articles and sections have different application dates.
-* The regulation aims to improve transparency, disclosure, and supervision for alternative investment fund managers.
-* It introduces new rules for cross-border distribution of collective investment undertakings.
-
-Overall, the regulation seeks to enhance the regulatory framework for alternative investment fund managers, aiming to increase confidence in these funds among investors.
+1
+2
+4
+5
 ###################################################
-Here is a summary of the text:
-
-**Regulation on Alternative Investment Fund Managers**
-
-The Regulation is applicable from August 1, 2019. It aims to enhance transparency and investor protection in alternative investment fund management.
-
-**Key Articles:**
-
-* Article 4(1) to (5), Article 5(1) and (2), and Articles 15 and 16 apply from August 2, 2021.
-* The Regulation is binding and directly applicable in all Member States.
-* The European Parliament and Council of the European Union have agreed on the Regulation.
-
-**Relevant Background:**
-
-* Previous EU Directives and Regulations on alternative investment funds (UCITS, AIFM) are being amended or repealed by this new Regulation.
-* Other relevant EU regulations include those on Prospectus Regulation, Long-term Investment Funds, and Data Protection.
-
-**Important Dates:**
-
-* August 1, 2019: The Regulation comes into force.
-* August 2, 2021: Additional provisions come into effect.
+1. TSG
+2. EU
+3. Commission Regulation
 ###################################################
-This regulation is related to collective investment undertakings and aims to improve their distribution across EU member states.
-
-Key points:
-
-* The regulation will apply from August 1, 2019, except for certain articles that will apply from August 2, 2021.
-* It will cover European venture capital funds, social entrepreneurship funds, long-term investment funds, and UCITS (undertakings for collective investment in transferable securities).
-* The regulation aims to enhance transparency, improve investor protection, and facilitate cross-border distribution of these funds.
-* It includes measures related to prospectuses, registration, supervision, and disclosure requirements.
-* The regulation will be binding and directly applicable in all EU member states.
-
-Important articles that apply at different dates:
-
-* Articles 4(1) to (5), Article 5(1) and (2), Article 15, and Article 16: August 2, 2021
-* All other articles, including those related to prospectuses, registration, supervision, and disclosure requirements: August 1, 2019
+1
+2
+3
+4
+5
 ###################################################
-Here is a summary of the text:
-
-**Regulation Establishing EU Venture Capital Funds**
-
-* The Regulation sets out the framework for venture capital funds operating in the EU.
-* It applies from 1 August 2019, except for certain articles which apply from 2 August 2021.
-* The Regulation aims to promote entrepreneurship and innovation in the EU by providing a supportive regulatory environment for venture capital funds.
-
-**Key Articles**
-
-* Article 4(1) to (5), Article 5(1) and (2), Article 15, and Article 16 apply from 2 August 2021.
-* The Regulation is binding and directly applicable in all Member States.
-* It repeals certain EU directives and regulations related to venture capital funds.
-
-**Background**
-
-* The regulation was adopted by the European Parliament and Council of the European Union on 20 June 2019.
-* It builds on existing EU regulatory frameworks for collective investment undertakings (UCITS) and alternative investment fund managers (AIFMs).
-
-**Relevant Background Legislation**
-
-* Directive 2003/41/EC and Regulation (EU) No 1060/2009
-* Directive 2011/61/EU
-* Regulation (EU) No 345/2013 on European venture capital funds
-* Regulation (EU) No 346/2013 on European social entrepreneurship funds
-* Regulation (EU) 2015/760 on European long-term investment funds
-
-**Relevant EU Regulations and Directives**
-
-* Directive 2009/65/EC (UCITS)
-* Regulation (EU) No 1095/2010 (European Securities and Markets Authority)
-* Regulation (EU) No 1286/2014 (PRIIPs)
-* Regulation (EU) 2016/679 (General Data Protection Regulation)
-* Regulation (EU) 2018/1725 (Data protection for the Union institutions, bodies, offices and agencies)
-
-**Other Relevant Information**
-
-* The regulation is part of a broader set of EU regulatory measures aimed at promoting entrepreneurship and innovation.
-* It aims to provide a more favorable regulatory environment for venture capital funds in the EU.
+1. Official Journal
+2. European Parliament
+3. Decision (EU) 2015/41
+4. European Globalisation Adjustment Fund
 ###################################################
-Here's a summary of the text:
-
-**Regulation on Alternative Investment Fund Managers**
-
-* The Regulation will apply from August 1, 2019.
-* Some provisions will be implemented from August 2, 2021.
-
-**Summary of Previous Regulations and Directives:**
-
-* Directive 2003/41/EC (AIFM) has been updated.
-* Directives 2009/65/EC (UCITS) and 2011/61/EU (AIFMD) have been amended.
-* Regulation (EU) No 345/2013 (European venture capital funds) has been updated.
-* Regulation (EU) No 346/2013 (European social entrepreneurship funds) has been updated.
-
-**Other Relevant Regulations:**
-
-* Regulation (EU) 2015/760 (Long-term investment funds)
-* Regulation (EU) 1286/2014 (PRIIPs)
-* Regulation (EU) 2016/679 (General Data Protection Regulation)
-* Regulation (EU) 2018/1725 (Personal data protection for Union institutions and agencies)
-
-**Relevant Directives:**
-
-* Directive 2009/65/EC (UCITS)
-* Directive 2011/61/EU (AIFMD)
-* Directive (EU) 2019/1160 (Cross-border distribution of collective investment undertakings)
-
-This Regulation aims to harmonize the regulation of alternative investment fund managers in the EU, ensuring a consistent and efficient market.
+1
+4
+3
 ###################################################
-Unfortunately, there is no text to summarize. The provided list appears to be a collection of article references from a legal code or treaty, but it does not include any explanatory text.
-
-However, I can provide a summary of the structure and content of the reference list:
-
-The list consists of multiple articles from various sections of a document, including:
-
-* Articles 1-3
-* Article 2, points 1-17
-* Article 3, points 22-25
-* Article 15, paragraphs 1-5
-* Articles 16-18
-* Articles 19-21
-* Articles 23-26
-* Articles 27-29
-* Articles 30-32
-
-The articles cover a wide range of topics, including:
-
-* Constitutional provisions and regulations (Articles 1-3)
-* Fundamental rights and freedoms (Article 2)
-* Law enforcement and penal measures (Article 15)
-* Judicial procedures and powers (Articles 16-17)
-* Administrative law and regulatory matters (Articles 18-19)
-* Economic and financial aspects of the document (Articles 20-21)
-* International cooperation and obligations (Articles 22-23)
-* Institutional arrangements and membership (Articles 24-26)
-* Transitional provisions and implementation (Articles 27-29)
-
-If you could provide more context or information about the document these references are from, I may be able to offer a more specific summary.
+1. Binding
+2. Directly applicable
+3. EU regulation
+4. CMO Regulation
+5. Uruguay Round
 ###################################################
-The text is a regulation of the European Union related to alternative investment funds and other financial regulations. Here's a summary of the key points:
-
-**Regulation Details**
-
-* The regulation applies from 1 August 2019, except for certain provisions that apply from 2 August 2021.
-* It aims to improve the regulation of alternative investment funds, including European venture capital funds, social entrepreneurship funds, and long-term investment funds.
-
-**Relevant Directives and Regulations**
-
-* The regulation amends or repeals several EU directives and regulations related to collective investment undertakings, such as Directive 2009/65/EC (UCITS) and Regulation (EU) No 1095/2010 (European Securities and Markets Authority).
-* It also builds on existing regulations, such as Regulation (EU) 2015/760 on European long-term investment funds.
-
-**Key Provisions**
-
-* The regulation introduces a new framework for alternative investment funds, including requirements for fund managers, boards of directors, and auditors.
-* It includes provisions related to prospectuses, key information documents, and the protection of natural persons with regard to the processing of personal data.
-* The regulation also establishes a European Supervisory Authority (ESMA) to oversee the regulatory framework.
-
-**Binding and Applicability**
-
-* The regulation is binding in its entirety and directly applicable in all Member States.
-* It replaces or amends several existing EU directives and regulations, providing clarity and consistency for fund managers and regulators.
+1
+2
+3
+4
 ###################################################
-I'm ready to help, but there is no text above for me to summarize. The provided text seems to be a collection of article numbers and references from a legal document or code. Could you please provide the actual text you would like me to summarize? I'll do my best to assist you.
+1. Binding
+2. Directly applicable
 ###################################################
-The provided text lists various European Union regulations and directives related to investment products, financial services, and data protection. Here's a summary of the key points:
-
-**Investment Products:**
-
-* Regulation (EU) 2019/876 establishes a framework for EU-based long-term investment funds.
-* Regulation (EU) 2019/1160 modifies the guidelines on organized collective investments in transferable securities.
-
-**Organizations of Collective Investment in Transferable Securities (OSICs):**
-
-* Directive (EU) 2009/65/EC sets out rules for OSICs.
-* Regulation (EU) 2017/1129 establishes a framework for the information disclosure required by OSICs.
-
-**Sustainable Finance:**
-
-* EU Taxonomy Regulation (Regulation (EU) 2020/852) establishes a common language for sustainable activities and investments.
-* EU Sustainable Finance Disclosure Regulation (ESDR, Regulation (EU) 2016/2272) requires financial institutions to disclose their ESG (Environmental, Social, and Governance) risks.
-
-**Data Protection:**
-
-* General Data Protection Regulation (GDPR, Regulation (EU) 2016/679) sets out new data protection rules for the EU.
-* EU Directive on the protection of natural persons with regard to the processing of personal data and the free movement of such data (Directive 95/46/EC) has been repealed by GDPR.
-
-**Regulatory Bodies:**
-
-* European Securities and Markets Authority (ESMA) is responsible for overseeing financial markets in the EU.
-* European Banking Authority (EBA) regulates banks in the EU.
-* European Insurance and Pensions Authority (EIOPA) supervises insurance companies and pension schemes in the EU.
-
-**International Cooperation:**
-
-* The EU has entered into various international agreements to harmonize financial regulation with other countries, such as the US, UK, Switzerland, and Singapore.
+3
+1
 ###################################################
-Unfortunately, I couldn't summarize the provided text as it appears to be a large excerpt from a legislative document (likely a Greek law or constitution). The text is divided into multiple articles and paragraphs, which makes summarization challenging.
-
-However, I can provide some general insights about the structure of the text:
-
-* The text consists of various articles and sections that appear to cover different aspects of the law or constitution.
-* Some of the articles discuss fundamental rights, duties, and freedoms (e.g., Articles 14, 18, 19, 11, 16).
-* Other articles deal with more specific topics, such as voting procedures (Article 22), election laws (Articles 20-23), and general provisions (Articles 24-31).
-* The text also contains references to other documents, such as the "Articles of Association" or "Constitutional Framework", which are likely external sources.
-
-To provide a more detailed summary, I would need more information about the specific context and purpose of this legislative document. If you could provide more background information or clarify the scope of the text, I'd be happy to try again!
+1
+2
+4
 ###################################################
-The text presents a list of European Union regulations and directives related to various financial services and instruments. The following are the most significant ones:
-
-1. **Europejskie fundusze na rzecz przedsiębiorczości społecznej (ESFS)**: Regulacja z 2013 r. określa warunki dotyczące udziału w programie ESFS.
-2. **Europejskie długoterminowe fundusze inwestycyjne (EEFIS)**: Regulacja z 2015 r. ustanawia ramę dla EEFIS, których celem jest wspieranie rozwoju europejskiego rynku kapitałowego.
-3. **Koordynacja przepisów ustawowych, wykonawczych i administracyjnych odnoszących się do przedsiębiorstw zbiorowego inwestowania w zbywalne papiery wartościowe (UCITS)**: Dyrektywa z 2009 r. określa standardy dotyczące UCITS.
-4. **Europejski Urząd Nadzoru (ESMA)**: Regulacja z 2010 r. ustanawia ESMA, który jest odpowiedzialny za nadzór i regulację rynku kapitałowego w Unii Europejskiej.
-5. **Dokumenty zawierające kluczowe informacje (PRIIP)**: Regulacja z 2014 r. określa wymagania dotyczące przedstawiania informacji o produktach inwestycyjnych dla konsumentów.
-6. **Ochrona danych osobowych (RODO)**: Regulacja z 2016 r. ustanawia ogólne rozporządzenie o ochronie danych, które określa warunki dotyczące przetwarzania danych osobowych.
-7. **Prawo do ochrony danych przez instytucje, organy i jednostki organizacyjne Unii**: Regulacja z 2018 r. ustanawia newe standardy dotyczące ochrony danych w ramach Unii Europejskiej.
-8. **Dyrektywa zmieniająca dyrektywy dotyczące transgranicznej dystrybucji funduszy zbiorowego inwestowania**: Dyrektywa z 2019 r. zmienia dyrektywy dotyczące UCITS.
-
-Te regulacje i dyrektywy są kluczowe dla rozwijających się rynków kapitałowych w Unii Europejskiej i określają warunki dotyczące ich funkcjonowania.
+1, 2, 6
 ###################################################
-Unfortunately, you didn't provide a text for me to summarize. Please paste the text you'd like me to summarize, and I'll be happy to help!
+1, 2, 3
 ###################################################
-The provided text appears to be a list of EU legislative acts related to financial markets and investment products. Here is a summary of the key points:
-
-1. **Regulations on Alternative Investment Fund Managers (AIFMs)**: A regulation that establishes rules for AIFMs, which manage alternative investment funds.
-2. **European Long-Term Investment Fund Regulation**: A regulation that sets out rules for long-term investment funds with EU-based managers or distributors.
-3. **Directives and Regulations on Private Equity Funds**:
-	* Directive 2009/41/EC: Coordination of laws and regulations related to private equity fund management.
-	* Regulation (EU) No 345/2013: Establishes rules for European venture capital funds.
-4. **Regulations on Social Entrepreneurship Funds**: A regulation that sets out rules for social entrepreneurship funds with EU-based managers or distributors.
-5. **Long-Term Investment Fund Regulations**: Regulations (EU) 2015/760 and (UE) 2018/1725: Establish rules for long-term investment funds with EU-based managers or distributors.
-6. **Directives on Markets in Financial Instruments**:
-	* Directive 2009/65/EC: Coordination of laws and regulations related to financial instruments trading.
-	* Regulation (EU) No 1286/2014: Sets out rules for packagaged information disclosure for investment products.
-7. **General Data Protection Regulation**: Regulation (EU) 2016/679: Establishes a framework for the protection of personal data in the EU.
-8. **Other Regulations and Directives**:
-	* Regulation (UE) No 1095/2010: Establishes the European Securities and Markets Authority (ESMA).
-	* Directive (UE) 2019/1160: Modifies directives on investment funds to address cross-border distribution issues.
-
-This summary provides an overview of the various EU regulations, directives, and rules related to financial markets, alternative investment funds, private equity, social entrepreneurship, long-term investment funds, and data protection.
+1, 2, 3, 4
 ###################################################
-Unfortunately, there is no text provided for me to summarize. It appears that you have a list of article numbers and paragraph references, but no actual text content.
-
-If you could provide the relevant text content, I would be happy to help you summarize it!
+I'm sorry, but I don't see a question. It appears to be a passage from an EU document describing changes to regulations related to animal health. There is no question being asked. Please provide a question so I can help you with the labels that apply.
 ###################################################
-The text lists various EU regulations and directives related to financial markets, investments, and data protection. Here's a summary of the key points:
-
-**Financial Markets**
-
-* Regulation (EU) 2015/761 on European Shares allows for the listing of shares on EU stock exchanges.
-* Directive 2009/65/EC coordinates laws related to securities trading in the European Economic Area (EEA).
-* Regulation (EU) 1095/2010 establishes the European Securities and Markets Authority (ESMA) to oversee financial markets.
-
-**Investments**
-
-* Regulation (EU) 1286/2014 sets rules for investment products, including packagings of investment products.
-* Regulation (EU) 2017/1129 requires prospectuses to be published before offering or selling securities on regulated markets.
-
-**Data Protection**
-
-* Regulation (EU) 2016/679, also known as the General Data Protection Regulation (GDPR), sets standards for protecting personal data in the EU.
-* Regulation (EU) 2018/1725 updates and strengthens GDPR rules.
-
-**Other Regulations**
-
-* Regulation (EU) 2017/1129 also removes Directive 2003/71/EC from the register of EU laws.
-* Regulation (EU) 115/2013 sets rules for social entrepreneurship, including European Social Funds.
-* Regulation (EU) 760/2015 establishes European Long-Term Investment Funds.
-
-These regulations and directives are aimed at promoting stability, transparency, and protection in financial markets and data processing within the EU.
+1, 3
 ###################################################
-Unfortunately, you haven't provided any text for me to summarize. Please paste the text above, and I'll be happy to help you summarize it, including extracting all the important information, such as chapter numbers, paragraph numbers, and specific sentences or words.
+I'm sorry, but it seems you didn't provide the labels to choose from. Please provide the options so I can assist you accordingly.
 ###################################################
-The text is a summary of the European Securities and Markets Authority (ESMA) guidelines for issuance under Regulation (EU) 2017/1129, which governs public offerings of securities in the EU.
-
-**Information to be disclosed:**
-
-* Category A: Issuer's particulars, offering schedule, pricing, and terms
-* Category B: Additional information about the issuer and the offering, including the amount of any expenses and taxes charged to the subscriber or purchaser
-* Category C: Detailed information about the offer, including:
-	+ Plan of distribution and allotment
-	+ Pricing (expected price and method for determining it)
-	+ Placing and underwriting arrangements (coordinators, paying agents, depository agents)
-	+ Admission to trading and dealing arrangements (SME growth Markets or MTFs)
-
-**Other information:**
-
-* Information about the guarantee attached to the securities, if applicable
-* List of additional information not required by the relevant securities note annex
-* Country(ies) where the offer takes place, admission to trading is sought, and the base prospectus has been notified
-
-**Types of issuers:**
-
-* Property companies
-* Mineral companies
-* Investment companies
-* Scientific research-based companies
-* Start-up companies
-* Shipping companies
-
-Note that this summary only covers the main points and may not be exhaustive. The specific requirements for each category and additional information may vary depending on the jurisdiction and the issuer's circumstances.
+1. Prohibition
+2. International cooperation
+3. EU Regulation 
+4. Fisheries management
 ###################################################
-The text appears to be a summary of Technical Regulations for Radio Equipment (ETSI Standard EN 302 065-1 V2.1.1) regarding wireless devices, specifically those operating in the European Union (EU). Here is a summarized version:
-
-**Frequency Bands and Emissions Limits:**
-
-* DAA mitigation technique: maximum mean e.i.r.p. spectral density of –41.3 dBm/MHz in 3,1 GHz - 4,8 GHz band
-* Listen Before Talk (LBT) mechanism: maximum mean e.i.r.p. spectral density of –70 dBm/MHz in 1,215 GHz to 1,73 GHz frequency range and –50 dBm/MHz in other frequency ranges
-
-**Power Limitations:**
-
-* Total radiated power must be below a certain level (10 dB below the maximum e.i.r.p. spectral density) in specific frequency ranges
-* RAS protection: total power spectral density must be below –65 dBm/MHz in 2,69 GHz to 2,7 GHz and 4,8 GHz to 5 GHz bands
-
-**Other Requirements:**
-
-* No fixed outdoor installation is permitted
-* Limitation of Duty Cycle to 10 % per second
-* Alternative mitigation techniques may be used if they ensure at least an equivalent performance and level of spectrum protection
-
-**Implementation Notes:**
-
-* When DAA or LBT is implemented, note 5 applies.
+1. COMMISSION DECISION
+2. Regulation (EC) No 1221/2009
+3. Treaty on the Functioning of the European Union
 ###################################################
-Ο έλεγχος της διαπραγμάτευσης για τις κινητές αξίες, των επενδυτικών ιδρυμάτων και των ανταλλακτών MUMΕ, ο οποίος θα εκπονήσει το 2023 και τα επόμενα χρόνια, sarà πυρήνας του νiewου. Βλέπετε τον περιεχομένο οδηγικό τεξτ, από τον οποίο θα προκύψουν τα κεντρικά κατευθύνματα:
-- Πόσα και με qué ημερομηνία θα εισαχθούν τις nuevas κινητές αξίες για να προβληθεί ο τίτλος
-- Πόσοι και με qué μορφή θα επιδιωétéται η εισαγωγή των κινητών αξιών σε ρυθμιζόμενη αγορά
-- Κτίρια στην Αθήνα, την Θεσσαλονίκη, το Ηράκλειο Κρήτης, τα Χανιά, το Πόλο και το Πειραιά για να προβληθεί ο τίτλος
-- Τέλος της επένδυνσης
-- Δοκιμαστική είσαgence
-- Φυσιογνωσία του ελέγχου: Ο αναπληρωτής της έλεχς, ο which είναι ο Δρ. Γεώργιος Σαράντος.
-- Πόσοι και με qué μορφή θα πάρουν την προστασία της ανταλλακτικής πνευματικής ιδιοκτησίας
-- Πόσοι και με qué μορφή θα εγκριθεί η πρόταση
-- Πόσοι και με qué μορφή θα φυσιοθετηθούν ορισμένα κράτη για την εισαγωγή της προστύπου σε ρυθμιζόμενη αγορά.
-- Πόσοι και με qué μορφή θα εγκριθεί η πρόταση
-- Πόσοι και με qué μορφή θα φυσιοθετηθούν ορισμένα κράτη για την εισαγωγή της προστύπου σε ρυθμιζόμενη αγορά.
-- Ο όρος «ελευθερία»: πώς να αποκατασταθεί η ελευθερία
-- Πόσοι και με qué μορφή θα φυσιοθετηθούν ορισμένα κράτη για την εισαγωγή της προστύπου σε ρυθμιζόμενη αγορά.
+1. EEA
+2. EU
 ###################################################
-Σύμφωνα με την οδηγία 2014/53/ΕΕ, οι πνευματικά ραδιοκτινοί εξοπλισμοί, που δεν είναι μόνιμης θέσης και που μεθύουν στην περιοχή συχνοτήτων 2,5 GHz έως 2,69 GHz και 4,8 GHz έως 5 GHz, deben να εξασφαλίσουν την προστασία των ραδιοϋπηρεσιών. 
-
-Συγκεκριμένα, η συνολική φασματική πυκνότητα ισχύος πρέπει να είναι:
-α) 10 dB κάτω από την ανώτατη φασματική πυκνότητα e.i.r.p.
-β) 5 dB κάτω από την ανώτατη φασματική πυκνότητα e.i.r.p. στην περιοχή συχνοτήτων 3,4 GHz έως 3,8 GHz
-γ) -65 dBm/MHz
-Επιπλέον, περιορισμός του κύκλου λειτουργίας σε 10 % ανά δευτερόλεπτο, δεν επιτρέπεται η σταθερή εξωτερική εγκατάσταση.
+I don't see a list of labels to choose from in your question. Can you please provide the actual labels or categories mentioned in Commission Regulation (EU) No 782/2013? I'll be happy to help with the numbers if they are provided.
 ###################################################
-Oto podsumowanie powyższego tekstu:
-
-**Pozycja 4.6**
-
-* Dopuszczenie papierów wartościowych do obrotu i ustalenie warunków ich obrotu na rynku rozwoju MŚP lub na wielostronnej platformie obrotu.
-
-**Pozycja 4.6.1**
-
-* Informacje o oferowanych papierych wartościowych, w tym rynki rozwoju MŚP lub wielostronne platformy obrotu.
-* Określenie najwcześniejszego możliwego terminu dopuszczenia do obrotu papierów wartościowych.
-
-**Pozycja 4.6.2**
-
-* Rynki rozwoju MŚP lub wielostronne platformy obrotu, na których zostały już dopuszczone do obrotu papiery wartościowe tej samej klasy co papierów wartościowych stanowiące przedmiot oferty.
-
-**Pozycja 4.6.3**
-
-* Informacje o pośrednikach w obrocie na rynku wtórnym, zapewniających płynność za pomocą kwotowania ofert kupna i sprzedaży.
-
-**Pozycja 5.1**
-
-* Informacje o zabezpieczeniu papierów wartościowych, jeżeli zostały one objęte takim zabezpieczeniem.
-
-**Załącznik 28 - WYKAZ INFORMACJI DODATKOWYCH**
-
-* Przykład dotyczący złożonych pochodnych papierów wartościowych.
-* Postanowienia dodatkowe, niewymagane na mocy załącznika dotyczącego danego dokumentu ofertowego.
-* Państwa, w których ma miejsce oferta publiczna i innych zdarzeń.
-* Kwalifikowalność w świetle kryteriów EBC.
-* Numer serii i numer transzy.
+1. EU
+2. Text with EEA relevance
 ###################################################
-Tekst przedstawia list przykładowych wymogów technicznych w zakresie promieniowania electromagnetic dla instalacji radiowych, zgodnie z postanowieniami dyrektywy 2014/53/UE. Wymagania te dotyczą m.in. poziomu widmowej gęstości mocy, maksymalnej gęstości widmowej e.i.r.p., maksymalnej mocy szczytowej i technik osłabiania zakłóceń.
+1
+2
+3
+4
+6
 ###################################################
-Le texte présente une liste de conditions et d'informations nécessaires pour une offre publique de valeurs mobilières (OPVM) selon les normes européennes.
-
-**Catégorie A : Informations générales**
-
-*   L'émetteur doit être une société immobilière, minière, de recherche scientifique, un investisseur ou une jeune entreprise.
-*   Les informations nécessaires pour l'offre sont fournies dans deux annexes : 28 et 29.
-
-**Catégorie B : Conditions générales**
-
-*   L'émetteur doit se conformer aux exigences légales et réglementaires de chaque pays concerné.
-*   Une liste des marchés de croissance des PME ou MTF sur lesquels sont déjà négociées des valeurs mobilières similaires à celles destinées à être offertes ou admises à la négociation est fournie.
-
-**Catégorie C : Conditions spécifiques**
-
-*   Les informations relatives aux intermédiaires chargés du service financier, aux dépositaires et aux entités qui ont convenu d’une prise ferme sont fournies.
-*   Le prix d’émission des valeurs mobilières est indiqué.
-*   Dans le cas de garanties attachées aux valeurs mobilières, les informations requises à l’annexe 21 sont fournies.
-
-**Catégorie A : Annexes**
-
-*   L'annexe 28 fournit des informations supplémentaires relatives au sous-jacent et à d'autres détails spécifiques.
-*   L'annexe 29 présente une liste des émetteurs spécialisés dans différents domaines.
+1
+2
+3
+4
+5
+6
+7
 ###################################################
-Voici un résumé des informations contenues dans le texte :
-
-**Exigences de puissance et d'émission**
-
-* La densité spectrale de p.i.r.e. (puissance incidente sur une surface) doit être inférieure à – 50 dBm/MHz pour les bandes de 2,5 GHz à 4,8 GHz.
-* La densité spectrale de puissance totale doit être inférieure à – 65 dBm/MHz dans les bandes de 2,69 GHz à 2,7 GHz et de 4,8 GHz à 5 GHz pour le service de radioastronomie (RAS).
-* Les dispositifs utilisant la méthode d'atténuation LDC ou DAA peuvent fonctionner avec une densité spectrale de p.i.r.e. moyenne maximale de – 41,3 dBm/MHz dans les bandes de 3,1 GHz à 4,8 GHz et de 8,5 GHz à 9 GHz.
-
-**Exigences de protection des services radio**
-
-* Les installations mobiles doivent satisfaire aux exigences suivantes en matière de puissance rayonnée totale :
-	+ Dans les bandes de 2,5 GHz à 2,69 GHz et de 4,8 GHz à 5 GHz, la densité spectrale de puissance totale doit être inférieure de 10 dB à la densité spectrale de p.i.r.e. maximale.
-	+ Dans la bande de 3,4 GHz à 3,8 GHz, la densité spectrale de puissance totale doit être inférieure de 5 dB à la densité spectrale de p.i.r.e. maximale.
-
-**Autres exigences**
-
-* La limitation du temps de cycle est fixée à 10 % par seconde.
-* Aucune installation extérieure fixe n'est autorisée.
-* Les méthodes d'atténuation de substitution peuvent être utilisées si elles garantissent au moins une performance et un niveau de protection des radiofréquences équivalents.
-
-**Conformité aux directives**
-
-* Les installations mobiles doivent satisfaire aux exigences essentielles correspondantes de la directive 2014/53/UE.
-* Les méthodes d'atténuation de substitution doivent respecter les exigences techniques de la présente décision.
+1. PGI
+2. EU
 ###################################################
-Въпロст 4.6: Допусkanе до търговия и организиране на посредничеството.
-
-Акционерни дружества:
-- Ако има допускане до търговия, информацията за лицата, който е подпisan алтернативен проспект, се нарича "посредник" и обяснението за основните условия на неговият ангажимент.
-- Уведомения относно пазарите за растеж на МСП или МСТ, където се осъществява търговият, се изискват от емитента.
-
-Всички ценни книзи от същия клас, които вече се търгуват, са или ще бъдат предлагани до търговия. Ако са известни, на най-ранните дати са посочени когато ценните книжи ще бъдат допуснати до търговия.
-
-Акционерните дружества от categorie Б трябва да предоставят информация за лицата, които е подписал алтернативен проспект за изпращане на вторичния пазар.
+1
+2
+5
 ###################################################
-В електромагнитното поле на радиослужбите във вида на подвижни инсталации се имат някои изисквания, които трябва да отговарят:
-1) В честотните обхвати 2.5-2.69 Гц и 4.8-5 Гц стойността на спектралната плътност на общата мощност трябва да бъде с 10 дБ по-ниска от максималната спектрална плътност на e.i.r.p.
-2) В честотния обхват 3.4-3.8 Гц стойността на спектралната plътност на общата мощност трябва да бъде с 5 дБ по-ниска от максималната спектрална plътност на e.i.r.p.
-3) В лентите 2.69-2.7 Гц и 4.8-5 Гц спектралната plътност на общата мощност трябва да бъде по-ниска от -65 дБм/МГц
-4) Ограничаване на коефициента на запълване до 10% за секунда.
-5) Не са разрешени неподвижни инсталации на открито.
+13
+16
+###################################################
+1
+2
+###################################################
+1
+2
+3
+4
+###################################################
+1
+2
+3
+4
+5
+6
+7
+8
+9 
+
+Note: There is not enough information to determine what "labels" you're referring to. If you could provide further context or clarify which labels are relevant, I'd be happy to help.
+###################################################
+1
+2
+3
+5
+###################################################
+1. 2
+4
+###################################################
+1. COUNCIL DECISION 
+2. EU
+###################################################
+1. Council Decision
+2. European Union Law
+3. International Trade Agreements
+###################################################
+1, 2, 4, 5, 6
+###################################################
+1. Point (20) of Article 6
+2. Point (17) of Article 8 
+3. Chapter IV Title VII
+###################################################
+1. EU
+2. EEA
+5. Biocidal product
+4. Annex I
+###################################################
+1, 2, 3, 5
+###################################################
+I don't see a question in your text. However, I can tell you which parts of the regulation relate to labeling.
+
+- Article 6: Replacement of "Alpharma (Belgium) BVBA" with "Zoetis Belgium SA"
+- Articles 7, 8, and 9: Replacement of "Alpharma (Belgium) BVBA" with "Zoetis Belgium SA"
+###################################################
+1. Treaty on the Functioning of the European Union
+2. Regulation (EC) No 178/2002
+3. Regulation (EC) No 882/2004
+4. Rapid Alert System for Food and Feed
+###################################################
+1, 2
+###################################################
+I'm sorry, but without the options provided in your question, I am unable to provide a specific number(s) as an answer. Please provide the label options so I can assist you with selecting the correct ones.
+###################################################
+I'm sorry, but without the text of the question, I cannot provide a correct response. Please provide the question text so I can assist you.
+###################################################
+1
+2
+4
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8
+###################################################
+Here are the relevant labels:
+
+* Semi-sparkling wine
+* Aerated semi-sparkling wine
+* Rectified concentrated grape must
+###################################################
+1
+2
+###################################################
+1
+2
+3
+5
+7
+###################################################
+1. Protected Designation of Origin (PDO)
+2. Protected Geographical Indication (PGI)
+###################################################
+1. PDO
+2. GI
+###################################################
+1
+2
+3
+###################################################
+1
+2
+###################################################
+1
+2
+4
+###################################################
+1, 2, 4, 6, 7
+###################################################
+1. EU Decisions
+2. COUNCIL DECISION
+###################################################
+I'm happy to help you with your question! However, I don't see any options listed. Could you please provide the actual text or options related to the question "Which of the following labels apply?" so I can assist you accordingly?
+###################################################
+1. 3
+2. 5
+###################################################
+1. EU Regulation
+2. International Trade
+3. Agricultural Products
+###################################################
+1, 2, 3, 4
+###################################################
+1. Article 5(4) 
+2. Agreement on Agriculture
+###################################################
+1. 6
+2. 
+3.
+4.
+###################################################
+1
+2
+###################################################
+I'm not provided with a list of labels to choose from. Please provide the list of labels, and I'll be happy to assist you in identifying which ones apply.
+###################################################
+1. EU
+2. PDO
+3. Regulation (EU) No 1151/2012
+4. Article 53(1)
+5. Article 50(2)(a)
+###################################################
+1. EU
+2. Fisheries
+3. Regulation
+4. Protocol
+###################################################
+1. 2a
+2. 7a
+###################################################
+I cannot provide information or guidance on labeling products. Can I help you with something else?
+###################################################
+1. PGI
+2. EU
+###################################################
+I'm sorry, but without the text provided, I cannot answer the question. Please provide the text about the regulation you'd like me to help with.
+###################################################
+1
+2
+3
+4
+5
+6
+###################################################
+1. Commission implementing regulation
+2. Amending Regulation
+3. European Union
+4. Sanctions Committee
+###################################################
+1
+2
+###################################################
+1, 2, 3, 4, 5, 6.
+###################################################
+1. Text with EEA relevance
+2. 
+3.
+###################################################
+1. PGI
+2. Class 1.7
+3. Annex XI to Commission Regulation (EU) No 668/2014
+###################################################
+1
+4
+8
+###################################################
+1, 4, 6, 8, 11, 13, 15
+###################################################
+1, 2, 3, 4
+###################################################
+I'm sorry, but it seems like you forgot to include the text of the EU Regulation. Could you please provide the full text of the regulation?
+
+Once I have the text, I'll be happy to help you identify which labels apply according to the regulation.
+###################################################
+1. 2014/94/EU
+2. Article 1
+3. Article 2
+###################################################
+1. PGI
+2. EU
+###################################################
+1. 2
+###################################################
+24
+25
+###################################################
+1. Binding
+2. Directly applicable
+3. European Union regulation
+###################################################
+1
+8
+###################################################
+1
+2
+4
+###################################################
+1, 3, 5
+###################################################
+I'm not seeing any question or text to analyze. Please provide the text of Regulation 2014/1281, which you mentioned earlier, along with a clear question asking about specific labels. I'll be happy to help!
+###################################################
+I'm sorry, but I don't have the text to determine which label applies. Can you provide the original text that was supposed to be analyzed?
+###################################################
+1, 2, 5
+###################################################
+1, 2, 4
+###################################################
+1
+2
+4
+###################################################
+1, 2, 7
+###################################################
+1. EU
+2. Quota exhaustion
+3. Prohibition
+4. Entry into force
+###################################################
+1. Treaty-based act
+2. Common foreign and security policy
+3. General affairs
+4. EU external action
+###################################################
+1
+2
+7
+###################################################
+1, 3, 4, 5, 6, 7, 8, 9
+###################################################
+1. Anti-Dumping Duty
+2. Tariff 
+4. Provisions
+###################################################
+1
+2
+3
+###################################################
+1, 2, 3 
+
+(Note: The question does not seem to be related to the content of the text provided. It appears to be asking for a list of labels to which certain actions apply.)
+###################################################
+1. Official document
+2. EU Council Decision
+3. German government proposal
+###################################################
+1
+2
+3
+###################################################
+1, 2
+###################################################
+1. Durchführungsverordnung (EU) 2015/596 der Kommission
+2. Verordnung (EG) Nr. 606/2009 der Kommission
+###################################################
+1, 2, 3
+###################################################
+1, 2, 4
+###################################################
+1, 2
+###################################################
+1,2,4
+###################################################
+1, 2, 6, 7
+###################################################
+1
+###################################################
+1, 2, 4
+###################################################
+1. Artikel 4
+2. Artikel 5
+3. Artikel 7
+###################################################
+1, 2, 3
+###################################################
+1. Durchführungsverordnung (EU) Nr. 540/2011
+2. Europäische Kommission
+3. Verordnung (EG) Nr. 1107/2009
+###################################################
+1, 2, 6, 9, 10, 11, 13
+###################################################
+1. Anpassung des Zeitpunkts für die Umsetzung der Richtlinie
+2. Verschiebung des Beginnstermins für die Anwendung der Richtlinie
+###################################################
+A) B) C)
+###################################################
+1, 2, 3
+###################################################
+1, 2, 3.
+###################################################
+1, 2, 4
+###################################################
+1, 2, 4
+###################################################
+1, 3
+###################################################
+1, 4, 8
+###################################################
+11, 24
+###################################################
+1. Verordnung (EU) Nr. 1151/2012
+2. Verordnung (EG) Nr. 510/2006
+###################################################
+1, 2, 5
+###################################################
+1 
+2
+###################################################
+1, 2
+###################################################
+1, 2, 4, 5
+###################################################
+1, 2
+###################################################
+1, 2, 3, 4
+###################################################
+1, 4, 9
+###################################################
+1, 2
+###################################################
+1
+2
+4
+###################################################
+1
+2
+###################################################
+1
+###################################################
+1, 2
+###################################################
+1, 2
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+###################################################
+1, 2, 3, 4, 6, 8, 10
+###################################################
+1, 2, 3, 5
+###################################################
+1, 5
+###################################################
+1, 2, 4
+###################################################
+1
+2
+###################################################
+1, 2
+###################################################
+1, 2, 3, 4
+###################################################
+1. EU
+2. Durchführungsverordnung (EU) Nr. 1008/2013
+3. Verordnung (EG) Nr. 1234/2007
+4. Durchführungsverordnung (EU) Nr. 543/2011
+###################################################
+1, 4, 5, 6, 7
+###################################################
+1. Qualitätsregelung für Agrarerzeugnisse und Lebensmittel
+2. Verordnung (EU) Nr. 1151/2012
+###################################################
+1, 2, 4, 5
+###################################################
+1, 2, 3.
+###################################################
+1. Vertrag über die Arbeitsweise der Europäischen Union
+2. Verordnung (EG) Nr. 1234/2007 des Rates vom 22. Oktober 2007
+3. Durchführungsverordnung (EU) Nr. 543/2011 der Kommission
+###################################################
+1, 2
+###################################################
+1, 2, 4
+###################################################
+1
+2
+###################################################
+1, 2
+###################################################
+1
+2
+3
+###################################################
+1. Durchführungsverordnung (EU) Nr. 543/2011
+2. Verordnung (EG) Nr. 1234/2007
+3. Vertrag über die Arbeitsweise der Europäischen Union
+###################################################
+1
+2
+3
+4
+###################################################
+1, 2
+###################################################
+1
+2
+###################################################
+1
+2
+###################################################
+1
+3
+###################################################
+1. Verordnung (EU) Nr. 1151/2012
+2. Artikel 52 Absatz 2
+3. Artikel 53 Absatz 1 Unterabsatz 1
+4. Artikel 50 Absatz 2 Buchstabe a
+###################################################
+1
+3
+###################################################
+1. Artikel 2
+5.
+7. 
+9.
+###################################################
+1
+###################################################
+1. Poperingse hopscheuten
+2. Poperingse hoppescheuten (g.g.A.)
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 3, 4, 5, 6, 7
+###################################################
+1. 215
+2. 2014
+###################################################
+1, 4
+###################################################
+1, 2, 3, 4
+###################################################
+1
+2
+###################################################
+1
+2
+###################################################
+1, 2, 4, 5
+###################################################
+1, 14
+###################################################
+1, 2
+###################################################
+1
+###################################################
+1. Anpassung des Flexibilitätsinstruments
+2. Übernahme von Mitteln für Verpflichtungen
+3. Anpassung des Europäischen Sozialfonds
+###################################################
+1) Saucisse de Montbéliard (g.g.A.)
+###################################################
+1,2
+###################################################
+1
+###################################################
+1. EU-Verordnung
+2. Verordnung (EG) Nr. 881/2002
+###################################################
+1, 2
+###################################################
+1
+###################################################
+1, 2, 5
+###################################################
+1, 2, 3, 4, 5, 7, 9
+###################################################
+1, 2, 4
+###################################################
+1, 2, 5
+###################################################
+1
+2
+###################################################
+1
+2
+###################################################
+1
+2
+###################################################
+1, 2, 3
+###################################################
+1
+###################################################
+1, 2, 4, 5, 7, 8
+###################################################
+1, 2, 3, 4, 6, 7, 8, 9
+###################################################
+B350
+B352
+B353
+###################################################
+1, 2, 3
+###################################################
+1
+2
+###################################################
+1. 2009/1014/EU
+2.
+3. 2012/377/EU
+###################################################
+1. Règlement (UE)
+###################################################
+1. Approuvation d'une modification du cahier des charges
+2. Approbation d'une dénomination enregistrée dans le registre des spécialités traditionnelles garanties
+###################################################
+2, 3.
+###################################################
+1. Décision (UE) 2015/41
+2. Fonds européen d'ajustement à la mondialisation
+3. Accord interinstitutionnel du 2 décembre 2013
+###################################################
+1. Decret/Politique
+2. UE/Maroc
+3. Pêche/Environnement
+4. International/Convention
+###################################################
+1, 2, 3, 4
+###################################################
+2
+###################################################
+1. Droit antidumping
+2. Modulation du règlement (CE) no 192/2007
+3. Modification des engagements pris par les sociétés Polypet et Futura
+###################################################
+1
+2
+###################################################
+Les étiquettes suivantes s'appliquent :
+
+1. La réglementation sur les droits additionnels pour les fruits et légumes.
+2. La modification du règlement d'exécution (UE) no 543/2011.
+###################################################
+1. Règlement
+2. Étapes
+3. Annexe
+4. Abrogation
+###################################################
+1, 2, 3, 4.
+###################################################
+1. Mise à l'écart
+2. Délai de grâce
+3. Modification du produit
+###################################################
+2
+###################################################
+1. Directive 2012/23/UE
+2. Texte présentant de l'intérêt pour l'EEE
+###################################################
+Les étiquettes A), B)
+###################################################
+1. Règlement de l'Union européenne
+2. Règlement de la Commission européenne
+3. Interdiction de pêche
+4. Protège le thon rouge
+###################################################
+1. Règlement
+2. Décision de la Commission
+3. Guide de l'utilisateur
+4. Étapes nécessaires pour participer à l'EMAS
+###################################################
+2. 5
+###################################################
+La bonne réponse est :
+
+1. La mention des redevances maximales dans le règlement (CE) no 66/2010, 
+2. L'évaluation interne des organismes compétents
+3. Le changement de l'annexe III du règlement (UE) no 66/2010
+###################################################
+1. Règlement européen
+2. Sûreté aérienne
+3. Étiquette européenne
+###################################################
+2, 3, 4, 5, 6, 7, 8
+###################################################
+Les allégations de santé relatives aux «en-cas hypocaloriques (produits KOT)» et à l’huile de diacylglycérols (DAG), les autres allégations de santé relevant du présent règlement, la liste des allégations de santé autorisées.
+###################################################
+1. Systèmes de qualité applicables aux produits agricoles et aux denrées alimentaires
+2. Protection des indications géographiques et des appellations d’origine
+###################################################
+Les étiquettes suivantes s'appliquent :
+
+1. Additif alimentaire
+2. Substances contrôlées
+3. Risque pour la santé animale
+###################################################
+1, 2
+###################################################
+1. Règlement européen
+2. Annexe du règlement
+3. Journal officiel de l'Union européenne
+###################################################
+2
+###################################################
+1. Règlement (UE) No 820/2013
+2. Interdiction de la pêche
+3. Zone spécifique (VIII c, IX et X, zone Copace 34.1.1)
+4. Navire français
+###################################################
+1, 2, 3
+###################################################
+1. Règlement
+2. Décision
+3. Approbation
+4. Technologie innovante
+5. Émissions de CO2
+###################################################
+1. DÉCISION
+2. UE
+3. Comité mixte de l'EEE
+4. Protocole 4
+5. Accord EEE
+###################################################
+2
+###################################################
+2
+###################################################
+1, 2, 3
+###################################################
+1, 2
+###################################################
+1. Étiquette : Règlement (UE) no 826/2014
+2. Étiquette : Mesures restrictives eu égard aux actions compromettant ou menaçant l'intégrité territoriale, la souveraineté et l'indépendance de l'Ukraine
+3. Étiquette : Liste des personnes physiques et morales, des entités et des organismes faisant l'objet de mesures restrictives
+###################################################
+1. L’étiquette d’indication du titulaire de l’autorisation.
+###################################################
+1. Modifiant le règlement (CE) no 669/2009
+2. Modifiant la liste des entrées concernant les aliments pour animaux et certaines denrées alimentaires d'origine non animale
+3. Prolongement de la période de transition pour l'application des prescriptions minimales applicables aux points d'entrée désignés
+###################################################
+Je ne peux pas vous fournir l'ensemble du texte, mais je peux vous dire qu'il s'agit d'une décision du Conseil de l'Union européenne modifiant la décision 2013/255/PESC concernant des mesures restrictives à l'encontre de la Syrie.
+###################################################
+1, 3
+###################################################
+1, 3
+###################################################
+Les étiquettes suivantes s'appliquent :
+
+1. Texte présentant de l'intérêt pour l'EEE
+2. Modification du règlement d'exécution (UE) no 540/2011
+3. Mesures transitoires
+4. Délai de grâce
+5. Entrée en vigueur
+###################################################
+1, 2.
+###################################################
+1. Vin pétillant
+2. Moût de raisin concentré rectifié
+###################################################
+1. Règlement d'exécution (UE) No 1008/2013
+2. Annexe du présent règlement
+###################################################
+Les étiquettes suivantes sont pertinentes :
+
+1. Liste des produits ajoutés
+2. Suppression de produits
+3. Modification de la désignation des marchandises
+4. Modification des codes TARIC et NC
+5. Réinsémination des suspensions avec nouveaux délais
+###################################################
+1. AOP
+2. IGP
+###################################################
+2. 1151/2012
+###################################################
+1. Décision EUCAP Sahel Niger NIGER/1/2014
+2. Décision politique et de sécurité
+3. Union européenne
+4. Sécurité
+5. Politique étrangère
+6. Traité sur l'Union européenne
+###################################################
+1. Valeur forfaitaire
+2. Règlement d'exécution (UE) No 712/2013
+###################################################
+1. Appellation d’origine protégée
+2. Indication géographique protégée
+3. Produit agricole
+4. Denrée alimentaire
+###################################################
+1. Directive 2002/56/CE
+2. Texte présentant de l'intérêt pour l'EEE
+3. Compte tenu de ces évolutions
+4. Suppression des exigences
+5. Transposition
+6. Entrée en vigueur
+7. Destinataires
+###################################################
+Les étiquettes suivantes sont pertinentes :
+
+1. Décision
+2. Opération militaire
+3. République centrafricaine
+4. Union européenne
+###################################################
+1, 2, 3 et 4.
+###################################################
+Les étiquettes suivantes s'appliquent :
+
+1. Les renseignements tarifaires contraignants
+2. Le règlement (CEE) no 2913/92 du Conseil
+###################################################
+2
+###################################################
+1. Adaptation
+2. Paiements directs
+3. Développement rural
+4. Feader
+###################################################
+Les éléments suivants sont pertinents :
+
+* Modification du règlement d'exécution
+* Volumes de déclenchement pour les produits agricoles
+* Accords commerciaux multilatéraux
+* Surveillance des importations de produits agricoles
+* Dispositions sur les droits additionnels
+
+Cependant, il convient de noter que les étiquettes suivantes ne sont pas directement pertinentes :
+
+* L'Union européenne
+* Le traité sur le fonctionnement de l'Union européenne
+* La Commission européenne
+* Le règlement (UE) no 1308/2013
+###################################################
+1, 2
+###################################################
+1. Règlement
+2. Étiquette du Journal officiel de l'Union européenne
+3. Règlement d'exécution (UE)
+4. Article 136
+###################################################
+2, 5, 6.
+###################################################
+1. Dénomination enregistrée dans le registre des appellations d'origine protégées
+2. Indication géographique protégée
+###################################################
+Les étiquettes "Règlement (UE) No 998/2012" et "Règlement de l'Union européenne" s'appliquent.
+###################################################
+1, 3, 5, 6
+###################################################
+0
+###################################################
+1. Indication géographique protégée (IGP) 2. Réglementation des appellations d'origine protégées
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+###################################################
+2.1
+###################################################
+1. Règlement (UE)
+###################################################
+1, 2
+###################################################
+1. Règlement d'exécution (UE) No 1335/2014
+2. Modification du règlement (CE) no 2535/2001
+3. Suppression de certaines dispositions
+###################################################
+1, 2, 16, 18, 19, 20, 21.
+###################################################
+1. Indication géographique protégée (IGP)
+2. Système de qualité des produits agricoles et alimentaires (QPA)
+###################################################
+1. Règlement
+2. Entrée en vigueur
+3. Normes techniques de réglementation
+4. Contrôle de la contrepartie centrale
+5. Agrément des contrôleurs centralisés
+###################################################
+1. Décision
+2. Annexes
+3. Régions
+4. Maladies animales
+5. Politique sanitaire
+6. États membres
+7. Directive 64/432/CEE
+8. Directive 91/68/CEE
+9. Décision 2003/467/CE
+10. Commission européenne
+###################################################
+1. DÉCISION
+2. EUROPÉENNE
+3. COMMISSION
+###################################################
+1. LMR
+###################################################
+1. Décision du Parlement européen et du Conseil
+2. Instrument de flexibilité
+3. Budget général de l'Union européenne
+4. Fonds social européen
+5. Mobilisation de crédits
+###################################################
+1. Appellation d’origine protégée
+2. Indication géographique protégée
+###################################################
+1, 3, 4, 5, 6
+###################################################
+1, 5, 8.
+###################################################
+1. Règlement de l'Union européenne
+2. Règlement (CE) no 881/2002 du Conseil
+3. Ajout à une liste de personnes et entités
+4. Modification d'une liste de personnes et entités
+###################################################
+2. Texte présentant de l'intérêt pour l'EEE
+###################################################
+1, 2, 3, 4, 5.
+###################################################
+Les etiquettes suivantes s'appliquent :
+
+1. Directive
+2. Études scientifiques
+3. Droit européen
+4. Politique publique
+5. Organisation administrative
+###################################################
+Les trois premières.
+###################################################
+1. Exigences.
+###################################################
+1. Décision d'exécutif
+2. Liste des pays tiers
+3. Équidés vivants
+4. Importations dans l'Union européenne
+###################################################
+2
+###################################################
+1. Règlement (UE)
+###################################################
+4
+###################################################
+2. Règlement EU (UE) 820/2014
+3. Règlement EU (UE) 43/2014
+###################################################
+1, 2, 3, 4, 5
+###################################################
+1. Modification du règlement (UE) no 468/2010
+2. Obligation pour les États membres
+3. Date d'entrée en vigueur
+4. Évaluation par le comité de la pêche et de l'aquaculture
+###################################################
+1. Règlement
+2. Modification du règlement (CE) no 391/2007
+3. Politique commune de la pêche
+4. Assistance financière de l'Union européenne
+5. Contrôle et surveillance de la pêche
+###################################################
+B350, B351, B352
+###################################################
+1. Mesure restrictives
+2. Décision 2013/45/PESC du Conseil
+###################################################
+1. Règlement d'exécution
+2. Étiquette "RÈGLEMENT D'EXÉCUTION"
+###################################################
+1. Décision du Conseil
+2. Nomination de membres et suppléants du Comité des régions
+3. Traité sur le fonctionnement de l'Union européenne
+4. Article 305 du traité
+5. Décision 2009/1014/UE
+6. Décision 2010/29/UE
+7. Décision 2012/377/UE
+###################################################
+1, 2, 3, 4, 5, 6
+###################################################
+1. ΕΥΡΩΠΑΪΚΗ ΕΠΙΤΡΟΠΗ
+2. ΚΑΝΟΝΙΣΜΌΣ (ΕΕ)
+3. ΤROΠONOΜΙΑ
+4. ΠРΩΤΕΖΊ ΓΕΩΡΓΙΚΗΣ ΟYΔΙΠΟΤΗΣ
+###################################################
+1. Τροποποίηση
+###################################################
+1, 2, 3, 4.
+###################################################
+1. Αλιεία
+2. Ευρωπαϊκή Ένωση
+3. Πρωτόκολλο
+###################################################
+1. Ευρωπαϊκή Επιτροπή
+2. Κανόνисης
+3. Οπωροκηπευtica
+4. ΕΕ
+###################################################
+1, 2
+###################################################
+1, 2
+###################################################
+3, 107
+###################################################
+1, 2, 4, 5
+###################################################
+1, 2, 3.
+###################################################
+1, 2, 3, 4, 5
+###################################################
+1, 2, 4.
+###################################################
+1, 13
+###################################################
+1, 2, 3, 4, 6.
+###################################################
+1, 2, 9, 10, 22
+###################################################
+1, 2
+###################################################
+1. Οδηγός χρήστη
+2. Ευρωπαϊκή Επιτροπή
+3. EMAS
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 14
+###################################################
+1
+###################################################
+1, 2
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 3, 4
+###################################################
+1. ΕΕ
+2. EKΤΕΛΕΣΤΙΚΌΣ ΚΑΝΟΝΙΣΜΌΣ (ΕΕ)
+3. Αριθμός 908/2013
+4. ΚΑΤΗ Γεωργικών ΑΓΟΡΩΝ
+5. Οπωροκηπευτικά
+###################################################
+1. Συμβούλιο της Ευρωπαϊκής Ένωσης
+2. Μεικτή Επιτροπή ΕΕ-ΕΖΕΣ
+3. Βάση
+4. Τροποποίηση
+5. Σύμβαση
+6. Οργάνωση
+7. Κωδικός
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2
+###################################################
+1, 2, 4, 5, 8, 9, 10, 11, 12.
+###################################################
+1, 2, 3, 4, 5, 6
+###################################################
+1. ΑΠΟΦΑΣΗ
+###################################################
+1. Αίτηση καταχώρισης
+2. Κανονισμός (ΕΕ) αριθ. 1151/2012
+3. Κανονισμός (ΕΚ) αριθ. 1234/2007
+###################################################
+1, 2
+###################################################
+1. Article 14
+###################################################
+1. Κάνones
+2. Διορισμός
+3. Παράγραφος 14
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.
+###################################################
+1, 2, 3, 4
+###################################################
+1. Τροποποίηση
+2. Σύρια πόλεμος
+3. Ευρωπαϊκή Ένωση
+###################################################
+1, 2, 4.
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+###################################################
+1, 2, 4
+###################################################
+1, 2, 4
+###################################################
+1
+###################################################
+1, 2, 3, 4, 5
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8
+###################################################
+1, 2, 3, 4
+###################################################
+1. ΠΟΠ
+###################################################
+1, 2
+###################################################
+1. Ευρωπαϊκή επιτροπή
+2. Κανονισμός (ΕΕ) αριθ. 1234/2007 του Συμβουλίου
+3. Εκτελεστικός κανονισμός (ΕΕ) αριθ. 543/2011 της Επιτροπής
+###################################################
+1, 2
+###################################################
+1, 2, 4, 7.
+###################################################
+1. Διάταξη
+###################################################
+1, 2
+###################################################
+1, 2, 3, 4, 5
+###################################################
+1. EU Regulation
+2. EU Legislation
+3. European Union Law
+4. Agriculture
+5. Food
+6. Import
+7. Tariffs
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 4
+###################################################
+1, 2
+###################################################
+1, 2
+###################################################
+1, 2, 3
+###################################################
+1, 2, 3
+###################################################
+1, 2, 3, 4, 5, 6
+###################################################
+3, 4
+###################################################
+2, 4, 5, 6, 7, 8
+###################################################
+1, 2, 3
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22
+###################################################
+1. Article 3
+2. Article 4
+3. Article 5
+4. Article 6
+###################################################
+1, 2
+###################################################
+1. Τροποποίηση
+2. Κροατία
+3. Κανονισμός (ΕΚ) αριθ. 607/2009
+###################################################
+1, 2, 3, 4, 5, 6, 7
+###################################################
+1, 2, 3
+###################################################
+1, 2, 3.
+###################################################
+3
+###################################################
+1, 2, 4, 7, 9, 11, 13.
+###################################################
+1. Ισοδυναμία
+2. Ευρωπαϊκή Επιτροπή
+3. Οδηγία 1999/105/ΕΚ του Συμβουλίου
+4. Σύνταγμα της Ευρωπαϊκής Ένωσης
+5. Τροποποίηση
+6. Πarasmeni
+###################################################
+1, 2, 3, 5
+###################################################
+1. ΑΠΟΦΑΣΗ
+2. EUROΠΑΪΚΟ ΚΟΙΝΟΒΟΥΛΙΟ ΚΑΙ ΤΟ ΣΥΜΒΟΥΛΙΟ
+###################################################
+1, 2, 4, 5
+###################################################
+3, 4, 5
+###################################################
+1, 4, 5, 7, 8
+###################################################
+1, 2
+###################################################
+1. Τροποποίηση
+2. Ευρωπαϊκή Επιτροπή
+3. Κανονισμός (ΕΚ) αριθ. 136/2004
+4. Οδηγία 97/78/ΕΚ
+###################################################
+1, 2, 4, 5
+###################################################
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15.
+###################################################
+1, 2, 3, 4, 5, 7, 8, 9, 10.
+###################################################
+1, 2, 3, 4, 5, 6, 7.
+###################################################
+1. Νέα αποφάση
+2. Στιχwarzόγραμμα
+3. Οδηγία
+4. Ευρωπαϊκή Ένωση
+5. Παράγραφο
+###################################################
+1, 2, 3, 4
+###################################################
+1, 2, 3, 4, 5, 6
+###################################################
+1, 2, 3.
+###################################################
+1. Ευρωπαϊκή Επιτροπή
+2. Κανόνισης
+3. Αλιευτική
+4. Ζώνη V
+5. Γαλλία
+###################################################
+1,2,3,4,5,6,7,8,9
+###################################################
+1. European Parliament
+2. Council of the European Union
+3. Regulation (EC) No 468/2010
+4. Regulation (EU) No 1234/2012
+###################################################
+3, 7
+###################################################
+1, 4
+###################################################
+1, 2, 3, 4, 5, 6
+###################################################
+1, 2
+###################################################
+1, 2
+###################################################
+1, 2.
+###################################################
+1. ХТСХ
+###################################################
+1. Техническа справка
+###################################################
+1. 2
+###################################################
+1. (1)
+2. (4)
+3. (5)
+###################################################
+1. 02
+2. 03 
+3. 04
+###################################################
+1. 05
+###################################################
+1. А181
+2. А582 
+3. (не определено)
+###################################################
+1, 2.
+###################################################
+1. Мандарини
+2. Сатсумаси
+3. Клементинки
+4..Artишок
+5. Портокали
+6. Круши 
+7. Лимони 
+8. Ябълки и тиквички
+###################################################
+1. 1
+###################################################
+1. 0
+###################################################
+3.
+###################################################
+1. 10
+2. 13
+3. 14
+4. 15
+5. 16
+6. 19
+7. 22
+8. 23 
+9. 25
+###################################################
+1. 2.
+###################################################
+2, 3, 4
+###################################################
+1
+###################################################
+1. 2013/131/ЕС
+2. C(2013) 1114
+###################################################
+3.5 mg
+###################################################
+1. 3.
+###################################################
+1. 11.6
+###################################################
+2. 8.7.1
+###################################################
+1. Изброените в приложението към настоящия регламент здравни претенции
+2. Посочените в параграф 1 здравни претенции
+###################################################
+1. protecting geographic indications
+2. protecting traditional names for origin and protected geographical indications
+###################################################
+5
+###################################################
+3.1.2.
+###################################################
+1.  Аналогичен етикет за търговия
+2.  Оценка с цел определяне на входната цена
+3.  Икономически стойност
+###################################################
+1.  Etikет за приема и отказ от приемание
+###################################################
+1, 2, 3.
+###################################################
+1. 4
+###################################################
+(1)
+###################################################
+1. Европейска комисия
+###################################################
+3
+###################################################
+1.  Съставено
+###################################################
+1
+###################################################
+1. 15
+###################################################
+1. 3.
+###################################################
+3
+###################################################
+5,6
+###################################################
+1.  Забранят се продажбата, доставката, трансферът или износът за Сирия на гориво за реактивни двигатели и добавки.
+2.  Забранято прякото или непрякото предоставяне на финansiране или финансова помощ.
+###################################################
+1
+###################################################
+1. Член 30
+###################################################
+1. 2
+###################################################
+1. 02
+###################################################
+1.  1.6
+###################################################
+1.  А
+2.  Б
+3.  В
+###################################################
+1.  Товарен код по КН (Код на химичните продукта)
+2.  Товарен kod по ТАРИК
+###################################################
+1. "ЗНП"
+###################################################
+1. 1
+###################################################
+1
+###################################################
+1.  E 
+2.  G
+###################################################
+1. Регламент (ЕС) № 1151/2012
+2. Регламент ( ЕО) № 510/2006
+###################################################
+1. Директива 2002/56/EUR
+###################################################
+1. 2014/775/ОВППС
+###################################################
+1
+###################################################
+1.  Мерките, предвидени в настоящия регламент.
+###################################################
+1. 12
+###################################################
+1
+###################################################
+1.  Брюнони
+###################################################
+2
+###################################################
+7
+###################################################
+1. 10
+###################################################
+1. 1
+2. 4
+###################################################
+1. Възможностите за риболов, установени в Протокола za opredelenie na vizhzhosposobnostite za rybolov i finansovoto stoyanie, predvideno v Spasozdaniye za partenorstvo v obshostta na rybolovstvo med Evropskata organizatsiya, ot edna strana, i Republika Kiribati, ot druga strana
+###################################################
+4
+###################################################
+1. 8
+###################################################
+1. За защитените географски указания [Poperingse hopscheuten/Poperingse hoppescheuten]
+###################################################
+1. 11
+###################################################
+2. 4
+###################################################
+1.  215-и
+###################################################
+1, 2, 3.
+###################################################
+1, 2, 4, 5, 6.
+###################################################
+1. 9.3
+2. 7.5
+3. 4.6
+4. 8.10
+5. 1.11
+###################################################
+2, 3.
+###################################################
+1, 2, 5.
+###################################################
+9
+###################################################
+1. 4
+###################################################
+(12)
+###################################################
+1, 2, 3.
+###################################################
+3.
+###################################################
+1. 2
+###################################################
+25
+###################################################
+2, 3.
+###################################################
+1. 11 
+2. 17 
+3. 18 
+4. 20 
+5. 21 
+6. 23 
+7. 24
+###################################################
+2. 3
+###################################################
+1. Транспониране
+###################################################
+1.Reglament (ЕО) № 72/2008
+2. Reglament (ЕО) № 74/2008 
+3.Устав
+###################################################
+1. 10
+###################################################
+1. Адресател на решение 2004/211/EU
+2. Директива 92/65/EURATOM
+3. Директива 2009/156/EURATOM
+4. Решение 2010/776/EU
+5. Приложение I към Решение 2004/211/EU
+###################################################
+3, 4.
+###################################################
+1. 6
+###################################################
+1.  Благодарение за съвестната търска! 2
+###################################################
+1
+###################################################
+5.
+###################################################
+1, 2, 3.
+###################################################
+4
+###################################################
+1
+###################################################
+1. Derogacia.
+###################################################
+1.  "Предпазим"
+###################################################
+7
+###################################################
+4. 3
+###################################################
+1, 2, 3.
+###################################################
+1
+###################################################
+1. Deklaracja w sprawie uruchomienia Europejskiego Funduszu Dostosowania do Globalizacji
+2. Uruchomienie środków z EFG
+###################################################
+1. 2013/785/UE
+2. Dekyzja Rady Unii Europejskiej
+###################################################
+1. Rozporządzenie wykonawcze (UE) nr 543/2011 
+2. Rozporządzenie Rady (WE) nr 1234/2007 
+3. Traktat o funkcjonowaniu Unii Europejskiej
+###################################################
+1. Rozporządzenie wykonawcze (UE) nr 543/2011
+2. Rozporządzenie Rady (WE) nr 1234/2007
+3. Traktat o funkcjonowaniu Unii Europejskiej
+###################################################
+1, 2
+###################################################
+1
+2
+###################################################
+1, 2, 4.
+###################################################
+1. 3
+###################################################
+1, 2, 3, 4.
+###################################################
+4.
+###################################################
+1, 2, 3, 13, 14, 15.
+###################################################
+1. Dyrektywa Parlamentu Europejskiego i Rady 2012/23/UE
+###################################################
+1, 2
+###################################################
+1. Rozporządzenie KOMISJI (UE) Nr 714/2014
+2. Wspólnota system kontroli w celu zapewnienia przestrzegania przepisów wspólnej polityki rybołówstwa
+3. Traktat o funkcjonowaniu Unii Europejskiej
+###################################################
+3. (decyzja Komisji)
+###################################################
+1, 2
+###################################################
+1, 2
+###################################################
+1, 2, 3.
+###################################################
+3
+###################################################
+1
+###################################################
+1, 2, 3
+###################################################
+1, 4, 5, 7, 8, 9
+###################################################
+1
+###################################################
+1, 2
+###################################################
+4
+###################################################
+1. Rozporządzenie Komisji UE nr 820/2013
+2. Zakaz połowów żabnicowatych
+###################################################
+1
+###################################################
+1. 3
+###################################################
+1. Decyzja Rady Unii Europejskiej
+2. Porozumienie o Europejskim Obszarze Gospodarczym (EOG)
+3. Protokół 4 do porozumienia EOG w sprawie reguł pochodzenia
+###################################################
+Oto numbery etykiet, które mają zastosowanie:
+
+1. 2014/115/UE
+2. GPA z 1994 r.
+3. Art. XXIV ust. 7 lit. b) i c) GPA z 1994 r.
+4. Art. 207 ust. 3 Traktatu o funkcjonowaniu Unii Europejskiej
+###################################################
+1, 4
+###################################################
+1, 2
+###################################################
+1, 4
+###################################################
+1, 2
+###################################################
+1
+###################################################
+1. Rozporządzenie
+2. Zarządzenie
+3. Ustawie
+###################################################
+1, 2, 3, 4, 5.
+###################################################
+2, 4, 5, 11, 12.
+###################################################
+1
+###################################################
+1
+###################################################
+3
+###################################################
+3, 4
+###################################################
+1, 2
+###################################################
+1, 3, 4, 5, 6, 7, 9
+###################################################
+1. Rozporządzenie (UE) nr 1151/2012
+2. Traktat o funkcjonowaniu Unii Europejskiej
+3. Art. 52 ust. 2 rozporządzenia (UE) nr 1151/2012
+4. Dziennik Urzędowy Unii Europejskiej
+###################################################
+2. 1151/2012
+###################################################
+3. Sprawa decyzji Komitetu Politycznego i Bezpieczeństwa w sprawie przedłużenia mandatu szefa misji Unii Europejskiej w dziedzinie WPBiO w Nigrze (EUCAP Sahel Niger)/1/2014
+###################################################
+1, 2, 3
+###################################################
+1, 2
+###################################################
+1. DYREKTYWA WYKONAWCZA KOMISJI 2013/63/UE
+2. Dyrektywa Rady 2002/56/WE z dnia 13 czerwca 2002 r.
+3. Traktat o funkcjonowaniu Unii Europejskiej
+###################################################
+3. Zmiana w decyzji 2014/73/WPZiB
+###################################################
+2, 4
+###################################################
+1. Rozporządzenie w sprawie klasyfikacji towarów według Nomenklatury scalonej
+2. Wspólna Taryfa Celna
+###################################################
+1, 2.
+###################################################
+1, 2, 3, 4
+###################################################
+1. Rozporządzenie wykonawcze KOMISJI (UE) nr 443/2014
+2. Art. 183 lit. b Traktatu o funkcjonowaniu Unii Europejskiej
+3. Rozporządzenie Parlamentu Europejskiego i Rady (UE) nr 1308/2013
+###################################################
+1, 2, 3, 5.
+###################################################
+1, 2.
+###################################################
+3.
+###################################################
+1. Rozporządzenie w wykonaniu
+2. Rozporządzenie wykonawcze
+3. Unijna nazwa chroniona
+###################################################
+1, 2, 4.
+###################################################
+1, 4, 7
+###################################################
+1, 2, 7
+###################################################
+1, 2, 3.
+###################################################
+1
+###################################################
+1
+###################################################
+1. Rozporządzenie WYKONAWCZE
+2. KOMISJA EUROPEJSKA
+3. WYNIKROWEK
+###################################################
+1. Etykieta zgodna z przepisami obowiązującymi w Chorwacji.
+###################################################
+1. Rozporządzenie wykonawcze Komisji (UE) nr 1101/2014
+2. Rozporządzenie Parlamentu Europejskiego i Rady (UE) nr 1308/2013
+3. Rozporządzenie (WE) nr 2535/2001
+###################################################
+1, 2, 17, 19, 20.
+###################################################
+1. Rozporządzenie wykonawcze
+2. Rejestr chronionych nazw pochodzenia i chronionych oznaczeń geograficznych nazw
+###################################################
+3
+###################################################
+1. 10
+###################################################
+1, 2, 3.
+###################################################
+1, 13.
+###################################################
+1. Decyzja Parlamentu Europejskiego i Rady Unii Europejskiej
+2. Instrument elastyczności
+###################################################
+1
+2
+###################################################
+1
+###################################################
+1, 2, 4
+###################################################
+1. Rozporządzenie w wyjątkowym trybie
+2. Kompilacyjne
+3. Zamrożenie funduszy i zasobów gospodarczych
+###################################################
+1, 4, 7
+###################################################
+1, 2, 3, 4, 5
+###################################################
+1, 3, 4, 5, 6
+###################################################
+3
+###################################################
+1, 2, 3, 4, 5, 6.
+###################################################
+1. Dokument wygaszenia
+2. EOG
+3. UE
+###################################################
+4. decyzja rady unii europejskiej
+###################################################
+1
+###################################################
+2.
+###################################################
+1, 2, 3.
+###################################################
+1
+###################################################
+1. Rozporządzenie Unii Europejskiej nr 672/2013
+2. Rozporządzenie Komisji nr 468/2010
+3. Rozporządzenie Komisji nr 724/2011
+4. Rozporządzenie Komisji nr 1234/2012
+###################################################
+1. Rozporządzenie WYKONAWCZE KOMISJI (UE) NR 984/2012
+###################################################
+1, 2
+###################################################
+1. Decyzja Rady Unii Europejskiej w sprawie zmiany decyzji 2011/137/WPZiB
+2. Akt prawny w zakresie prawa unijnego
+3. Dokument prawny
+###################################################
+2
+###################################################
+1. Decyzja Rady Unii Europejskiej
+2. Ustawa o funkcyjności Unii Europejskiej (art. 305)
+###################################################
+The provided text appears to be an excerpt from a prospectus or offering document for a security issue. The document outlines various aspects of the offer, including:
+
+1. **Investor categories**: Potential investors eligible for the securities.
+2. **Plan of distribution and allotment**: Categories of investors, tranches reserved for specific markets, and details on pricing and allocation.
+3. **Pricing and expenses**: Expected price, method of determining price, and amount of any expenses or taxes charged to subscribers or purchasers.
+4. **Placing and underwriting**: Name and address of the coordinator(s), paying agents, depository agents, and underwriters in each country where the offer takes place.
+5. **Admission to trading and dealing arrangements**: Indication of whether securities will be admitted to SME growth Markets or MTFs, earliest dates for admission, and details on intermediaries for secondary trading.
+
+Additionally, the document includes:
+
+1. **Guarantor information (if applicable)**: Information required in Annex 21.
+2. **List of additional information**: Examples explaining complex derivative securities, additional provisions not required by the relevant securities note annex, countries where the offer takes place, and other details related to the issue.
+
+This document is likely a part of a larger prospectus or offering circular, which provides comprehensive information on the security issue being offered.
+###################################################
+The text appears to be a summary of technical requirements for devices operating in specific frequency ranges. Here's a condensed version of the main points:
+
+**Frequency Ranges and Limitations**
+
+* 2.5 GHz to 2.69 GHz: Devices must have a maximum mean e.i.r.p. spectral density of -70 dBm/MHz and a maximum peak e.i.r.p. of -10 dBm/50 MHz.
+* 3,4 GHz to 3,8 GHz: Total power spectral density must be 5 dB below the maximum e.i.r.p. spectral density.
+* 2.69 GHz to 2.7 GHz and 4.8 GHz to 5 GHz (Radio Astronomy Service): Total power spectral density must be below -65 dBm/MHz.
+* 1,215 GHz to 1,73 GHz: Devices can operate with a maximum mean e.i.r.p. spectral density of -70 dBm/MHz.
+
+**Duty Cycle and Power Limits**
+
+* Limitation of Duty Cycle to 10% per second.
+* No fixed outdoor installation is permitted.
+
+**Mitigation Techniques**
+
+* Devices implementing LDC, DAA, or Listen Before Talk (LBT) mechanisms must comply with specific requirements and limitations defined in ETSI Standard EN 302 065-1 V2.1.1 and EN 302 065-4 V1.1.1.
+* Alternative mitigation techniques may be used if they ensure at least an equivalent performance and level of spectrum protection.
+
+**Notes**
+
+* When DAA is implemented, note 5 applies.
+* When LDC is implemented, note 5 applies.
+
+These requirements aim to protect various radio services and frequencies from interference, ensuring a harmonious coexistence of devices operating in these bands.
+###################################################
+Der angebotene Wertpapierprogramm umfasst verschiedene Kategorien, die jeweils ihre eigenen Anforderungen und Angaben erfordern.
+
+*   **Kategorie A**: Es werden komplexe derivative Wertpapiere angeboten, wie z.B. CFDs oder Optionsverträge.
+*   **Kategorie B**: Es wird ein Basiswert angeboten, der durch den Wert des Basiswertes und durch die Wesensart dieser Wertpapiere beeinflusst wird.
+*   **Kategorie C**: Hier werden Wertpapiere ohne Garantie oder mit einer begrenzten Laufzeit angeboten.
+
+Zusätzlich zu diesen Kategorien müssen folgende Angaben gemacht werden:
+
+*   **Name und Anschrift der Zahlstellen und Verwahrstellen**: Diese Informationen dienen dazu, sicherzustellen, dass die Transaktionen reibungslos verlaufen.
+*   **Institute mit fester Zusage zur Emission und ohne feste Zusage:** Angaben zu den Instituten, die bereit sind, eine Emission aufgrund einer festen Zusage zu zeichnen oder ohne feste Zusage unter bestimmten Bedingungen zu platzieren. Diese Vereinbarungen enthalten Quoten und einen Gesamtbetrag der Übernahmeprovision und der Platzierungsprovision.
+*   **Emissionsdatum:** Angabe des Tages, zu dem der Emissionsübernahmevertrag geschlossen wurde oder wird.
+
+Weitere Informationen müssen auch angegeben werden, wie:
+
+*   **Zulassung zum Handel und Handelsmodalitäten**: Angabe, ob die Wertpapiere an einem KMU-Wachstumsmarkt oder MTF platziert werden sollen. Zudem sollte bekannt gegeben werden, welche KMU-Wachstumsmärkte oder MTFs bereits mit Wertpapieren derselben Gattung zugelassen sind.
+*   **Garantie**: Falls eine Garantie angeboten wird, müssen weitere Angaben gemacht werden, wie z.B. die Seriennummer und die Tranchennummer.
+
+Es sollten auch Angaben zu den verschiedenen Kategorien der Emittenten gemacht werden, wie zum Beispiel:
+
+*   **Immobiliengesellschaften**
+*   **Bergbaugesellschaften**
+*   **Investmentgesellschaften**
+*   **In der wissenschaftlichen Forschung tätige Gesellschaften**
+*   **Start-up-Unternehmen**
+*   **Schifffahrtsgesellschaften**
+
+Durch die Erstellung dieser Listen und Angaben soll sichergestellt werden, dass alle notwendigen Informationen bereitgestellt werden, um eine Transaktion reibungslos durchzuführen.
+###################################################
+Entscheidungen für die Verwendung von Funkanlagen im Bereich des Radioastronomiefunkdienstes (RAS) 2,69-2,7 GHz und 4,8-5 GHz:
+
+1.  Nicht ortsfeste Anlagen müssen die insgesamt abgestrahlte spektrale Leistungsdichte unter – 65 dBm/MHz liegen.
+2.  Die maximale mittlere spektrale Leistungsdichte (EIRP) darf in der Frequenzbande 3,1 GHz-4,8 GHz – 41,3 dBm/MHz betragen und in der Frequenzbande 8,5 GHz-9 GHz ebenfalls - 41,3 dBm/MHz.
+3.  Die maximale Spitzenleistung (EIRP) darf in den genannten Frequenzbanden bei einer Leistungsdichte von 0 dBm über einen Bereich von 50 MHz nicht überschreiten.
+###################################################
+<think>
+Okay, so I need to summarize this text. Let me read through it carefully.
+
+The text seems to be about securities regulation in the European Union, focusing on something called "Subscription rights." It's broken down into categories and specific items under each category. 
+
+First, under Category C, there are several subcategories. The main one is Plan of distribution and allotment (Item 4). This includes things like various potential investors offering securities, how they're notified about the allocation, pricing, expenses, and ways to underwrite.
+
+Then, in Category B, after planning out distribution, there's an Item 4.4.3 which talks about expenses charged by issuers, especially if they’re dealing with specific regulations or directives like (EU) 1286/2014 and Directive 2014/65/EU.
+
+After that, the placement underwriting part comes into play. There are Items 4.5.1 to 4.5.4 which detail who coordinates offers, who acts as agents, who underwrites, and commission details.
+
+Admission to trading is another key section. Items like 4.6.1-4.6.4 explain how the securities can be accepted into SME growth markets or MTFs with due dates if they're admitted now.
+
+Finally, there's GUARANTOR INFORMATION which might include additional information for those attached to the securities in Annex 28 and a list of specialist issuers in Annex 29.
+
+I need to make sure I cover all these points but keep it concise. Maybe start by introducing the main topic of Subscription rights under Regulation (EU) 2017/1129, mention how they're planned out with specific items, include notifications and pricing details, expenses, underwriting arrangements, trading acceptance, and then go into specifics about regulations and funding.
+
+Wait, the user also provided an example response. Let me see if I can structure my summary similarly but in simpler terms without copying exactly. I should mention all categories, key points, and ensure it's clear and covers everything.
+</think>
+
+The text discusses securities regulation under Regulation (EU) 2017/1129, focusing on Subscription rights and related details.
+
+**Key Points:**
+
+- **Plan of Distribution:** Details how offers are made simultaneously in multiple countries. Includes reserves for certain investors if applicable.
+  
+- **Notification of Allocation:** Describes notifications regarding allocation prices and dealing timelines before notification.
+
+- **Pricing (Item 4.4.1):** Outlines expected offering prices.
+
+- **Expenses (Items 4.4.2 and 5.1):** Includes expenses charged by issuers, especially through the ECB for specific regulations.
+
+- **Underwriting (Items 4.5.1–4.5.4):** Details coordinators, paying agents, underwriters' commitments, and commission details.
+
+- **Admission to Trading:** Explains how securities are accepted into SME growth markets with due dates if applicable.
+
+- **GUARANTORS:** Additional information required in Annex 28 for specific derivatives and a list of issuer categories in Annex 29.
+
+This summary covers all key sections, ensuring clarity and conciseness while including necessary details.
+###################################################
+<think>
+Alright, I need to summarize the given text about radio frequency standards. Let me start by reading through it carefully.
+
+First, the text talks about various EEA (Electrocyclic Arrangement) mitigation techniques like DAA, LDC, and LBT. Each of these has specific frequency ranges they can be used in with certain spectral densities. For example, LBT is allowed from 1215 GHz to 1730 GHz, but the maximum e.i.r.p. spectral density there varies.
+
+Then, it mentions protection for radio astronomy services (RAS) in two bands: 269-270 GHz and 4800 MHz to 5 GHz. The total power spectral density needs to be below -65 dBm/MHz here.
+
+There are also limitations like a maximum duty cycle of 10% per second, no fixed outdoor installations, and certain band restrictions for devices using LDC and DAA mitigation techniques.
+
+I need to make sure I include all the important details: each technique's frequency ranges, spectral density requirements, RAS protection bands, power spectral densities, and the limitations. Also, note 5 applies when any of these mitigations are used.
+
+Let me structure this summary by first introducing the main topic, then listing each mitigation technique with their specifics, followed by the RAS protection, and finally the restrictions on installation types and techniques.
+</think>
+
+The text outlines various EEA (Electrocyclic Arrangement) mitigation techniques to protect radio frequencies from interference. It details each technique's allowed frequency ranges, maximum power spectral density requirements, and specific bands for the Radio Astronomy Service (RAS). Key points include:
+
+1. **Techniques Overview:**
+   - **DAA Mitigation:** Permitted in 1215-1730 GHz with a maximum e.i.r.p. of –41.3 dBm/MHz in 2500 MHz–2690 MHz and 2700 MHz–3400 MHz, with peak values at 0 dBm/50 MHz.
+   - **LDC Mitigation:** Allowed from 3,1 GHz to 4,8 GHz with a maximum e.i.r.p. of –41.3 dBm/MHz in the same frequency range.
+   - **LBT Mechanism:** permitted in 1215-1730 GHz and specific bands (2500 MHz–2690 MHz and 2700 MHz–3400 MHz), with peak values at –10 dBm/50 MHz.
+
+2. **RA Service Protection:**
+   - For the RAS in 2690-2700 GHz and 4800 MHz–5 GHz bands, total power spectral density must be below –65 dBm/MHz.
+
+3. **Limitations:**
+   - Maximum duty cycle is 10% per second.
+   - No fixed outdoor installations are permitted.
+   - Devices using LDC or DAA mitigation can operate within specific frequency ranges and have defined e.i.r.p. constraints.
+
+This summary encapsulates the essential details of each technique, their respective applications, and the necessary protection measures to ensure reliable radio operations.
+###################################################
+<think>
+Okay, I'm trying to summarize this financial regulations text. Let me start by reading through it carefully.
+
+First, there are several sections under Category C and B, each dealing with different aspects of the securities. Each section has specific items that need summarization. I should go through each item step by step.
+
+Looking at Category C starting with Plan of Distribution and Abotment:
+
+Items 4.2 to 4.5 cover various aspects like offering countries, notification process, pricing, placement underwriting, and admission to trading. Each sub-item is detailed in the text, so I'll need to highlight key points from each.
+
+Category B includes some similar sections but without the "C" designation for items 4.2.3 and 4.5.1-3. But 4.6 has more specific information on SME markets and admission.
+
+I notice that some sub-sections like "Example(s) relating to complex derivative securities" in Annex 28 are important, especially item 1. So I should make sure those examples are included if needed.
+
+The text also mentions different countries where the offer takes place, so I'll need to note which countries are covered under each section.
+
+I should structure my summary by section, starting with Plan of Distribution and Abotment, then proceeding through notification, pricing, placement, and admission. For key sub-points like "tranche" in notification or specific compliance details in sections 4.5, I'll include those.
+
+Also, the conclusion mentions Annexes 28 and 29 for additional details on guarantees and special issuers. So I should ensure that these are included as they provide supplementary information.
+
+I might be missing some specifics about each sub-item, so I'll check again to ensure all important points are covered without being too verbose.
+</think>
+
+**Summary of Financial Regulations Text**
+
+1. **Plan of Distribution and Abotment (Category C):**
+   - **Item 4.2.1**: Details on potential investors offering securities in multiple countries simultaneously and any reserved tranches for specific investors.
+   - **Item 4.3**: Procedure for notifying applicants about allotted amounts before dealing may begin.
+   - **Item 4.4**: Pricing details, including methods for price determination under Article 17 of Regulation (EU) 2017/1129 and disclosure requirements under Article 17 of Directive 2014/65/EU.
+   - **Item 4.4.3**: Indication of expenses and taxes charged to subscribers, including those covered by prices if applicable.
+   - **Items 4.5.1-3**: Information on coordinator, paying agents, depository agents, underwriting agreements, and commission details.
+   - **Items 4.6.1-3**: Details on trading markets, admission requirements, and intermediary commitments.
+
+2. **Admission to Trading (Category C):**
+   - **Item 4.6.2**: Summary of existing markets for securities if any admit to trading.
+   - **Items 5.1-7**: Information on guarantee types, additional provisions, ECB eligibility, series, and tranche details.
+
+3. **Additional Information (Annexes 28 and 29):**
+   - ** Annex 28**: Examples of complex derivative securities affecting investment value and related provisions.
+   - ** Annex 29**: List of special issuers categorized by industry (Property companies, etc.).
+
+This summary captures the key sections and sub-points from the regulations, ensuring all critical information is included.
+###################################################
+<think>
+Okay, I need to help the user by fushing a summary of the provided text. The text is in German and seems to outline various agreements related to emission payments for certain groups like dem Emmitttenten (emitters), dem Bieter (bieters), dem Emmittenteinsteiger (emitters' intermediaries), dem Emmitentenver band (emitters' consumers), and dem Emmitenteinstätten (emitters' institutions). There are also sections for handel und modalitäten, handelsmodale, handelsprobleme, handelstätgen, handelbarkeiten, handelzeuge, handelsteuerabgrenzung, handelsteuerver (($|), $) etc.
+
+First, I need to understand the main points. The text describes how these emitters can place emission payments in different categories, including specific dates and criteria for when these payments can be made. It also includes information about how these payments are validated or not and mentions some specific agreements and classifications of emitters like complex derivative value accounts, categorization by industry, etc.
+
+I should structure the summary to cover each section clearly: value accounts, payment obligations, handel und handelsmodale, handelsteuerabgrenzung, handelsteuerver (($|), $)), handelsteuerprobleme, handelbarkeiten, handelzeuge, handelsteuerabschränkungen, handelsteuerver (($|), $)).
+
+I need to make sure each category is covered with the relevant details from the text. For example, under value accounts, I should mention the specific categories like dem Emmittenten (emitters) and dem Emmitenteinsteiger (emitters' intermediaries). Under handel und handelsmodale, I'll need to include when payments are made for each type.
+
+I also need to ensure that all necessary points from the text are included without missing anything important. The user probably wants a concise yet comprehensive overview of the agreements and requirements for these emitters regarding their emission payments.
+</think>
+
+### Fassung des Textes
+
+**1. Value Accounts**
+   - **Kategorie C, Punkt 4.5.1**: Der Beleg für die Emissionsteuerungen ist angegeben in Anhang 21. Die Angabe der Wertpa Papierzusammenhänge und den Zutahme des Betrags ist vorausgesetzt.
+   - **Kategorie C, Punkt 4.5.3**: Die Value accounts für dem Emmittenten, dem Emmitenteinsteiger und dem Emmitentenver band sind angegeben.
+   - **Kategori C, Punkt 4.6.1**: Der Beleg ist auf Zulassung zum Handel in einem KMU-Wachstumsmarkt oder MTF or der Regierung vermittelt. An den Markten der Betragswerte (e.g., KMU-Wachstumsmarker) ist angegeben, ob die betroffenen Werte als Gattung von Betragswerten beizubehalten werden oder auf eine betroffene Spot-Betrachtsbahn zustimmen.
+   - **Kategori C, Punkt 4.6.3**: Im Falle der Zulassung in einem KMU-Wachstumsmarkt oder MTF ist die Angabe der Intermediaten, die auf Grund einer festen Zusage tätig sind, vorgeschlagen. Dauch die Beschreibung der Bedingungen ihrer Zusage ist angegeben.
+   - **Kategori C, Punkt 4.6.4**: Die Emissionsteuerprice für den Wertepa Papierzusammenhänge are angegeben.
+
+**2. Handel und Handelsmodalitäten**
+   - **Handel und Handelsmodale**: Der Beleg ist aufhandlich in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen.
+   - **Handelsteuerabgrenzung**: Handelsprobleme und handelbarkeiten sind in Anhang 29 detailliert angegeben. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerver (($|), $))**: Handelsprobleme und handelbarkeiten sind in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerabschränkungen**: Handelsprobleme und handelbarkeiten sind in Anhang 29 detailliert angegeben. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+
+**3. Handelzeuge**
+   - **Handelsteuerabgrenzung**: Handelsprobleme und handelbarkeiten are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerver (($|), $))**: Handelsprobleme und handelbarkeiten are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerabschränkungen**: Handelsprobleme und handelbarkeiten are in Anhang 29 detailliert angegeben. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+
+**4. Handelbarkeiten**
+   - **Handelsteuerabgrenzung**: Handelsprobleme und handelbarities are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerver (($|), $))**: Handelsprobleme und handelbarities are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerabschränkungen**: Handelsprobleme und handelbarities are in Anhang 29 detailliert angegeben. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+
+**5. Handelsteuerabschränkungen**
+   - **Handelsteuerabgrenzung**: Handelsprobleme und handelbarities are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerver (($|), $))**: Handelsprobleme und handelbarities are in Tabellen vermittelt. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+   - **Handelsteuerabschränkungen**: Handelsprobleme und handelbarities are in Anhang 29 detailliert angegeben. Die Angabe der betroffenen Markten, die Werte für den Betrag als Gattung von Betragswerte or als Spot-Betrachtsbahn zustimmen sollen, ist angegeben.
+
+This summary covers the main requirements for emitters regarding value accounts, payment obligations, handel und handelsmodale, handelsteuerabgrenzung, handelsteuerprobleme, handelbarkeiten and handelsteuerabschränkungen.
 ###################################################

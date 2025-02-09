@@ -1,7 +1,10 @@
+import os
+
 from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
     LlamaTokenizer, LlamaForCausalLM
 from deep_translator import GoogleTranslator
 import ollama
+from utils import preturb_prompt
 
 import google.generativeai as ggai
 import re
@@ -35,6 +38,8 @@ class Model:
             return Google(label_options, multi_class, api_key, generation)
         elif name.lower() == 'ollama':
             return OLLaMa(label_options, multi_class, generation)
+        elif name.lower() == 'deepseek' or name.lower() == 'odeepseek':
+            return ODeepSeek(label_options, multi_class, generation)
         else:
             raise ValueError(f"Model '{name}' is not available")
 
@@ -109,7 +114,7 @@ class OLLaMa(Model):
     """
     Using the OLLaMa models
     """
-    def __init__(self, label_options, multi_class=False, generation=False):
+    def __init__(self, label_options=[], multi_class=False, generation=False):
         self.label_options = label_options
         self.multi_class = multi_class
         self.generation = generation
@@ -125,43 +130,6 @@ class OLLaMa(Model):
             response += chunk["message"]["content"]
         return response
 
-    # def generate_text(self, prompt):
-    #     # API endpoint for the Ollama model
-    #     url = "http://localhost:11434/api/generate"
-    #
-    #     # Setting up the payload for the request
-    #     data = {
-    #         "model": "llama3.2",
-    #         "messages": [{"role": "user", "content": prompt}]
-    #     }
-    #
-    #     # Create an HTTP client with proxy configuration
-    #     proxy_address = "http://81.171.3.101:3128"
-    #     proxies = {
-    #         "http://": proxy_address,
-    #         "https://": proxy_address
-    #     }
-    #
-    #     # Make the request to Ollama through the proxy
-    #     response_text = ""
-    #     try:
-    #         with httpx.Client(proxies=proxies) as client:
-    #             response = client.post(url, json=data)
-    #             response.raise_for_status()  # Raise an exception if the request failed
-    #             response_data = response.json()
-    #
-    #             # Extract the generated text from the response
-    #             for message in response_data.get("choices", []):
-    #                 response_text += message["message"]["content"]
-    #
-    #     except httpx.RequestError as e:
-    #         print(f"An error occurred while making the request: {e}")
-    #     except httpx.HTTPStatusError as e:
-    #         print(f"Request returned an unsuccessful status code: {e}")
-    #
-    #     print("Response: ", response_text)
-    #     return response_text
-
     def classify_text(self, text, prompt, language='en'):
         """
         :param text: the text that needs to be classified
@@ -172,8 +140,11 @@ class OLLaMa(Model):
         print("Type of the prompt: ", type(prompt))
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
+        # complete_prompt = preturb_prompt(complete_prompt)
+        # print("Preturbed prompt: ", complete_prompt[:20])
         generated_text = self.generate_text(complete_prompt)
-        with open("responses.txt", "a", encoding="utf-8") as file:
+        output_file = "responses.txt"
+        with open(output_file, "a", encoding="utf-8") as file:
             file.write(generated_text+"\n###################################################\n")
         if self.generation:
             prediction = generated_text
@@ -253,4 +224,44 @@ class Google(Model):
 
         return all_predicted, first_ten_answers
 
+class ODeepSeek(Model):
+    """
+    Using the OLLaMa models
+    """
+    def __init__(self, label_options=[], multi_class=False, generation=False):
+        self.label_options = label_options
+        self.multi_class = multi_class
+        self.generation = generation
 
+    def generate_text(self, prompt):
+        generated_stream = ollama.chat(
+            model="deepseek-r1:1.5b",
+            messages=[{"role": "user", "content": prompt}],
+            stream=True
+        )
+        response = ""
+        for chunk in generated_stream:
+            response += chunk["message"]["content"]
+        return response
+
+    def classify_text(self, text, prompt, language='en'):
+        """
+        :param text: the text that needs to be classified
+        :return: a list of all the labels corresponding to the given text
+        """
+        print("Reached classify_text")
+        translator = GoogleTranslator(source="en", target=language)
+        print("Type of the prompt: ", type(prompt))
+        translated_prompt = translator.translate(prompt)
+        complete_prompt = text + translated_prompt
+        # complete_prompt = preturb_prompt(complete_prompt)
+        # print("Preturbed prompt: ", complete_prompt[:20])
+        generated_text = self.generate_text(complete_prompt)
+        output_file = "responses.txt"
+        with open(output_file, "a", encoding="utf-8") as file:
+            file.write(generated_text+"\n###################################################\n")
+        if self.generation:
+            prediction = generated_text
+        else:
+            prediction = self.extract_labels_from_generated_text(generated_text, self.label_options)
+        return prediction

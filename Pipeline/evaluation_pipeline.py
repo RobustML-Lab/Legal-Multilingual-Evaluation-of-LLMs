@@ -7,11 +7,13 @@ import os
 from models import *
 from data import *
 
-dataset_name = "europa_random_split"
-languages = ["english", "greek"]
-points_per_language = 2
+dataset_name = "eur_lex_sum"
+# languages = ["english", "german", "french", "greek", "bulgarian", "polish"]
+# languages = ["en", "de", "fr", "el", "bg", "pl"]
+languages = ["english", "german"]
+points_per_language = 1
 generation = True
-model_name = "ollama"
+model_name = "deepseek"
 api_key = None
 
 # arguments = sys.argv[1:]
@@ -33,22 +35,22 @@ all_predicted = {}
 
 
 for lang in languages:
+    print("Language: ", lang)
     if generation:
         data, prompt = dataset.get_data(lang, dataset_name, points_per_language)
         label_options = None
     else:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
-    print("Prompt: ", prompt)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)
-
-    if not generation:
-        predicted = dataset.extract_labels_from_generated_text(predicted)
+    print("Predicted: ", predicted)
+    # if not generation:
+    #     predicted = dataset.extract_labels_from_generated_text(predicted)
 
     true = dataset.get_true(data)
-
+    print("True: ", true)
     filtered_true = [x for x in true if x is not None]
     filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None]
 
@@ -74,8 +76,8 @@ for lang in languages:
     all_true[lang] = true
     all_predicted[lang] = predicted
 
-    if not generation:
-        dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
+    # if not generation:
+    #     dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
 
 dataset.evaluate_results(results, all_true, all_predicted)
 

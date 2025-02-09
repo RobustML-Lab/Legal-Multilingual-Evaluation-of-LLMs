@@ -5,12 +5,16 @@ import re
 
 import os
 import csv
+from collections import Counter
 
 import unicodedata
 from datasets import load_dataset
-from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from nltk.translate.meteor_score import meteor_score
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, average_precision_score
+from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MultiLabelBinarizer
-from translator import translate
+from Pipeline.translator import translate
+from itertools import islice
 import numpy as np
 import evaluate
 import textwrap
@@ -18,9 +22,9 @@ import textwrap
 import re
 from deep_translator import GoogleTranslator
 import evaluate
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from rapidfuzz import fuzz
+from Pipeline.utils import get_embedding_bert
 
 class Dataset:
     """
@@ -57,6 +61,8 @@ class Dataset:
             return XNLI()
         elif name.lower() == 'eur_lex_sum':
             return Eur_Lex_Sum()
+        # elif name.lower() == 'multi_legal_pile':
+        #     return Multi_Legal_Pile()
         elif name.lower() == 'europa_random_split':
             return Europa_Random_Split()
         else:
@@ -94,7 +100,10 @@ class Multi_Eurlex(Dataset):
                        "further explanation! (You can select more than one): ")
 
     def load_label_options(self, lang_code):
-        with open("output/eurovoc_categories.json", "r", encoding="utf-8") as file:
+        output_file = "eurovoc_categories.json"
+        if not os.path.isfile(output_file):
+            os.mkdir(output_file)
+        with open(output_file, "r", encoding="utf-8") as file:
             # Load the JSON data
             eurovoc_data = json.load(file)
 
@@ -117,7 +126,7 @@ class Multi_Eurlex(Dataset):
         else:
             data = self.extract_text(dataset)
         inst = translate(language, self.prompt)
-        return data[:points_per_language], self.label_options, inst
+        return data[:points_per_language], self.label_options, inst[0]
 
     def extract_text_all_languages(self, dataset):
         """
@@ -161,7 +170,9 @@ class Multi_Eurlex(Dataset):
         :return: a list of predicted labels for the generated text
         """
         all_labels = []
+        print("Generated_texts: ", generated_texts)
         for text in generated_texts:
+            print("Current text: ", text)
             labels = []
             for i in range(21):
                 # Use regex to match only whole words for each index, avoiding partial matches
@@ -260,6 +271,7 @@ class Eur_Lex_Sum(Dataset):
     """
 
     def __init__(self):
+        # self.prompt = "\n<|endoftext|>\nTask: Write something about the text above."
         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
 
     def get_data(self, language, dataset_name, points_per_language):
@@ -304,10 +316,19 @@ class Eur_Lex_Sum(Dataset):
     def evaluate(self, references, predictions):
         rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
 
-        results = rouge.compute(predictions=predictions, references=references)
-
+        results_rouge = rouge.compute(predictions=predictions, references=references)
+        embedded_references = [get_embedding_bert(reference) for reference in references]
+        embedded_predictions = [get_embedding_bert(prediction) for prediction in predictions]
+        cosine_similarities = [cosine_similarity(embedded_reference, embedded_prediction) for (embedded_reference, embedded_prediction) in zip(embedded_references, embedded_predictions)]
+        avg_cosine_similarity = np.mean(cosine_similarities)
+        results_cosine = {"cosine_similarity": avg_cosine_similarity}
+        results = results_rouge | results_cosine
         file_path = "output/Eur_Lex_Sum_evaluation.md"
         file_exists = os.path.isfile(file_path)
+        try:
+            os.mkdir("output")
+        except FileExistsError:
+            print(f"Directory output already exists.")
         with open(file_path, mode='a', encoding='utf-8') as f:
             if not file_exists:
                 f.write("| Language | Reference Summary                          | Predicted Summary                           |\n")
@@ -333,6 +354,7 @@ class Eur_Lex_Sum(Dataset):
             print(f"Rouge2: {metrics['rouge2']}")
             print(f"RougeL: {metrics['rougeL']}")
             print(f"RougeL sum: {metrics['rougeLsum']}")
+            print(f"Cosine Similarity: {metrics['cosine_similarity']}")
             print("-------------------------------------------------------------")
 
 
@@ -607,50 +629,29 @@ class XNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-# class Eur_Lex_Sum(Dataset):
+# class Multi_Legal_Pile(Dataset):
 #     """
-#     Child class of Dataset representing the Eur-Lex-Sum dataset.
+#     Child class of Dataset representing the Eur-Lex-sum dataset.
 #     """
 #
 #     def __init__(self):
-#         self.languages = ['bulgarian', 'czech', 'dutch', 'estonian', 'french', 'greek', 'irish',
-#                           'latvian', 'maltese', 'portuguese', 'slovak', 'spanish', 'croatian',
-#                           'danish', 'english', 'finnish', 'german', 'hungarian', 'italian', 'lithuanian',
-#                           'polish', 'romanian', 'slovenian', 'swedish']
 #         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
-#         self.label_options = []
 #
 #     def get_data(self, language, dataset_name, points_per_language):
 #         """
-#         Loads the XNLI dataset for the specified language.
-#         :param language: the language of the dataset
-#         :return: the data and label options
+#         :param language: the language for which data should be retrieved
+#         :return: the data corresponding to the language parameter
 #         """
-#         dataset = load_dataset('dennlinger/eur-lex-sum', language, split='test', trust_remote_code=True, streaming=True)
-#         print(dataset)
+#         config = f"{language}_legal-mc4"
+#         dataset = load_dataset('joelniklaus/Multi_Legal_Pile', config, streaming=True, split='train', trust_remote_code=True)
+#         limited_data = list(islice(dataset, points_per_language))
+#         print(limited_data[0])
 #         self.language = language
-#         if language == 'all_languages':
-#             data = self.extract_text_all_languages(dataset)
-#         else:
-#             data = self.extract_text(dataset)
-#         return data[:points_per_language], self.prompt
+#         data = self.extract_text(limited_data, points_per_language)
+#         inst = translate(language, self.prompt)
+#         return data, inst[0]
 #
-#     def extract_text_all_languages(self, dataset):
-#         """
-#         :param dataset: the dataset containing the text data
-#         :return: a list of text data from all languages
-#         """
-#         data = []
-#         count = 0
-#         for item in dataset:
-#             if count == 100:
-#                 break
-#             documents = item['reference']
-#             texts = documents.keys()
-#             data.append({"text:": text, "summary": item['summary']} for text in texts)
-#             count += 1
-#
-#     def extract_text(self, dataset):
+#     def extract_text(self, dataset, points_per_language):
 #         """
 #         :param dataset: the dataset containing the text data
 #         :return: a list of text data in the specified language
@@ -658,60 +659,58 @@ class XNLI(Dataset):
 #         data = []
 #         count = 0
 #         for item in dataset:
-#             if count == 100:
+#             if count == points_per_language:
 #                 break
 #             data.append({"text": item['reference'], "summary": item['summary']})
 #             count += 1
 #         return data
 #
-#     def evaluate(self, reference_summaries, generated_summaries):
-#         """
-#         Evaluates the model using rouge_l score and cosine similarity.
-#         :param reference_summaries: list of reference summaries
-#         :param generated_summaries: list of generated summaries
-#         """
-#         metrics = self.rouge_l_score(reference_summaries, generated_summaries)
-#         cosine_similarities = self.cosine_similarity(reference_summaries, generated_summaries)
-#         print(f"Rouge1: {metrics['rouge1']}")
-#         print(f"Rouge2: {metrics['rouge2']}")
-#         print(f"RougeL: {metrics['rougeL']}")
-#         print(f"RougeL sum: {metrics['rougeLsum']}")
-#         print(f"Cosine Similarity: {cosine_similarities}")
-#         file_path = "EUR_Lex_Sum_evaluation.csv"
-#         file_exists = os.path.isfile(file_path)
-#         with open(file_path, mode='a', newline='') as f:
-#             writer = csv.writer(f)
-#             if not file_exists:
-#                 writer.writerow(["Language", "Rouge L score", "Cosine similarity"])
-#             writer.writerow([self.language, metrics, cosine_similarities])
-#
-#     def rouge_l_score(self, reference_summaries, generated_summaries):
-#         """
-#         :param reference_summaries: list of official summaries
-#         :param generated_summaries: list of generated summaries
-#         :return: rouge-l score
-#         """
-#         rouge = evaluate.load("rouge")
-#         metrics = rouge.compute(predictions=generated_summaries, references=reference_summaries)
-#         return metrics
-#
-#     def cosine_similarity(self, reference_summaries, generated_summaries):
-#         """
-#         :param reference_summaries: list of reference summaries
-#         :param generated_summaries: list of generated summaries
-#         :return: cosine similarity score
-#         """
-#         vectorizer = TfidfVectorizer()
-#         reference_vectors = vectorizer.fit_transform(reference_summaries)
-#         generated_vectors = vectorizer.transform(generated_summaries)
-#         cosine_similarities = cosine_similarity(reference_vectors, generated_vectors)
-#         return cosine_similarities
-#
 #     def get_true(self, data):
 #         """
-#         :return: list of true labels for the dataset
+#         :return: the true summary of the data
 #         """
-#         return [entry['summary'] for entry in data]
+#         summary = [entry['summary'] for entry in data]
+#         return summary
+#
+#     def format_text_to_width(self, text, width):
+#         """
+#         Splits a text into lines of a given width.
+#         """
+#         return "<br>".join(textwrap.wrap(text, width))
+#
+#     def evaluate(self, references, predictions):
+#         rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
+#
+#         results = rouge.compute(predictions=predictions, references=references)
+#
+#         file_path = "output/Eur_Lex_Sum_evaluation.md"
+#         file_exists = os.path.isfile(file_path)
+#         with open(file_path, mode='a', encoding='utf-8') as f:
+#             if not file_exists:
+#                 f.write("| Language | Reference Summary                          | Predicted Summary                           |\n")
+#                 f.write("|----------|------------------------------------------|--------------------------------------------|\n")
+#             count = 0
+#             for reference, prediction in zip(references, predictions):
+#                 # Wrap text to fit within 50 characters
+#                 formatted_reference = self.format_text_to_width(reference, 50)
+#                 formatted_prediction = self.format_text_to_width(prediction, 50)
+#                 # Write formatted text into md table
+#                 f.write(f"| {self.language} | {formatted_reference} | {formatted_prediction} |\n")
+#                 count += 1
+#                 if count == 3:
+#                     break
+#
+#         return results
+#
+#     def evaluate_results(self, results, all_true, all_predicted):
+#         # Print out the results for each language
+#         for lang, metrics in results.items():
+#             print(f"Results for {lang}:")
+#             print(f"Rouge1: {metrics['rouge1']}")
+#             print(f"Rouge2: {metrics['rouge2']}")
+#             print(f"RougeL: {metrics['rougeL']}")
+#             print("-------------------------------------------------------------")
+
 
 class Europa_Random_Split(Dataset):
     """
@@ -876,6 +875,7 @@ class Europa_Random_Split(Dataset):
     def evaluate_results(self, results, all_true, all_predicted):
         """
         Display aggregated F1@k, F1@M, and MAP@50 results.
+
         :param results: Dictionary where each key is a language (e.g., en, el)
                         and the value is a map of metrics and scores.
         """
@@ -883,3 +883,4 @@ class Europa_Random_Split(Dataset):
         for language, scores in results.items():
             print(f"{language}: {scores}")
         print("-" * 40)
+
