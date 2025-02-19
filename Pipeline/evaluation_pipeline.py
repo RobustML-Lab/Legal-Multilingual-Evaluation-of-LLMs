@@ -43,8 +43,12 @@ for lang in languages:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
+    print(data)
     if adversarial_attack:
+        print()
         data = attack(data, adversarial_attack, lang)
+
+    print(data)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)
@@ -76,10 +80,10 @@ for lang in languages:
         print(f"Number of missing values in 'filtered_predicted': {missing_in_predicted}")
 
     results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
-    all_true[lang] = true
-    all_predicted[lang] = predicted
+    all_true[lang] = filtered_true
+    all_predicted[lang] = filtered_predicted
 
-    if not generation:
+    if model_name.lower() == 'multi_eurlex':
         dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
 
 dataset.evaluate_results(results, all_true, all_predicted)

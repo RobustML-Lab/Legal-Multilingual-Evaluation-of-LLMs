@@ -60,10 +60,18 @@ class Dataset:
             return XNLI()
         elif name.lower() == 'eur_lex_sum':
             return Eur_Lex_Sum()
-        elif name.lower() == 'multi_legal_pile':
-            return Multi_Legal_Pile()
+        # elif name.lower() == 'multi_legal_pile':
+        #     return Multi_Legal_Pile()
         elif name.lower() == 'europa_random_split':
             return Europa_Random_Split()
+        elif name.lower() == 'sst2':
+            return SST2()
+        elif name.lower() == 'qqp':
+            return QQP()
+        elif name.lower() == 'mnli':
+            return MNLI()
+        elif name.lower() == 'qnli':
+            return QNLI()
         else:
             raise ValueError(f"Dataset '{name}' is not available")
 
@@ -868,3 +876,375 @@ class Europa_Random_Split(Dataset):
             print(f"{language}: {scores}")
         print("-" * 40)
 
+class SST2(Dataset):
+    """
+    SST-2 dataset from the GLUE benchmark.
+    """
+
+    def __init__(self):
+        self.label_options = [0, 1]
+        self.prompt = "<|endoftext|>\nTask: Label the sentiment of the text as either negative or positive. The answer should be exact 'positive' or 'negative'."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        Loads the SST-2 dataset from Hugging Face.
+
+        :param language: Not needed for SST-2 (single language)
+        :param dataset_name: The dataset name (GLUE benchmark)
+        :param points_per_language: Number of samples to return
+        :return: Processed dataset, label options, and prompt
+        """
+        dataset = load_dataset("glue", "sst2", split="train", trust_remote_code=True)
+        data = self.extract_text(dataset, points_per_language)
+        return data, self.label_options, self.prompt
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        Extracts text and labels.
+
+        :param dataset: The dataset containing text data
+        :return: List of dictionaries with text and labels
+        """
+        data = []
+        for i, item in enumerate(dataset):
+            if i >= points_per_language:
+                break
+            data.append({"text": item["sentence"], "label": item["label"]})
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :return: List of true labels
+        """
+        return [entry["label"] for entry in data]
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using accuracy.
+
+        :param true_labels: List of true labels
+        :param predicted_labels: List of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        return {"Accuracy": accuracy}
+
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts sentiment labels (positive or negative) from generated text.
+
+        :param generated_texts: List of generated text responses
+        :return: List of extracted labels (0 for negative, 1 for positive)
+        """
+        all_labels = []
+
+        for text in generated_texts:
+            if text != None:
+                text_lower = text.lower()
+
+                if re.search(r"\bpositive\b", text_lower):
+                    all_labels.append(1)
+                elif re.search(r"\bnegative\b", text_lower):
+                    all_labels.append(0)
+                else:
+                    all_labels.append(None)
+            else:
+                all_labels.append(None)
+        return all_labels
+
+    def get_true(self, data):
+        """
+        :return: a list of true labels for the dataset
+        """
+        print(data)
+        true_labels = [entry['label'] for entry in data]
+        return true_labels
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        # Print out the results for each language
+        for lang, metric in results.items():
+            print(f"Results for {lang}:")
+            print(f"Accuracy: {metric['Accuracy']}")
+            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
+
+class QQP(Dataset):
+    """
+    QQP dataset from the GLUE benchmark.
+    """
+
+    def __init__(self):
+        self.label_options = [0, 1]  # 0: Not duplicate, 1: Duplicate
+        self.prompt = "<|endoftext|>\nTask: Please identify whether Question 1 has the same meaning as Question 2. The answer should be exact 'yes' or 'no'."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        Loads the QQP dataset from Hugging Face.
+
+        :param language: Not needed for QQP (single language)
+        :param dataset_name: The dataset name (GLUE benchmark)
+        :param points_per_language: Number of samples to return
+        :return: Processed dataset, label options, and prompt
+        """
+        dataset = load_dataset("glue", "qqp", split="train", trust_remote_code=True)
+        data = self.extract_text(dataset, points_per_language)
+        return data, self.label_options, self.prompt
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        Extracts question pairs and labels.
+
+        :param dataset: The dataset containing text data
+        :return: List of dictionaries with question pairs and labels
+        """
+        data = []
+        for i, item in enumerate(dataset):
+            if i >= points_per_language:
+                break
+            data.append({
+                "text": f"Question 1: {item['question1']}, Question 2: {item['question2']}",
+                "label": item["label"]
+            })
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :return: List of true labels
+        """
+        return [entry["label"] for entry in data]
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using accuracy.
+
+        :param true_labels: List of true labels
+        :param predicted_labels: List of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        return {"Accuracy": accuracy}
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts duplicate/not duplicate labels from generated text.
+
+        :param generated_texts: List of generated text responses
+        :return: List of extracted labels (0 for not duplicate, 1 for duplicate)
+        """
+        all_labels = []
+
+        for text in generated_texts:
+            if text is not None:
+                text_lower = text.lower()
+
+                if re.search(r"\byes\b", text_lower):
+                    all_labels.append(1)
+                elif re.search(r"\bno\b", text_lower):
+                    all_labels.append(0)
+                else:
+                    all_labels.append(None)
+            else:
+                all_labels.append(None)
+        return all_labels
+
+    def get_true(self, data):
+        """
+        :return: A list of true labels for the dataset
+        """
+        return [entry['label'] for entry in data]
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Prints accuracy and results for each language (even though QQP is monolingual).
+        """
+        for lang, metric in results.items():
+            print(f"Results for {lang}:")
+            print(f"Accuracy: {metric['Accuracy']}")
+            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
+
+class MNLI(Dataset):
+    """
+    MNLI dataset from the GLUE benchmark.
+    """
+
+    def __init__(self):
+        self.label_options = [0, 1, 2]  # 0: Contradiction, 1: Neutral, 2: Entailment
+        self.prompt = "<|endoftext|>\nTask: Please identify whether the premise entails or contradicts the hypothesis, or neither. The answer should be exactly 'entailment', 'neutral', or 'contradiction'."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        Loads the MNLI dataset from Hugging Face.
+
+        :param language: Not needed for MNLI (single language)
+        :param dataset_name: The dataset name (GLUE benchmark)
+        :param points_per_language: Number of samples to return
+        :return: Processed dataset, label options, and prompt
+        """
+        dataset = load_dataset("glue", "mnli", split="train", trust_remote_code=True)
+        data = self.extract_text(dataset, points_per_language)
+        return data, self.label_options, self.prompt
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        Extracts premise-hypothesis pairs and labels.
+
+        :param dataset: The dataset containing text data
+        :return: List of dictionaries with premise, hypothesis, and labels
+        """
+        data = []
+        for i, item in enumerate(dataset):
+            if i >= points_per_language:
+                break
+            data.append({
+                "text": f"Premise: {item['premise']}, Hypothesis: {item['hypothesis']}",
+                "label": item["label"]
+            })
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :return: List of true labels
+        """
+        return [entry["label"] for entry in data]
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using accuracy.
+
+        :param true_labels: List of true labels
+        :param predicted_labels: List of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        return {"Accuracy": accuracy}
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts contradiction/neutral/entailment labels from generated text.
+
+        :param generated_texts: List of generated text responses
+        :return: List of extracted labels (0 for contradiction, 1 for neutral, 2 for entailment)
+        """
+        all_labels = []
+
+        for text in generated_texts:
+            if text is not None:
+                text_lower = text.lower()
+
+                if re.search(r"\bentailment\b", text_lower):
+                    all_labels.append(0)
+                elif re.search(r"\bneutral\b", text_lower):
+                    all_labels.append(1)
+                elif re.search(r"\bcontradiction\b", text_lower):
+                    all_labels.append(2)
+                else:
+                    all_labels.append(None)
+            else:
+                all_labels.append(None)
+        return all_labels
+
+    def get_true(self, data):
+        """
+        :return: A list of true labels for the dataset
+        """
+        return [entry['label'] for entry in data]
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Prints accuracy and results for each language (even though MNLI is monolingual).
+        """
+        for lang, metric in results.items():
+            print(f"Results for {lang}:")
+            print(f"Accuracy: {metric['Accuracy']}")
+            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
+
+class QNLI(Dataset):
+    """
+    QNLI dataset from the GLUE benchmark.
+    """
+
+    def __init__(self):
+        self.label_options = [0, 1]  # 0: Entailment, 1: Not Entailment
+        self.prompt = "<|endoftext|>\nTask: Determine whether the sentence answers the question. The answer should be exactly 'yes' or 'no'."
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        Loads the QNLI dataset from Hugging Face.
+
+        :param language: Not needed for QNLI (single language)
+        :param dataset_name: The dataset name (GLUE benchmark)
+        :param points_per_language: Number of samples to return
+        :return: Processed dataset, label options, and prompt
+        """
+        dataset = load_dataset("glue", "qnli", split="train", trust_remote_code=True)
+        data = self.extract_text(dataset, points_per_language)
+        return data, self.label_options, self.prompt
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        Extracts question-passage pairs and labels.
+
+        :param dataset: The dataset containing text data
+        :return: List of dictionaries with question, passage, and labels
+        """
+        data = []
+        for i, item in enumerate(dataset):
+            if i >= points_per_language:
+                break
+            data.append({
+                "text": f"Question: {item['question']}, Sentence: {item['sentence']}",
+                "label": item["label"]
+            })
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :return: List of true labels
+        """
+        return [entry["label"] for entry in data]
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using accuracy.
+
+        :param true_labels: List of true labels
+        :param predicted_labels: List of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        return {"Accuracy": accuracy}
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts entailment/not entailment labels from generated text.
+
+        :param generated_texts: List of generated text responses
+        :return: List of extracted labels (0 for entailment, 1 for not entailment)
+        """
+        all_labels = []
+
+        for text in generated_texts:
+            if text is not None:
+                text_lower = text.lower()
+
+                if re.search(r"\byes\b", text_lower):  # ✅ Entailment → Label 0
+                    all_labels.append(0)
+                elif re.search(r"\bno\b", text_lower):  # ✅ Not Entailment → Label 1
+                    all_labels.append(1)
+                else:
+                    all_labels.append(None)  # Can't determine
+            else:
+                all_labels.append(None)
+
+        return all_labels
+
+    def get_true(self, data):
+        """
+        :return: A list of true labels for the dataset
+        """
+        return [entry['label'] for entry in data]
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Prints accuracy and results for each language (even though QNLI is monolingual).
+        """
+        for lang, metric in results.items():
+            print(f"Results for {lang}:")
+            print(f"Accuracy: {metric['Accuracy']}")
+            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
