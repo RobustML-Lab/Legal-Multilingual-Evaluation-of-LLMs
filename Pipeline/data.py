@@ -967,6 +967,14 @@ class SST2(Dataset):
             print(f"Accuracy: {metric['Accuracy']}")
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
+    def get_mapped_data(self, data):
+        for entry in data:
+            if entry["label"] == 0:
+                entry["label"] = "negative"
+            if entry["label"] == 1:
+                entry["label"] = "positive"
+        return data
+
 class QQP(Dataset):
     """
     QQP dataset from the GLUE benchmark.
@@ -1059,6 +1067,14 @@ class QQP(Dataset):
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
+
+    def get_mapped_data(self, data):
+        for entry in data:
+            if entry["label"] == 0:
+                entry["label"] = "no"
+            if entry["label"] == 1:
+                entry["label"] = "yes"
+        return data
 
 class MNLI(Dataset):
     """
@@ -1155,6 +1171,16 @@ class MNLI(Dataset):
             print(f"Accuracy: {metric['Accuracy']}")
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
+    def get_mapped_data(self, data):
+        for entry in data:
+            if entry["label"] == 0:
+                entry["label"] = "entailment"
+            if entry["label"] == 1:
+                entry["label"] = "neutral"
+            if entry["label"] == 2:
+                entry["label"] = "contradiction"
+        return data
+
 class QNLI(Dataset):
     """
     QNLI dataset from the GLUE benchmark.
@@ -1225,7 +1251,7 @@ class QNLI(Dataset):
 
                 if re.search(r"\byes\b", text_lower):
                     all_labels.append(0)
-                elif re.search(r"\bno\b", text_lower): 
+                elif re.search(r"\bno\b", text_lower):
                     all_labels.append(1)
                 else:
                     all_labels.append(None)  # Can't determine
@@ -1248,3 +1274,11 @@ class QNLI(Dataset):
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
+
+    def get_mapped_data(self, data):
+        for entry in data:
+            if entry["label"] == 0:
+                entry["label"] = "yes"
+            if entry["label"] == 1:
+                entry["label"] = "no"
+        return data

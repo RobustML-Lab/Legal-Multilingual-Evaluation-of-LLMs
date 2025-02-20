@@ -46,7 +46,8 @@ for lang in languages:
     print(data)
     if adversarial_attack:
         print()
-        data = attack(data, adversarial_attack, lang)
+        mapped_data = dataset.get_mapped_data(data)
+        data = attack(data, adversarial_attack, lang, mapped_data)
 
     print(data)
 

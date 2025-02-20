@@ -3,10 +3,12 @@ import textattack
 from textattack.attack_recipes import TextBuggerLi2018, TextFoolerJin2019
 from textattack.models.wrappers import HuggingFaceModelWrapper
 from textattack.augmentation import EasyDataAugmenter, WordNetAugmenter
+from textattack.attack_recipes import GeneticAlgorithmAlzantot2018
 from textattack.transformations import (
     WordSwapRandomCharacterInsertion,
     WordSwapRandomCharacterDeletion,
-    WordSwapQWERTY
+    WordSwapQWERTY,
+    WordSwapEmbedding
 )
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
@@ -27,7 +29,7 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
 model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
 
-def attack(data, attack_type, lang):
+def attack(data, attack_type, lang, mapped_data):
     """Apply adversarial attacks using TextAttack-based methods."""
     if lang in language_map:
         lang = language_map[lang]
@@ -35,15 +37,14 @@ def attack(data, attack_type, lang):
     total_words = 0
     changed_words = 0
 
-    for entry in data:
+    for i, entry in enumerate(data):
         if "text" in entry and "label" in entry:
             original_text = entry["text"]
-            ground_truth_label = entry["label"]
+            ground_truth_label = mapped_data.get(i)["label"]
 
             modified_text, _ = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
 
             entry["text"] = modified_text
-
 
     change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
     save_results(lang, change_percentage)
@@ -51,7 +52,7 @@ def attack(data, attack_type, lang):
 
 def adversarial_attack(text, attack_type, lang, ground_truth_label):
     """Applies different adversarial attack strategies based on the attack type."""
-    if attack_type == 1:  # Word substitution attack
+    if attack_type == 1:  # Word substitution and augmentation attack
         return word_substitution_attack(text, lang)
     elif attack_type == 2:  # Typo-based attack
         return typo_attack(text)
@@ -61,6 +62,12 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
         return textbugger_attack(text, ground_truth_label)
     elif attack_type == 5:  # TextFooler Attack (synonym-based adversarial attack)
         return textfooler_attack(text, ground_truth_label)
+    elif attack_type == 6:  # CLARE (Context-Aware Rewriting)
+        return clare_attack(text)
+    elif attack_type == 7:  # TextEvo (Evolutionary Adversarial Attack)
+        return textevo_attack(text)
+    elif attack_type == 8:  # Genetic Attack (uses evolutionary algorithms to modify words)
+        return genetic_attack(text, ground_truth_label)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
 
@@ -106,43 +113,78 @@ def character_swap_attack(text):
 
     return text, count_changes(text, text)
 
-def textbugger_attack(text, ground_truth_label):
-    """Apply TextBugger adversarial attack using a real classification model."""
-    attack = TextBuggerLi2018.build(model_wrapper)
+def clare_attack(text, max_number_of_changes=10):
+    """Apply CLARE (Context-Aware Rewriting) adversarial attack."""
+    words = text.split()
+    possible_changes = max(1, min(int(len(words) / 2), max_number_of_changes))
+    augmenter = textattack.augmentation.Augmenter(
+        transformation=WordSwapEmbedding(max_candidates=3),
+        transformations_per_example=possible_changes
+    )
+    perturbed_texts = augmenter.augment(text)
+    if perturbed_texts:
+        text = perturbed_texts[0]
+
+    return text, count_changes(text, text)
+
+def textevo_attack(text, max_number_of_changes=10):
+    """Apply TextEvo (fast evolutionary-based adversarial attack with diverse modifications)."""
+    words = text.split()
+    possible_changes = max(1, min(int(len(words) / 2), max_number_of_changes))
+
+    for _ in range(possible_changes):
+        transformation = random.choice([
+            WordSwapQWERTY(),
+            WordSwapRandomCharacterInsertion(),
+            WordSwapRandomCharacterDeletion(),
+            WordSwapEmbedding(max_candidates=2)
+        ])
+
+        augmenter = textattack.augmentation.Augmenter(
+            transformation=transformation,
+            transformations_per_example=1
+        )
+
+        perturbed_texts = augmenter.augment(text)
+        if perturbed_texts:
+            text = perturbed_texts[0]
+
+    return text, count_changes(text, text)
+
+def genetic_attack(text, ground_truth_label):
+    """Apply Genetic Algorithm-based adversarial attack using a real classification model."""
+    attack = GeneticAlgorithmAlzantot2018.build(model_wrapper)
 
     attack_result = attack.attack(text, ground_truth_label)
 
     if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
         return text, 0
-    if hasattr(attack_result, "perturbed_text"):
-        perturbed_text = attack_result.perturbed_text()
-    else:
-        perturbed_text = text
 
-    return perturbed_text, count_changes(text, perturbed_text)
+    return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
+
+def textbugger_attack(text, ground_truth_label):
+    """Apply TextBugger adversarial attack using a real classification model."""
+    attack = TextBuggerLi2018.build(model_wrapper)
+    attack_result = attack.attack(text, ground_truth_label)
+
+    if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
+        return text, 0
+
+    return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
 
 def textfooler_attack(text, ground_truth_label):
     """Apply TextFooler adversarial attack using a real classification model."""
     attack = TextFoolerJin2019.build(model_wrapper)
-
     attack_result = attack.attack(text, ground_truth_label)
 
     if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
         return text, 0
 
-    if hasattr(attack_result, "perturbed_text"):
-        perturbed_text = attack_result.perturbed_text()
-    else:
-        perturbed_text = text
-
-    return perturbed_text, count_changes(text, perturbed_text)
-
+    return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
 
 def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""
-    original_words = original_text.split()
-    modified_words = modified_text.split()
-    return sum(1 for o, m in zip(original_words, modified_words) if o != m)
+    return sum(1 for o, m in zip(original_text.split(), modified_text.split()) if o != m)
 
 def save_results(lang, percentage):
     """Save attack results to a file."""
