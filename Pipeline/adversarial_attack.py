@@ -40,7 +40,7 @@ def attack(data, attack_type, lang, mapped_data):
     for i, entry in enumerate(data):
         if "text" in entry and "label" in entry:
             original_text = entry["text"]
-            ground_truth_label = mapped_data.get(i)["label"]
+            ground_truth_label = mapped_data[i]["label"]
 
             modified_text, _ = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
 
