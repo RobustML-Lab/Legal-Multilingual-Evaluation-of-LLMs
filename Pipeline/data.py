@@ -896,7 +896,7 @@ class SST2(Dataset):
         """
         dataset = load_dataset("glue", "sst2", split="train", trust_remote_code=True)
         data = self.extract_text(dataset, points_per_language)
-        return data, self.label_options, self.prompt
+        return data, self.prompt
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -987,7 +987,7 @@ class QQP(Dataset):
         """
         dataset = load_dataset("glue", "qqp", split="train", trust_remote_code=True)
         data = self.extract_text(dataset, points_per_language)
-        return data, self.label_options, self.prompt
+        return data, self.prompt
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -1080,7 +1080,7 @@ class MNLI(Dataset):
         """
         dataset = load_dataset("glue", "mnli", split="train", trust_remote_code=True)
         data = self.extract_text(dataset, points_per_language)
-        return data, self.label_options, self.prompt
+        return data, self.prompt
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -1161,7 +1161,7 @@ class QNLI(Dataset):
     """
 
     def __init__(self):
-        self.label_options = [0, 1]  # 0: Entailment, 1: Not Entailment
+        self.label_options = [0, 1]
         self.prompt = "<|endoftext|>\nTask: Determine whether the sentence answers the question. The answer should be exactly 'yes' or 'no'."
 
     def get_data(self, language, dataset_name, points_per_language):
@@ -1175,7 +1175,7 @@ class QNLI(Dataset):
         """
         dataset = load_dataset("glue", "qnli", split="train", trust_remote_code=True)
         data = self.extract_text(dataset, points_per_language)
-        return data, self.label_options, self.prompt
+        return data, self.prompt
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -1223,9 +1223,9 @@ class QNLI(Dataset):
             if text is not None:
                 text_lower = text.lower()
 
-                if re.search(r"\byes\b", text_lower):  # ✅ Entailment → Label 0
+                if re.search(r"\byes\b", text_lower):
                     all_labels.append(0)
-                elif re.search(r"\bno\b", text_lower):  # ✅ Not Entailment → Label 1
+                elif re.search(r"\bno\b", text_lower):
                     all_labels.append(1)
                 else:
                     all_labels.append(None)  # Can't determine
