@@ -43,13 +43,9 @@ for lang in languages:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
-    print(data)
     if adversarial_attack:
-        print()
         mapped_data = dataset.get_mapped_data(data)
         data = attack(data, adversarial_attack, lang, mapped_data)
-
-    print(data)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)

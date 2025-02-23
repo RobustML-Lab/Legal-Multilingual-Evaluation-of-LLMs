@@ -1,3 +1,4 @@
+import copy
 import csv
 import json
 import os
@@ -968,12 +969,13 @@ class SST2(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "negative"
             if entry["label"] == 1:
                 entry["label"] = "positive"
-        return data
+        return new_data
 
 class QQP(Dataset):
     """
@@ -1069,12 +1071,13 @@ class QQP(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "no"
             if entry["label"] == 1:
                 entry["label"] = "yes"
-        return data
+        return new_data
 
 class MNLI(Dataset):
     """
@@ -1172,14 +1175,15 @@ class MNLI(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "entailment"
             if entry["label"] == 1:
                 entry["label"] = "neutral"
             if entry["label"] == 2:
                 entry["label"] = "contradiction"
-        return data
+        return new_data
 
 class QNLI(Dataset):
     """
@@ -1276,9 +1280,10 @@ class QNLI(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "yes"
             if entry["label"] == 1:
                 entry["label"] = "no"
-        return data
+        return new_data

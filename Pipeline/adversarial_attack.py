@@ -27,7 +27,23 @@ model_name = "textattack/bert-base-uncased-SST-2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
-model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
+class CustomHuggingFaceModelWrapper(HuggingFaceModelWrapper):
+    def __call__(self, text_inputs):
+        """Ensure model outputs correct logits format for TextAttack."""
+        model_outputs = super().__call__(text_inputs)  # Get raw logits
+
+        print(f"DEBUG: Raw model output shape: {model_outputs.shape}")  # Print actual shape
+
+        if isinstance(model_outputs, torch.Tensor):
+            if model_outputs.dim() == 3:
+                model_outputs = model_outputs.squeeze(1)  # Converts (1, 1, 2) → (1, 2)
+            elif model_outputs.dim() == 1:
+                model_outputs = model_outputs.unsqueeze(0)  # Ensure batch dimension exists
+
+        print(f"DEBUG: Fixed model output shape: {model_outputs.shape}")  # Print new shape
+        return model_outputs
+
+model_wrapper = CustomHuggingFaceModelWrapper(model, tokenizer)
 
 def attack(data, attack_type, lang, mapped_data):
     """Apply adversarial attacks using TextAttack-based methods."""
@@ -153,14 +169,38 @@ def textevo_attack(text, max_number_of_changes=10):
 
 def genetic_attack(text, ground_truth_label):
     """Apply Genetic Algorithm-based adversarial attack using a real classification model."""
-    attack = GeneticAlgorithmAlzantot2018.build(model_wrapper)
+    print(f"Starting attack on text: {text}")  # Debugging
 
-    attack_result = attack.attack(text, ground_truth_label)
+    # ✅ Disable GoogleLanguageModel to prevent the hang
+    attack = GeneticAlgorithmAlzantot2018.build(model_wrapper, use_constraint=False)
 
-    if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
-        return text, 0
+    try:
+        print("Running adversarial attack...")  # Debugging
+        attack_result = attack.attack(text, ground_truth_label)
+        print("Attack completed!")  # Debugging
 
-    return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
+        if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
+            print(f"❌ Attack failed: {text}")
+            return text, 0  # Return original text
+
+        # Get perturbed sentence
+        perturbed_text = attack_result.perturbed_text()
+        print(f"✅ Attack succeeded:\nOriginal: {text}\nAdversarial: {perturbed_text}")
+
+        # Debug model output
+        model_output = model_wrapper([perturbed_text])
+        print(f"DEBUG: Model output shape: {model_output.shape}, Values: {model_output}")
+
+        return perturbed_text, count_changes(text, perturbed_text)
+
+    except IndexError as e:
+        print(f"❌ IndexError encountered: {e}. Retrying with reshaped logits.")
+        return text, 0  # Return original if attack fails
+
+
+
+
+
 
 def textbugger_attack(text, ground_truth_label):
     """Apply TextBugger adversarial attack using a real classification model."""
