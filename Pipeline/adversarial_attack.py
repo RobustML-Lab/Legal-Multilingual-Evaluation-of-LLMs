@@ -171,7 +171,6 @@ def genetic_attack(text, ground_truth_label):
     """Apply Genetic Algorithm-based adversarial attack using a real classification model."""
     print(f"Starting attack on text: {text}")  # Debugging
 
-    # ✅ Disable GoogleLanguageModel to prevent the hang
     attack = GeneticAlgorithmAlzantot2018.build(model_wrapper, use_constraint=False)
 
     try:
@@ -180,12 +179,11 @@ def genetic_attack(text, ground_truth_label):
         print("Attack completed!")  # Debugging
 
         if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
-            print(f"❌ Attack failed: {text}")
+            print(f"Attack failed: {text}")
             return text, 0  # Return original text
 
-        # Get perturbed sentence
         perturbed_text = attack_result.perturbed_text()
-        print(f"✅ Attack succeeded:\nOriginal: {text}\nAdversarial: {perturbed_text}")
+        print(f"Attack succeeded:\nOriginal: {text}\nAdversarial: {perturbed_text}")
 
         # Debug model output
         model_output = model_wrapper([perturbed_text])
@@ -194,7 +192,7 @@ def genetic_attack(text, ground_truth_label):
         return perturbed_text, count_changes(text, perturbed_text)
 
     except IndexError as e:
-        print(f"❌ IndexError encountered: {e}. Retrying with reshaped logits.")
+        print(f"IndexError encountered: {e}. Retrying with reshaped logits.")
         return text, 0  # Return original if attack fails
 
 
