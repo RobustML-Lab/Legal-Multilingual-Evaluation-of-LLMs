@@ -43,13 +43,26 @@ for lang in languages:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
-    print(data)
-    if adversarial_attack:
-        print()
-        mapped_data = dataset.get_mapped_data(data)
-        data = attack(data, adversarial_attack, lang, mapped_data)
+    os.makedirs(os.path.dirname("output/results.json"), exist_ok=True)
 
-    print(data)
+    before_attack = [entry["text"] for entry in data[:5]]
+    after_attack = []
+
+    if adversarial_attack:
+        # mapped_data = dataset.get_mapped_data(data)
+        mapped_data = None
+        data = attack(data, adversarial_attack, lang, mapped_data)
+        after_attack = [entry["text"] for entry in data[:5]]
+
+    # Save to file
+    result_data = {
+        "before_attack": before_attack,
+        "after_attack": after_attack
+    }
+
+    with open("output/results.json", "w", encoding="utf-8") as f:
+        json.dump(result_data, f, ensure_ascii=False, indent=4)
+
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)
@@ -88,7 +101,10 @@ for lang in languages:
     if model_name.lower() == 'multi_eurlex':
         dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
 
-dataset.evaluate_results(results, all_true, all_predicted)
+try:
+    dataset.evaluate_results(results, all_true, all_predicted)
+except AttributeError as e:
+    print(e)
 
 
 

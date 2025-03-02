@@ -1,3 +1,4 @@
+import copy
 import csv
 import json
 import os
@@ -528,28 +529,24 @@ class XNLI(Dataset):
     def __init__(self):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
-        self.prompt = ("<|endoftext|>"
-                       "Decide if the hypothesis logically follows from the premise (entailment), is "
-                       "contradictory (contradiction),"
-                       "or is neutral with respect to the hypothesis (neutral). "
-                       "Answer only with one of the following options: 0 for entailment, 1 for neutral, "
-                       "or 2 contradiction. It is very important that you give no further explanation."
-                       )
+        self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
+                           "the hypothesis, or neither. The answer should be exactly 'entailment', "
+                           "'neutral', or 'contradiction'."
+                           )
 
-    def get_data(self, language):
+    def get_data(self, language, dataset_name, points):
         """
         Loads the XNLI dataset for the specified language.
         :param language: the language of the dataset
         :return: the data and label options
         """
         dataset = load_dataset('xnli', language, split='test', trust_remote_code=True)
-        print(dataset)
         self.language = language
         if language == 'all_languages':
             data = self.extract_text_all_languages(dataset)
         else:
-            data = self.extract_text(dataset)
-        return data
+            data = self.extract_text(dataset, points)
+        return data, self.label_options, self.prompt
 
     def extract_text_all_languages(self, dataset):
         """
@@ -566,7 +563,7 @@ class XNLI(Dataset):
             data.append({"text:": text, "labels": item['labels']} for text in texts)
             count += 1
 
-    def extract_text(self, dataset):
+    def extract_text(self, dataset, points):
         """
         :param dataset: the dataset containing the text data
         :return: a list of text data in the specified language
@@ -574,7 +571,7 @@ class XNLI(Dataset):
         data = []
         count = 0
         for item in dataset:
-            if count == 300:
+            if count == points:
                 break
             translator = GoogleTranslator(source="en", target=self.language)
             if self.language == "ar":
@@ -583,7 +580,6 @@ class XNLI(Dataset):
                 text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
             data.append({"text": text, "label": item['label']})
             count += 1
-        print(f"Data extracted: {data}")
         return data
 
     def evaluate(self, true_labels, predicted_labels):
@@ -601,23 +597,36 @@ class XNLI(Dataset):
                 writer.writerow(["Language", "Accuracy"])
             writer.writerow([self.language, accuracy])
 
-        print(f"Accuracy: {accuracy}")
+        print(f"Accuracy {self.language}: {accuracy}")
 
-    def extract_labels_from_generated_text(self, generated_text, label_options):
+    def extract_labels_from_generated_text(self, generated_texts):
         """
         Extracts the first predicted label from the model's response.
         :param response: The model's output as a string
         :return: The first valid label (Entailment, Contradiction, Neutral) found in the response, or None if not found
         """
-        print(f"Reached extract_labels in XNLI class for generated text {generated_text}")
-        for i, label in enumerate(self.label_options):
-            if label in generated_text.lower():
-                return i
-        return -1
+        all_labels = []
 
-    def get_true_labels(self, data):
+        for text in generated_texts:
+            if text is not None:
+                text_lower = text.lower()
+
+                if re.search(r"\bentailment\b", text_lower):
+                    all_labels.append(0)
+                elif re.search(r"\bneutral\b", text_lower):
+                    all_labels.append(1)
+                elif re.search(r"\bcontradiction\b", text_lower):
+                    all_labels.append(2)
+                else:
+                    all_labels.append(None)
+            else:
+                all_labels.append(None)
+        return all_labels
+
+
+    def get_true(self, data):
         """
-        :return: list of true labels for the dataset
+        :return: A list of true labels for the dataset
         """
         return [entry['label'] for entry in data]
 
@@ -968,12 +977,13 @@ class SST2(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "negative"
             if entry["label"] == 1:
                 entry["label"] = "positive"
-        return data
+        return new_data
 
 class QQP(Dataset):
     """
@@ -1069,12 +1079,13 @@ class QQP(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "no"
             if entry["label"] == 1:
                 entry["label"] = "yes"
-        return data
+        return new_data
 
 class MNLI(Dataset):
     """
@@ -1172,14 +1183,15 @@ class MNLI(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "entailment"
             if entry["label"] == 1:
                 entry["label"] = "neutral"
             if entry["label"] == 2:
                 entry["label"] = "contradiction"
-        return data
+        return new_data
 
 class QNLI(Dataset):
     """
@@ -1276,9 +1288,10 @@ class QNLI(Dataset):
             print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
-        for entry in data:
+        new_data = copy.deepcopy(data)
+        for entry in new_data:
             if entry["label"] == 0:
                 entry["label"] = "yes"
             if entry["label"] == 1:
                 entry["label"] = "no"
-        return data
+        return new_data

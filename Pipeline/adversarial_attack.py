@@ -11,7 +11,12 @@ from textattack.transformations import (
     WordSwapEmbedding
 )
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from nltk.corpus import wordnet
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.tag import pos_tag
 import torch
+import nltk
+
 
 # Language mapping
 language_map = {
@@ -22,12 +27,64 @@ language_map = {
     'greek': 'el', 'irish': 'ga', 'maltese': 'mt', 'slovak': 'sk',
 }
 
+wordnet_lang_map = {
+    'en': 'english',
+    'es': 'spanish',
+    'fr': 'french',
+    'de': 'german',
+    'nl': 'dutch',
+    'it': 'italian'
+}
+
+# Mapping NLTK POS tags to WordNet POS tags
+pos_map = {
+    "NN": wordnet.NOUN,
+    "NNS": wordnet.NOUN,
+    "VB": wordnet.VERB,
+    "VBD": wordnet.VERB,
+    "VBG": wordnet.VERB,
+    "VBN": wordnet.VERB,
+    "VBP": wordnet.VERB,
+    "VBZ": wordnet.VERB,
+    "JJ": wordnet.ADJ,
+    "JJR": wordnet.ADJ,
+    "JJS": wordnet.ADJ,
+    "RB": wordnet.ADV,
+    "RBR": wordnet.ADV,
+    "RBS": wordnet.ADV,
+}
+
+nltk.download("averaged_perceptron_tagger")
+nltk.download("punkt")
+nltk.download("punkt_tab")
+nltk.download("wordnet")
+nltk.download('averaged_perceptron_tagger_eng')
+
+
 # Load a real classifier model (e.g., BERT for classification)
 model_name = "textattack/bert-base-uncased-SST-2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
-model_wrapper = HuggingFaceModelWrapper(model, tokenizer)
+class CustomHuggingFaceModelWrapper(HuggingFaceModelWrapper):
+    def __call__(self, text_inputs):
+        """Ensure model outputs correct logits format for TextAttack."""
+        model_outputs = super().__call__(text_inputs)  # Get raw logits
+
+        print(f"DEBUG: Raw model output shape: {model_outputs.shape}")  # Print actual shape
+
+        if isinstance(model_outputs, torch.Tensor):
+            # Ensure (batch_size, num_classes) shape
+            if model_outputs.dim() == 1:  # If output is (num_classes,)
+                model_outputs = model_outputs.unsqueeze(0)  # Add batch dimension
+            elif model_outputs.dim() == 3:  # If output is (batch, 1, num_classes)
+                model_outputs = model_outputs.squeeze(1)
+
+        print(f"DEBUG: Fixed model output shape: {model_outputs.shape}")  # Print new shape
+        return model_outputs
+
+
+model_wrapper = CustomHuggingFaceModelWrapper(model, tokenizer)
 
 def attack(data, attack_type, lang, mapped_data):
     """Apply adversarial attacks using TextAttack-based methods."""
@@ -40,10 +97,12 @@ def attack(data, attack_type, lang, mapped_data):
     for i, entry in enumerate(data):
         if "text" in entry and "label" in entry:
             original_text = entry["text"]
-            ground_truth_label = mapped_data[i]["label"]
+            ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
 
-            modified_text, _ = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
+            modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
 
+            total_words += len(original_text.split())
+            changed_words += changes
             entry["text"] = modified_text
 
     change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
@@ -68,6 +127,8 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
         return textevo_attack(text)
     elif attack_type == 8:  # Genetic Attack (uses evolutionary algorithms to modify words)
         return genetic_attack(text, ground_truth_label)
+    elif attack_type == 9:  # Word substitution for multilingual
+        return synonym_multilingual_attack(text, lang)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
 
@@ -153,14 +214,31 @@ def textevo_attack(text, max_number_of_changes=10):
 
 def genetic_attack(text, ground_truth_label):
     """Apply Genetic Algorithm-based adversarial attack using a real classification model."""
-    attack = GeneticAlgorithmAlzantot2018.build(model_wrapper)
+    print(f"Starting attack on text: {text}")  # Debugging
 
-    attack_result = attack.attack(text, ground_truth_label)
+    attack = GeneticAlgorithmAlzantot2018.build(model_wrapper, use_constraint=False)
 
-    if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
-        return text, 0
+    try:
+        print("Running adversarial attack...")  # Debugging
+        attack_result = attack.attack(text, ground_truth_label)
+        print("Attack completed!")  # Debugging
 
-    return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
+        if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
+            print(f"Attack failed: {text}")
+            return text, 0  # Return original text
+
+        perturbed_text = attack_result.perturbed_text()
+        print(f"Attack succeeded:\nOriginal: {text}\nAdversarial: {perturbed_text}")
+
+        # Debug model output
+        model_output = model_wrapper([perturbed_text])
+        print(f"DEBUG: Model output shape: {model_output.shape}, Values: {model_output}")
+
+        return perturbed_text, count_changes(text, perturbed_text)
+
+    except IndexError as e:
+        print(f"IndexError encountered: {e}. Retrying with reshaped logits.")
+        return text, 0  # Return original if attack fails
 
 def textbugger_attack(text, ground_truth_label):
     """Apply TextBugger adversarial attack using a real classification model."""
@@ -168,6 +246,7 @@ def textbugger_attack(text, ground_truth_label):
     attack_result = attack.attack(text, ground_truth_label)
 
     if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
+        print('aaaaaaaaaaaaaaaaaaa')
         return text, 0
 
     return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
@@ -181,6 +260,57 @@ def textfooler_attack(text, ground_truth_label):
         return text, 0
 
     return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
+
+def get_synonyms(word, pos, lang="english"):
+    """Retrieve suitable synonyms for a word based on part of speech and language."""
+    synonyms = set()
+
+    wordnet_lang = wordnet_lang_map.get(lang.lower(), "eng")  # Convert lang to lowercase for safety
+
+    for synset in wordnet.synsets(word, pos=pos, lang=wordnet_lang):
+        for lemma in synset.lemmas():
+            synonym = lemma.name().replace("_", " ")
+            if synonym.lower() != word.lower():  # Avoid self-replacement
+                synonyms.add(synonym)
+
+    return list(synonyms)
+
+def synonym_multilingual_attack(text, lang="english", replacement_prob=0.3):
+    """
+    Replaces words with their WordNet synonyms while maintaining part of speech correctness.
+    Supports multiple languages.
+    """
+    lang = lang.lower()
+    if lang in wordnet_lang_map:
+        lang = wordnet_lang_map[lang]
+    try:
+        sentences = sent_tokenize(text, language=lang)  # Ensure correct language format
+    except LookupError:
+        print(f"Error: NLTK does not support sentence tokenization for '{lang}'. Using default 'english'.")
+        sentences = sent_tokenize(text, language="english")  # Fallback
+
+    words = [word for sentence in sentences for word in word_tokenize(sentence)]
+
+    tagged_words = pos_tag(words)  # Get POS tagging
+
+    perturbed_words = []
+
+    for word, tag in tagged_words:
+        if random.random() > replacement_prob or tag not in pos_map:
+            perturbed_words.append(word)
+            continue
+
+        wordnet_pos = pos_map[tag]  # Get WordNet-compatible POS tag
+        synonyms = get_synonyms(word, wordnet_pos, lang)
+
+        if synonyms:
+            chosen_synonym = random.choice(synonyms)
+            perturbed_words.append(chosen_synonym)
+        else:
+            perturbed_words.append(word)
+
+    perturbed_text = " ".join(perturbed_words)
+    return perturbed_text, count_changes(text, perturbed_text)
 
 def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""
