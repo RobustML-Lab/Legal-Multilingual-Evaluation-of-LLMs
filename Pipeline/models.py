@@ -33,11 +33,14 @@ class Model:
         :param name: the name of the model
         :return: the model object
         """
+        print("Loading model: ", name)
+        return OLLaMa(label_options, multi_class, generation)
         if name.lower() == 'llama':
             return LLaMa(label_options, multi_class, generation)
         elif name.lower() == 'google':
             return Google(label_options, multi_class, api_key, generation)
         elif name.lower() == 'ollama':
+            print("Reached OLLaMa")
             return OLLaMa(label_options, multi_class, generation)
         else:
             raise ValueError(f"Model '{name}' is not available")
@@ -56,6 +59,8 @@ class Model:
         for label in label_options:
             if label.lower() in generated_text.lower():
                 relevant_labels.append(label)
+        if len(relevant_labels) == 0 or len(relevant_labels)>1:
+            relevant_labels = ['none']
         return relevant_labels
 
 
@@ -165,42 +170,6 @@ class OLLaMa(Model):
             response += chunk["message"]["content"]
         return response
 
-    # def generate_text(self, prompt):
-    #     # API endpoint for the Ollama model
-    #     url = "http://localhost:11434/api/generate"
-    #
-    #     # Setting up the payload for the request
-    #     data = {
-    #         "model": "llama3.2",
-    #         "messages": [{"role": "user", "content": prompt}]
-    #     }
-    #
-    #     # Create an HTTP client with proxy configuration
-    #     proxy_address = "http://81.171.3.101:3128"
-    #     proxies = {
-    #         "http://": proxy_address,
-    #         "https://": proxy_address
-    #     }
-    #
-    #     # Make the request to Ollama through the proxy
-    #     response_text = ""
-    #     try:
-    #         with httpx.Client(proxies=proxies) as client:
-    #             response = client.post(url, json=data)
-    #             response.raise_for_status()  # Raise an exception if the request failed
-    #             response_data = response.json()
-    #
-    #             # Extract the generated text from the response
-    #             for message in response_data.get("choices", []):
-    #                 response_text += message["message"]["content"]
-    #
-    #     except httpx.RequestError as e:
-    #         print(f"An error occurred while making the request: {e}")
-    #     except httpx.HTTPStatusError as e:
-    #         print(f"Request returned an unsuccessful status code: {e}")
-    #
-    #     print("Response: ", response_text)
-    #     return response_text
 
     def classify_text(self, text, prompt, language='en'):
         """
@@ -218,7 +187,11 @@ class OLLaMa(Model):
         if self.generation:
             prediction = generated_text
         else:
+            print("Generated text: ", generated_text)
             prediction = self.extract_labels_from_generated_text(generated_text, self.label_options)
+            prediction = [x.replace("negative", '0').replace("positive", '1').replace("none", '-1') for x in prediction]
+            prediction = [int(x) for x in prediction]
+            print("Extracted labels: ", prediction)
         return prediction
 
 class Google(Model):

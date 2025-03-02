@@ -882,8 +882,8 @@ class SST2(Dataset):
     """
 
     def __init__(self):
-        self.label_options = [0, 1]
-        self.prompt = "<|endoftext|>\nTask: Label the sentiment of the text as either negative or positive. The answer should be exact 'positive' or 'negative'."
+        self.label_options = ['negative', 'positive']
+        self.prompt = "<|endoftext|>\nTask: Label the sentiment of the text as either negative or positive. The answer should be exact 'positive' or 'negative' ONLY ONE WORD."
 
     def get_data(self, language, dataset_name, points_per_language):
         """
@@ -937,7 +937,7 @@ class SST2(Dataset):
         :return: List of extracted labels (0 for negative, 1 for positive)
         """
         all_labels = []
-
+        print("Generated text: ", generated_texts)
         for text in generated_texts:
             if text != None:
                 text_lower = text.lower()
