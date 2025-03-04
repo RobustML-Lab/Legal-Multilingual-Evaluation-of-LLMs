@@ -136,9 +136,12 @@ def attack(data, attack_type, lang, mapped_data):
     for i, entry in enumerate(data):
         if "text" in entry:
             original_text = entry["text"]
-            # ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
 
-            modified_text, changes = adversarial_attack(original_text, attack_type, lang, None)
+            ground_truth_label = None
+            if "label" in entry:
+                ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
+
+            modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
 
             total_words += 1
             changed_words += changes
