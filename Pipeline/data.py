@@ -530,8 +530,8 @@ class XNLI(Dataset):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
         self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
-                           "the hypothesis, or neither. The answer should be exactly 'entailment', "
-                           "'neutral', or 'contradiction'."
+                           "the hypothesis, or neither. The answer should be exactly '0' for entailment, "
+                           "'1' for neutral, or '2' for contradiction. No further explanation should be provided."
                            )
 
     def get_data(self, language, dataset_name, points):

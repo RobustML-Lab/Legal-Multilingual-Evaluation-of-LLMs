@@ -1,16 +1,16 @@
 {
     "before_attack": [
-        "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich habe nicht wieder mit ihm gesprochen.",
-        "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich war so mitgenommen, dass ich einfach wieder anfing mit ihm zu reden.",
-        "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Wir hatten ein tolles Gespräch.",
-        "Prämisse:„Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mmer noch. Ich war der einzige 229 Ex-O, was mein AFCF Air Force-Karriere-Feld war.“Hypothese:Mir war nicht bewusst, dass ich nicht die einzige Person auf dem Feld war an diesem Tag.",
-        "Prämisse:„Und ich dachte, das wäre ein Privileg, und das ist es immer noch, das ist esi mmer noch. Ich war der einzige 229 Ex-O, was mein AFCF Air Force-Karriere-Feld war.“Hypothese:Ich hatte den Eindruck, dass ich im AFCF Air Force Career Field der einzige mit dieser Nummer war."
+        "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+        "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+        "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+        "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
+        "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
     ],
     "after_attack": [
-        "Prämisse : Nun , daran dachte ich nicht einmal , aber ich war so frustriert , dass ich am Ende doch mit ihm redete.Hypothese : Ich habe nicht wieder mit ihm gesprochen .",
-        "Prämisse : Nun , daran dachte ich nicht einmal , aber ich state of war so frustriert , dass ich am Ende doch mit ihm redete.Hypothese : Ich state of war so mitgenommen , dass ich einfach wieder anfing mit ihm zu reden .",
-        "Prämisse : Nun , daran dachte ich nicht einmal , aber ich war so frustriert , dass ich live Ende doch mit ihm redete.Hypothese : Wir hatten ein tolles Gespräch .",
-        "Prämisse : „ Und ich dachte , das wäre ein Privileg , und district attorney ist es immer noch , das ist esi mmer noch . Ich war der einzige 229 Ex-O , was mein AFCF Air Force-Karriere-Feld war. “ Hypothese : Mir war nicht bewusst , dass ich nicht die einzige Person auf dem Feld war an diesem Tag .",
-        "Prämisse : „ Und ich dachte , das wäre ein Privileg , und das ist es immer noch , das ist esi mmer noch . Ich warfare der einzige 229 Ex-O , was mein AFCF Air Force-Karriere-Feld war. “ Hypothese : Ich hatte den Eindruck , cony ich im AFCF Air Force Career Field der einzige mit dieser Nummer warfare ."
+        "لم أتحدث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+        "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+        "دار بيننا حديث رائع.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+        "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :",
+        "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :"
     ]
 }

@@ -17,7 +17,7 @@ class Model:
     Base Model class with a.py factory method to return the appropriate model object.
     """
 
-    def predict(self, dataset: list, prompt: str):
+    def predict(self, dataset: list, prompt: str, language):
         """
         Predict labels for a.py dataset.
 
@@ -25,10 +25,10 @@ class Model:
         :param prompt: The prompt for label prediction.
         :return: A list of lists, where each inner list contains the predicted label indices for each text sample.
         """
-        return [self.classify_text(item['text'], prompt=prompt) for item in dataset], None
+        return [self.classify_text(item['text'], prompt=prompt, language=language) for item in dataset], None
 
     @staticmethod
-    def get_model(name, label_options, multi_class=False, api_key = None, generation = False):
+    def get_model(name, label_options, multi_class=False, api_key=None, generation=False):
         """
         :param name: the name of the model
         :return: the model object
@@ -59,8 +59,8 @@ class Model:
         for label in label_options:
             if label.lower() in generated_text.lower():
                 relevant_labels.append(label)
-        if len(relevant_labels) == 0 or len(relevant_labels)>1:
-            relevant_labels = ['none']
+        if len(relevant_labels) == 0 or len(relevant_labels) > 1:
+            relevant_labels = [-1]
         return relevant_labels
 
 
@@ -150,10 +150,12 @@ class LLaMa(Model):
         else:
             return self.extract_labels_from_generated_text(generated_text, self.label_options)
 
+
 class OLLaMa(Model):
     """
     Using the OLLaMa models
     """
+
     def __init__(self, label_options, multi_class=False, generation=False):
         self.label_options = label_options
         self.multi_class = multi_class
@@ -170,7 +172,6 @@ class OLLaMa(Model):
             response += chunk["message"]["content"]
         return response
 
-
     def classify_text(self, text, prompt, language='en'):
         """
         :param text: the text that needs to be classified
@@ -181,25 +182,31 @@ class OLLaMa(Model):
         print("Type of the prompt: ", type(prompt))
         translated_prompt = translator.translate(prompt)
         complete_prompt = text + translated_prompt
+        print("Complete prompt: ", complete_prompt)
         generated_text = self.generate_text(complete_prompt)
         with open("responses.txt", "a", encoding="utf-8") as file:
-            file.write(generated_text+"\n###################################################\n")
+            file.write(generated_text + "\n###################################################\n")
         if self.generation:
             prediction = generated_text
         else:
             print("Generated text: ", generated_text)
+            print("Labels: ", self.label_options)
             prediction = self.extract_labels_from_generated_text(generated_text, self.label_options)
-            prediction = [x.replace("negative", '0').replace("positive", '1').replace("none", '-1') for x in prediction]
+            # prediction = [
+            #     x.replace("entailment", '0').replace("neutral", '1').replace("contradiction", '2').replace('none', '-1')
+            #     for x in prediction]
             prediction = [int(x) for x in prediction]
+            prediction = [x if x != -1 else None for x in prediction]
             print("Extracted labels: ", prediction)
         return prediction
+
 
 class Google(Model):
     """
     The Google model
     """
 
-    def __init__(self, label_options, multi_class=False, api_key=None, generation = False):
+    def __init__(self, label_options, multi_class=False, api_key=None, generation=False):
         self.label_options = label_options
         self.generation = generation
         self.multi_class = multi_class
@@ -265,5 +272,3 @@ class Google(Model):
                 all_predicted.append(None)
 
         return all_predicted, first_ten_answers
-
-

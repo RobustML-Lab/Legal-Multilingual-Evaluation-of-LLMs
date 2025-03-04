@@ -10,12 +10,12 @@ from adversarial_attack import attack
 from huggingface_hub import login
 
 dataset_name = "xnli"
-languages = ["english"]
-points_per_language = 100
+languages = ["ar", "el", "fr", "ru", "en", "th"]
+points_per_language = 10
 generation = False
 model_name = 'οllama'
 api_key = None
-adversarial_attack = 0
+adversarial_attack = 9
 
 # arguments = sys.argv[1:]
 # dataset_name = arguments[0]
@@ -65,35 +65,44 @@ for lang in languages:
 
 
     # Get the predicted labels
-    predicted, first_ten_answers = model.predict(data, prompt)
+    predicted, first_ten_answers = model.predict(data, prompt, lang)
 
     # if not generation:
     #     predicted = dataset.extract_labels_from_generated_text(predicted)
 
     true = dataset.get_true(data)
 
-    filtered_true = [x for x in true if x is not None]
-    filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None]
+    filtered_true = [true[i] for i in range(len(true)) if true[i] is not None and predicted[i] is not None]
+    filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None and predicted[i] is not None]
 
     # Count missing values in filtered_true and filtered_predicted
     missing_in_true = sum(1 for ref in filtered_true if ref is None)
     missing_in_predicted = sum(1 for pred in filtered_predicted if pred is None)
-
-    # Filter both lists together
-    filtered_true, filtered_predicted = zip(*[
-        (ref, pred) for ref, pred in zip(filtered_true, filtered_predicted) if ref is not None and pred is not None
-    ])
 
     # Convert back to lists
     filtered_true = list(filtered_true)
     filtered_predicted = list(filtered_predicted)
     filtered_predicted = np.concatenate([np.array(sublist) for sublist in filtered_predicted])
 
+    # Filter both lists together
+    filtered_true, filtered_predicted = zip(*[
+        (ref, pred) for ref, pred in zip(filtered_true, filtered_predicted) if ref is not None and pred is not None
+    ])
+
+    # # Convert back to lists
+    filtered_true = list(filtered_true)
+    filtered_predicted = list(filtered_predicted)
+    # filtered_predicted = np.concatenate([np.array(sublist) for sublist in filtered_predicted])
+
+    print("True values: ", true)
+    print("Fitered true values: ", filtered_true)
+    print("Predicted values: ", predicted)
+    print("Filtered predicted values: ", filtered_predicted)
+
     # Print the counts
     if missing_in_true or missing_in_predicted:
         print(f"Number of missing values in 'filtered_true': {missing_in_true}")
         print(f"Number of missing values in 'filtered_predicted': {missing_in_predicted}")
-    print("Filtered predictions: ", filtered_predicted)
     results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
     all_true[lang] = filtered_true
     all_predicted[lang] = filtered_predicted
