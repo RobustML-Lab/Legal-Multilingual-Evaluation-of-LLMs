@@ -45,6 +45,17 @@ for lang in languages:
 
     os.makedirs(os.path.dirname("output/results.json"), exist_ok=True)
 
+    if os.path.exists("output/results.json"):
+        with open("output/results.json", "r", encoding="utf-8") as f:
+            try:
+                existing_data = json.load(f)
+                if not isinstance(existing_data, list):
+                    existing_data = []
+            except json.JSONDecodeError:
+                existing_data = []
+    else:
+        existing_data = []
+
     before_attack = [entry["text"] for entry in data[:5]]
     after_attack = []
 
@@ -54,14 +65,15 @@ for lang in languages:
         data = attack(data, adversarial_attack, lang, mapped_data)
         after_attack = [entry["text"] for entry in data[:5]]
 
-    # Save to file
-    result_data = {
+    result_entry = {
         "before_attack": before_attack,
         "after_attack": after_attack
     }
 
+    existing_data.append(result_entry)
+
     with open("output/results.json", "w", encoding="utf-8") as f:
-        json.dump(result_data, f, ensure_ascii=False, indent=4)
+        json.dump(existing_data, f, ensure_ascii=False, indent=4)
 
 
     # Get the predicted labels

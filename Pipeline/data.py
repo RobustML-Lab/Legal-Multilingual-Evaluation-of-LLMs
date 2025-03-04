@@ -525,7 +525,6 @@ class XNLI(Dataset):
     """
     Child class of Dataset representing the XNLI dataset.
     """
-
     def __init__(self):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
