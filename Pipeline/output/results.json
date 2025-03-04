@@ -1,274 +1,62 @@
 [
     {
         "before_attack": [
-            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
-            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
-            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
-            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
-            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Повече не съм говорил с него.",
+            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Бях толкова разстроена, че просто започнах да говоря отново с него."
         ],
         "after_attack": [
-            "Assumption: Well, Atomic number 53 wasn ' t even thinking astir that, but Ane was thusly disappointed, and, I ended up talk to him again. Speculation: I havent spoken to him once again.",
-            "Premise: Wellspring, I wasn ' t even thinking about that, just Single be thus frustrated, and, I ended up talking to him again. Hypothesis: I was indeed confused that Ane just started talking to him again.",
-            "Premiss: Well, I wasn ' t even thinking astir that, but 1 was so frustrated, and, Unity end upwards talking to him again. Surmise: We had a great talk.",
-            "Premise: And Ane retrieve that was a privilege, and it ' s still, information technology ' s yet, I was the only nine two - 2 Ex - Group o which was my AFFC Air Force Career field. Hypothesis: I cost not aware that I was not the solitary person to cost at the discipline that day.",
-            "Premise: And I think that was a prerogative, and it ' s stock still, it ' s even so, I was the only nine two - deuce Ex - O which was my AFFC Air Force Career field. Supposition: I be under the impression that I was the only one with that number at the AFFC Air Force Career battlefield."
+            "факт : е, аз дори уже мислех за това, когато бях я жив, а в своята сметка отново има под него. хипотеза : повече не раз говорил с я.",
+            "предпоставка : е, аз дори говори ви за тои, но бях толкова важно, и в краина фаза отново разговарях над него. хипотеза : просто просто разстроена, че просто започнах да си отново с него."
+        ]
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά."
+        ],
+        "after_attack": [
+            "προυποθεση : λοιπον, δεν το σκεφτηκα μετα, αν ημουν τοσο αργος, ο γεματος … του μιλαω αμεσως ξανα. υποθεση : δεν του συμβαινει ξανα.",
+            "προυποθεση : λοιπον, μολις το σκεφτηκα καν, αλλα ηταν τοσο απογοητευμενος, και επρεπε να του απαντησω και αλλου. υποθεση : ημουν αρκετα αναστατωμενος και ηξερα οτι της μιλαω ξανα."
+        ]
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again."
+        ],
+        "after_attack": [
+            "premise : yeah, i wasn't even thinking about that, just i was so frustrated, frankly, just ended work driving without him again. j : yet no spoken to him again.",
+            "premise : well, and couldn't even thinking about that, but i was so frustrated, and, only ended up talking to michael again. me : i was still upset since i almost never talks to him again."
         ]
     },
     {
         "before_attack": [
             "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:No he vuelto a hablar con él.",
-            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:Estaba tan molesto que empecé a hablar con él de nuevo.",
-            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:Tuvimos una gran charla.",
-            "Premisa:Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.Hipótesis:No sabía que no era la única persona en el campo ese día.",
-            "Premisa:Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.Hipótesis:Tenía la impresión de que era el único con ese número en el campo AFFC Air Force Career."
+            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:Estaba tan molesto que empecé a hablar con él de nuevo."
         ],
         "after_attack": [
-            "Supuesto: Artículo, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de novel. Hipótesis: No he vuelto a hablar con él.",
-            "Supuesto: Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo. Hipótesis: Estaba tan molesto que empecé a hablar con él de nuevo.",
-            "Premisa: Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo. Hipótesis: Tuvimos una gran confabulación.",
-            "Premisa: Y pensé que era un prerrogativa, y todavía es, todavía es, yo época el único 922 Ex - O que estaba en mi campo de carrera AFFC de la Fuerza Aérea. Hipótesis: No sabía que no era geológica la única mortal en el campo ese día.",
-            "Premisa: Y pensé que época un privilegio, y todavía es, todavía es, yo era el único 922 Ex - O que estaba en mi campo de carrera AFFC de la Fuerza Aérea. Hipótesis: Tenía la impresión de que época el único con ese número en el campo AFFC Air Force Career."
+            "porque : eso, ni estoy pensando decir eso, y estaba tan frustrada en empecé a estar con él a nuevo. bueno : no he vuelto a hacerlo con él.",
+            "premisa : bien, y estaba molesta sobre eso, solo estaba tan frustrada y empecé a hablar es el de nuevo. hipótesis : estas muy enojada que empecé a hablar conmigo él de nuevo."
         ]
     },
     {
         "before_attack": [
             "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
-            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau.",
-            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Nous avons eu une grande discussion.",
-            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
-            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:J'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau."
         ],
         "after_attack": [
-            "Prémisse: Eh produit, je ne pensais même démarche à cela, mais j ' étais silicium frustré, et j ' ai fini par lui reparler. Hypothèse: Moi ne lui ai pas parlé de nouveau",
-            "Prémisse: Eh bien de consommation courante, je ne pensais même pas à cela, mais j ' étais système international d'unités frustré, poids j ' ai fini par lui reparler. Possibilité: J ' étais si contrarié que je commençais juste à lui parler à nouveau.",
-            "Prémisse: Eh bien, moi ne pensais même lancer à cela, mais j ' étais si frustré, poids j ' ai fini an lui reparler. Hypothèse: Nous avons eu une grande discussion.",
-            "Bâtiment: Et je pensais que c ' était un privilège, et ça l ' est toujours, toujours, j ' étais monsieur seul 922 Ex - O, c ' est là que j ' avais effectué ma carrière dans l ' AFFC Zéphyr Force. Hypothèse: Je n ' avais escalier conscience que moi n ' étais fil la seule personne indium être sur le terrain bce jour - là.",
-            "Prémisse: Et je pensais que c ' était un privilège, et ça l ' est toujours, toujours, j ' étais le seul 922 Ex mari - O, cm ' est là que j ' avais effectué ma carrière dans l ' AFFC Atmosph Force. Hypothèse: J ' avais l ' bassin que j ' étais le seul à avoir ce numéro dans le domaine de carrière de l ' AFFC Air Force."
+            "Pré <unk>:Eh dieu, je ne songe même po à cela, mais j'étais si frustré, et quand'ai fini me lui reparler.Hypothèse:Je en lui ai pas parler de tout",
+            "Prémisse: Maish bien, je la pensais même pas à cela, voilà j'étais si seul, désespéré puis'ai fini par lui reparler. Sapothèse: J'étais si contrarié que cela commençais juste à lui parler et nouveau."
         ]
     },
     {
         "before_attack": [
-            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว"
         ],
         "after_attack": [
-            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
-        ]
-    },
-    {
-        "before_attack": [
-            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Повече не съм говорил с него."
-        ],
-        "after_attack": [
-            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Повече не съм говорил с него."
-        ]
-    },
-    {
-        "before_attack": [
-            "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich habe nicht wieder mit ihm gesprochen."
-        ],
-        "after_attack": [
-            "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich habe nicht wieder mit ihm gesprochen."
-        ]
-    },
-    {
-        "before_attack": [
-            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά."
-        ],
-        "after_attack": [
-            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά."
-        ]
-    },
-    {
-        "before_attack": [
-            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again."
-        ],
-        "after_attack": [
-            "Premise: Fountainhead, I wasn ' t yet imagine astir that, just I was so thwarted, and, I ended upward talking to him again. Surmise: I havent spoken to him again."
-        ]
-    },
-    {
-        "before_attack": [
-            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:No he vuelto a hablar con él."
-        ],
-        "after_attack": [
-            "Supuesto: Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de temprano. Posibilidad: No he vuelto a hablar con él."
-        ]
-    },
-    {
-        "before_attack": [
-            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau"
-        ],
-        "after_attack": [
-            "Prémisse: Eh bien, moi ne pensais même pas à cela, exclusivement j ' étais silicium frustré, et j ' ai fini par lui reparler. Hypothèse: Je ne lui ai échelon parlé de nouveau"
-        ]
-    },
-    {
-        "before_attack": [
-            "आधार:हालांकि मैं इसके बारे में सोच भी नहीं रहा था लेकिन मैं इतना परेशान था कि मुझे वापस उससे बात करनी ही पड़ेगीपरिकल्पना:मैंने उससे दोबारा बात नहीं की है।"
-        ],
-        "after_attack": [
-            "आधार:हालांकि मैं इसके बारे में सोच भी नहीं रहा था लेकिन मैं इतना परेशान था कि मुझे वापस उससे बात करनी ही पड़ेगीपरिकल्पना:मैंने उससे दोबारा बात नहीं की है।"
-        ]
-    },
-    {
-        "before_attack": [
-            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал."
-        ],
-        "after_attack": [
-            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал."
-        ]
-    },
-    {
-        "before_attack": [
-            "Nguzo:Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena.Nadharia:Sijaongea na yeye tena."
-        ],
-        "after_attack": [
-            "Nguzo:Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena.Nadharia:Sijaongea na yeye tena."
-        ]
-    },
-    {
-        "before_attack": [
-            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย"
-        ],
-        "after_attack": [
-            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย"
-        ]
-    },
-    {
-        "before_attack": [
-            "Öncül:Pekala, bunu hiç düşünmemiştim ancak kafam çok karıştı ve onunla tekrar konuşmadım.Hipotez:Onunla bir daha konuşmadım."
-        ],
-        "after_attack": [
-            "Öncül:Pekala, bunu hiç düşünmemiştim ancak kafam çok karıştı ve onunla tekrar konuşmadım.Hipotez:Onunla bir daha konuşmadım."
-        ]
-    },
-    {
-        "before_attack": [
-            "بنیاد:میں اس کے بارے میں نہیں سوچھ رہی تھی ، لیکن میں اتنی مایوس تھی کہ اس سے دوبارہ بات کرنے لگی۔مفروضہ:میں نی اسی دوبارا بات نھی کی"
-        ],
-        "after_attack": [
-            "بنیاد:میں اس کے بارے میں نہیں سوچھ رہی تھی ، لیکن میں اتنی مایوس تھی کہ اس سے دوبارہ بات کرنے لگی۔مفروضہ:میں نی اسی دوبارا بات نھی کی"
-        ]
-    },
-    {
-        "before_attack": [
-            "Tiền đề:Vâng, tôi thậm chí không nghĩ về điều đó, nhưng tôi đã rất thất vọng, và, tôi lại nói chuyện với anh ta lần nữa.Giả thuyết:Tôi đã không nói chuyện với anh ta nữa."
-        ],
-        "after_attack": [
-            "Tiền đề:Vâng, tôi thậm chí không nghĩ về điều đó, nhưng tôi đã rất thất vọng, và, tôi lại nói chuyện với anh ta lần nữa.Giả thuyết:Tôi đã không nói chuyện với anh ta nữa."
-        ]
-    },
-    {
-        "before_attack": [
-            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
-        ],
-        "after_attack": [
-            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
-        ]
-    },
-    {
-        "before_attack": [
-            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Повече не съм говорил с него."
-        ],
-        "after_attack": [
-            "Предпоставка: Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него. Предположение: Повече не съм говорил с него."
-        ]
-    },
-    {
-        "before_attack": [
-            "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich habe nicht wieder mit ihm gesprochen."
-        ],
-        "after_attack": [
-            "Prämisse:Nun, daran dachte ich nicht einmal, aber ich war so frustriert, dass ich am Ende doch mit ihm redete.Hypothese:Ich habe nicht wieder mit ihm gesprochen."
-        ]
-    },
-    {
-        "before_attack": [
-            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά."
-        ],
-        "after_attack": [
-            "Προϋπόθεση: Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι. Υπόθεση: Δεν του μίλησα ξανά."
-        ]
-    },
-    {
-        "before_attack": [
-            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again."
-        ],
-        "after_attack": [
-            "Assumption: Well, I wasn ' t even recollect astir that, but I was so thwarted, and, I cease up talking to him over again. Hypothesis: I havent verbalize to him again."
-        ]
-    },
-    {
-        "before_attack": [
-            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:No he vuelto a hablar con él."
-        ],
-        "after_attack": [
-            "Premisa: Propiedad privada, ni estaba pensando tuerca eso, pero estaba tan frustrada y empecé a hablar con él de contemporáneo. Hipótesis: No he vuelto a hablar con él."
-        ]
-    },
-    {
-        "before_attack": [
-            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau"
-        ],
-        "after_attack": [
-            "Prémisse: Eh puits, moi ne pensais même pas une cela, exclusivement j ' étais si frustré, et j ' ai fini un lui reparler. Hypothèse: Je niet lui ai enjambée parlé de nouveau"
-        ]
-    },
-    {
-        "before_attack": [
-            "आधार:हालांकि मैं इसके बारे में सोच भी नहीं रहा था लेकिन मैं इतना परेशान था कि मुझे वापस उससे बात करनी ही पड़ेगीपरिकल्पना:मैंने उससे दोबारा बात नहीं की है।"
-        ],
-        "after_attack": [
-            "आधार:हालांकि मैं इसके बारे में सोच भी नहीं रहा था लेकिन मैं इतना परेशान था कि मुझे वापस उससे बात करनी ही पड़ेगीपरिकल्पना:मैंने उससे दोबारा बात नहीं की है।"
-        ]
-    },
-    {
-        "before_attack": [
-            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал."
-        ],
-        "after_attack": [
-            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал."
-        ]
-    },
-    {
-        "before_attack": [
-            "Nguzo:Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena.Nadharia:Sijaongea na yeye tena."
-        ],
-        "after_attack": [
-            "Nguzo:Naam, sikukuwa nafikiri juu ya hilo, lakini nilichanganyikiwa sana, na, hatimaye nikaendelea kuzungumza naye tena.Nadharia:Sijaongea na yeye tena."
-        ]
-    },
-    {
-        "before_attack": [
-            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย"
-        ],
-        "after_attack": [
-            "หล ั กฐาน: ด ี, ฉ ั นไม ่ ได ้ ค ิ ดอะไรเก ี ่ ยวก ั บเร ื ่ องน ี ้, แต ่ ฉ ั ปักษา ็ ผ ิ ดหว ั ง, และ, ฉ ั นก ็ กล ั บไปค ุ ยก ั บเขาอ ี กคร ั ้ งสมมต ิ ฐาน: ฉ ั นไม ่ ได ้ ค ุ ยก ั บเขาอ ี กเลย"
-        ]
-    },
-    {
-        "before_attack": [
-            "Öncül:Pekala, bunu hiç düşünmemiştim ancak kafam çok karıştı ve onunla tekrar konuşmadım.Hipotez:Onunla bir daha konuşmadım."
-        ],
-        "after_attack": [
-            "Öncül:Pekala, bunu hiç düşünmemiştim ancak kafam çok karıştı ve onunla tekrar konuşmadım.Hipotez:Onunla bir daha konuşmadım."
-        ]
-    },
-    {
-        "before_attack": [
-            "بنیاد:میں اس کے بارے میں نہیں سوچھ رہی تھی ، لیکن میں اتنی مایوس تھی کہ اس سے دوبارہ بات کرنے لگی۔مفروضہ:میں نی اسی دوبارا بات نھی کی"
-        ],
-        "after_attack": [
-            "بنیاد:میں اس کے بارے میں نہیں سوچھ رہی تھی ، لیکن میں اتنی مایوس تھی کہ اس سے دوبارہ بات کرنے لگی۔مفروضہ:میں نی اسی دوبارا بات نھی کی"
-        ]
-    },
-    {
-        "before_attack": [
-            "Tiền đề:Vâng, tôi thậm chí không nghĩ về điều đó, nhưng tôi đã rất thất vọng, và, tôi lại nói chuyện với anh ta lần nữa.Giả thuyết:Tôi đã không nói chuyện với anh ta nữa."
-        ],
-        "after_attack": [
-            "Tiền đề:Vâng, tôi thậm chí không nghĩ về điều đó, nhưng tôi đã rất thất vọng, và, tôi lại nói chuyện với anh ta lần nữa.Giả thuyết:Tôi đã không nói chuyện với anh ta nữa."
+            "\"&หลักฐาน:--, ฉันไม่ได้ ฉันเคยเกี่ยวกับฉันขอโทษ,__แต่ฉันก็ผิดหวัง,<_>,ทําให้ทําไม่ได้คุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            " *:q,<unk>ไม่รู้เลยเรื่องนี้, แต่ฉันก็w, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:<unk>เเย่มากเหมือนฉันกําลังลืม รู้สึกคุยกับเขาอีกเเล้ว"
         ]
     }
 ]

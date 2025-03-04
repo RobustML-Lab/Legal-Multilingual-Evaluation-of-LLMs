@@ -81,6 +81,15 @@ pos_map = {
     "RBS": wordnet.ADV,
 }
 
+LANG_TO_MODEL = {
+    'bul': 'bert-base-multilingual-uncased',  # No dedicated Bulgarian model, use mBERT
+    'ell': 'nlpaueb/bert-base-greek-uncased-v1',  # Greek-specific BERT
+    'eng': 'bert-base-uncased',  # Standard English BERT
+    'spa': 'dccuchile/bert-base-spanish-wwm-uncased',  # Spanish-specific BERT
+    'fra': 'camembert-base',  # French-specific RoBERTa-based model
+    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT model
+}
+
 nltk.download("averaged_perceptron_tagger")
 nltk.download("punkt")
 nltk.download("punkt_tab")
@@ -135,7 +144,7 @@ def attack(data, attack_type, lang, mapped_data):
             changed_words += changes
             entry["text"] = modified_text
 
-    change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
+    change_percentage = (changed_words / total_words) if total_words > 0 else 0
     save_results(lang, change_percentage)
     return data
 
@@ -159,7 +168,7 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
         return genetic_attack(text, ground_truth_label)
     elif attack_type == 9:  # Word substitution for multilingual
         return synonym_multilingual_attack(text, lang)
-    elif 9 < attack_type < 15:
+    elif 9 < attack_type < 15: # Attack using nlpaug
         return nlpaug_attack(text, lang, attack_type)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
@@ -409,7 +418,8 @@ def nlpaug_attack(text, lang, attack_type):
 
     elif attack_type == 14:
         # Contextual word embeddings using BERT
-        contextual_aug = naw.ContextualWordEmbsAug(model_path='bert-base-uncased', action="substitute")
+        bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
+        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
         augmented_text = contextual_aug.augment(text)
 
     else:
@@ -419,10 +429,8 @@ def nlpaug_attack(text, lang, attack_type):
         augmented_text = augmented_text[0] if augmented_text else text
 
     modified_words = word_tokenize(augmented_text)
-
-    matcher = SequenceMatcher(None, original_words, modified_words)
-    changed_words = sum(1 for tag, _, _, _, _ in matcher.get_opcodes() if tag != "equal")
-
+    changed_words = sum(1 for o, m in zip(original_words, modified_words) if o != m)
+    changed_words += abs(len(original_words) - len(modified_words))
     total_words = len(original_words)
     change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
 
