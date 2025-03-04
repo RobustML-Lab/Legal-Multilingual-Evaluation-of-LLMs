@@ -16,3 +16,11 @@ en: 59.27% words modified
 es: 66.54% words modified
 fr: 84.81% words modified
 th: 134.62% words modified
+en: 0.00% words modified
+el: 0.00% words modified
+en: 0.00% words modified
+el: 0.00% words modified
+en: 0.00% words modified
+el: 0.00% words modified
+en: 113.54% words modified
+el: 113.84% words modified
