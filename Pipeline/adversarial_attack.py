@@ -159,7 +159,7 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
         return genetic_attack(text, ground_truth_label)
     elif attack_type == 9:  # Word substitution for multilingual
         return synonym_multilingual_attack(text, lang)
-    elif 9 < attack_type < 14:
+    elif 9 < attack_type < 15:
         return nlpaug_attack(text, lang, attack_type)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
