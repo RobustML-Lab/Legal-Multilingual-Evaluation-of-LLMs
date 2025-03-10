@@ -25,6 +25,8 @@ language_map = {
     'irish': 'ga',
     'maltese': 'mt',
     'slovak': 'sk',
+    'chinese': 'zh-CN',
+    'zh': 'zh-CN',
 }
 
 

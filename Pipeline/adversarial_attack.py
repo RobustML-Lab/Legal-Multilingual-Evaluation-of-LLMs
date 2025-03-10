@@ -1,5 +1,6 @@
 import random
 import textattack
+from nltk.corpus.reader import WordNetError
 from textattack.attack_recipes import TextBuggerLi2018, TextFoolerJin2019
 from textattack.models.wrappers import HuggingFaceModelWrapper
 from textattack.augmentation import EasyDataAugmenter, WordNetAugmenter
@@ -14,9 +15,15 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from nltk.corpus import wordnet
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tag import pos_tag
+from difflib import SequenceMatcher
+
 import torch
 import nltk
 
+import nlpaug.augmenter.word as naw
+import nlpaug.augmenter.char as nac
+import nlpaug.augmenter.sentence as nas
+from nlpaug.util import Action
 
 # Language mapping
 language_map = {
@@ -24,7 +31,7 @@ language_map = {
     'spanish': 'es', 'french': 'fr', 'italian': 'it', 'portuguese': 'pt', 'romanian': 'ro',
     'bulgarian': 'bg', 'czech': 'cs', 'croatian': 'hr', 'polish': 'pl', 'slovenian': 'sl',
     'estonian': 'et', 'finnish': 'fi', 'hungarian': 'hu', 'lithuanian': 'lt', 'latvian': 'lv',
-    'greek': 'el', 'irish': 'ga', 'maltese': 'mt', 'slovak': 'sk',
+    'greek': 'el', 'irish': 'ga', 'maltese': 'mt', 'slovak': 'sk', 'chinese': 'zh'
 }
 
 wordnet_lang_map = {
@@ -33,8 +40,28 @@ wordnet_lang_map = {
     'fr': 'french',
     'de': 'german',
     'nl': 'dutch',
-    'it': 'italian'
+    'it': 'italian',
 }
+
+nlpaug_lang_map = {
+    'en': 'eng',
+    'es': 'spa',
+    'fr': 'fra',
+    'de': 'deu',
+    'nl': 'nld',
+    'it': 'ita',
+    'zh': 'zho'
+}
+
+lang_map = {
+    "bg": "bul",  # Bulgarian
+    "el": "ell",  # Greek
+    "en": "eng",  # English
+    "es": "spa",  # Spanish
+    "fr": "fra",  # French
+    "th": "tha",  # Thai
+}
+
 
 # Mapping NLTK POS tags to WordNet POS tags
 pos_map = {
@@ -54,17 +81,29 @@ pos_map = {
     "RBS": wordnet.ADV,
 }
 
+LANG_TO_MODEL = {
+    'bul': 'bert-base-multilingual-uncased',  # No dedicated Bulgarian model, use mBERT
+    'ell': 'nlpaueb/bert-base-greek-uncased-v1',  # Greek-specific BERT
+    'eng': 'bert-base-uncased',  # Standard English BERT
+    'spa': 'dccuchile/bert-base-spanish-wwm-uncased',  # Spanish-specific BERT
+    'fra': 'camembert-base',  # French-specific RoBERTa-based model
+    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT model
+}
+
 nltk.download("averaged_perceptron_tagger")
 nltk.download("punkt")
 nltk.download("punkt_tab")
 nltk.download("wordnet")
 nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('omw-1.4')
+
 
 
 # Load a real classifier model (e.g., BERT for classification)
 model_name = "textattack/bert-base-uncased-SST-2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
 
 class CustomHuggingFaceModelWrapper(HuggingFaceModelWrapper):
     def __call__(self, text_inputs):
@@ -101,11 +140,11 @@ def attack(data, attack_type, lang, mapped_data):
 
             modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
 
-            total_words += len(original_text.split())
+            total_words += 1
             changed_words += changes
             entry["text"] = modified_text
 
-    change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
+    change_percentage = (changed_words / total_words) if total_words > 0 else 0
     save_results(lang, change_percentage)
     return data
 
@@ -129,6 +168,8 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
         return genetic_attack(text, ground_truth_label)
     elif attack_type == 9:  # Word substitution for multilingual
         return synonym_multilingual_attack(text, lang)
+    elif 9 < attack_type < 15: # Attack using nlpaug
+        return nlpaug_attack(text, lang, attack_type)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
 
@@ -275,42 +316,125 @@ def get_synonyms(word, pos, lang="english"):
 
     return list(synonyms)
 
-def synonym_multilingual_attack(text, lang="english", replacement_prob=0.3):
+def synonym_multilingual_attack(text, lang="english", target_percentage=10):
     """
-    Replaces words with their WordNet synonyms while maintaining part of speech correctness.
-    Supports multiple languages.
+    Ensures a consistent percentage of word replacements across languages using only WordNet.
+    - Computes how many words to replace based on `target_percentage`.
+    - If not enough synonyms exist, re-attempts substitutions until the target is met.
     """
     lang = lang.lower()
     if lang in wordnet_lang_map:
         lang = wordnet_lang_map[lang]
+
     try:
-        sentences = sent_tokenize(text, language=lang)  # Ensure correct language format
+        sentences = sent_tokenize(text, language=lang)
     except LookupError:
         print(f"Error: NLTK does not support sentence tokenization for '{lang}'. Using default 'english'.")
-        sentences = sent_tokenize(text, language="english")  # Fallback
+        sentences = sent_tokenize(text, language="english")
 
     words = [word for sentence in sentences for word in word_tokenize(sentence)]
+    tagged_words = pos_tag(words)
 
-    tagged_words = pos_tag(words)  # Get POS tagging
+    total_words = len(tagged_words)
+    target_changes = max(1, int((target_percentage / 100) * total_words))  # Ensure at least 1 change
+    modified_words = 0
 
     perturbed_words = []
+    potential_replacements = []
+
+    # Collect words that can be replaced
+    for word, tag in tagged_words:
+        if tag in pos_map:
+            wordnet_pos = pos_map[tag]
+            synonyms = get_synonyms(word, wordnet_pos, lang)
+
+            if synonyms:
+                potential_replacements.append((word, random.choice(synonyms)))
+
+    # Replace words based on collected replacements
+    random.shuffle(potential_replacements)  # Shuffle for randomness
+    replacement_dict = dict(potential_replacements[:target_changes])  # Select exact number needed
 
     for word, tag in tagged_words:
-        if random.random() > replacement_prob or tag not in pos_map:
-            perturbed_words.append(word)
-            continue
-
-        wordnet_pos = pos_map[tag]  # Get WordNet-compatible POS tag
-        synonyms = get_synonyms(word, wordnet_pos, lang)
-
-        if synonyms:
-            chosen_synonym = random.choice(synonyms)
-            perturbed_words.append(chosen_synonym)
+        if word in replacement_dict:
+            perturbed_words.append(replacement_dict[word])
+            modified_words += 1
         else:
             perturbed_words.append(word)
 
     perturbed_text = " ".join(perturbed_words)
-    return perturbed_text, count_changes(text, perturbed_text)
+
+    return perturbed_text, modified_words
+
+def nlpaug_attack(text, lang, attack_type):
+    """
+    Applies an adversarial attack to the input text based on the attack type using the nlpaug library.
+
+    Parameters:
+        text (str): The input text to be modified.
+        lang (str): The language of the text (default is 'eng' for English).
+        attack_type (int): The type of attack to apply. Options:
+                           10: Synonym Replacement (WordNet-based)
+                           11: Random Character Insertion
+                           12: Keyboard Typo Simulation
+                           13: Back Translation
+                           14: Contextual Word Substitution (BERT-based)
+
+    Returns:
+        str: The modified text after applying the attack.
+    """
+
+    if lang in lang_map.keys():
+        lang = lang_map[lang]
+
+    original_words = word_tokenize(text)
+
+    if attack_type == 10:
+        try:
+            # Synonym replacement (WordNet-based, supports multiple languages)
+            synonym_aug = naw.SynonymAug(aug_src='wordnet', lang=lang)
+            augmented_text = synonym_aug.augment(text)
+        except WordNetError as e:
+            print(f"{e} {lang}")
+            return text, 0
+
+    elif attack_type == 11:
+        # Character-level modifications (e.g., random character insertion)
+        char_aug = nac.RandomCharAug(action="insert", aug_char_p=0.3)
+        augmented_text = char_aug.augment(text)
+
+    elif attack_type == 12:
+        # Keyboard typo simulation (QWERTY-based)
+        keyboard_aug = nac.KeyboardAug(aug_word_p=0.3)
+        augmented_text = keyboard_aug.augment(text)
+
+    elif attack_type == 13:
+        # Back translation
+        back_translation_aug = naw.BackTranslationAug(
+            from_model_name='transformer.wmt19.en-de',
+            to_model_name='transformer.wmt19.de-en'
+        )
+        augmented_text = back_translation_aug.augment(text)
+
+    elif attack_type == 14:
+        # Contextual word embeddings using BERT
+        bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
+        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
+        augmented_text = contextual_aug.augment(text)
+
+    else:
+        raise ValueError(f"Unsupported attack_type: {attack_type}. Supported types are 10-14.")
+
+    if isinstance(augmented_text, list):
+        augmented_text = augmented_text[0] if augmented_text else text
+
+    modified_words = word_tokenize(augmented_text)
+    changed_words = sum(1 for o, m in zip(original_words, modified_words) if o != m)
+    changed_words += abs(len(original_words) - len(modified_words))
+    total_words = len(original_words)
+    change_percentage = (changed_words / total_words) * 100 if total_words > 0 else 0
+
+    return augmented_text, change_percentage
 
 def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""

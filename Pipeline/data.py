@@ -525,7 +525,6 @@ class XNLI(Dataset):
     """
     Child class of Dataset representing the XNLI dataset.
     """
-
     def __init__(self):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
@@ -546,7 +545,8 @@ class XNLI(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset, points)
-        return data, self.label_options, self.prompt
+        prompt, _ = translate(language, self.prompt)
+        return data, self.label_options, prompt
 
     def extract_text_all_languages(self, dataset):
         """
@@ -573,11 +573,11 @@ class XNLI(Dataset):
         for item in dataset:
             if count == points:
                 break
-            translator = GoogleTranslator(source="en", target=self.language)
+            # translator = GoogleTranslator(source="en", target=self.language)
             if self.language == "ar":
-                text = item["hypothesis"] + translator.translate("Hypothesis: ") + item["premise"] + translator.translate("Premise: ")
+                text = item["hypothesis"] + translate(self.language, "Hypothesis: ")[0] + item["premise"] + translate(self.language, "Premise: ")[0]
             else:
-                text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
+                text = translate(self.language, "Premise: ")[0] + item["premise"] + translate(self.language, " Hypothesis: ")[0] + item["hypothesis"]
             data.append({"text": text, "label": item['label']})
             count += 1
         return data

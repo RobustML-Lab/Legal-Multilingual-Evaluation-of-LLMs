@@ -1,6 +1,7 @@
 from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
     LlamaTokenizer, LlamaForCausalLM
 from deep_translator import GoogleTranslator
+from translator import translate
 import ollama
 import torch
 import transformers
@@ -33,15 +34,14 @@ class Model:
         :param name: the name of the model
         :return: the model object
         """
-        print("Loading model: ", name)
-        return OLLaMa(label_options, multi_class, generation)
+        # print("Loading model: ", name)
+        # return OLLaMa(label_options, multi_class, generation)
         if name.lower() == 'llama':
             return LLaMa(label_options, multi_class, generation)
         elif name.lower() == 'google':
             return Google(label_options, multi_class, api_key, generation)
-        elif name.lower() == 'ollama':
-            print("Reached OLLaMa")
-            return OLLaMa(label_options, multi_class, generation)
+        elif name.lower() == "ollama" or name.lower() == "odeepseek":
+            return OLLaMa(label_options, multi_class, generation, name)
         else:
             raise ValueError(f"Model '{name}' is not available")
 
@@ -156,14 +156,18 @@ class OLLaMa(Model):
     Using the OLLaMa models
     """
 
-    def __init__(self, label_options, multi_class=False, generation=False):
+    def __init__(self, label_options, multi_class=False, generation=False, model="ollama"):
         self.label_options = label_options
         self.multi_class = multi_class
         self.generation = generation
+        self.model = model
 
     def generate_text(self, prompt):
+        model_name = "llama3.2"
+        if self.model == "odeepseek":
+            model_name = "deepseek-r1:1.5b"
         generated_stream = ollama.chat(
-            model="llama3.2",
+            model=model_name,
             messages=[{"role": "user", "content": prompt}],
             stream=True
         )
@@ -178,11 +182,10 @@ class OLLaMa(Model):
         :return: a list of all the labels corresponding to the given text
         """
         print("Reached classify_text")
-        translator = GoogleTranslator(source="en", target=language)
-        print("Type of the prompt: ", type(prompt))
-        translated_prompt = translator.translate(prompt)
-        complete_prompt = text + translated_prompt
-        print("Complete prompt: ", complete_prompt)
+        # translator = GoogleTranslator(source="en", target=language)
+        # translated_prompt, text = translate(language, prompt)
+        complete_prompt = text + prompt
+        print("Input: ", complete_prompt)
         generated_text = self.generate_text(complete_prompt)
         with open("responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text + "\n###################################################\n")
@@ -190,7 +193,6 @@ class OLLaMa(Model):
             prediction = generated_text
         else:
             print("Generated text: ", generated_text)
-            print("Labels: ", self.label_options)
             prediction = self.extract_labels_from_generated_text(generated_text, self.label_options)
             # prediction = [
             #     x.replace("entailment", '0').replace("neutral", '1').replace("contradiction", '2').replace('none', '-1')

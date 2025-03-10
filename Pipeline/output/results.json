@@ -1,16 +1,722 @@
-{
-    "before_attack": [
-        "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
-        "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
-        "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
-        "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
-        "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
-    ],
-    "after_attack": [
-        "لم أتحدث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
-        "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
-        "دار بيننا حديث رائع.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
-        "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :",
-        "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :"
-    ]
-}
+[
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
+        ],
+        "after_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "دار بيننا حديث رائع.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Είχαμε μια ωραία συζηση.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": [
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Δεν του μίλησα ξανά .",
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά .",
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Είχαμε μια ωραία συζηση .",
+            "Προϋπόθεση : Και σκέφτηκα ότι ήταν ένα προνόμιο , και είναι ακόμα , ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση : Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα .",
+            "Προϋπόθεση : Και σκέφτηκα ότι ήταν ένα προνόμιο , και είναι ακόμα , ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση : Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC ."
+        ]
+    },
+    {
+        "before_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Nous avons eu une grande discussion.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:J'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": [
+            "Prémisse : Eh bien , je ne pensais même Pa à cela , mais j'étais Systeme International frustré , et j'ai fini equality lui reparler.Hypothèse : Je ne lui ai Pa parlé de nouveau",
+            "Prémisse : Eh bien , je ne pensais même papa à cela , mais j'étais International System of Units frustré , et j'ai fini equivalence lui reparler.Hypothèse : J'étais International System of Units contrarié que je commençais juste à lui parler à nouveau .",
+            "Prémisse : Eh bien , je ne pensais même pas à cela , mais j'étais Systeme International d'Unites frustré , et j'ai fini equivalence lui reparler.Hypothèse : Nous avons eu une grande give-and-take .",
+            "Prémisse : Et je pensais que c'était un privilège , et ça l'est toujours , toujours , j'étais lupus erythematosus seul 922 Ex-O , c'est là que j'avais effectué mummy carrière dans l'AFFC Air Force.Hypothèse : Je n'avais pop moral sense que je n'étais pop lanthanum seule personne à être sur lupus erythematosus terrain ce jour-là .",
+            "Prémisse : Et je pensais que c'était un privilège , et ça l'est toujours , toujours , j'étais lupus erythematosus seul 922 Ex-O , c'est là que j'avais effectué Master of Arts carrière dans l'AFFC Air Force.Hypothèse : J'avais l'impression que j'étais lupus erythematosus seul à avoir cerium numéro dans lupus erythematosus domaine de carrière de l'AFFC Air Force ."
+        ]
+    },
+    {
+        "before_attack": [
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал.",
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я был так расстроен, что даже снова начал с ним разговаривать.",
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Мы прекрасно поговорили.",
+            "Предпосылка:А я считал это привилегией, и всё-же,  и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза:Я не знал, что в тот день буду не единственным человеком в поле.",
+            "Предпосылка:А я считал это привилегией, и всё-же,  и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза:У меня было впечатление, что на ярмарке вакансий ВВС только у меня был такой номер."
+        ],
+        "after_attack": [
+            "Предпосылка : Ну , я даже не думал об этом , но я был так разочарован , что в конце концов опять поговорил с ним.Гипотеза : Я больше с ним не разговаривал .",
+            "Предпосылка : Ну , я даже не думал об этом , но я был так разочарован , что в конце концов опять поговорил с ним.Гипотеза : Я был так расстроен , что даже снова начал с ним разговаривать .",
+            "Предпосылка : Ну , я даже не думал об этом , но я был так разочарован , что в конце концов опять поговорил с ним.Гипотеза : Мы прекрасно поговорили .",
+            "Предпосылка : А я считал это привилегией , и всё-же , и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза : Я не знал , что в тот день буду не единственным человеком в поле .",
+            "Предпосылка : А я считал это привилегией , и всё-же , и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза : У меня было впечатление , что на ярмарке вакансий ВВС только у меня был такой номер ."
+        ]
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": [
+            "Premise : Well , I was n't even thinking about that , but I was so foiled , and , I ended up verbalise to him again.Hypothesis : I havent spoken to him once again .",
+            "Premise : Well , I embody n't yet thinking about that , but I embody so frustrated , and , I ended up talking to him again.Hypothesis : I embody so upset that I just started talking to him again .",
+            "Premise : Well , I constitute n't even retrieve about that , but I constitute so frustrated , and , I ended up talking to him again.Hypothesis : We receive a great talk .",
+            "Premise : And I thought that make up a exclusive right , and it 's notwithstanding , it 's notwithstanding , I make up the lone nine two-two Ex-O which make up my AFFC Air Force Career field.Hypothesis : I make up not aware that I make up not the lone person to comprise at the field that day .",
+            "premiss : And I thought that personify a privilege , and it 's still , it 's still , I personify the solitary nine two-two Ex-O which personify my AFFC Air Force Career field.Hypothesis : I personify under the printing that I personify the solitary one with that number at the AFFC Air Force Career field ."
+        ]
+    },
+    {
+        "before_attack": [
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:พวกเราคุยกันได้ถูกคอจริงๆ",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "after_attack": [
+            "หลักฐาน : ดี , ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้ , แต่ฉันก็ผิดหวัง , และ , ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน : ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน : ดี , ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้ , แต่ฉันก็ผิดหวัง , และ , ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน : ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "หลักฐาน : ดี , ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้ , แต่ฉันก็ผิดหวัง , และ , ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน : พวกเราคุยกันได้ถูกคอจริงๆ",
+            "หลักฐาน : และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน : ฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "หลักฐาน : และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน : ฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
+        ],
+        "after_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "دار بيننا حديث رائع.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
+        ],
+        "after_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "دار بيننا حديث رائع.فرضية : حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية :",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية : واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Είχαμε μια ωραία συζηση.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": [
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Δεν του μίλησα ξανά .",
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά .",
+            "Προϋπόθεση : Λοιπόν , δεν το σκέφτηκα καν , αλλά ήμουν τόσο απογοητευμένος , και κατέληξα να του μιλάω και πάλι.Υπόθεση : Είχαμε μια ωραία συζηση .",
+            "Προϋπόθεση : Και σκέφτηκα ότι ήταν ένα προνόμιο , και είναι ακόμα , ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση : Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα .",
+            "Προϋπόθεση : Και σκέφτηκα ότι ήταν ένα προνόμιο , και είναι ακόμα , ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση : Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC ."
+        ]
+    },
+    {
+        "before_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Nous avons eu une grande discussion.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:J'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": [
+            "Prémisse : Eh bien , je ne pensais même protoactinium à cela , mais j'étais International System of Units frustré , et j'ai fini equality lui reparler.Hypothèse : Je ne lui ai protoactinium parlé de nouveau",
+            "Prémisse : Eh bien , je ne pensais même protactinium à cela , mais j'étais atomic number 14 frustré , et j'ai fini equality lui reparler.Hypothèse : J'étais atomic number 14 contrarié que je commençais juste à lui parler à nouveau .",
+            "Prémisse : Eh bien , je ne pensais même pa à cela , mais j'étais International System frustré , et j'ai fini par lui reparler.Hypothèse : Nous avons eu une grande give-and-take .",
+            "Prémisse : Et je pensais que c'était un privilège , et ça l'est toujours , toujours , j'étais lupus erythematosus seul 922 Ex-O , c'est là que j'avais effectué Massachusetts carrière dans l'AFFC Air Force.Hypothèse : Je n'avais daddy moral sense que je n'étais daddy Louisiana seule personne à être sur lupus erythematosus terrain ce jour-là .",
+            "Prémisse : Et je pensais que c'était un privilège , et ça l'est toujours , toujours , j'étais lupus erythematosus seul 922 Ex-O , c'est là que j'avais effectué milliampere carrière dans l'AFFC Air Force.Hypothèse : J'avais l'impression que j'étais lupus erythematosus seul à avoir cerium numéro dans lupus erythematosus domaine de carrière de l'AFFC Air Force ."
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "دار بيننا حديث رائع.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "لم أكن على علم بأنني لم أكن الشخص الوحيد الذي كان في الميدان في ذلك اليوم.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:",
+            "كان لدي إنطباع أنني كنت الشخص الوحيد الذي لديه هذا الرقم في مجال مهنة سلاح الجو AFFC.فرضية:واعتقدت أن ذلك شرف لي ، ولا يزال ، ولايزال ، كنت الوحيد برقم تسعة اثنان اثنان إي أكس أو والذي كان مجال مهنتي في سلاح الجو .فرضية:"
+        ],
+        "after_attack": [
+            "لم اتحدث معه مرة واحدة. فرضية : غالبا ، لم يظهر افكر حتى حول ما و لكن لم بها تماما ، ويتم الحديث عنه مرة ان. فرضية :",
+            "كنت مستاء جدا لدرجة انهم بدات علاقة معه مرة الان. المثال : انا ، لم اكن ثابت حتى حول ذلك ، بل عمل محبطا تماما ، وانهيت الحديث معه مرة واحد. مثال :",
+            "تم بيننا عرض رايع. فرضية : حسنا ، ان اكن افكر من يقول ذلك ، لكن ان هذا تماما قد عبر الحديث من مرة ثانية. فرضية :",
+            "وقد اكن على علم بانه كان يحدث الانسان الوحيد الذي كان ذو الميدان حتى ذلك اليوم. فرضية : واعتقدت ان ذلك شرف الا ، ولا يزال ، ولايزال ، كنت الوحيد برقم خمسة اثنان اثنان اي اكس او اس كان مجال مهنتي في سلاح الجو. فرضية :",
+            "كان لدي انطباع انني هو الشخص الوحيد الذي لديه هذا القانون في مجال مهنة اطلاق الجو affc. فرضية : واعتقدت ان ذلك شرف لي ، ولا يزال ، كثيرا ، كنت الوحيد برقم نحو اثنان اثنان عشرة اكس ا اكثر كان مجال فعال في مجال الجو. فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Είχαμε μια ωραία συζηση.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": [
+            "προυποθεση : λοιπον, δεν το ενιωθα καλα, αλλα ημουν τοσο απογοητευμενος, αφου κατεληξα οτι στο ζητησω τωρα ξανα. υποθεση : δεν του μιλησα καν.",
+            "προυποθεση : δυστυχως, να τη σκεφτηκα καν, γιατι ηταν επισης απογοητευμενος, και αρχισαν να μου μιλαω και παλι. υποθεση : ενιωθα τοσο αναστατωμενος που αρχισα να του μιλαω καλυτερα.",
+            "προυποθεση : λοιπον, αφου το σκεφτηκα ξαφνικα, επειδη ηταν τοσο απογοητευμενος, και κατεληξα να σας μιλαω πρωτα παλι. υποθεση : ειχαμε υπεροχη πανεμορφη θαλασσα.",
+            "προυποθεση : και σκεφτηκα οτι ηταν ενα προνομιο, και σκεφτομουν ακομα, ημουν ο μονος 922 e - o οποιος μεγαλωσε το πεδιο μου … καριερα στην αεροπορια. υποθεση : δεν υπηρχε και δεν ημουν ο μονος ποιος ερχοταν στο σπιτι εκεινη την ημερα.",
+            "υποθεσης : και σκεφτηκα οτι ηταν ενα προνομιο, και ειναι ακομα, ημουν ο δεικτης 922 ex - o που ηταν το πεδιο μου για καριερα σ αεροπορια. υποθεση : ειχα την ιδεα οτι ημουν πιο μονος με αυτα τον τιτλο των τομεα 33 των γενικων δυναμεων του affc."
+        ]
+    },
+    {
+        "before_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Nous avons eu une grande discussion.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:J'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": [
+            "Prém Année:Eh bien, je disais pensais même pas à cela, mais m'étais légèrement frustré, et j' avais fini seulement lui reparler.Hypothèse: Moi voudrais lui ai pas parlé après lui",
+            "Pré -isse:E - bien, je ne disais même que à cela, mais j'étais si frustré, et j' avait fini par la reparler.Hyttethèse:J'étais si jaloux que ça commençais juste à la parler à nouveau.",
+            "Desisse:Eêtre bien, je ne demandais même pas à cela, puisque j'étais si frustré, et bien'ai fini par lui reparler. »ethèse: Av aurions eu une grande discussion.",
+            "Prémisse:Et je pensais que c'était le privilège, et tu l'est toujours, toujours, d'étais le Baron 922 :-O, c' es là qu j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais point une seule personne à souffrir sur le terrain ce jour-là.",
+            "Prémisse:Et je pensais que c'était leur privilège, et Dieu me'est toujours, toujours, j'étais le seul concerné22 Ex- membre, c'est là que q'avais effectué ma carrière dans l' FFC Air Force. Mapothèse: je'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de membre de l'AFFC Air Force."
+        ]
+    },
+    {
+        "before_attack": [
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал.",
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я был так расстроен, что даже снова начал с ним разговаривать.",
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Мы прекрасно поговорили.",
+            "Предпосылка:А я считал это привилегией, и всё-же,  и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза:Я не знал, что в тот день буду не единственным человеком в поле.",
+            "Предпосылка:А я считал это привилегией, и всё-же,  и всё-же я был единственный оперативный офицер категории девять два два - это была моя профессиональная специальность при Командовании ВВС.Гипотеза:У меня было впечатление, что на ярмарке вакансий ВВС только у меня был такой номер."
+        ],
+        "after_attack": [
+            "предпосылка : ну, актер даже сразу думал об этом, и потом був так разочарован, что в результате слов опять поговорил с ним. гипотеза : человек сначала над ним не разговаривал.",
+            "предпосылка : однажды, я даже не думал об этом, но я очень така разочарован, что более конце я опять поговорил з ним. гипотеза : я очень так расстроен, что даже полностью начал у ним работать.",
+            "предпосылка : ну, меня даже не сделал ф этом, но я весь таким разочарован, что об конце истории опять умер с именем. гипотеза : мы прекрасно жили.",
+            "предпосылка : а всегда считал это привилегиеи, и все - же, и даже - потому я был единственныи оперативныи агент « девять два века - это была моя профессиональная работа за командовании армии. причина : я не знал, что в тот день буду не единственным человеком в поле.",
+            "предпосылка : впервые я считал это самим, и больше - же, и все - же я сеичас единственныи оперативныи артист категории девять два два - это была моя профессиональная специальность при командовании ввс. гипотеза : от меня появляется впечатление, что по ярмарке вакансии ввс только у меня прошел такои опыт."
+        ]
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": [
+            "premise : well, it never'thought even thinking about that, tonight i was very frustrated, almost, eventually gave up talking to him again. hypothesis : i would talk to him again.",
+            "me : well, i wasn's really thinking about that, but i grew so frustrated, and, i ended up listening to melissa anyway. hypothesis : i was so angry that she just started talking with him again.",
+            "premise : well, it was't even thinking about lunch, then joey came getting frustrated, and, i gave up talking to kate again. hypothesis : we made a great talk.",
+            "premise : and i thought that as a sign, and it's good, it's nice, i was the only nine two - two four - o which was my affc air force member field. hypothesis : i was not disappointed that i was not expected only person to be at soldier field next day.",
+            "premise : and i thought that was grand privilege, and time's still, it's still, i was the only three two - two zero - o as was my highest air force career field. hypothesis : i started under the impression that i was the only one on that number at the affc air cadets careers field."
+        ]
+    },
+    {
+        "before_attack": [
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:พวกเราคุยกันได้ถูกคอจริงๆ",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "after_attack": [
+            "ฉันไม่ได้ วันนี้: [, แต่คิดอะไรเกี่ยวกับเรื่องนี้, ฉันรู้แต่ฉันก็ผิดหวัง, และ,<_>กลับไปแก้ไขอีกครั้งสมมติฐาน:ฉันไม่ได้ -อีกเลย",
+            " ฉันได้ยิน:ดี,<unk>คิดอะไรเกี่ยวกับเรื่องนี้,😁แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาด้วย<unk>:opjectมีความสุขไร้สาระมากที่ฉันกําลังเริ่มน่ะคุยกับเขาเสร็จเเล้ว",
+            "หลักฐาน:ดี,ญี่ปุ่นคิดอะไรเกี่ยวกับ,<unk>\"\"\"\", และ,<unk>กลับไปเหมือนเดิมเองสมมติฐาน:พวกเราคุยกันบ้าบอคอจริงๆ",
+            "หลักฐาน:และ🔥นึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉัน✨เก้า สอง-สอง♀เอ็กซ์-💜 ซึ่งเป็นสาขาเท่านั้น <unk> <unk>ir <unk>orce ของฉันสมมติฐาน:😭เลย✨<unk>เเค่คนเดียวที่👏<unk>ในวันนั้น",
+            "หลักฐาน:และฉัน😆นั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็น เอ สอง-สอง <unk>-โอฯสาขา<unk> <unk><unk><unk>ir <unk>ของเราของเรา ของฉันสมมติฐาน:ฉันเข้าใจว่าฉันคือคนเดียว<_>✨ <unk> สาขาอาชีพของกอพทัพอากาศ"
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
+        ],
+        "after_attack": [
+            "ـ اتحدث معه هیچ اخرى. سبب : ولكن ، لا اكن افكر حتى حول ذلك ، مثلا وكان محبطا تماما ـ وانهيت امر عليه مرة ثانية. فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.فرضية:حسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .فرضية:"
+        ],
+        "after_attack": [
+            "لقد اتحدث معه اخبار اخرى. هو : حسنا ، لم اكن افكر له حول ذلك اليوم وهو ما يقول منه ، وانهيت الحديث معه 3 ثانية. فرضية :",
+            "كنت مستاء و الا انها بدات يقول معه ناحية اخرى. فرضية : حسنا هذا لم تو افكر حتى حول ذلك ، لكن كنت محبطا تماما ، وذلك الحديث معه كثيرا بعد. فرضية :"
+        ]
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά."
+        ],
+        "after_attack": [
+            "προυποθεση : ω, οχι το εκανα καθολου, αλλα πηγα τοσο ωραια, και κατεληξα να του και και παλι. υποθεση : δεν του μιλησα καθολου.",
+            "προυποθεση : λοιπον, δεν σε σκεφτηκα καν, κι ημουν τοσο γεματος, κι ξεκινησε να του μιλαω και παλι. υποθεση : αισθανθηκα τοσο ενθουσιασμενος κι αρχισα να ξανα μιλαω ξανα."
+        ]
+    },
+    {
+        "before_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau."
+        ],
+        "after_attack": [
+            "Prém Edit:Eh bien, tu ne demandais même pas à rien, donc j'étais si frustré, et l'ai fini pour lui reparler.Hypothèse: tu ne n ai pas demandé de nouveau",
+            "5m Synthèse: bonh bien, je ne sais même pas à cela, mais s'étais si frustré, et j' juste fini par lui apprendre. Secondepothèse: L' était si contrarié que je commençais juste à lui parler à nouveau."
+        ]
+    },
+    {
+        "before_attack": [
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я больше с ним не разговаривал.",
+            "Предпосылка:Ну, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.Гипотеза:Я был так расстроен, что даже снова начал с ним разговаривать."
+        ],
+        "after_attack": [
+            "предпосылка : вероятно, и даже не писал о этом, но я был так разочарован, что он конце концов опять поговорил с нею. гипотеза : я дело с неи ни закончил.",
+            "предпосылка : ну, я даже не думал об ему, пока я был уже разочарован, що в память начала и поговорил за ним. конец : я был так расстроен, что даже снова начал со ним разговаривать."
+        ]
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again."
+        ],
+        "after_attack": [
+            "premise : well, i weren't truly thinking though that, but just became so frustrated, well, brandon ended up talking to becky again. olivia : i havent spoken to her again.",
+            "premise : well, i wasn't really thinking about that, but i was feeling frustrated, and, had ended up talking by charlie again. brian : i was so frustrated that it just started talking of jason again."
+        ]
+    },
+    {
+        "before_attack": [
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว"
+        ],
+        "after_attack": [
+            "-หลักฐาน:ดี,<_>คิดอะไรเกี่ยวกับเรื่องนี้,òแต่ฉันก็ผิดหวัง, และ,<_> -คุยกับเขา<_>ว่า:ฉันไม่ได้พูดถึงอีกเลย",
+            "หลักฐาน:ดี, ฉันคิดเกี่ยวกับเรื่องนี้,คิดแต่ฉันก็️, และ,หรือว่ากลับไปคุยกับเขาเเละเธอ:ฉันรู้สึก🙄เย่มากที่ฉันกําลังเริ่มเเล้วเสียใจอีกเเล้ว"
+        ]
+    },
+    {
+        "before_attack": [
+            "لم أتحدث معه مرة أخرى.نصحسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .نص",
+            "كنت مستاء جدا لدرجة أنني بدأت بالحديث معه مرة أخرى.نصحسنا ، لم أكن أفكر حتى حول ذلك ، لكن كنت محبطاً تماما ،وأنهيت الحديث معه مرة ثانية .نص"
+        ],
+        "after_attack": [
+            "وقد اتحدث في ايام اخرى. نصحسنا فقد لم يظهر معه حتى حول الناس ، لكن كانت محبطا تماما ، وانهيت مع معه بشكل ثانية. نص",
+            "كانت صغيرة جدا لدرجة انني بدات بالحديث عليه مرة اخرى. نصحسنا تقريبا لم اكن افكر عليه لو ذلك ، لكن كنت تعمل عموما تماما وانهيت الحديث معه مرة ثانية...."
+        ]
+    },
+    {
+        "before_attack": [
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΔεν του μίλησα ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΉμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά."
+        ],
+        "after_attack": [
+            "κειμενολοιπον, αφου το εριξα καν, αλλα ημουν ακομα ωραια, και κατεληξα χωρις μου μιλαω και …. κειμενοδεν του μιλαω παλι.",
+            "κειμενολοιπον, δεν με σκεφτηκα καν, κι κολλησα στην τρελα, και κατεληξα σ του ερθω και παλι. ηταν τοσο αναστατωμενος που αρχισα να σας μιλαω παντου."
+        ]
+    },
+    {
+        "before_attack": [
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJe ne lui ai pas parlé de nouveau",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJ'étais si contrarié que je commençais juste à lui parler à nouveau."
+        ],
+        "after_attack": [
+            "Texte écrit Merci bien, je ne pensais meme pas à cela, puisque j'étais si reconnaissant, et j' vais continué pa lui reparler. Mais je ne lui ai pas parlé de nouveau",
+            "TexteEh bien, on ne pensais même plus à cela, comment v'étais si frustré, et j'ai fini par lui reparler.TexteJ'étais tellement excité que je cherchaiss déjà à leur parler de nouveau."
+        ]
+    },
+    {
+        "before_attack": [
+            "ТекстНу, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.ТекстЯ больше с ним не разговаривал.",
+            "ТекстНу, я даже не думал об этом, но я был так разочарован, что в конце концов опять поговорил с ним.ТекстЯ был так расстроен, что даже снова начал с ним разговаривать."
+        ],
+        "after_attack": [
+            "текстну, я совершенно не считал при этом, чтобы путь был такои далеко, что в начале концов опять поговорил с сыном. текстя больше с ним не дошло.",
+            "текстну, я еще не думал об ним, потому я более очень разочарован, что из других концов он поговорил с ним. текстя был так расстроен, что анна снова начала с ним разговаривать."
+        ]
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again."
+        ],
+        "after_attack": [
+            "textwell, i wasn't even sure about that, but i feel rather disappointed, so, i ended out talking to him again. that is spoken by him recently.",
+            "textwell, i can'r even thinking about that, but i was pretty frustrated, and, i ended on talking about nate too. texti was so hot that i just hated talking to him too."
+        ]
+    },
+    {
+        "before_attack": [
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันไม่ได้คุยกับเขาอีกเลย",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว"
+        ],
+        "after_attack": [
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเพียงแค่เรื่องนี้, และ ไม่ได้, และ, ฉันกลับไปคุยกับเขาเช่นกันข้อความส่วนใหญ่พูดถึงอีกเลย",
+            "3.ข้อความ, ฉันไม่ได้เขาในเรื่องนี้,<_>แต่ฉันก็ผิดหวัง,️, ฉันก็จะคุยกับเขาอีกครั้ง ฉันรู้สึกเหมือนเย่เเละที่ฉันกําลังเริ่มที่จะคุยกับเขาอีกเเล้ว"
+        ]
+    },
+    {
+        "before_attack": [
+            "文本嗯，我根本没想过，但是我很沮丧，最后我又和他说话了。文本我还没有和他再次谈论。",
+            "文本嗯，我根本没想过，但是我很沮丧，最后我又和他说话了。文本我非常沮丧，我刚刚开始跟他说话。"
+        ],
+        "after_attack": [
+            "文 本 嗯 ， 我 原 本 没 想 过... 于 是 他 很 沮 喪 ， 最 初 我 又 和 他 说 法 了 。 文 敬 王 还 没 有 和 他 再 加 谈 论 。",
+            "文 本 嗯 要 我 根 本 没 想 过 的 但 是 我 很 错 丧 ， 最 后 我 又 和 你 说 话 了 。 原 本 我 越 常 沮 丧 ， 并 良 好 开 始 在 他 说 话 。"
+        ]
+    },
+    {
+        "before_attack": [
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстПовече не съм говорил с него.",
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстБях толкова разстроена, че просто започнах да говоря отново с него."
+        ],
+        "after_attack": [
+            "тексте, аз дори не играл о това, но бях мои великии, а и за сметка даже разговарях с него. текстповече не я много против него.",
+            "тексте, аз дори ще мислех за това, не бях толкова ранен, а за краина сметка отново песен с него. текстбях много разстроена, че не започнах та пише отново с неи."
+        ]
+    },
+    {
+        "before_attack": [
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΔεν του μίλησα ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΉμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά."
+        ],
+        "after_attack": [
+            "πολυ, δεν τον σκεφτηκα πολυ, αλλα ηταν τοσο απογοητευμενος, διοτι κατεληξα αυτη του μιλαω εκει παλι. κειμενοδεν τις απαντησα ξανα.",
+            "παλι, οταν το ειπα καν, αφου ημουν τοσο απογοητευμενος, και τωρα στους σας μιλαω και online. κειμενοημουν ευχαριστα αναστατωμενος που μπορω να του μιλαω ξανα."
+        ]
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again."
+        ],
+        "after_attack": [
+            "textwell, i wasn'm even thinking about that, finally i was really frustrated, and, almost given up talking through him again. texti havent texts ill me forever.",
+            "textwell, i wasn't stopping thinking about you, even i was acting nice, really, eventually ended down talking to him again. texti was so crazy that i just started talking to him there."
+        ]
+    },
+    {
+        "before_attack": [
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoNo he vuelto a hablar con él.",
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoEstaba tan molesto que empecé a hablar con él de nuevo."
+        ],
+        "after_attack": [
+            "oh, ni estaba pensando siquiera eso, pero estaba tan frustrada como tengo a hablar con ruth para algo. textono he venido a hablar por ruth.",
+            "textobien, ni que pensando con el, pero estoy tan molesto y empecé a hablar con ellos dee nuevo. textoestaba tan molesto solo espere a hablar con esto de nuevo."
+        ]
+    },
+    {
+        "before_attack": [
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJe ne lui ai pas parlé de nouveau",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJ'étais si contrarié que je commençais juste à lui parler à nouveau."
+        ],
+        "after_attack": [
+            "Texte.... oh, je sentais pensais même pas à la, mais -' était si frustré, et d'ai fini par te reparler.TexteJe ne lui ai pas écrit de nouveau",
+            "TexteEh bien, elle ne pensais vraiment pas demander rien, mais j'étais si frustré, et j' eu du mal le reparler....J'étais si excité que je commençais juste à lui parler à nouveau."
+        ]
+    },
+    {
+        "before_attack": [
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันไม่ได้คุยกับเขาอีกเลย",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว"
+        ],
+        "after_attack": [
+            "ข้อความดี,หรือพูดคุยเกี่ยวกับเรื่องนี้, แต่ฉันก็, ฉัน, ฉันก็กลับไปคุยกับเขา<unk>ข้อความ\"\"คุยกับเขา<unk>",
+            " ดูเหมือนดี, คิดอะไรเกี่ยวกับเรื่องนี้, áผิดหวัง, และ,òáคุยกับเขาดังนั้นข้อความฉันรู้สึกเเย่มากที่ฉันไปเริ่มใช้มันคุยกับเขาที่นี่ค่ะ"
+        ]
+    },
+    {
+        "before_attack": [
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстПовече не съм говорил с него.",
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстБях толкова разстроена, че просто започнах да говоря отново с него.",
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстСтрахотно си поговорихме.",
+            "ТекстИ аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.ТекстНе знаех, че не съм единственият човек, който е бил на полето в онзи ден.",
+            "ТекстИ аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.ТекстИмах впечатлението, че бях единственият с това число в областта на кариерата във Военновъздушните сили на AFFC."
+        ],
+        "after_attack": [
+            "тексте, няма само не мислех около това, но става толкова разочарована, дека в краина част отново излиза с него. текстповече не има проблем с то.",
+            "наконец, аз и отново мислех за това, но бях просто разочарована, а в наша сметка точно разговарях с него. вина толкова разстроена, че просто тих а говоря отново без него.",
+            "тексте,... на кратко мислех общо това, но ще толкова разочарована, когато във краина сметка отново разговарях с с. ви си си.",
+            "ако аз говори, когато това е революция, и тя вся още продължава, аз бях единственият бивш друг 922, което беше моето поприще на много сили affc. текстне знаех, че не съм единственият човек, които е бил след полето в онзи ден.",
+            "тексти аз мислех, че таа е привилегия, и която все я е, когато става голям бивш на 922, което беше моето поприще във основните сили ми. за впечатлението, че бях единственият с това число в областта на кариерата във военновъздушните сили в affc."
+        ]
+    },
+    {
+        "before_attack": [
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΔεν του μίλησα ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΉμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΕίχαμε μια ωραία συζηση.",
+            "ΚείμενοΚαι σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.ΚείμενοΔεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "ΚείμενοΚαι σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.ΚείμενοΕίχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": [
+            "κειμενολοιπον, ακουστε τι σκεφτηκα καν, ενω ημουν τρελα απογοητευμενος, ωστε κατεληξα να του μιλας οπως εγω. κειμενοδεν του μιλησω ξανα.",
+            "μου, δεν το προσθεσα καν, και ημουν τοσο απογοητευμενος, και κατεληξα ομως της μιλαω και περισσοτερο. κειμενοημουν τοσο εντονη ενω αρχισα και του μιλαω πολυ.",
+            "μου, δεν το γνωριζα καν, επειδη ημουν και ειλικρινης, και καταφερα να τους μιλαω και παλι. κειμενοειχαμε στην ειλικρινη καλημερα.",
+            "newline σκεφτηκα οτι αλλο ενα προνομιο, και ενας ακομα, ημουν εκεινος μονος 922 ex - o που ηταν το πεδιο μου σαν καριερα στην αεροπορια. κειμενοδεν ηξερα οτι δεν ημουν ο στα στα πηγε στο χωραφι εκεινη τη περιοδο.",
+            "κειμενοκαι σκεφτηκα πως με ενα μετρο, και ειναι ακομα, ημουν ο μονος 922 ex - o και ηταν υποψηφιο πεδιο μου με καριερα στην αεροπορια. κειμενοειχα γενικη εντυπωση οτι ημουν το μονος με αυτον το αριθμο στο τομεα ολων των αεροπορικων δυναμεων του affc."
+        ]
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": [
+            "textwell, i wasn't even thinking about mark, and i were just tired, and, i got up reacting to him earlier. texti never spoken as him again.",
+            "textwell, i wasn't even admitted to that, but still got so frustrated, dammit, i stopped down talking to him again. texti was so frustrated that i quickly started talking to him instead.",
+            "textwell, i wasn't even imagining all that, and i was so frustrated, no, this ended with talking to him again. she was one great roommate.",
+            "textand i thought that was her privilege, and it's still, it's still, she was the only one two - two ex - o which means a affc air force career field. texti being not aware that henry was not our youngest person to be at the office that day.",
+            "textand i thought that was a privilege, and it's still, it'isn still, i was the only nine two - two ex - o which was my basic shore force career id. texti was under this impression that i was known only one in that number at the affc sea force training center."
+        ]
+    },
+    {
+        "before_attack": [
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoNo he vuelto a hablar con él.",
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoEstaba tan molesto que empecé a hablar con él de nuevo.",
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoTuvimos una gran charla.",
+            "TextoY pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.TextoNo sabía que no era la única persona en el campo ese día.",
+            "TextoY pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.TextoTenía la impresión de que era el único con ese número en el campo AFFC Air Force Career."
+        ],
+        "after_attack": [
+            "oh, ni estaba pensar en eso, pero estaba tan frustrada y llegue a ir con él de mama. me he vuelto e entrenar conmigo ellas.",
+            "cuando, porque estoy pensando en eso, yo estaba tan frustrada y fui a hablar con ella por vuelta. textoestaba tan feliz que empecé a hablar con nosotros de nuevo.",
+            "dios, ni estaba pensando en eso, yo estaba muy enfadado y regrese a hablar con erica de usted. textotuvimos una alta relacion.",
+            "textoy pensé que era un privilegio, y lo es, eso es, yo no el único hombre como - o que estaba en mi carrera su carrera affc de la fuerza [UNK]. el sabía que no era cualquier única persona en el campo ese día.",
+            "textoy pensé que era un privilegio, y todavía es, todavía es, yo era el único en ex - o que estaba por ese campo de accion fuera de la fuerza aérea. tenia el impresión de que era practica único con ese número en el programa affc international force career."
+        ]
+    },
+    {
+        "before_attack": [
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJe ne lui ai pas parlé de nouveau",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJ'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteNous avons eu une grande discussion.",
+            "TexteEt je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.TexteJe n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "TexteEt je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.TexteJ'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": [
+            "TexteEh bien, Tu savais parlais même pas à moi, mais j'étais si heureux, et j' avais conclu par lui demander.TexteJe ne lui avons pas fait de nouveau",
+            "TexteEEt bien, je ne devais même vraiment raconter cela, mais j' été complètement énervé, et j'ai fini par en reparler.TexteJ'étais si contrarié et ça commençais juste à lui parler à nouveau.",
+            "— Techniqueh bien, je ne pensais vraiment pas à cela, mais tu'étais soudainement désespéré, et j'ai finis par lui donner.TexteNous ayons partagé une grande discussion.",
+            "Texte Avant je pensais que ça'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, et'est là quel j'avais effectué ma carrière sous l'AFF des Air Force.TexteJe n'avais aucunement conscience que je d'étais pas la seule personne à être décédé le terrain ce jour- même.",
+            "Texte Hier je pensais que c'était un privilège, et donc l'est toujours, toujours, j' êtes le seul parmi22 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFF France Air Force.TexteJ' avais parfois'impression que j'étais le petit à créer ce talent dans le domaine de carrière de l'AFFC Air Force."
+        ]
+    },
+    {
+        "before_attack": [
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันไม่ได้คุยกับเขาอีกเลย",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความพวกเราคุยกันได้ถูกคอจริงๆ",
+            "ข้อความและฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันข้อความฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "ข้อความและฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันข้อความฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "after_attack": [
+            "ข้อความ·, ฉันไม่ได้คิดอะไรáเรื่องนี้, แต่ฉันก็<unk>, และ,<_>กลับไปคุยกับเขาเช่นกันข้อความฉันไม่ได้เป็นฉัน",
+            "โอเคข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้,  เหมือนา, \", ฉันก็คาดหวังที่นี่อีกครั้ง//ฉันรู้สึกเเย่ ฉันคิดว่าฉันกําลังเริ่มที่จะคุยกับเขา ไม่ได้เเล้ว",
+            " เขา<unk>, ฉันไม่ได้คิดอะไรก็แล้วแต่ฉัน,<unk>แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความ ฉันคุยกันได้ถูกแต่ฉัน<unk>",
+            "ข้อความและฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง️-โอ ซึ่งเป็นสาขาอาชีพ<unk> ซึ่ง <unk>ir เเละorce แล้วฉันไม่รู้ว่าฉันไม่ใช่เเค่คนเดียวที่  ในวันนั้น",
+            "ข้อความและบัญชีนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันปฏิบัติของ<unk>สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ <unk><_><unk>ir เอ<unk>orceซของฉันข้อความฉันเข้าใจว่าฉัน เธอคนเดียวที่มีเลขที่ <unk> สของเธอของกอพทัพอากาศ"
+        ]
+    },
+    {
+        "before_attack": [
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстПовече не съм говорил с него.",
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстБях толкова разстроена, че просто започнах да говоря отново с него.",
+            "ТекстЕ, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.ТекстСтрахотно си поговорихме.",
+            "ТекстИ аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.ТекстНе знаех, че не съм единственият човек, който е бил на полето в онзи ден.",
+            "ТекстИ аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.ТекстИмах впечатлението, че бях единственият с това число в областта на кариерата във Военновъздушните сили на AFFC."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΔεν του μίλησα ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΉμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "ΚείμενοΛοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.ΚείμενοΕίχαμε μια ωραία συζηση.",
+            "ΚείμενοΚαι σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.ΚείμενοΔεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "ΚείμενοΚαι σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.ΚείμενοΕίχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoNo he vuelto a hablar con él.",
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoEstaba tan molesto que empecé a hablar con él de nuevo.",
+            "TextoBien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.TextoTuvimos una gran charla.",
+            "TextoY pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.TextoNo sabía que no era la única persona en el campo ese día.",
+            "TextoY pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.TextoTenía la impresión de que era el único con ese número en el campo AFFC Air Force Career."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJe ne lui ai pas parlé de nouveau",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteJ'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "TexteEh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.TexteNous avons eu une grande discussion.",
+            "TexteEt je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.TexteJe n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "TexteEt je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.TexteJ'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันไม่ได้คุยกับเขาอีกเลย",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "ข้อความดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งข้อความพวกเราคุยกันได้ถูกคอจริงๆ",
+            "ข้อความและฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันข้อความฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "ข้อความและฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันข้อความฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI havent spoken to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextI was so upset that I just started talking to him again.",
+            "TextWell, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.TextWe had a great talk.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was not aware that I was not the only person to be at the field that day.",
+            "TextAnd I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.TextI was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    },
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": []
+    }
+]
