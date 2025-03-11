@@ -54,13 +54,22 @@ nlpaug_lang_map = {
 }
 
 lang_map = {
+    "ar": "ara",  # Arabic
     "bg": "bul",  # Bulgarian
+    "de": "deu",  # German
     "el": "ell",  # Greek
     "en": "eng",  # English
     "es": "spa",  # Spanish
     "fr": "fra",  # French
+    "hi": "hin",  # Hindi
+    "ro": "ron",  # Romanian
+    "ru": "rus",  # Russian
     "th": "tha",  # Thai
+    "tr": "tur",  # Turkish
+    "vi": "vie",  # Vietnamese
+    "zh": "zho",  # Chinese (Simplified)
 }
+
 
 
 # Mapping NLTK POS tags to WordNet POS tags
@@ -82,13 +91,22 @@ pos_map = {
 }
 
 LANG_TO_MODEL = {
+    'ara': 'asafaya/bert-base-arabic',  # Arabic-specific BERT
     'bul': 'bert-base-multilingual-uncased',  # No dedicated Bulgarian model, use mBERT
+    'deu': 'dbmdz/bert-base-german-uncased',  # German BERT
     'ell': 'nlpaueb/bert-base-greek-uncased-v1',  # Greek-specific BERT
     'eng': 'bert-base-uncased',  # Standard English BERT
     'spa': 'dccuchile/bert-base-spanish-wwm-uncased',  # Spanish-specific BERT
     'fra': 'camembert-base',  # French-specific RoBERTa-based model
-    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT model
+    'hin': 'google/muril-base-cased',  # Hindi-specific multilingual model
+    'ron': 'dumitrescustefan/bert-base-romanian-uncased',  # Romanian-specific BERT
+    'rus': 'DeepPavlov/rubert-base-cased',  # Russian BERT
+    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT
+    'tur': 'dbmdz/bert-base-turkish-uncased',  # Turkish-specific BERT
+    'vie': 'NlpHUST/vibert4news-base-cased',  # Vietnamese-specific BERT
+    'zho': 'bert-base-chinese',  # Chinese (Simplified) BERT
 }
+
 
 nltk.download("averaged_perceptron_tagger")
 nltk.download("punkt")

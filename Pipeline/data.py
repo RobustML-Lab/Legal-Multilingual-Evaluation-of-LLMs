@@ -20,10 +20,16 @@ import evaluate
 import textwrap
 
 import re
+from sentence_transformers import SentenceTransformer
+from nltk.tokenize import word_tokenize
 from deep_translator import GoogleTranslator
 import evaluate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rapidfuzz import fuzz
+
+from utils import get_embedding_bert
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 
 class Dataset:
@@ -65,6 +71,8 @@ class Dataset:
         #     return Multi_Legal_Pile()
         elif name.lower() == 'europa_random_split':
             return Europa_Random_Split()
+        elif name.lower() == 'xquad':
+            return XQuAD()
         elif name.lower() == 'sst2':
             return SST2()
         elif name.lower() == 'qqp':
@@ -319,7 +327,13 @@ class Eur_Lex_Sum(Dataset):
     def evaluate(self, references, predictions):
         rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
 
-        results = rouge.compute(predictions=predictions, references=references)
+        results_rouge = rouge.compute(predictions=predictions, references=references)
+        embedded_references = [get_embedding_bert(reference) for reference in references]
+        embedded_predictions = [get_embedding_bert(prediction) for prediction in predictions]
+        cosine_similarities = [cosine_similarity(embedded_reference, embedded_prediction) for (embedded_reference, embedded_prediction) in zip(embedded_references, embedded_predictions)]
+        avg_cosine_similarity = np.mean(cosine_similarities)
+        results_cosine = {"cosine_similarity": avg_cosine_similarity}
+        results = results_rouge | results_cosine
 
         file_path = "output/Eur_Lex_Sum_evaluation.md"
         file_exists = os.path.isfile(file_path)
@@ -348,6 +362,7 @@ class Eur_Lex_Sum(Dataset):
             print(f"Rouge2: {metrics['rouge2']}")
             print(f"RougeL: {metrics['rougeL']}")
             print(f"RougeL sum: {metrics['rougeLsum']}")
+            print(f"Cosine Similarity: {metrics['cosine_similarity']}")
             print("-------------------------------------------------------------")
 
 
@@ -529,8 +544,8 @@ class XNLI(Dataset):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
         self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
-                           "the hypothesis, or neither. The answer should be exactly 'entailment', "
-                           "'neutral', or 'contradiction'."
+                           "the hypothesis, or neither. The answer should be '0' for entailment, "
+                           "'1' for neither, or '2' for contradiction. The answer should be exactly '0', '1', or '2'."
                            )
 
     def get_data(self, language, dataset_name, points):
@@ -545,7 +560,7 @@ class XNLI(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset, points)
-        return data, self.label_options, self.prompt
+        return data, self.label_options, translate(language, self.prompt)[0]
 
     def extract_text_all_languages(self, dataset):
         """
@@ -598,29 +613,45 @@ class XNLI(Dataset):
 
         print(f"Accuracy {self.language}: {accuracy}")
 
+    import re
+
     def extract_labels_from_generated_text(self, generated_texts):
         """
-        Extracts the first predicted label from the model's response.
-        :param response: The model's output as a string
-        :return: The first valid label (Entailment, Contradiction, Neutral) found in the response, or None if not found
+        Extracts the first predicted label (0, 1, or 2) from the model's response.
+        :param generated_texts: List of generated model outputs.
+        :return: List of extracted labels (0, 1, 2), or None if no valid label is found.
         """
+        word_to_digit = {"zero": 0, "one": 1, "two": 2}  # Handle word numbers
         all_labels = []
+
+        print(generated_texts)
 
         for text in generated_texts:
             if text is not None:
                 text_lower = text.lower()
 
-                if re.search(r"\bentailment\b", text_lower):
-                    all_labels.append(0)
-                elif re.search(r"\bneutral\b", text_lower):
-                    all_labels.append(1)
-                elif re.search(r"\bcontradiction\b", text_lower):
-                    all_labels.append(2)
+                # Remove punctuation for easier matching
+                text_lower = re.sub(r"[^\w\s]", "", text_lower)
+
+                # Try to find exact numbers first
+                match = re.findall(r"\b(0|1|2)\b", text_lower)
+
+                if match:
+                    all_labels.append(int(match[0]))  # Extract first match
+                    continue  # Skip to next iteration
+
+                # Try matching word numbers ("zero", "one", "two")
+                for word, digit in word_to_digit.items():
+                    if re.search(rf"\b{word}\b", text_lower):
+                        all_labels.append(digit)
+                        break  # Stop after first valid match
                 else:
-                    all_labels.append(None)
+                    all_labels.append(None)  # No valid label found
             else:
                 all_labels.append(None)
+
         return all_labels
+
 
 
     def get_true(self, data):
@@ -884,6 +915,149 @@ class Europa_Random_Split(Dataset):
             print(f"{language}: {scores}")
         print("-" * 40)
 
+class XQuAD(Dataset):
+    """
+    Child class of Dataset representing the XQuAD dataset.
+    """
+
+    def __init__(self):
+        self.prompt = "<|endoftext|>\nTask: Given the question and the passage, extract the most relevant answer from the passage."
+        self.embedding_model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
+
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        Loads the XQuAD dataset from Hugging Face.
+
+        :param language: The language for which data should be retrieved (ar, de, el, en, es, hi, ro, ru, th, tr, vi, zh)
+        :param dataset_name: The dataset name ('google/xquad')
+        :param points_per_language: Number of samples to return
+        :return: Processed dataset and prompt
+        """
+        dataset = load_dataset("google/xquad", f"xquad.{language}", split="validation", trust_remote_code=True)
+        data = self.extract_text(dataset, points_per_language)
+        inst = translate(language, self.prompt)
+        return data, inst[0]
+
+    def extract_text(self, dataset, points_per_language):
+        """
+        Extracts passages, questions, and answers.
+
+        :param dataset: The dataset containing text data
+        :return: List of dictionaries with context, question, and answers
+        """
+        data = []
+        for i, item in enumerate(dataset):
+            if i >= points_per_language:
+                break
+            data.append({
+                "text": f"Passage: {item['context']}\nQuestion: {item['question']}",
+                "answers": item["answers"]["text"]  # List of possible correct answers
+            })
+        return data
+
+    def get_true(self, data):
+        """
+        :return: A list of true answers for the dataset
+        """
+        return [entry["answers"] for entry in data]
+
+
+    def evaluate(self, true_answers, predicted_answers):
+        """
+        Evaluates the model's extracted answers using BLEU, METEOR, and Cosine Similarity.
+
+        :param true_answers: List of correct answers (each is a **list with one token**)
+        :param predicted_answers: List of extracted answers (each is a full string)
+        :return: Dictionary with BLEU, METEOR, and Cosine Similarity scores.
+        """
+        if len(true_answers) != len(predicted_answers):
+            raise ValueError("true_answers and predicted_answers must have the same length")
+
+        smoothing_function = SmoothingFunction().method1
+        bleu_scores = []
+        meteor_scores = []
+        cosine_similarities = []
+
+        for true_list, pred_answer in zip(true_answers, predicted_answers):
+            # Extract true answer as a single string (it's wrapped in a list)
+            true_answer = true_list[0] if true_list else ""
+
+            # Handle empty predictions
+            if not pred_answer or pred_answer.strip() == "":
+                bleu_scores.append(0.0)
+                meteor_scores.append(0.0)
+                cosine_similarities.append(0.0)
+                continue  # Skip further processing
+
+            # Normalize: Remove newlines, trim spaces, lowercase
+            true_answer = true_answer.strip().lower()
+            pred_answer = pred_answer.strip().lower()
+
+            try:
+                # Tokenize for BLEU and METEOR
+                tokenized_true = word_tokenize(true_answer)  # Single-token reference
+                tokenized_pred = word_tokenize(pred_answer)
+
+                # BLEU Score
+                bleu = sentence_bleu([tokenized_true], tokenized_pred, smoothing_function=smoothing_function)
+                bleu_scores.append(bleu)
+
+                # METEOR Score (NLTK expects a list of one reference, so we wrap it)
+                meteor = meteor_score([tokenized_true], tokenized_pred)
+                meteor_scores.append(meteor)
+
+            except Exception as e:
+                print(f"Tokenization Error: {e}")
+                bleu_scores.append(0.0)
+                meteor_scores.append(0.0)
+
+            # Cosine Similarity (BERT embeddings)
+            try:
+                true_embedding = self.embedding_model.encode([true_answer])[0].reshape(1, -1)  # Ensure correct shape
+                pred_embedding = self.embedding_model.encode([pred_answer])[0].reshape(1, -1)
+
+                # Compute cosine similarity
+                cosine_sim = cosine_similarity(pred_embedding, true_embedding)[0][0]
+                cosine_similarities.append(cosine_sim)
+
+            except Exception as e:
+                print(f"Embedding Error: {e}")
+                cosine_similarities.append(0.0)
+
+        return {
+            "BLEU Score": np.mean(bleu_scores) if bleu_scores else 0.0,
+            "METEOR Score": np.mean(meteor_scores) if meteor_scores else 0.0,
+            "Cosine Similarity": np.mean(cosine_similarities) if cosine_similarities else 0.0
+        }
+
+
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts the generated answers as predictions.
+
+        :param generated_texts: List of generated answers
+        :return: List of predicted answers
+        """
+        return generated_texts  # Directly return the generated answers as predictions
+
+    def evaluate_results(self, results, all_true, all_predicted):
+        """
+        Prints BLEU, METEOR and Cosine Similarity scores for the dataset.
+        """
+        for lang, metrics in results.items():
+            print(f"Results for {lang}:")
+            print(f"BLEU Score: {metrics['BLEU Score']}")
+            print(f"METEOR Score: {metrics['METEOR Score']}")
+            print(f"Cosine Similarity: {metrics['Cosine Similarity']}")
+
+
+
+
+"""
+Datasets from decoding trust paper: https://arxiv.org/pdf/2306.11698
+"""
 class SST2(Dataset):
     """
     SST-2 dataset from the GLUE benchmark.
@@ -1294,3 +1468,6 @@ class QNLI(Dataset):
             if entry["label"] == 1:
                 entry["label"] = "no"
         return new_data
+
+
+
