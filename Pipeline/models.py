@@ -106,6 +106,12 @@ class LLaMa(Model):
         """Initializes LLaMa model and tokenizer."""
         self.label_options = label_options
         self.multi_class = multi_class
+
+        # model_dir = "meta-llama/Meta-Llama-
+        # 3.1-8B-Instruct"
+        model_dir = "meta-llama/Llama-3.2-1B"
+        self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+        self.model = AutoModelForCausalLM.from_pretrained(model_dir)
         self.generation = generation
 
         # Load the model & tokenizer
