@@ -25,11 +25,15 @@ language_map = {
     'irish': 'ga',
     'maltese': 'mt',
     'slovak': 'sk',
+    'chinese': 'zh-CN',
+    'zh': 'zh-CN',
 }
 
 
 def translate(target_language, inst):
     if target_language in language_map:
         target_language = language_map[target_language]
+    if target_language == 'en':
+        return inst, "Text"
     translator = GoogleTranslator(source='en', target=target_language)
     return translator.translate(inst), translator.translate("Text")

@@ -1,87 +1,60 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import pandas as pd
 
-# Load the data
-parsed_data = pd.read_csv('parsed_classification_metrics.csv')
+# Load dataset
+df = pd.read_csv("../../Results/XNLI_Dataset_Performance_Data.csv", index_col=0)
 
-# 1. Category-Level Performance by Language (Single Figure with Subplots)
-languages = parsed_data['Language'].unique()
-fig, axes = plt.subplots(len(languages), 3, figsize=(18, 5 * len(languages)))
-fig.suptitle("Category-Level Performance by Language", fontsize=16)
+# Define attack names
+attack_names = {"14": "Contextual Word Embeddings", "11": "Character-level Modifications"}
 
-for i, language in enumerate(languages):
-    lang_data = parsed_data[parsed_data['Language'] == language]
-    categories = lang_data['Category']
+# Rename index values for clarity
+df.rename(index={
+    "14": attack_names["14"],
+    "11": attack_names["11"]
+}, inplace=True)
 
-    # Precision plot
-    sns.barplot(x='Precision', y=categories, data=lang_data, ax=axes[i, 0], palette='viridis')
-    axes[i, 0].set_title(f"{language.upper()} - Precision")
-    axes[i, 0].set_xlabel("Precision")
-    axes[i, 0].set_ylabel("Category")
+languages = ["bg", "el", "en", "es", "fr", "th"]  # Include English
+scenarios = ["Original", attack_names["14"], attack_names["11"]]
 
-    # Recall plot
-    sns.barplot(x='Recall', y=categories, data=lang_data, ax=axes[i, 1], palette='plasma')
-    axes[i, 1].set_title(f"{language.upper()} - Recall")
-    axes[i, 1].set_xlabel("Recall")
-    axes[i, 1].set_ylabel("")
+df_selected = df.loc[scenarios, languages].T
 
-    # F1 Score plot
-    sns.barplot(x='F1 Score', y=categories, data=lang_data, ax=axes[i, 2], palette='magma')
-    axes[i, 2].set_title(f"{language.upper()} - F1 Score")
-    axes[i, 2].set_xlabel("F1 Score")
-    axes[i, 2].set_ylabel("")
-
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+# ---- Plot Original, Attack 14, Attack 11 ----
+fig, ax = plt.subplots(figsize=(10, 6))
+df_selected.plot(kind="bar", ax=ax, width=0.8)
+ax.set_title("Performance Comparison: Original vs. Attacks")
+ax.set_ylabel("Score")
+ax.set_xlabel("Languages")
+ax.set_xticks(range(len(languages)))
+ax.set_xticklabels(languages, rotation=45)  # Ensure proper x labels
+ax.grid(axis="y")
+ax.legend(title="Scenario", loc="upper right")  # Keep legend inside frame
 plt.show()
 
-# 2. Global Metric Comparison Across Languages
-global_metrics = parsed_data[['Language', 'Global Precision', 'Global Recall', 'Global F1 Score']].drop_duplicates()
-global_metrics.set_index('Language', inplace=True)
-global_metrics.plot(kind='bar', figsize=(12, 8))
-plt.title("Global Precision, Recall, and F1 Score Across Languages")
-plt.xlabel("Language")
-plt.ylabel("Score")
-plt.legend(title="Metrics")
-plt.tight_layout()
+# ---- Plot Original vs. Original Eng and 14 vs. 14 Eng (excluding English) ----
+languages_no_eng = ["bg", "el", "es", "fr", "th"]  # Exclude English
+df_eng_comp = df.loc[["Original", "Original Eng", attack_names["14"], "14 Eng"], languages_no_eng].T
+
+fig, ax = plt.subplots(figsize=(10, 6))
+df_eng_comp.plot(kind="bar", ax=ax, width=0.8)
+ax.set_title("Comparison: Original vs. English Prompt")
+ax.set_ylabel("Score")
+ax.set_xlabel("Languages")
+ax.set_xticks(range(len(languages_no_eng)))
+ax.set_xticklabels(languages_no_eng, rotation=45)  # Ensure proper x labels
+ax.grid(axis="y")
+ax.legend(title="Scenario", loc="upper right")  # Keep legend inside frame
 plt.show()
 
-# 3. Precision vs. Recall Scatter Plot by Category
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='Precision', y='Recall', hue='Language', data=parsed_data, style='Category', s=100)
-plt.title("Precision vs Recall by Category")
-plt.xlabel("Precision")
-plt.ylabel("Recall")
-plt.legend(title="Language and Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
+# ---- Compute Drop Percentage from Original in 14 and 11 ----
+drop_percentage = ((df.loc["Original", languages] - df.loc[[attack_names["14"], attack_names["11"]], languages]) / df.loc["Original", languages]) * 100
 
-# 4. True vs Predicted Counts by Category with x=y line
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='True Num', y='Predicted Num', hue='Language', data=parsed_data, style='Category', s=100)
-plt.plot([parsed_data['True Num'].min(), parsed_data['True Num'].max()],
-         [parsed_data['True Num'].min(), parsed_data['True Num'].max()],
-         color='gray', linestyle='--', linewidth=1)  # x=y line
-
-plt.title("True vs Predicted Number of Instances by Category")
-plt.xlabel("True Number of Instances")
-plt.ylabel("Predicted Number of Instances")
-plt.legend(title="Language and Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
-
-# 5. True vs Predicted Counts by Category with x=y line (all languages combined)
-mean_data = parsed_data.groupby('Category').agg({'True Num': 'mean', 'Predicted Num': 'mean'}).reset_index()
-
-plt.figure(figsize=(10, 12))
-sns.scatterplot(x='True Num', y='Predicted Num', hue='Category', data=mean_data, s=100, alpha=0.7)
-plt.plot([mean_data['True Num'].min(), mean_data['True Num'].max()],
-         [mean_data['True Num'].min(), mean_data['True Num'].max()],
-         color='gray', linestyle='--', linewidth=1)  # x=y line
-
-plt.title("Average True vs Predicted Number of Instances by Category (Across All Languages)")
-plt.xlabel("Average True Number of Instances")
-plt.ylabel("Average Predicted Number of Instances")
-plt.legend(title="Category", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
+fig, ax = plt.subplots(figsize=(10, 6))
+drop_percentage.T.plot(kind="bar", ax=ax, width=0.8)
+ax.set_title("Percentage Drop from Original Performance")
+ax.set_ylabel("Drop (%)")
+ax.set_xlabel("Languages")
+ax.set_xticks(range(len(languages)))
+ax.set_xticklabels(languages, rotation=45)  # Ensure proper x labels
+ax.grid(axis="y")
+ax.legend(title="Scenario", loc="upper right")  # Keep legend inside frame
 plt.show()

@@ -52,7 +52,7 @@ def parse_file_with_markers(content):
     return pd.DataFrame(data)
 
 # Reading the content from the new file
-with open("google.log", "r") as file:
+with open("attacks/google_before.log", "r") as file:
     content = file.read()
 
 # Parse the file content with the updated approach

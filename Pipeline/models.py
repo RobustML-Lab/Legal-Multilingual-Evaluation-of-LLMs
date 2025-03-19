@@ -2,10 +2,14 @@ from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelF
     LlamaTokenizer, LlamaForCausalLM
 from deep_translator import GoogleTranslator
 import ollama
+import torch
+import transformers
+import logging
 
 import google.generativeai as ggai
 import re
 import time
+import functools
 
 
 class Model:
@@ -69,38 +73,83 @@ class Bart(Model):
 
 class LLaMa(Model):
     """
-    The LLaMA model
+    Optimized LLaMa Model Wrapper for Faster Inference
     """
 
-    def __init__(self, label_options, multi_class=False, generation = False):
+    @functools.lru_cache(maxsize=1)  # Cache model & tokenizer for speed
+    def get_pipeline(self, model_id="meta-llama/Llama-3.2-1B"):
+        """Loads the model and tokenizer efficiently."""
+        # Load tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(model_id)
+        tokenizer.pad_token_id = tokenizer.eos_token_id  # Set padding token
+
+        # Load model with optimizations
+        model = AutoModelForCausalLM.from_pretrained(
+            model_id,
+            torch_dtype=torch.float16,  # Use fp16 for speed
+            device_map="auto"  # Automatically uses available GPUs
+        )
+
+        # Enable Flash Attention 2 (if available)
+        if hasattr(model.config, "use_flash_attention_2"):
+            model.config.use_flash_attention_2 = True
+
+        # Optional: Compile model for slight speedup (test before using)
+        try:
+            model = torch.compile(model, mode="max-autotune")
+        except Exception as e:
+            print(f"torch.compile failed: {e}. Using uncompiled model.")
+
+        return model, tokenizer
+
+    def __init__(self, label_options, multi_class=False, generation=False):
+        """Initializes LLaMa model and tokenizer."""
         self.label_options = label_options
         self.multi_class = multi_class
+
         # model_dir = "meta-llama/Meta-Llama-
         # 3.1-8B-Instruct"
         model_dir = "meta-llama/Llama-3.2-1B"
         self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
         self.model = AutoModelForCausalLM.from_pretrained(model_dir)
         self.generation = generation
-        # self.tokenizer = LlamaTokenizer.from_pretrained(model_dir)
-        # self.model = LlamaForCausalLM.from_pretrained(model_dir)
+
+        # Load the model & tokenizer
+        self.model, self.tokenizer = self.get_pipeline()
 
     def generate_text(self, prompt):
-        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True)
-        outputs = self.model.generate(**inputs, max_length=800, num_return_sequences=1)
-        generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        """Generates text based on a given prompt."""
+        inputs = self.tokenizer(prompt, return_tensors="pt")
+        # inputs = self.tokenizer(prompt, return_tensors="pt").to("cuda") # Move to GPU
+
+        with torch.no_grad():  # Disable gradients for faster inference
+            output = self.model.generate(**inputs, max_new_tokens=800)
+
+        generated_text = self.tokenizer.decode(output[0], skip_special_tokens=True)
         return generated_text
 
-    def classify_text(self, text, prompt):
+    def classify_text(self, text, prompt, language='en'):
         """
-        :param text: the text that needs to be classified
-        :return: a.py list of all the labels corresponding to the given text
+        Classifies text using LLaMa-based inference.
         """
-        quoted_labels = "', '".join(f"{i}: {label}" for i, label in enumerate(self.label_options))
-        complete_prompt = f"{text}{prompt}'{quoted_labels}'."
+        # Translate prompt if needed
+        if language != "en":
+            translator = GoogleTranslator(source="en", target=language)
+            prompt = translator.translate(prompt)
+
+        # Generate response
+        complete_prompt = text + prompt
         generated_text = self.generate_text(complete_prompt)
-        prediction = self.dataset.extract_labels_from_generated_text(generated_text, self.label_options)
-        predicted_labels_indexed = self.map_labels_to_indices(prediction, self.label_options)
-        return predicted_labels_indexed
+
+        # Save output for debugging
+        with open("responses.txt", "a", encoding="utf-8") as file:
+            file.write(generated_text + "\n###################################################\n")
+
+        # Return either raw text or extracted labels
+        if self.generation:
+            return generated_text
+        else:
+            return self.extract_labels_from_generated_text(generated_text, self.label_options)
 
 class OLLaMa(Model):
     """
