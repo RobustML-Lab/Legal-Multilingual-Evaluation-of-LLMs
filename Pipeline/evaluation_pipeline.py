@@ -3,6 +3,7 @@ import ast
 
 from models import *
 from data import *
+from llm_judge import *
 from adversarial_attack import attack
 from utils import store_predicted, store_attack
 
@@ -12,6 +13,7 @@ from utils import store_predicted, store_attack
 # generation = True
 # model_name = "llama"
 # api_key = None
+# llm_judge_key = None
 # adversarial_attack = 0
 
 arguments = sys.argv[1:]
@@ -22,11 +24,18 @@ generation = bool(int(arguments[3]))
 model_name = arguments[4]
 api_key = None
 adversarial_attack = int(arguments[5])
+llm_judge_key = arguments
+if llm_judge_key == 'None':
+    llm_judge_key = None
 if model_name == 'google':
-    api_key = arguments[6]
+    api_key = arguments[7]
+
+llm_judge = None
+if llm_judge_key:
+    llm_judge = JudgeEvaluator(llm_judge_key)
 
 # Get the dataset
-dataset = Dataset.get_dataset(dataset_name)
+dataset = Dataset.get_dataset(dataset_name, llm_judge)
 
 results = {}
 all_true = {}

@@ -52,7 +52,7 @@ class Dataset:
         raise NotImplementedError("Child class must implement this method")
 
     @staticmethod
-    def get_dataset(name):
+    def get_dataset(name, llm_judge):
         """
         :param name: name of the dataset
         :return: the dataset object
@@ -72,7 +72,7 @@ class Dataset:
         elif name.lower() == 'europa_random_split':
             return Europa_Random_Split()
         elif name.lower() == 'xquad':
-            return XQuAD()
+            return XQuAD(llm_judge)
         elif name.lower() == 'sst2':
             return SST2()
         elif name.lower() == 'qqp':
@@ -921,9 +921,10 @@ class XQuAD(Dataset):
     Child class of Dataset representing the XQuAD dataset.
     """
 
-    def __init__(self):
+    def __init__(self, llm_judge):
         self.prompt = "<|endoftext|>\nTask: Given the question and the passage, extract the most relevant answer from the passage."
         self.embedding_model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
+        self.llm_judge = llm_judge
 
 
     def get_data(self, language, dataset_name, points_per_language):

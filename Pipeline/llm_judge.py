@@ -1,58 +1,61 @@
-from judges.classifiers.correctness import PollZeroShotCorrectness
-from judges.graders.response_quality import MTBenchChatBotResponseQuality
+import google.generativeai as ggai
+import time
+
 
 class JudgeEvaluator:
-    def __init__(self, api_key: str, model: str = "ollama/llama2"):
+    def __init__(self, api_key: str):
         """
-        Initializes the evaluator with an API key and model.
+        Initializes the evaluator with an API.
         :param api_key: API key for authentication.
-        :param model: Model name for evaluation.
         """
-        # Set up authentication (if required by the library)
-        self.api_key = api_key
-        self.model = model
+        ggai.configure(api_key=api_key)
+        self.model = ggai.GenerativeModel('gemini-2.0-flash')
 
-        # Initialize judges
-        self.correctness_judge = PollZeroShotCorrectness(model=self.model)
-        self.quality_grader = MTBenchChatBotResponseQuality(model=self.model)
+    def generate_text(self, prompt):
+        # Generate the text using the model
+        response = self.model.generate_content(prompt)
 
-    def evaluate_true_false(self, input_text: str, output_text: str, truth_value: str) -> bool:
-        """
-        Evaluates if the given output is factually correct compared to the truth value.
-        :param input_text: The original prompt/question.
-        :param output_text: The AI-generated response.
-        :param truth_value: The correct answer that the AI output should match.
-        :return: True if the AI response matches the truth value, otherwise False.
-        """
-        # Judge if AI's response is correct
-        ai_correct = self.correctness_judge.judge(input=input_text, output=output_text, expected=truth_value)
+        if not response:
+            print("Error: No response from the API.")
+            return ""
 
-        # Compare with the expected truth value
-        return ai_correct and (output_text.strip().lower() == truth_value.strip().lower())
+        return response.text
 
-    def evaluate_score(self, input_text: str, output_text: str, truth_value: str) -> float:
-        """
-        Evaluates the quality of the response and returns a score.
-        :param input_text: The original prompt/question.
-        :param output_text: The AI-generated response.
-        :param truth_value: The correct answer for comparison.
-        :return: A numerical score for the response quality.
-        """
-        return self.quality_grader.judge(input=input_text, output=output_text, expected=truth_value)
+    def judge(self, prompts):
+        all_predicted = []
+        first_ten_answers = []
+        count = 0  # Track requests per minute
+        false_count = 0
+        index = 0
 
+        while index < len(prompts):
+            prompt = prompts[index]
 
-if __name__ == "__main__":
-    api_key = "your_api_key_here"  # Replace with your actual API key
-    evaluator = JudgeEvaluator(api_key)
+            if false_count > 20:
+                print(f"More than 20 errors.\n{index}\n{prompt}")
+                all_predicted.extend([None] * (len(prompts) - index))
+                break
 
-    input_text = "What is the capital of France?"
-    output_text = "The capital of France is Paris."
-    truth_value = "Paris"
+            try:
+                # Rate limiting: 15 requests per minute
+                if count >= 15:
+                    print("Reached 15 requests/minute. Sleeping for 60 seconds...")
+                    time.sleep(60)
+                    count = 0
 
-    # True/False Evaluation
-    # result = evaluator.evaluate_true_false(input_text, output_text, truth_value)
-    # print(f"True/False Evaluation: {'Correct' if result else 'Incorrect'}")
+                # Get Gemini's response
+                generated_text = self.generate_text(prompt)
 
-    # Score Evaluation
-    score = evaluator.evaluate_score(input_text, output_text, truth_value)
-    print(f"Score Evaluation: {score}")
+                all_predicted.append(generated_text)
+
+                count += 1
+                false_count = 0
+                index += 1
+
+            except Exception as e:
+                print(f"Error occurred: {e}. Retrying prompt after 60 seconds...")
+                time.sleep(60)
+                count = 0
+                false_count += 1
+
+        return all_predicted
