@@ -1,4 +1,3 @@
-#%%
 # Imports
 import sys
 import ast
