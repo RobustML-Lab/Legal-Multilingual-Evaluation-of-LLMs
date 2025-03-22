@@ -335,6 +335,7 @@ class Eur_Lex_Sum(Dataset):
         results_cosine = {"cosine_similarity": avg_cosine_similarity}
         results = results_rouge | results_cosine
 
+        # Store the first 3 reference and predicted for checking
         file_path = "output/Eur_Lex_Sum_evaluation.md"
         file_exists = os.path.isfile(file_path)
         with open(file_path, mode='a', encoding='utf-8') as f:

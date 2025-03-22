@@ -2,12 +2,11 @@
 # Imports
 import sys
 import ast
-import os
 
 from models import *
 from data import *
 from adversarial_attack import attack
-from huggingface_hub import login
+from utils import store_predicted, store_attack
 
 # dataset_name = "eur_lex_sum"
 # languages = ["english"]
@@ -27,7 +26,7 @@ api_key = None
 adversarial_attack = int(arguments[5])
 if model_name == 'google':
     api_key = arguments[6]
-#%%
+
 # Get the dataset
 dataset = Dataset.get_dataset(dataset_name)
 
@@ -43,47 +42,28 @@ for lang in languages:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
-    os.makedirs(os.path.dirname("output/results.json"), exist_ok=True)
-
-    if os.path.exists("output/results.json"):
-        with open("output/results.json", "r", encoding="utf-8") as f:
-            try:
-                existing_data = json.load(f)
-                if not isinstance(existing_data, list):
-                    existing_data = []
-            except json.JSONDecodeError:
-                existing_data = []
-    else:
-        existing_data = []
-
-    before_attack = [entry["text"] for entry in data[:5]]
-    after_attack = []
-
     if adversarial_attack:
         # mapped_data = dataset.get_mapped_data(data)
         mapped_data = None
+        before_attack = [entry["text"] for entry in data[:5]]
         data = attack(data, adversarial_attack, lang, mapped_data)
         after_attack = [entry["text"] for entry in data[:5]]
-
-    result_entry = {
-        "before_attack": before_attack,
-        "after_attack": after_attack
-    }
-
-    existing_data.append(result_entry)
-
-    with open("output/results.json", "w", encoding="utf-8") as f:
-        json.dump(existing_data, f, ensure_ascii=False, indent=4)
-
+        store_attack(before_attack, after_attack, lang, dataset_name, points_per_language, model_name, adversarial_attack)
 
     # Get the predicted labels
     predicted, first_ten_answers = model.predict(data, prompt)
 
+    # Extract the predicted labels from the generated text
     if not generation:
         predicted = dataset.extract_labels_from_generated_text(predicted)
 
+    # Create a file with the answers
+    store_predicted(predicted, lang, dataset_name, points_per_language, model_name, adversarial_attack)
+
+    # Get the true labels/text
     true = dataset.get_true(data)
 
+    # Remove any inconsistencies
     filtered_true = [x for x in true if x is not None]
     filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None]
 
@@ -116,8 +96,3 @@ try:
     dataset.evaluate_results(results, all_true, all_predicted)
 except AttributeError as e:
     print(e)
-
-
-
-
-
