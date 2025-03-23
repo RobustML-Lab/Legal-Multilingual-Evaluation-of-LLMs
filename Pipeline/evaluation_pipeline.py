@@ -64,35 +64,39 @@ for lang in languages:
     if not generation:
         predicted = dataset.extract_labels_from_generated_text(predicted)
 
-    # Create a file with the answers
-    store_predicted(predicted, lang, dataset_name, points_per_language, model_name, adversarial_attack)
-
     # Get the true labels/text
     true = dataset.get_true(data)
 
+    # Create a file with the answers
+    store_predicted(predicted, true, lang, dataset_name, points_per_language, model_name, adversarial_attack)
+
+    # Extract questions from data if available
+    questions = [item.get("question") for item in data] if "question" in data[0] else None
+
+    filtered_true = []
+    filtered_predicted = []
+    filtered_questions = []
+
     # Remove any inconsistencies
-    filtered_true = [x for x in true if x is not None]
-    filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None]
+    for i in range(len(true)):
+        if true[i] is not None and predicted[i] is not None:
+            filtered_true.append(true[i])
+            filtered_predicted.append(predicted[i])
+            if questions:
+                filtered_questions.append(questions[i])
 
-    # Count missing values in filtered_true and filtered_predicted
-    missing_in_true = sum(1 for ref in filtered_true if ref is None)
-    missing_in_predicted = sum(1 for pred in filtered_predicted if pred is None)
+    # Print missing counts
+    missing_in_true = sum(1 for ref in true if ref is None)
+    missing_in_predicted = sum(1 for pred in predicted if pred is None)
 
-    # Filter both lists together
-    filtered_true, filtered_predicted = zip(*[
-        (ref, pred) for ref, pred in zip(filtered_true, filtered_predicted) if ref is not None and pred is not None
-    ])
-
-    # Convert back to lists
-    filtered_true = list(filtered_true)
-    filtered_predicted = list(filtered_predicted)
-
-    # Print the counts
     if missing_in_true or missing_in_predicted:
-        print(f"Number of missing values in 'filtered_true': {missing_in_true}")
-        print(f"Number of missing values in 'filtered_predicted': {missing_in_predicted}")
+        print(f"Number of missing values in 'true': {missing_in_true}")
+        print(f"Number of missing values in 'predicted': {missing_in_predicted}")
 
-    results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
+    if questions:
+        results[lang] = dataset.evaluate(filtered_true, filtered_predicted, questions)
+    else:
+        results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
     all_true[lang] = filtered_true
     all_predicted[lang] = filtered_predicted
 

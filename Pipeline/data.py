@@ -1,12 +1,8 @@
 import copy
-import csv
 import json
-import os
-import re
 
 import os
 import csv
-from collections import Counter
 
 import unicodedata
 from datasets import load_dataset
@@ -14,9 +10,7 @@ from nltk.translate.meteor_score import meteor_score
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, average_precision_score
 from sklearn.preprocessing import MultiLabelBinarizer
 from translator import translate
-from itertools import islice
 import numpy as np
-import evaluate
 import textwrap
 
 import re
@@ -27,7 +21,7 @@ import evaluate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rapidfuzz import fuzz
 
-from utils import get_embedding_bert
+from utils import get_embedding_bert, get_language_from_code, store_judge
 from sklearn.metrics.pairwise import cosine_similarity
 
 
@@ -939,6 +933,7 @@ class XQuAD(Dataset):
         dataset = load_dataset("google/xquad", f"xquad.{language}", split="validation", trust_remote_code=True)
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
+        self.lang = language
         return data, inst[0]
 
     def extract_text(self, dataset, points_per_language):
@@ -954,7 +949,8 @@ class XQuAD(Dataset):
                 break
             data.append({
                 "text": f"Passage: {item['context']}\nQuestion: {item['question']}",
-                "answers": item["answers"]["text"]  # List of possible correct answers
+                "answers": item["answers"]["text"],  # List of possible correct answers
+                "question": item['question']
             })
         return data
 
@@ -965,73 +961,129 @@ class XQuAD(Dataset):
         return [entry["answers"] for entry in data]
 
 
-    def evaluate(self, true_answers, predicted_answers):
+    def evaluate(self, true_answers, predicted_answers, questions):
         """
-        Evaluates the model's extracted answers using BLEU, METEOR, and Cosine Similarity.
+        Evaluates the model's extracted answers using BLEU, METEOR, and Cosine Similarity,
+        or with LLM-based scoring if self.llm_judge is enabled.
 
         :param true_answers: List of correct answers (each is a **list with one token**)
         :param predicted_answers: List of extracted answers (each is a full string)
+        :param questions: List of questions (each is a **list with one token**)
         :return: Dictionary with BLEU, METEOR, and Cosine Similarity scores.
         """
         if len(true_answers) != len(predicted_answers):
             raise ValueError("true_answers and predicted_answers must have the same length")
 
-        smoothing_function = SmoothingFunction().method1
-        bleu_scores = []
-        meteor_scores = []
-        cosine_similarities = []
+        if self.llm_judge:
+            prompts = []
+            for true_list, pred_answer, question in zip(true_answers, predicted_answers, questions):
+                true_answer = true_list[0] if true_list else ""
+                pred_answer = pred_answer or ""
+                question = question or ""
 
-        for true_list, pred_answer in zip(true_answers, predicted_answers):
-            # Extract true answer as a single string (it's wrapped in a list)
-            true_answer = true_list[0] if true_list else ""
+                prompt = (
+                    "You are evaluating how well a generated answer responds to a given question. "
+                    f"All content is in {get_language_from_code(self.lang)}. Use the real (true) answer as a reference to determine what a correct answer should look like. "
+                    "Your task is to rate how well the generated answer answers the question, based on meaning and correctness, using the following scale:\n\n"
+                    "5 - Fully answers the question with the same meaning as the real answer.\n"
+                    "4 - Mostly answers the question with only minor differences from the real answer.\n"
+                    "3 - Answers the question partially or with noticeable differences.\n"
+                    "2 - Barely answers the question or includes significant inaccuracies.\n"
+                    "1 - Does not answer the question or is entirely incorrect.\n\n"
+                    "Return only the number.\n\n"
+                    f"Question: {question.strip()}\n"
+                    f"Real answer (reference): {true_answer.strip()}\n"
+                    f"Generated answer: {pred_answer.strip()}\n"
+                    "Score:"
+                )
+                prompts.append(prompt)
 
-            # Handle empty predictions
-            if not pred_answer or pred_answer.strip() == "":
-                bleu_scores.append(0.0)
-                meteor_scores.append(0.0)
-                cosine_similarities.append(0.0)
-                continue  # Skip further processing
+            scores = self.llm_judge.judge(prompts)
 
-            # Normalize: Remove newlines, trim spaces, lowercase
-            true_answer = true_answer.strip().lower()
-            pred_answer = pred_answer.strip().lower()
+            # Convert string scores to floats
+            numeric_scores = []
 
-            try:
-                # Tokenize for BLEU and METEOR
-                tokenized_true = word_tokenize(true_answer)  # Single-token reference
-                tokenized_pred = word_tokenize(pred_answer)
+            for raw_score in scores:
+                if isinstance(raw_score, (int, float)):
+                    numeric_scores.append(float(raw_score))
+                    continue
 
-                # BLEU Score
-                bleu = sentence_bleu([tokenized_true], tokenized_pred, smoothing_function=smoothing_function)
-                bleu_scores.append(bleu)
+                if not isinstance(raw_score, str):
+                    numeric_scores.append(0.0)
+                    continue
 
-                # METEOR Score (NLTK expects a list of one reference, so we wrap it)
-                meteor = meteor_score([tokenized_true], tokenized_pred)
-                meteor_scores.append(meteor)
+                # Search for the first valid number between 1 and 5
+                match = re.search(r"\b([1-5](?:\.0)?)\b", raw_score)
+                if match:
+                    try:
+                        numeric_scores.append(float(match.group(1)))
+                    except ValueError:
+                        numeric_scores.append(0.0)
+                else:
+                    numeric_scores.append(0.0)
 
-            except Exception as e:
-                print(f"Tokenization Error: {e}")
-                bleu_scores.append(0.0)
-                meteor_scores.append(0.0)
+            store_judge(scores, numeric_scores, self.lang)
 
-            # Cosine Similarity (BERT embeddings)
-            try:
-                true_embedding = self.embedding_model.encode([true_answer])[0].reshape(1, -1)  # Ensure correct shape
-                pred_embedding = self.embedding_model.encode([pred_answer])[0].reshape(1, -1)
+            return {
+                "LLM Similarity": np.mean(numeric_scores) if numeric_scores else 0.0
+            }
+        else:
+            smoothing_function = SmoothingFunction().method1
+            bleu_scores = []
+            meteor_scores = []
+            cosine_similarities = []
 
-                # Compute cosine similarity
-                cosine_sim = cosine_similarity(pred_embedding, true_embedding)[0][0]
-                cosine_similarities.append(cosine_sim)
+            for true_list, pred_answer in zip(true_answers, predicted_answers):
+                # Extract true answer as a single string (it's wrapped in a list)
+                true_answer = true_list[0] if true_list else ""
 
-            except Exception as e:
-                print(f"Embedding Error: {e}")
-                cosine_similarities.append(0.0)
+                # Handle empty predictions
+                if not pred_answer or pred_answer.strip() == "":
+                    bleu_scores.append(0.0)
+                    meteor_scores.append(0.0)
+                    cosine_similarities.append(0.0)
+                    continue  # Skip further processing
 
-        return {
-            "BLEU Score": np.mean(bleu_scores) if bleu_scores else 0.0,
-            "METEOR Score": np.mean(meteor_scores) if meteor_scores else 0.0,
-            "Cosine Similarity": np.mean(cosine_similarities) if cosine_similarities else 0.0
-        }
+                # Normalize: Remove newlines, trim spaces, lowercase
+                true_answer = true_answer.strip().lower()
+                pred_answer = pred_answer.strip().lower()
+
+                try:
+                    # Tokenize for BLEU and METEOR
+                    tokenized_true = word_tokenize(true_answer)  # Single-token reference
+                    tokenized_pred = word_tokenize(pred_answer)
+
+                    # BLEU Score
+                    bleu = sentence_bleu([tokenized_true], tokenized_pred, smoothing_function=smoothing_function)
+                    bleu_scores.append(bleu)
+
+                    # METEOR Score (NLTK expects a list of one reference, so we wrap it)
+                    meteor = meteor_score([tokenized_true], tokenized_pred)
+                    meteor_scores.append(meteor)
+
+                except Exception as e:
+                    print(f"Tokenization Error: {e}")
+                    bleu_scores.append(0.0)
+                    meteor_scores.append(0.0)
+
+                # Cosine Similarity (BERT embeddings)
+                try:
+                    true_embedding = self.embedding_model.encode([true_answer])[0].reshape(1, -1)  # Ensure correct shape
+                    pred_embedding = self.embedding_model.encode([pred_answer])[0].reshape(1, -1)
+
+                    # Compute cosine similarity
+                    cosine_sim = cosine_similarity(pred_embedding, true_embedding)[0][0]
+                    cosine_similarities.append(cosine_sim)
+
+                except Exception as e:
+                    print(f"Embedding Error: {e}")
+                    cosine_similarities.append(0.0)
+
+            return {
+                "BLEU Score": np.mean(bleu_scores) if bleu_scores else 0.0,
+                "METEOR Score": np.mean(meteor_scores) if meteor_scores else 0.0,
+                "Cosine Similarity": np.mean(cosine_similarities) if cosine_similarities else 0.0
+            }
 
 
 
@@ -1050,9 +1102,14 @@ class XQuAD(Dataset):
         """
         for lang, metrics in results.items():
             print(f"Results for {lang}:")
-            print(f"BLEU Score: {metrics['BLEU Score']}")
-            print(f"METEOR Score: {metrics['METEOR Score']}")
-            print(f"Cosine Similarity: {metrics['Cosine Similarity']}")
+            if self.llm_judge:
+                print(f"LLM Judge Similarity: {metrics['LLM Similarity']}")
+            else:
+                print(f"BLEU Score: {metrics['BLEU Score']}")
+                print(f"METEOR Score: {metrics['METEOR Score']}")
+                print(f"Cosine Similarity: {metrics['Cosine Similarity']}")
+
+
 
 
 

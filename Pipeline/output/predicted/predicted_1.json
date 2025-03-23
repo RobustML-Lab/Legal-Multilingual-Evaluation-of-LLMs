@@ -1,0 +1,31 @@
+{
+    "predicted": [
+        "The Panthers defense surrendered 308 points.\n",
+        "136\n",
+        "Luke Kuechly registered 118 tackles.\n",
+        "Josh Norman intercepted four passes.\n",
+        "Kawann Short\n"
+    ],
+    "true": [
+        [
+            "308"
+        ],
+        [
+            "136"
+        ],
+        [
+            "118"
+        ],
+        [
+            "four"
+        ],
+        [
+            "Kawann Short"
+        ]
+    ],
+    "language": "en",
+    "dataset_name": "xquad",
+    "points_per_language": 5,
+    "model_name": "google",
+    "adversarial_attack": 0
+}

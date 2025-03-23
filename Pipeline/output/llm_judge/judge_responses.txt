@@ -1,0 +1,12 @@
+==============Language: el================
+Raw LLM Responses:
+5, 5, 5, 5, 5, 
+Parsed Numeric Scores:
+5.0, 5.0, 5.0, 5.0, 5.0, 
+
+==============Language: en================
+Raw LLM Responses:
+5, 5, 5, 5, 5, 
+Parsed Numeric Scores:
+5.0, 5.0, 5.0, 5.0, 5.0, 
+

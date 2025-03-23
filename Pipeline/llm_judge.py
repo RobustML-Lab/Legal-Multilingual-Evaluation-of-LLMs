@@ -23,7 +23,6 @@ class JudgeEvaluator:
 
     def judge(self, prompts):
         all_predicted = []
-        first_ten_answers = []
         count = 0  # Track requests per minute
         false_count = 0
         index = 0

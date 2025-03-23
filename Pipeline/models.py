@@ -1,13 +1,8 @@
-from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
-    LlamaTokenizer, LlamaForCausalLM
+from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer
 from deep_translator import GoogleTranslator
-import ollama
-import torch
-import transformers
-import logging
 
+import torch
 import google.generativeai as ggai
-import re
 import time
 import functools
 

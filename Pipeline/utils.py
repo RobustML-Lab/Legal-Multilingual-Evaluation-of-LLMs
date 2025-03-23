@@ -4,6 +4,56 @@ import os
 from transformers import BertTokenizer, BertModel
 import torch
 
+lang_map = {
+    # EU Languages
+    "en": "English", "eng": "English",
+    "fr": "French", "fra": "French",
+    "de": "German", "deu": "German",
+    "es": "Spanish", "spa": "Spanish",
+    "it": "Italian", "ita": "Italian",
+    "pt": "Portuguese", "por": "Portuguese",
+    "nl": "Dutch", "nld": "Dutch",
+    "sv": "Swedish", "swe": "Swedish",
+    "da": "Danish", "dan": "Danish",
+    "fi": "Finnish", "fin": "Finnish",
+    "no": "Norwegian", "nor": "Norwegian",
+    "is": "Icelandic", "isl": "Icelandic",
+    "pl": "Polish", "pol": "Polish",
+    "cs": "Czech", "ces": "Czech",
+    "sk": "Slovak", "slk": "Slovak",
+    "hu": "Hungarian", "hun": "Hungarian",
+    "ro": "Romanian", "ron": "Romanian",
+    "bg": "Bulgarian", "bul": "Bulgarian",
+    "hr": "Croatian", "hrv": "Croatian",
+    "sr": "Serbian", "srp": "Serbian",
+    "sl": "Slovenian", "slv": "Slovenian",
+    "et": "Estonian", "est": "Estonian",
+    "lv": "Latvian", "lav": "Latvian",
+    "lt": "Lithuanian", "lit": "Lithuanian",
+    "mt": "Maltese", "mlt": "Maltese",
+    "el": "Greek", "ell": "Greek",
+    "ga": "Irish", "gle": "Irish",
+    "cy": "Welsh", "cym": "Welsh",
+
+    # Major non-EU Languages
+    "ar": "Arabic", "ara": "Arabic",
+    "tr": "Turkish", "tur": "Turkish",
+    "zh": "Chinese", "zho": "Chinese",
+    "zh-cn": "Chinese (Simplified)", "zhs": "Chinese (Simplified)",
+    "zh-tw": "Chinese (Traditional)", "zht": "Chinese (Traditional)",
+    "ja": "Japanese", "jpn": "Japanese",
+    "ko": "Korean", "kor": "Korean",
+    "hi": "Hindi", "hin": "Hindi",
+    "th": "Thai", "tha": "Thai",
+    "vi": "Vietnamese", "vie": "Vietnamese",
+    "ru": "Russian", "rus": "Russian",
+    "uk": "Ukrainian", "ukr": "Ukrainian",
+    "he": "Hebrew", "heb": "Hebrew",
+    "fa": "Persian", "fas": "Persian",
+    "id": "Indonesian", "ind": "Indonesian",
+    "ms": "Malay", "msa": "Malay",
+}
+
 def get_embedding_bert(text):
     # tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
     # model = BertModel.from_pretrained("bert-base-uncased")
@@ -14,9 +64,10 @@ def get_embedding_bert(text):
         output = model(**tokens)
     return output.last_hidden_state.mean(dim=1)
 
-def store_predicted(predicted, lang, dataset_name, points_per_language, model_name, adversarial_attack):
+def store_predicted(predicted, true, lang, dataset_name, points_per_language, model_name, adversarial_attack):
     output_data = {
         "predicted": predicted,
+        "true": true,
         "language": lang,
         "dataset_name": dataset_name,
         "points_per_language": points_per_language,
@@ -88,3 +139,26 @@ def store_attack(before_attack, after_attack, lang, dataset_name, points_per_lan
         json.dump(existing_data, f, ensure_ascii=False, indent=4)
 
     print(f"Attack entry stored in: {file_path}")
+
+
+def store_judge(scores, numeric_scores, lan):
+    # Ensure output directory exists
+    os.makedirs("output/llm_judge", exist_ok=True)
+
+    with open("output/llm_judge/judge_responses.txt", "a", encoding="utf-8") as f:
+        f.write(f"==============Language: {lan}================\n")
+
+        # Write raw responses
+        f.write("Raw LLM Responses:\n")
+        for i, response in enumerate(scores, 1):
+            f.write(f"{response.strip()}, ")
+
+        f.write("\nParsed Numeric Scores:\n")
+        for i, score in enumerate(numeric_scores, 1):
+            f.write(f"{score}, ")
+
+        f.write("\n\n")
+
+
+def get_language_from_code(lang):
+    return lang_map.get(lang.lower(), "Unknown")
