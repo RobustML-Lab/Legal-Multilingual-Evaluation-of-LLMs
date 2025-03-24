@@ -16,6 +16,25 @@ from utils import store_predicted, store_attack
 # llm_judge_key = None
 # adversarial_attack = 0
 
+# Redirect print traffic to both the file and terminal
+class Tee:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, message):
+        for s in self.streams:
+            s.write(message)
+            s.flush()
+
+    def flush(self):
+        for s in self.streams:
+            s.flush()
+
+log_file = open("output/log.txt", "w")
+sys.stdout = Tee(sys.__stdout__, log_file)
+sys.stderr = Tee(sys.__stderr__, log_file)
+
+# Arguments
 arguments = sys.argv[1:]
 dataset_name = arguments[0]
 languages = ast.literal_eval(arguments[1])
