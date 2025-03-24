@@ -40,7 +40,7 @@ class Model:
             return LLaMa(label_options, multi_class, generation)
         elif name.lower() == 'google':
             return Google(label_options, multi_class, api_key, generation)
-        elif name.lower() == "ollama" or name.lower() == "odeepseek":
+        elif name.lower() == "ollama" or name.lower() == "odeepseek" or name.lower() == "deepseek":
             return OLLaMa(label_options, multi_class, generation, name)
         else:
             raise ValueError(f"Model '{name}' is not available")
@@ -163,8 +163,8 @@ class OLLaMa(Model):
         self.model = model
 
     def generate_text(self, prompt):
-        model_name = "llama3.2"
-        if self.model == "odeepseek":
+        model_name = "llama3.1"
+        if self.model == "odeepseek" or self.model == "deepseek":
             model_name = "deepseek-r1:1.5b"
         generated_stream = ollama.chat(
             model=model_name,

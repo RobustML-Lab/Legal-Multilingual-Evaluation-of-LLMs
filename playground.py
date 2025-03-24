@@ -1,8 +1,182 @@
-# import os
-# os.environ["PYTHONIOENCODING"] = "utf-8"
-# from datasets import load_dataset
-#
-# dataset = load_dataset('dennlinger/eur-lex-sum', 'english', split='test', trust_remote_code=True)
-# print(dataset)
-list = ['The article is about Regulation (EU) 2019/1160 of the European Parliament and of the Council of 20 June 2019. It amends Directives 2009/65/EC and 2011/61/EU with regard to cross-border distribution of collective investment undertakings. The regulation applies from 2 August 2021, except for certain provisions that apply earlier.', 'There is no summary provided as the original text appears to be a list of articles and sections from a legal document, such as a European Union regulation or treaty, without any context or explanation. The text lists article numbers and points, but does not provide any information on what these refer to or how they relate to each other.', 'The European Union has adopted a new directive regarding copyright and related rights in the field of communication to the public. The directive aims to ensure that the exercise of certain rights is fair and reasonable for both creators and users of protected works. Key aspects of the directive include:\n\n*   Protection of cultural heritage\n*   Limitations on the use of copyrighted material for purposes such as education, research, and criticism\n*   Requirements for fair compensation for creators in cases where their work is used commercially or publicly\n\nThe directive also includes provisions related to the exercise of copyright and related rights relevant for acts of communication to the public, including wire or wireless means, and making available to the public works or other protected subject matter.\n\nKey Dates:\n\n*   7 June 2025: The Commission shall carry out a review of this Directive and present a report on the main findings.\n*   7 June 2021: Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive.', 'There is no summary available as the provided text appears to be a part of an EU regulation or document related to mutual recognition declarations for goods lawfully marketed in another Member State. The text includes sections for declaring the goods, information on conformity assessment procedures, marketing and distribution, and signatures from the economic operator and authorized representative.', 'The article discusses the amendment of Regulation (EC) No 733/2002 regarding the .eu Top Level Domain. The regulations aim to improve and simplify the registration process for European Union domain names. Key changes include:\n\n* Registering domain names is now open to Union citizens, residents of Member States, undertakings established in the EU, and organizations established in the EU.\n* By 12 October 2021, a registry entity will be designated by the Commission, and a contract with the registry will be concluded.\n* The contract will be effective from 13 October 2022.\n\nThe regulations also repealed Regulations (EC) No 733/2002 and (EC) No 874/2004. The new regulation will enter into force on 19 October 2019, but Article 20 will apply from 19 October 2019.']
-print(len(list))
+import pandas as pd
+import numpy as np
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+data_points_no_attack =  [200, 188, 199, 195, 198, 194]
+predicted_points_no_attack =  {'bg': [0, 0, 2, 1, 1, 0, 1, 1, 0, 2, 2, 1, 2, 2, 0, 0, 0, 0, 2, 0, 0, 2,
+       2, 2, 1, 2, 2, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 0, 1, 2, 2,
+       0, 2, 1, 2, 2, 0, 0, 2, 2, 2, 1, 1, 2, 0, 1, 2, 0, 0, 2, 2, 2, 0,
+       0, 0, 2, 1, 2, 2, 1, 1, 2, 0, 0, 2, 1, 1, 2, 0, 0, 2, 1, 2, 2, 1,
+       2, 0, 1, 1, 0, 0, 2, 0, 2, 1, 1, 1, 2, 1, 0, 2, 0, 1, 0, 0, 1, 2,
+       0, 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 0, 1, 2, 1, 2, 2, 1, 2, 2, 2, 0,
+       1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 2, 1, 2, 0, 2, 0,
+       1, 1, 2, 2, 2, 1, 1, 0, 1, 1, 2, 0, 2, 2, 1, 0, 1, 2, 0, 2, 2, 2,
+       1, 0, 1, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 1, 1, 2, 1, 2, 0, 2, 0,
+       2, 0], 'el': [2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2,
+       None, None, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       0, 2, 2, 2, 2, 2, 2, 2, 2, 2, None, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+       2, 2, 2, 0, 2, 1, 2, 2, 2, 2, None, 2, 2, 2, 1, 1, 0, 2, 2, 2, 2,
+       None, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 1, None, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 0, 2, 2, 1, None, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, None, None, 2, 2, 2, 2, 2, 2,
+       None, 2, 2, 2, 2, 2, 2, None, 2, None, 2, 2], 'en': [1, 0, 0, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2,
+       0, 0, 2, 1, 1, 1, 2, 1, 1, 1, 2, 2, 0, 1, 1, 0, 1, 2, 0, 1, 2, 1,
+       0, 1, 2, 2, 1, 2, 0, 0, 1, 0, 2, 0, 2, 1, 1, 2, 0, 2, 2, 0, 0, 0,
+       0, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 0, 1, 0,
+       1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 1, 1, 0, 2, 2, 2, 1, 1, 1, 2, 1, 0,
+       1, 2, 2, 2, 0, 2, None, 1, 1, 2, 0, 2, 2, 1, 1, 2, 2, 1, 2, 2, 0,
+       2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 0, 0, 1, 1, 1, 2, 2, 0, 0, 0, 1,
+       2, 1, 2, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0, 1, 1, 0, 0, 0, 2, 0, 1, 0,
+       1, 1, 2, 0, 2, 0, 1, 1, 1, 1, 1, 0, 2, 2, 2, 1, 2, 1, 2, 2, 0, 1,
+       1, 1, 1], 'es': [0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 2, 0, 1, 1,
+       1, 1, 1, 2, 0, 0, 2, 0, 1, 2, 2, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0,
+       0, 1, 0, 1, 0, 0, 0, 0, 2, 1, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1,
+       0, 1, 0, 1, 2, 0, 2, 0, 2, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+       0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 2, 0, 1, 0, 1, 0,
+       0, 1, 1, 1, None, None, None, 1, 2, 0, 0, 0, 1, 0, 1, 2, 1, 0, 2,
+       1, 0, 1, 1, 2, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 2, 2, 2, 0, 0, 0, 1,
+       0, 0, 1, 1, 1, 0, 0, 2, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0,
+       1, 1, 0, 1, 2, 1, 1, 0, None, None, 1, 0, 0, 0, 0, 1, 0, 0, 0, 2,
+       0, 2, 0, 0, 0, 2, 1], 'fr': [0, 1, 1, 0, 0, 2, 1, 2, 1, 1, 1, 0, 0, 2, 0, 0, 0, 1, 1, 0, 0, 1,
+       0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 2, 0, 1, 0,
+       0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 2, 1, 2, 1, 0, 0,
+       0, None, 1, 2, 1, 0, 2, 2, 1, 0, 0, 1, 1, 2, 0, 1, 0, 0, 1, 2, 0,
+       2, 1, 2, 1, 0, 1, 1, 0, 0, 0, 1, 2, 2, 0, 2, 0, 2, 2, 0, 2, 0, 1,
+       1, 0, 0, 0, 1, 2, 0, None, 0, 2, 2, 1, 1, 1, 1, 0, 0, 0, 2, 0, 1,
+       1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 2, 0, 0, 1, 0, 1, 2, 2, 2, 0, 2,
+       1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 1, 2, 0, 1, 1, 0, 1,
+       0, 1, 1, 1, 0, 0, 2, 1, 1, 1, 1, 0, 2, 0, 0, 1, 0, 0, 2, 2, 2, 1,
+       1, 0, 1, 1], 'th': [0, 1, 1, 1, 0, 1, 1, 1, 1, None, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0,
+       1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 1, 2, 2,
+       1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2,
+       2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1,
+       1, 1, None, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0,
+       0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1,
+       None, 2, 1, 0, None, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1,
+       1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1,
+       1, None, 0, None, 0, 0]}
+
+true_points =  {'bg': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'el': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'en': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'es': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'fr': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'th': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0]}
+
+data_points_attack = [195, 187, 199, 194, 199, 193]
+predicted_points_attack = {'bg': [2, 2, 0, 0, 2, 1, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 0, 1, 0, 0,
+       None, 2, 0, 2, 2, 2, 2, 2, 1, 0, 2, 2, 1, 2, 1, 0, 0, 1, 0, 2, 1,
+       0, 2, 1, 1, 1, 1, 0, 1, 2, 2, 0, 0, 1, 0, 2, 2, 2, 2, 2, 2, 2, 0,
+       0, 2, 2, 0, 0, 2, 2, 0, 0, 2, 2, 1, None, 2, 0, 2, 0, 0, 2, 0, 2,
+       2, 0, 2, 0, 0, 2, 2, 2, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 0, 0, 2, 0, 2, 0, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
+       0, 0, 1, 0, 0, 1, 2, 2, 2, 2, 2, 1, 2, 2, 0, 0, 2, 0, 1, 1, 0, 0,
+       0, 0, 2, 0, 0, 2, 2, 0, 0, None, 2, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0,
+       0, 0, 0, 2, 0, 1, 2, 2, None, 2, 2, 0, 2, 2, 2, 2, 2, 0, 2, 2, 2,
+       1, None, 0, 2, 2, 2], 'el': [2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 0, None, 2, 2, 2, None, 2, 2, 2, 2,
+       2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       1, None, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, None, 2, 2, None, None, 2,
+       2, 2, 2, 2, 2, 2, 0, 2, 2, 2, None, 0, 2, None, None, 2, 0, 2, 2,
+       2, 2, 0, 2, 2, 2, 2, 2, 2, 2, None, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2,
+       2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2,
+       2, 2, 2, None, 2, 2, 2, 2, 1, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, None, 1, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, None, 2, 0, 2, 2, 2], 'en': [0, 1, 1, 2, 2, 1, 1, 1, 1, 0, 2, 2, 0, 2, 2, 2, 0, 1, 1, 2, 0, 1,
+       2, 2, 1, 0, 1, 1, 2, 1, 1, 1, 2, 2, 0, 2, 2, 2, 1, 1, 2, 0, 2, 0,
+       1, 2, 2, 1, 2, 0, 0, 1, 2, 0, 1, 0, 2, 2, 1, 0, 0, 0, 0, 2, 2, 0,
+       2, 1, 2, 2, 0, 0, 2, 1, 2, 0, 0, 0, 1, 0, 1, 2, 1, 2, 0, 0, 2, 1,
+       0, 2, 2, 1, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, 1, 2, 2, 2, 1, 2, 2, 0,
+       0, 2, 1, 0, 1, 2, None, 2, 1, 2, 0, 2, 0, 1, 0, 0, 2, 0, 1, 0, 1,
+       2, 0, 1, 0, 2, 2, 1, 1, 2, 2, 1, 0, 0, 0, 2, 2, 1, 1, 2, 1, 2, 2,
+       1, 1, 0, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 0, 2, 2, 2,
+       2, 2, 2, 2, 1, 2, 0, 2, 0, 2, 1, 2, 0, 2, 1, 1, 1, 2, 1, 1, 1, 0,
+       0, 0, 1], 'es': [2, 1, 1, 2, 1, 1, None, 1, 1, 0, 1, 1, 0, 2, 0, 0, 0, 0, 1, 2, 0,
+       2, 0, 2, 1, 2, 2, 2, 2, 0, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 0,
+       None, 1, 2, 1, 0, 1, 0, 1, 1, 2, 0, 1, 0, 2, 0, 0, 0, 1, 0, 0, 0,
+       2, 0, 1, 0, 2, 0, 1, 1, 1, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 2, 0,
+       2, 1, 0, 0, 0, 1, 1, 1, 1, 0, 2, 2, 0, 1, 2, 2, 2, 1, 1, 1, 1, 0,
+       2, 1, 0, 1, 0, 1, 0, 2, 2, None, 0, 0, 1, 2, 1, 1, 0, 2, 0, 0, 0,
+       1, 0, 0, 1, 0, 1, 0, 0, 1, 2, 2, 0, 0, 2, 1, 1, 2, 1, 1, 1, 0, 2,
+       0, 1, 0, 1, 2, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 2, 0, 1, 1, 0, 0, 0,
+       0, 0, 0, 0, 2, 2, 0, 0, 1, None, None, 1, 1, 2, 2, None, 1, 0, 0,
+       0, 0, 0, 0, 0, 0, 2, 2, 0], 'fr': [1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 2,
+       0, 0, 0, 2, 0, 2, 2, 2, 1, 2, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+       2, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2, 2, 2, 0, 1, 1, 1, 1, 0, 1, 1, 0,
+       0, 1, 2, 2, 0, 2, 0, 0, 1, 2, 0, 0, 2, 0, 2, 0, 1, 0, 1, 1, 0, 1,
+       2, 2, 0, 1, 1, 0, 1, 1, 0, 1, 2, 1, 0, 1, 2, 0, 2, 0, 1, 1, 0, 0,
+       0, 0, 0, 0, 0, 0, None, 0, 0, 2, 0, 1, 0, 0, 2, 0, 2, 1, 2, 0, 1,
+       1, 1, 1, 1, 0, 0, 1, 1, 2, 0, 0, 0, 1, 1, 0, 2, 2, 2, 2, 0, 0, 0,
+       1, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 1, 1,
+       0, 1, 0, 0, 1, 0, 2, 1, 0, 2, 2, 2, 0, 1, 2, 1, 1, 2, 0, 2, 2, 1,
+       1, 1, 1], 'th': [1, 1, 0, 2, 0, 1, 2, 1, 1, 2, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 2,
+       1, 0, 1, 0, 1, 0, 0, 2, 1, 0, 1, 1, 2, 0, 1, 1, 0, 0, 1, 1, 1, 0,
+       1, 1, 1, 0, 1, 1, 1, 2, 1, 0, 1, 2, 1, 1, 1, 2, 1, 1, 0, 1, None,
+       0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 2, 1, 1, None, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 2, 1, 0, 1,
+       0, 0, 2, 1, 1, 1, 1, None, 1, 1, 2, 0, 1, 0, 1, 2, 1, 1, None, 1,
+       1, 1, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1,
+       1, 0, 0, 0, 2, 0, 0, None, None, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 2, 1, 1, 0,
+       1, 1, 0, 1, 1, None, 1, 1]}
+# True points:  {'bg': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'el': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'en': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'es': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'fr': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0], 'th': [2, 0, 1, 1, 0, 2, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 1, 0, 2, 0, 1, 2, 2, 0, 1, 2, 1, 0, 2, 0, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 0, 1, 2, 0, 1, 2, 1, 0, 2, 1, 0, 2, 2, 0, 1, 1, 0, 2, 2, 1, 0, 1, 2, 0, 2, 1, 0, 0, 2, 1, 0, 1, 2, 2, 1, 0, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 1, 0, 0, 2, 1, 1, 0, 2, 1, 0, 2, 1, 2, 0, 2, 0, 1, 1, 2, 0, 2, 0, 1, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 1, 0, 2, 2, 1, 0, 2, 1, 0, 0, 2, 1, 2, 1, 0, 1, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 0, 1, 2, 0, 1, 2, 0, 2, 1, 0, 2, 1, 1, 0, 2, 2, 1, 0, 2, 0, 1, 2, 1, 0, 2, 0]}
+
+# Remove all elements at indices of none values in either array
+languages = ['bg', 'el', 'en', 'es', 'fr', 'th']
+filtered_true_points = {}
+for language in languages:
+    filtered_true_points[language] = [true_points[language][i] for i in range(len(true_points[language])) if predicted_points_attack[language][i] is not None and predicted_points_no_attack[language][i] is not None]
+filtered_predicted_points_attack = {}
+for language in languages:
+    filtered_predicted_points_attack[language] = [predicted_points_attack[language][i] for i in range(len(predicted_points_attack[language])) if predicted_points_attack[language][i] is not None and predicted_points_no_attack[language][i] is not None]
+
+filtered_predicted_points_no_attack = {}
+for language in languages:
+    filtered_predicted_points_no_attack[language] = [predicted_points_no_attack[language][i] for i in range(len(predicted_points_no_attack[language])) if predicted_points_attack[language][i] is not None and predicted_points_no_attack[language][i] is not None]
+
+# Calculate accuracies for both datasets
+accuracies_attack = {}
+accuracies_no_attack = {}
+for language in languages:
+    accuracies_attack[language] = accuracy_score(filtered_predicted_points_attack[language], filtered_true_points[language])
+    accuracies_no_attack[language] = accuracy_score(filtered_predicted_points_no_attack[language], filtered_true_points[language])
+
+acc_attack_values = [accuracies_attack[lang] for lang in languages]
+acc_no_attack_values = [accuracies_no_attack[lang] for lang in languages]
+
+# Bar chart setup
+x = np.arange(len(languages))  # Label locations
+width = 0.35  # Width of bars
+
+fig, ax = plt.subplots(figsize=(8, 6))
+bars1 = ax.bar(x - width/2, acc_no_attack_values, width, label="No Attack", color="blue")
+bars2 = ax.bar(x + width/2, acc_attack_values, width, label="Under Attack", color="orange")
+
+# Labels and formatting
+ax.set_xlabel("Languages")
+ax.set_ylabel("Accuracy")
+ax.set_title("Accuracy Comparison: No Attack vs. Under Attack")
+ax.set_xticks(x)
+ax.set_xticklabels(languages)
+ax.legend()
+ax.set_ylim(0, 1)  # Ensure y-axis is between 0 and 1 for accuracy
+
+# Display values on bars
+for bars in [bars1, bars2]:
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width() / 2, height, f'{height:.2f}', ha='center', va='bottom')
+
+plt.show()
+
+fig, ax = plt.subplots(figsize=(8, 6))
+bars1 = ax.bar(x - width/2, data_points_no_attack, width, label="No Attack", color="blue")
+bars2 = ax.bar(x + width/2, data_points_attack, width, label="Under Attack", color="orange")
+
+# Labels and formatting
+ax.set_xlabel("Languages")
+ax.set_ylabel("Number of valid data points")
+ax.set_title("Data Points Comparison: No Attack vs. Under Attack")
+ax.set_xticks(x)
+ax.set_xticklabels(languages)
+plt.show()
+

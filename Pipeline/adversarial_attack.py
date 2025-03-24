@@ -125,7 +125,7 @@ class CustomHuggingFaceModelWrapper(HuggingFaceModelWrapper):
 
 model_wrapper = CustomHuggingFaceModelWrapper(model, tokenizer)
 
-def attack(data, attack_type, lang, mapped_data):
+def attack(data, attack_type, lang, mapped_data, p=0.3):
     """Apply adversarial attacks using TextAttack-based methods."""
     if lang in language_map:
         lang = language_map[lang]
@@ -138,7 +138,7 @@ def attack(data, attack_type, lang, mapped_data):
             original_text = entry["text"]
             ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
 
-            modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label)
+            modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label, p)
 
             total_words += 1
             changed_words += changes
@@ -148,7 +148,7 @@ def attack(data, attack_type, lang, mapped_data):
     save_results(lang, change_percentage)
     return data
 
-def adversarial_attack(text, attack_type, lang, ground_truth_label):
+def adversarial_attack(text, attack_type, lang, ground_truth_label, p=0.3):
     """Applies different adversarial attack strategies based on the attack type."""
     if attack_type == 1:  # Word substitution and augmentation attack
         return word_substitution_attack(text, lang)
@@ -169,7 +169,7 @@ def adversarial_attack(text, attack_type, lang, ground_truth_label):
     elif attack_type == 9:  # Word substitution for multilingual
         return synonym_multilingual_attack(text, lang)
     elif 9 < attack_type < 15: # Attack using nlpaug
-        return nlpaug_attack(text, lang, attack_type)
+        return nlpaug_attack(text, lang, attack_type, p)
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}")
 
@@ -366,7 +366,7 @@ def synonym_multilingual_attack(text, lang="english", target_percentage=10):
 
     return perturbed_text, modified_words
 
-def nlpaug_attack(text, lang, attack_type):
+def nlpaug_attack(text, lang, attack_type, p=0.3):
     """
     Applies an adversarial attack to the input text based on the attack type using the nlpaug library.
 
@@ -405,7 +405,7 @@ def nlpaug_attack(text, lang, attack_type):
 
     elif attack_type == 12:
         # Keyboard typo simulation (QWERTY-based)
-        keyboard_aug = nac.KeyboardAug(aug_word_p=0.3)
+        keyboard_aug = nac.KeyboardAug(aug_word_p=p, lang=lang)
         augmented_text = keyboard_aug.augment(text)
 
     elif attack_type == 13:
@@ -419,7 +419,7 @@ def nlpaug_attack(text, lang, attack_type):
     elif attack_type == 14:
         # Contextual word embeddings using BERT
         bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
-        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
+        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute", aug_p=p)
         augmented_text = contextual_aug.augment(text)
 
     else:

@@ -598,6 +598,7 @@ class XNLI(Dataset):
             writer.writerow([self.language, accuracy])
 
         print(f"Accuracy {self.language}: {accuracy}")
+        return accuracy
 
     def extract_labels_from_generated_text(self, generated_texts):
         """
