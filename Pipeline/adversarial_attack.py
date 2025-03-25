@@ -108,12 +108,12 @@ LANG_TO_MODEL = {
 }
 
 
-nltk.download("averaged_perceptron_tagger")
-nltk.download("punkt")
-nltk.download("punkt_tab")
-nltk.download("wordnet")
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('omw-1.4')
+# nltk.download("averaged_perceptron_tagger")
+# nltk.download("punkt")
+# nltk.download("punkt_tab")
+# nltk.download("wordnet")
+# nltk.download('averaged_perceptron_tagger_eng')
+# nltk.download('omw-1.4')
 
 
 
@@ -166,7 +166,7 @@ def attack(data, attack_type, lang, mapped_data):
             entry["text"] = modified_text
 
     change_percentage = (changed_words / total_words) if total_words > 0 else 0
-    save_results(lang, change_percentage)
+    save_results(lang, change_percentage, attack_type)
     return data
 
 def adversarial_attack(text, attack_type, lang, ground_truth_label):
@@ -461,7 +461,15 @@ def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""
     return sum(1 for o, m in zip(original_text.split(), modified_text.split()) if o != m)
 
-def save_results(lang, percentage):
+import os
+
+def save_results(lang, percentage, attack_type):
     """Save attack results to a file."""
-    with open("output/attack_results.txt", "a", encoding="utf-8") as f:
-        f.write(f"{lang}: {percentage:.2f}% words modified\n")
+
+    # Ensure the output/attacks directory exists
+    os.makedirs("output/attacks", exist_ok=True)
+
+    # Append the results to the file
+    with open("output/attacks/attack_percentage.txt", "a", encoding="utf-8") as f:
+        f.write(f"{lang}: {percentage:.2f}% words modified, attack {attack_type}\n")
+
