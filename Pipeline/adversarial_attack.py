@@ -108,12 +108,12 @@ LANG_TO_MODEL = {
 }
 
 
-# nltk.download("averaged_perceptron_tagger")
-# nltk.download("punkt")
-# nltk.download("punkt_tab")
-# nltk.download("wordnet")
-# nltk.download('averaged_perceptron_tagger_eng')
-# nltk.download('omw-1.4')
+nltk.download("averaged_perceptron_tagger")
+nltk.download("punkt")
+nltk.download("punkt_tab")
+nltk.download("wordnet")
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('omw-1.4')
 
 
 
