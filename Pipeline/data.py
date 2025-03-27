@@ -107,45 +107,81 @@ class Multi_Eurlex(Dataset):
     label_options = None
 
     def __init__(self, llm_judge):
-        self.prompt = ("<|endoftext|>Question: Above you are given a text. Your task is to annotate the text using the following "
-                       "labels. You can select multiple labels but only include the relevant labels. Only answer with "
-                       "the number of the labels that are relevant and nothing else! (You can select more than one): ")
+        self.prompt = (
+            "<|endoftext|>\nTask: You are given a legal document. Your task is to assign the most relevant labels from the list below. "
+            "You may select multiple labels, but only include those that are truly relevant. "
+            "List the label **numbers only**, in order of importance (most important first). "
+            "Do not include any text other than the selected numbers. (You can select more than one):"
+        )
         self.llm_judge = llm_judge
 
-    def load_label_options(self, lang_code):
-        with open("output/eurovoc_categories.json", "r", encoding="utf-8") as file:
-            # Load the JSON data
-            eurovoc_data = json.load(file)
+    def load_label_options(self, lang):
+        # Load files
+        with open("data/multi_eurlex/eurovoc_concepts.json", "r", encoding="utf-8") as f:
+            concepts = json.load(f)
 
-            # Retrieve categories for the specified language
-            categories = eurovoc_data.get(lang_code, [])
+        with open("data/multi_eurlex/eurovoc_descriptors.json", "r", encoding="utf-8") as f:
+            descriptors = json.load(f)
 
-            # Format as a.py lowercase list for label_options
-            label_options = [option.lower() for option in categories]
-            return label_options
+        # Get Level 3 IDs
+        level_3_ids = concepts["level_3"]
+
+        # Filter Level 3 descriptors with IDs
+        level_3_label_tuples = []
+        for concept_id in level_3_ids:
+            label = descriptors.get(concept_id, {}).get(lang)
+            if label:
+                level_3_label_tuples.append((concept_id, label.strip().lower()))
+
+        # Build concept_id → index mapping (starting from 0)
+        self.concept_id_to_index = {
+            cid: i for i, (cid, _) in enumerate(level_3_label_tuples)
+        }
+
+        # Return just the list of label strings (not numbered)
+        return [label for _, label in level_3_label_tuples]
+
+
+    def load_level_3_ids(self):
+        with open("data/multi_eurlex/eurovoc_concepts.json", "r", encoding="utf-8") as f:
+            concepts = json.load(f)
+        return set(concepts["level_3"])
 
     def get_data(self, language, dataset_name, points_per_language):
         """
         :param language: the language for which data should be retrieved
         :return: the data corresponding to the language parameter
         """
-        self.label_options = self.load_label_options(language)
         self.lang = language
-        dataset = load_dataset(dataset_name, language, split='test', trust_remote_code=True)
+        dataset = load_dataset('coastalcph/multi_eurlex', language, split='test', label_level='level_3', trust_remote_code=True)
+
+        # Get the mapping from label indices to concept IDs
+        self.label_id_to_concept = dataset.features["labels"].feature.names
+
+        # Load level 3 IDs for filtering
+        self.level_3_ids = self.load_level_3_ids()
+
+        # Load label options in the target language, only for Level 3
+        self.label_options = self.load_label_options(language)
+
+        # Get the processed document-text + labels
         data = self.extract_text(dataset)
+
+        # Translate prompt
         inst = translate(language, self.prompt)
         return data[:points_per_language], self.label_options, inst
 
     def extract_text(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a.py list of text data in the specified language
-        """
         preprocessed_data = []
+
         for item in dataset:
-            text = item['text']  # Extract text
-            labels = item['labels']  # True label numbers
-            preprocessed_data.append({"text": text, "labels": labels})
+            text = item['text']
+            label_indices = [i for i in item['labels'] if 0 <= i < len(self.label_options)]
+            preprocessed_data.append({
+                "text": text,
+                "labels": label_indices
+            })
+
         return preprocessed_data
 
     def get_true(self, data):
@@ -167,7 +203,7 @@ class Multi_Eurlex(Dataset):
         all_labels = []
         for text in generated_texts:
             labels = []
-            for i in range(21):
+            for i in range(len(self.label_options)):
                 # Use regex to match only whole words for each index, avoiding partial matches
                 if re.search(rf'\b{i}\b', text):
                     labels.append(i)
@@ -187,7 +223,7 @@ class Multi_Eurlex(Dataset):
 
         # Extract all numbers from the response
         numbers = re.findall(r'\d+', response)
-        return [int(num) for num in numbers] if numbers else None
+        return [int(num) for num in numbers if 0 <= int(num) < len(self.label_options)]
 
 
     def evaluate(self, true_labels, predicted_labels):
@@ -201,7 +237,7 @@ class Multi_Eurlex(Dataset):
                         f"All content (model answer and labels) is in {get_language_from_code(self.lang)}.\n\n"
                         "Your task:\n"
                         "- Use the numbered 'Labels' list below to determine which labels were identified in the model's answer.\n"
-                        "- Return only the numbers of the labels that the model has identified, separated by commas.\n"
+                        "- Return only the numbers of the labels that the model has identified in the order that they were identified, separated by commas.\n"
                         "- If no labels were identified, return 'None'.\n\n"
                         f"Answer: {pred_answer.strip()}\n"
                         "Labels:\n" +
@@ -240,65 +276,40 @@ class Multi_Eurlex(Dataset):
             filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
         )
 
+        # Compute mean R-Precision (mRP)
+        r_precisions = []
+        for true, pred in zip(true_labels, predicted_labels):
+            if not true:
+                continue  # Skip samples with no gold labels
+            k = len(true)
+            top_k_pred = pred[:k]  # Take top-k predicted labels
+            correct = len(set(top_k_pred) & set(true))
+            r_precision = correct / k
+            r_precisions.append(r_precision)
+
+        mean_r_precision = np.mean(r_precisions) if r_precisions else 0.0
+
         return {
             "Precision": precision,
             "Recall": recall,
             "F1 Score": f1,
+            "mRP": mean_r_precision,
             "Length": len(true_labels)
         }
 
-    def normalize_labels(self, label_list):
-        normalized = []
-        for labels in label_list:
-            if labels is None:
-                normalized.append([])
-            elif isinstance(labels, str):
-                if labels.strip().lower() == "none" or labels.strip() == "":
-                    normalized.append([])
-                else:
-                    normalized.append([int(x.strip()) for x in labels.split(",") if x.strip().isdigit()])
-            elif isinstance(labels, list):
-                normalized.append(labels)
-            else:
-                raise ValueError(f"Unrecognized label format: {labels}")
-        return normalized
-
-
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metrics in results.items():
             print(f"Results for {lang}:")
             print(f"Precision: {metrics['Precision']}")
             print(f"Recall: {metrics['Recall']}")
             print(f"F1 Score: {metrics['F1 Score']}")
-            print(f"Length: {metrics['Length']}")
-            print("ENDMETRICS")
-            true_labels = self.normalize_labels(all_true[lang])
-            predicted_labels = self.normalize_labels(all_predicted[lang])
-            for idx, label in enumerate(self.label_options):
-                tp = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx in pred and idx in true])
-                fp = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx in pred and idx not in true])
-                fn = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx not in pred and idx in true])
-                true_num = sum([1 for true in true_labels if idx in true])
-                predicted_num = sum([1 for true in predicted_labels if idx in true])
+            print(f"mRP: {metrics['mRP']}")
+            print(f"Length: {metrics['Length']}\n")
 
-                # Precision and Recall calculations
-                precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-                recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-                f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-
-                print(f"{label} Precision: {precision}")
-                print(f"{label} Recall: {recall}")
-                print(f"{label} F1 Score: {f1}")
-                print(f"True Num: {true_num}")
-                print(f"Predicted Num: {predicted_num}")
-                print("ENDCLASS")
-            print("ENDLANGUAGE")
-
-    def save_first_10_results_to_file_by_language(self, first_ten_answers, true_labels, predicted_labels, label_options,
-                                                  language):
+    def save_first_10_results_to_file_by_language(self, first_ten_answers, language):
         # Define the output folder path
-        output_folder = "output/10_first"
+        output_folder = "output/multi_eurlex/10_first"
 
         # Create the directory if it doesn't exist
         os.makedirs(output_folder, exist_ok=True)
@@ -309,19 +320,12 @@ class Multi_Eurlex(Dataset):
         # Check if the file exists; if not, create it and write headers
         if not os.path.exists(filename):
             with open(filename, 'w', encoding='utf-8') as file:
-                file.write("Text\tTrue Labels\tPredicted Labels\n")
-
-        # Write the first 10 samples' text, true labels, and predicted labels to the file
-        true_labels = self.normalize_labels(true_labels)
-        predicted_labels = self.normalize_labels(predicted_labels)
+                file.write("")
 
         with open(filename, 'a', encoding='utf-8') as file:
             for i in range(min(10, len(first_ten_answers))):
                 text = first_ten_answers[i]
-                true_label_names = [label_options[idx] for idx in true_labels[i]]
-                predicted_label_names = [label_options[idx] for idx in predicted_labels[i]]
-
-                file.write(f"{text}\t{', '.join(true_label_names)}\t{', '.join(predicted_label_names)}\n\n\n")
+                file.write(f"{text}\n")
 
 class Eur_Lex_Sum(Dataset):
     """
@@ -402,7 +406,7 @@ class Eur_Lex_Sum(Dataset):
 
         return results
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metrics in results.items():
             print(f"Results for {lang}:")
@@ -573,7 +577,7 @@ class Europa_Random_Split(Dataset):
 
                 prompt = (
                     "You are evaluating how well a generated list of keyphrases produced by a model summarizes a given text.\n"
-                    f"The content is in {get_language_from_code(self.lang)}. Use the real (reference) keyphrases as a gold standard.\n\n"
+                    f"The content is in {get_language_from_code(self.language)}. Use the real (reference) keyphrases as a gold standard.\n\n"
                     "Your task is to rate how well the generated keyphrases capture the meaning and key ideas of the text, using the following scale:\n\n"
                     "5 - Excellent: The keyphrases cover all essential topics and match the reference very closely in meaning.\n"
                     "4 - Good: Most important topics are covered with only minor omissions or differences.\n"
@@ -610,12 +614,12 @@ class Europa_Random_Split(Dataset):
                 else:
                     numeric_scores.append(0.0)
 
-            store_judge(scores, numeric_scores, self.lang)
+            store_judge(scores, numeric_scores, self.language)
 
-            return {
-                "LLM Similarity Score (1–5)": np.mean(numeric_scores) if numeric_scores else 0.0
-            }
-        else:
+            #     return {
+            #         "LLM Similarity Score (1–5)": np.mean(numeric_scores) if numeric_scores else 0.0
+            #     }
+            # else:
             metrics = {
                 "F1@5": [],
                 "F1@10": [],
@@ -647,9 +651,11 @@ class Europa_Random_Split(Dataset):
             # Aggregate metrics across all instances
             aggregated_metrics = {metric: sum(scores) / len(scores) if scores else 0.0 for metric, scores in metrics.items()}
 
+            aggregated_metrics["LLM Similarity Score"] = np.mean(numeric_scores) if numeric_scores else 0.0
+
             return aggregated_metrics
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Display aggregated F1@k, F1@M, and MAP@50 results.
 
@@ -936,7 +942,7 @@ class XQuAD(Dataset):
         """
         return generated_texts  # Directly return the generated answers as predictions
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints BLEU, METEOR and Cosine Similarity scores for the dataset.
         """
@@ -1239,12 +1245,11 @@ class SST2(Dataset):
         true_labels = [entry['label'] for entry in data]
         return true_labels
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1339,14 +1344,13 @@ class QQP(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though QQP is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1443,14 +1447,13 @@ class MNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though MNLI is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1548,14 +1551,13 @@ class QNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though QNLI is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)

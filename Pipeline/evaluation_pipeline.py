@@ -120,9 +120,9 @@ for lang in languages:
     all_predicted[lang] = filtered_predicted
 
     if dataset_name.lower() == 'multi_eurlex':
-        dataset.save_first_10_results_to_file_by_language(first_ten_answers, true, predicted, label_options, lang)
+        dataset.save_first_10_results_to_file_by_language(first_ten_answers, lang)
 
 try:
-    dataset.evaluate_results(results, all_true, all_predicted)
+    dataset.evaluate_results(results)
 except AttributeError as e:
     print(e)
