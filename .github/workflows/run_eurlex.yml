@@ -1,4 +1,4 @@
-name: Run LLM Pipeline 1
+name: Run Multi_Eur_Lex Pipeline 
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -26,7 +26,7 @@ jobs:
           LLM_JUDGE_KEY: ${{ secrets.GEMINI_API_KEY_1 }}
         working-directory: Pipeline
         run: |
-          python evaluation_pipeline.py xquad "['en', 'el', 'ar', 'zh', 'tr', 'ru', 'th']"  200 1 google 0 $LLM_JUDGE_KEY $GEMINI_API_KEY
+          python evaluation_pipeline.py multi_eurlex "['en', 'el', 'bg', 'mt', 'fr', 'sv']" 200  0 google 0 'None' $GEMINI_API_KEY
 
       - name: Upload results
         uses: actions/upload-artifact@v4
