@@ -903,20 +903,38 @@ class OnlineTermsOfServiceDataset(Dataset):
         return [int(numbers[0])] if numbers else None
 
     def evaluate(self, true_labels, predicted_labels):
-        y_true = [lbl[0] for lbl in true_labels]
-        y_pred = [lbl[0] for lbl in predicted_labels]
-
+        y_true = []
+        y_pred = []
         confusion_counter = Counter()
         penalties = []
         per_sample_f1 = []
 
-        for true, pred in zip(y_true, y_pred):
-            confusion_counter[(self.INDEX_TO_LABEL[true], self.INDEX_TO_LABEL[pred])] += 1
+        for i, (t, p) in enumerate(zip(true_labels, predicted_labels)):
+            true_label = t[0] if t and len(t) > 0 else None
+            pred_label = p[0] if p and len(p) > 0 else None
+
+            if true_label is None or pred_label is None:
+                print(f"[Missing] Index {i}: true = {t}, predicted = {p}")
+
+            # For indexing, use -1 as placeholder for missing
+            true_idx = true_label if true_label is not None else -1
+            pred_idx = pred_label if pred_label is not None else -1
+
+            y_true.append(true_idx)
+            y_pred.append(pred_idx)
+
+            # Confusion matrix: map -1 to 'NONE'
+            confusion_counter[
+                (self.INDEX_TO_LABEL.get(true_idx, "NONE"),
+                 self.INDEX_TO_LABEL.get(pred_idx, "NONE"))
+            ] += 1
 
             # Penalty logic
-            if true == pred:
+            if true_idx == -1 or pred_idx == -1:
+                penalty = 1.0  # Full penalty for missing
+            elif true_idx == pred_idx:
                 penalty = 0.0
-            elif abs(true - pred) == 1:
+            elif abs(true_idx - pred_idx) == 1:
                 penalty = 0.5
             else:
                 penalty = 1.0
@@ -925,34 +943,36 @@ class OnlineTermsOfServiceDataset(Dataset):
             # Per-sample F1 logic
             true_vec = np.zeros(len(self.label_options))
             pred_vec = np.zeros(len(self.label_options))
-            true_vec[true] = 1
-            pred_vec[pred] = 1
+            if 0 <= true_idx < len(self.label_options):
+                true_vec[true_idx] = 1
+            if 0 <= pred_idx < len(self.label_options):
+                pred_vec[pred_idx] = 1
             tp = np.sum(true_vec * pred_vec)
             precision_i = tp / np.sum(pred_vec) if np.sum(pred_vec) > 0 else 0.0
             recall_i = tp / np.sum(true_vec) if np.sum(true_vec) > 0 else 0.0
             f1_i = 2 * precision_i * recall_i / (precision_i + recall_i) if (precision_i + recall_i) > 0 else 0.0
             per_sample_f1.append(f1_i)
 
-        mean_penalty = np.mean(penalties)
-        var_penalty = np.var(penalties)
-        mean_f1 = np.mean(per_sample_f1)
-        var_f1 = np.var(per_sample_f1)
+        # Filter out -1 for global metrics to avoid sklearn errors
+        valid_indices = [i for i in range(len(y_true)) if y_true[i] != -1 and y_pred[i] != -1]
+        y_true_valid = [y_true[i] for i in valid_indices]
+        y_pred_valid = [y_pred[i] for i in valid_indices]
 
-        # Global metrics
-        precision = precision_score(y_true, y_pred, average='macro', zero_division=0)
-        recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
-        macro_f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
+        precision = precision_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
+        recall = recall_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
+        macro_f1 = f1_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
 
         return {
             "Precision": precision,
             "Recall": recall,
             "F1 Score": macro_f1,
-            "F1 Variance": var_f1,
-            "Penalty Mean": mean_penalty,
-            "Penalty Variance": var_penalty,
+            "F1 Variance": np.var(per_sample_f1),
+            "Penalty Mean": np.mean(penalties),
+            "Penalty Variance": np.var(penalties),
             "Length": len(y_true),
             "Confusion Pairs": dict(confusion_counter)
         }
+
 
     def evaluate_results(self, results):
         output_path = "output/terms_of_service/results.txt"
