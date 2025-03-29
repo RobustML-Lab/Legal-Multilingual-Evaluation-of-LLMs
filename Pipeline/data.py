@@ -5,7 +5,7 @@ import os
 import csv
 
 import unicodedata
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from nltk.translate.meteor_score import meteor_score
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, average_precision_score
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -57,6 +57,8 @@ class Dataset:
             return Eur_Lex_Sum()
         elif name.lower() == 'europa_random_split':
             return Europa_Random_Split(llm_judge)
+        elif name.lower() == 'covid19':
+            return Covid19EmergencyEvent()
         elif name.lower() == 'casehold':
             return CaseHOLD()
         elif name.lower() == 'xquad':
@@ -337,6 +339,7 @@ class Multi_Eurlex(Dataset):
             for i in range(min(10, len(first_ten_answers))):
                 text = first_ten_answers[i]
                 file.write(f"{text}\n")
+
 
 class Eur_Lex_Sum(Dataset):
     """
@@ -678,6 +681,160 @@ class Europa_Random_Split(Dataset):
             for metric, score in scores.items():
                 print(f"  {metric}: {score:.3f}")
 
+class Covid19EmergencyEvent(Dataset):
+    """
+    Child class of Dataset representing the COVID-19 Emergency Event dataset.
+    """
+
+    def __init__(self):
+        self.label_options = None
+        self.prompt = (
+            "<|endoftext|>\n\n\nYou are a legal document classifier. Above is a legal document and below is a list of possible measures types.\n"
+            "Your task is to assign the most relevant types based on the content of the document.\n"
+            "- You may select multiple labels.\n"
+            "- Only select relevant ones.\n"
+            "Return **only the label numbers**, separated by commas, in order of importance (most important first).\n"
+            "- Do not explain your answer or include any other text.\n\n"
+            "Label Options:\n"
+        )
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        :param language: ISO code (e.g., 'fr', 'en')
+        :param dataset_name: unused
+        :param points_per_language: how many points to return
+        :return: (data, label_options, prompt)
+        """
+        # Load dataset and filter by language
+        dataset_dict = load_dataset("joelniklaus/covid19_emergency_event")
+
+        # Combine train + validation + test into one unified dataset
+        dataset = concatenate_datasets([
+            dataset_dict['train'],
+            dataset_dict['validation'],
+            dataset_dict['test']
+        ])
+        dataset = dataset.filter(lambda x: x["language"] == language and len(x["all_events"]) > 0)
+
+        # Load label translations from a single file, then select the language
+        with open("data/covid19_emergency_event/covid19_measures.json", "r", encoding="utf-8") as f:
+            all_labels = json.load(f)
+            self.label_options = all_labels[language]
+
+        # Preprocess and extract texts and label indices
+        data = self.extract_text(dataset)
+
+        inst = translate(language, self.prompt)
+        return data[:points_per_language], self.label_options, inst
+
+    def extract_text(self, dataset):
+        preprocessed_data = []
+
+        for item in dataset:
+            text = item["text"]
+            events = item.get("all_events", [])
+
+            # Convert event names like "event3" to indices (i.e., 2)
+            label_indices = [
+                int(re.sub(r"event", "", event)) - 1  # start from 0
+                for event in events
+                if event.startswith("event")
+            ]
+
+            preprocessed_data.append({
+                "text": text,
+                "labels": label_indices
+            })
+
+        return preprocessed_data
+
+    def get_true(self, data):
+        return [entry["labels"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        for text in generated_texts:
+            if not isinstance(text, str):
+                all_labels.append([])
+                continue
+
+            matches = []
+            for i in range(len(self.label_options)):
+                for match in re.finditer(rf"\b{i}\b", text):
+                    matches.append((match.start(), i))
+
+            ordered_labels = [label for _, label in sorted(matches)]
+            all_labels.append(ordered_labels)
+        return all_labels
+
+    def extract_label_indices(self, response: str) -> list[int] | None:
+        if not response or not isinstance(response, str):
+            return None
+        response = response.strip().lower()
+        if "none" in response:
+            return None
+        numbers = re.findall(r"\d+", response)
+        return [int(num) for num in numbers if 0 <= int(num) < len(self.label_options)]
+
+    def evaluate(self, true_labels, predicted_labels):
+        predicted_labels = [lbl if lbl is not None else [] for lbl in predicted_labels]
+        mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
+        binary_true = mlb.fit_transform(true_labels)
+        binary_pred = mlb.transform(predicted_labels)
+
+        # Filter to relevant labels (used at least once)
+        relevant_labels = np.where((binary_true.sum(axis=0) + binary_pred.sum(axis=0)) > 0)[0]
+        filtered_binary_true = binary_true[:, relevant_labels]
+        filtered_binary_pred = binary_pred[:, relevant_labels]
+
+        # Per-sample F1
+        per_sample_f1 = []
+        for t, p in zip(filtered_binary_true, filtered_binary_pred):
+            precision_i = np.sum(t & p) / np.sum(p) if np.sum(p) > 0 else 0.0
+            recall_i = np.sum(t & p) / np.sum(t) if np.sum(t) > 0 else 0.0
+            f1_i = 2 * precision_i * recall_i / (precision_i + recall_i) if (precision_i + recall_i) > 0 else 0.0
+            per_sample_f1.append(f1_i)
+
+        mean_f1 = np.mean(per_sample_f1)
+        var_f1 = np.var(per_sample_f1)
+
+        # Global macro metrics
+        precision, recall, _, _ = precision_recall_fscore_support(
+            filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
+        )
+
+        # Per-sample R-Precision
+        r_precisions = []
+        for true, pred in zip(true_labels, predicted_labels):
+            if not true:
+                continue
+            k = len(true)
+            top_k_pred = pred[:k]
+            correct = len(set(top_k_pred) & set(true))
+            r_precision = correct / k
+            r_precisions.append(r_precision)
+
+        mean_r_precision = np.mean(r_precisions) if r_precisions else 0.0
+        var_r_precision = np.var(r_precisions) if r_precisions else 0.0
+
+        return {
+            "Precision": precision,
+            "Recall": recall,
+            "F1 Score": mean_f1,
+            "F1 Variance": var_f1,
+            "mRP": mean_r_precision,
+            "mRP Variance": var_r_precision,
+            "Length": len(true_labels)
+        }
+
+    def evaluate_results(self, results):
+        for lang, metrics in results.items():
+            print(f"Results for {lang}:")
+            print(f"Precision: {metrics['Precision']:.4f}")
+            print(f"Recall: {metrics['Recall']:.4f}")
+            print(f"F1 Score: {metrics['F1 Score']:.4f} ± {metrics['F1 Variance']:.4f}")
+            print(f"mRP: {metrics['mRP']:.4f} ± {metrics['mRP Variance']:.4f}")
+            print(f"Length: {metrics['Length']}\n")
 
 """
 Non Multilingual Dataset

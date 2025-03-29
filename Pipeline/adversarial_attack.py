@@ -68,7 +68,16 @@ lang_map = {
     "tr": "tur",  # Turkish
     "vi": "vie",  # Vietnamese
     "zh": "zho",  # Chinese (Simplified)
+    "nl": "nld",  # Dutch
+    "hu": "hun",  # Hungarian
+    "it": "ita",  # Italian
+    "no": "nob",  # Norwegian Bokmål (used as 'no' in deep-translator)
+    "nb": "nob",  # Alias for consistency
+    "pl": "pol",  # Polish
+    "mt": "mlt",  # Maltese
+    "sv": "swe",  # Swedish
 }
+
 
 
 
@@ -105,6 +114,13 @@ LANG_TO_MODEL = {
     'tur': 'dbmdz/bert-base-turkish-uncased',  # Turkish-specific BERT
     'vie': 'NlpHUST/vibert4news-base-cased',  # Vietnamese-specific BERT
     'zho': 'bert-base-chinese',  # Chinese (Simplified) BERT
+    "nld": "wietsedv/bert-base-dutch-cased",
+    "hun": "SZTAKI-HLT/hubert-base-cc",  # Hungarian
+    "ita": "dbmdz/bert-base-italian-xxl-cased",
+    "nob": "NbAiLab/nb-bert-base",  # Norwegian Bokmål
+    "pol": "dkleczek/bert-base-polish-cased-v1",
+    "mlt": "bert-base-multilingual-uncased",  # fallback for Maltese
+    "swe": "KBLab/bert-base-swedish-cased"
 }
 
 

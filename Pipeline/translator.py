@@ -27,6 +27,7 @@ language_map = {
     'slovak': 'sk',
     'chinese': 'zh-CN',
     'zh': 'zh-CN',
+    "nb": "no",  # Norwegian Bokmål → deep-translator uses 'no'
 }
 
 
