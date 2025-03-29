@@ -16,6 +16,7 @@ import textwrap
 import re
 from sentence_transformers import SentenceTransformer
 from nltk.tokenize import word_tokenize
+from collections import Counter
 from deep_translator import GoogleTranslator
 import evaluate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
@@ -23,6 +24,8 @@ from rapidfuzz import fuzz
 
 from utils import get_embedding_bert, get_language_from_code, store_judge
 from sklearn.metrics.pairwise import cosine_similarity
+
+from sklearn.metrics import precision_score, recall_score, f1_score
 
 
 
@@ -59,6 +62,8 @@ class Dataset:
             return Europa_Random_Split(llm_judge)
         elif name.lower() == 'covid19':
             return Covid19EmergencyEvent()
+        elif name.lower() == 'terms_of_service':
+            return OnlineTermsOfServiceDataset()
         elif name.lower() == 'casehold':
             return CaseHOLD()
         elif name.lower() == 'xquad':
@@ -360,7 +365,7 @@ class Eur_Lex_Sum(Dataset):
         self.language = language
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
-        return data, inst[0]
+        return data, inst
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -474,7 +479,7 @@ class Europa_Random_Split(Dataset):
         self.language = language
         data = self.extract_text(filtered_dataset, points_per_language)
         inst = translate(language, self.prompt)
-        return data, inst[0]
+        return data, inst
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -836,6 +841,139 @@ class Covid19EmergencyEvent(Dataset):
             print(f"mRP: {metrics['mRP']:.4f} ± {metrics['mRP Variance']:.4f}")
             print(f"Length: {metrics['Length']}\n")
 
+
+class OnlineTermsOfServiceDataset(Dataset):
+    """
+    Dataset for classifying fairness of online terms of service.
+    It should be called as a generative task even though it is classification.
+    """
+
+    LABELS = ["clearly_fair", "potentially_unfair", "clearly_unfair"]
+    LABEL_TO_INDEX = {label: idx for idx, label in enumerate(LABELS)}
+    INDEX_TO_LABEL = {idx: label for label, idx in LABEL_TO_INDEX.items()}
+
+    def __init__(self):
+        self.label_options = self.LABELS
+        self.prompt = (
+            "<|endoftext|>\n\n\nYou are a legal document fairness classifier. Above is a clause from an online Terms of Service document.\n"
+            "Your task is to classify the fairness of the clause based on its content.\n"
+            "- Only select one of the following labels:\n"
+            "0: clearly fair\n"
+            "1: potentially unfair\n"
+            "2: clearly unfair\n"
+            "Return **only the label number**.\n"
+            "- Do not explain your answer or include any other text.\n"
+        )
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("joelniklaus/online_terms_of_service", split='train')
+
+        # Filter for language and non-empty fairness
+        dataset = dataset.filter(lambda x: x.get("language") == language and x.get("unfairness_level") in self.LABELS)
+
+        self.label_options = [0, 1, 2]
+        # Build data list
+        data = [{
+            "text": item["sentence"],
+            "labels": [self.LABEL_TO_INDEX[item["unfairness_level"]]]
+        } for item in dataset]
+
+        return data[:points_per_language], [], self.prompt
+
+    def get_true(self, data):
+        return [entry["labels"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        for text in generated_texts:
+            if not isinstance(text, str):
+                all_labels.append([])
+                continue
+            matches = re.findall(r"\b\d+\b", text)
+            if matches:
+                all_labels.append([int(matches[0])])
+            else:
+                all_labels.append([])
+        return all_labels
+
+    def extract_label_indices(self, response: str):
+        if not response or not isinstance(response, str):
+            return None
+        numbers = re.findall(r"\d+", response)
+        return [int(numbers[0])] if numbers else None
+
+    def evaluate(self, true_labels, predicted_labels):
+        y_true = [lbl[0] for lbl in true_labels]
+        y_pred = [lbl[0] for lbl in predicted_labels]
+
+        confusion_counter = Counter()
+        penalties = []
+        per_sample_f1 = []
+
+        for true, pred in zip(y_true, y_pred):
+            confusion_counter[(self.INDEX_TO_LABEL[true], self.INDEX_TO_LABEL[pred])] += 1
+
+            # Penalty logic
+            if true == pred:
+                penalty = 0.0
+            elif abs(true - pred) == 1:
+                penalty = 0.5
+            else:
+                penalty = 1.0
+            penalties.append(penalty)
+
+            # Per-sample F1 logic
+            true_vec = np.zeros(len(self.label_options))
+            pred_vec = np.zeros(len(self.label_options))
+            true_vec[true] = 1
+            pred_vec[pred] = 1
+            tp = np.sum(true_vec * pred_vec)
+            precision_i = tp / np.sum(pred_vec) if np.sum(pred_vec) > 0 else 0.0
+            recall_i = tp / np.sum(true_vec) if np.sum(true_vec) > 0 else 0.0
+            f1_i = 2 * precision_i * recall_i / (precision_i + recall_i) if (precision_i + recall_i) > 0 else 0.0
+            per_sample_f1.append(f1_i)
+
+        mean_penalty = np.mean(penalties)
+        var_penalty = np.var(penalties)
+        mean_f1 = np.mean(per_sample_f1)
+        var_f1 = np.var(per_sample_f1)
+
+        # Global metrics
+        precision = precision_score(y_true, y_pred, average='macro', zero_division=0)
+        recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
+        macro_f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
+
+        return {
+            "Precision": precision,
+            "Recall": recall,
+            "F1 Score": macro_f1,
+            "F1 Variance": var_f1,
+            "Penalty Mean": mean_penalty,
+            "Penalty Variance": var_penalty,
+            "Length": len(y_true),
+            "Confusion Pairs": dict(confusion_counter)
+        }
+
+    def evaluate_results(self, results):
+        output_path = "output/terms_of_service/results.txt"
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            for lang, metrics in results.items():
+                f.write(f"Results for {lang}:\n")
+                f.write(f"Precision: {metrics['Precision']:.4f}\n")
+                f.write(f"Recall: {metrics['Recall']:.4f}\n")
+                f.write(f"F1 Score: {metrics['F1 Score']:.4f} ± {metrics['F1 Variance']:.4f}\n")
+                f.write(f"Penalty: {metrics['Penalty Mean']:.4f} ± {metrics['Penalty Variance']:.4f}\n")
+                f.write(f"Length: {metrics['Length']}\n")
+                f.write("Confusion Pairs:\n")
+                for (true_label, pred_label), count in metrics["Confusion Pairs"].items():
+                    f.write(f"  True: {true_label} → Pred: {pred_label}: {count}\n")
+                f.write("\n")
+
+        print(f"Evaluation results saved to {output_path}")
+
+
 """
 Non Multilingual Dataset
 """
@@ -948,7 +1086,7 @@ class XQuAD(Dataset):
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
         self.lang = language
-        return data, inst[0]
+        return data, inst
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -1148,7 +1286,7 @@ class XNLI(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset, points)
-        return data, self.label_options, translate(language, self.prompt)[0]
+        return data, [], translate(language, self.prompt)
 
     def extract_text_all_languages(self, dataset):
         """
