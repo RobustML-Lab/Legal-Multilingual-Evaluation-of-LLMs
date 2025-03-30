@@ -856,7 +856,9 @@ class OnlineTermsOfServiceDataset(Dataset):
         self.label_options = self.LABELS
         self.prompt = (
             "<|endoftext|>\n\n\nYou are a legal document fairness classifier. Above is a clause from an online Terms of Service document.\n"
-            "Your task is to classify the fairness of the clause based on its content.\n"
+            "Your task is to classify the fairness of the clause based strictly on its legal implications and potential consumer impact.\n"
+            "- Do not let tone, phrasing, or politeness influence your decision.\n"
+            "- Be objective and impartial — base your judgment only on how the clause affects users' rights or obligations.\n"
             "- Only select one of the following labels:\n"
             "0: clearly fair\n"
             "1: potentially unfair\n"
@@ -907,7 +909,6 @@ class OnlineTermsOfServiceDataset(Dataset):
         y_pred = []
         confusion_counter = Counter()
         penalties = []
-        per_sample_f1 = []
 
         for i, (t, p) in enumerate(zip(true_labels, predicted_labels)):
             true_label = t[0] if t and len(t) > 0 else None
@@ -916,14 +917,14 @@ class OnlineTermsOfServiceDataset(Dataset):
             if true_label is None or pred_label is None:
                 print(f"[Missing] Index {i}: true = {t}, predicted = {p}")
 
-            # For indexing, use -1 as placeholder for missing
+            # Use -1 to mark missing
             true_idx = true_label if true_label is not None else -1
             pred_idx = pred_label if pred_label is not None else -1
 
             y_true.append(true_idx)
             y_pred.append(pred_idx)
 
-            # Confusion matrix: map -1 to 'NONE'
+            # Record confusion
             confusion_counter[
                 (self.INDEX_TO_LABEL.get(true_idx, "NONE"),
                  self.INDEX_TO_LABEL.get(pred_idx, "NONE"))
@@ -931,7 +932,7 @@ class OnlineTermsOfServiceDataset(Dataset):
 
             # Penalty logic
             if true_idx == -1 or pred_idx == -1:
-                penalty = 1.0  # Full penalty for missing
+                penalty = 1.0
             elif true_idx == pred_idx:
                 penalty = 0.0
             elif abs(true_idx - pred_idx) == 1:
@@ -940,38 +941,19 @@ class OnlineTermsOfServiceDataset(Dataset):
                 penalty = 1.0
             penalties.append(penalty)
 
-            # Per-sample F1 logic
-            true_vec = np.zeros(len(self.label_options))
-            pred_vec = np.zeros(len(self.label_options))
-            if 0 <= true_idx < len(self.label_options):
-                true_vec[true_idx] = 1
-            if 0 <= pred_idx < len(self.label_options):
-                pred_vec[pred_idx] = 1
-            tp = np.sum(true_vec * pred_vec)
-            precision_i = tp / np.sum(pred_vec) if np.sum(pred_vec) > 0 else 0.0
-            recall_i = tp / np.sum(true_vec) if np.sum(true_vec) > 0 else 0.0
-            f1_i = 2 * precision_i * recall_i / (precision_i + recall_i) if (precision_i + recall_i) > 0 else 0.0
-            per_sample_f1.append(f1_i)
-
-        # Filter out -1 for global metrics to avoid sklearn errors
-        valid_indices = [i for i in range(len(y_true)) if y_true[i] != -1 and y_pred[i] != -1]
-        y_true_valid = [y_true[i] for i in valid_indices]
-        y_pred_valid = [y_pred[i] for i in valid_indices]
-
-        precision = precision_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
-        recall = recall_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
-        macro_f1 = f1_score(y_true_valid, y_pred_valid, average='macro', zero_division=0)
+        # Calculate accuracy (ignoring -1s)
+        valid = [(t, p) for t, p in zip(y_true, y_pred) if t != -1 and p != -1]
+        correct = sum(1 for t, p in valid if t == p)
+        accuracy = correct / len(valid) if valid else 0.0
 
         return {
-            "Precision": precision,
-            "Recall": recall,
-            "F1 Score": macro_f1,
-            "F1 Variance": np.var(per_sample_f1),
+            "Accuracy": accuracy,
             "Penalty Mean": np.mean(penalties),
             "Penalty Variance": np.var(penalties),
             "Length": len(y_true),
             "Confusion Pairs": dict(confusion_counter)
         }
+
 
 
     def evaluate_results(self, results):
@@ -980,10 +962,7 @@ class OnlineTermsOfServiceDataset(Dataset):
 
         with open(output_path, "w", encoding="utf-8") as f:
             for lang, metrics in results.items():
-                f.write(f"Results for {lang}:\n")
-                f.write(f"Precision: {metrics['Precision']:.4f}\n")
-                f.write(f"Recall: {metrics['Recall']:.4f}\n")
-                f.write(f"F1 Score: {metrics['F1 Score']:.4f} ± {metrics['F1 Variance']:.4f}\n")
+                f.write(f"Accuracy: {metrics['Recall']:.4f}\n")
                 f.write(f"Penalty: {metrics['Penalty Mean']:.4f} ± {metrics['Penalty Variance']:.4f}\n")
                 f.write(f"Length: {metrics['Length']}\n")
                 f.write("Confusion Pairs:\n")
