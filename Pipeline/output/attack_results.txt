@@ -199,3 +199,15 @@ es: 75.13% words modified
 fr: 87.50% words modified
 th: 121.13% words modified
 en: 77.22% words modified
+bg: 55.13% words modified
+el: 70.68% words modified
+en: 56.07% words modified
+es: 58.64% words modified
+fr: 90.23% words modified
+th: 87.18% words modified
+bg: 68.88% words modified
+el: 84.12% words modified
+en: 64.63% words modified
+es: 67.78% words modified
+fr: 54.59% words modified
+th: 78.35% words modified

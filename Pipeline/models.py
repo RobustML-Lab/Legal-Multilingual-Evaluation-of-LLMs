@@ -59,6 +59,7 @@ class Model:
         for label in label_options:
             if label.lower() in generated_text.lower():
                 relevant_labels.append(label)
+        # This is only relevant for single class classification and should be removed for multi-class classification
         if len(relevant_labels) == 0 or len(relevant_labels) > 1:
             relevant_labels = [-1]
         return relevant_labels

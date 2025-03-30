@@ -546,7 +546,7 @@ class XNLI(Dataset):
         else:
             data = self.extract_text(dataset, points)
         prompt, _ = translate(language, self.prompt)
-        return data, self.label_options, prompt
+        return data, self.label_options, self.prompt
 
     def extract_text_all_languages(self, dataset):
         """

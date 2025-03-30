@@ -31,6 +31,8 @@ language_map = {
 
 
 def translate(target_language, inst):
+    if target_language == 'en':
+        return inst, "Text"
     if target_language in language_map:
         target_language = language_map[target_language]
     translator = GoogleTranslator(source='en', target=target_language)
