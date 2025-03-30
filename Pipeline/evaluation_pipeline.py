@@ -6,31 +6,58 @@ import os
 
 from models import *
 from data import *
+from llm_judge import *
 from adversarial_attack import attack
-from huggingface_hub import login
+from utils import store_predicted, store_attack
 
-dataset_name = "xnli"
-# languages = ["bg", "el", "en", "es", "fr", "th"]
-languages = ["en"]
-points_per_language = 3
-generation = False
-model_name = "llama"
-api_key = None
-adversarial_attack = 0
-p = 0.1
-# arguments = sys.argv[1:]
-# dataset_name = arguments[0]
-# languages = ast.literal_eval(arguments[1])
-# points_per_language = int(arguments[2])
-# generation = bool(int(arguments[3]))
-# model_name = arguments[4]
+# dataset_name = "eur_lex_sum"
+# languages = ["english"]
+# points_per_language = 1
+# generation = True
+# model_name = "llama"
 # api_key = None
-# adversarial_attack = int(arguments[5])
-# if model_name == 'google':
-#     api_key = arguments[6]
-#%%
+# llm_judge_key = None
+# adversarial_attack = 0
+
+# Redirect print traffic to both the file and terminal
+class Tee:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, message):
+        for s in self.streams:
+            s.write(message)
+            s.flush()
+
+    def flush(self):
+        for s in self.streams:
+            s.flush()
+
+log_file = open("output/log.txt", "w")
+sys.stdout = Tee(sys.__stdout__, log_file)
+sys.stderr = Tee(sys.__stderr__, log_file)
+
+# Arguments
+arguments = sys.argv[1:]
+dataset_name = arguments[0]
+languages = ast.literal_eval(arguments[1])
+points_per_language = int(arguments[2])
+generation = bool(int(arguments[3]))
+model_name = arguments[4]
+api_key = None
+adversarial_attack = int(arguments[5])
+llm_judge_key = arguments
+if llm_judge_key == 'None':
+    llm_judge_key = None
+if model_name == 'google':
+    api_key = arguments[7]
+
+llm_judge = None
+if llm_judge_key:
+    llm_judge = JudgeEvaluator(llm_judge_key)
+
 # Get the dataset
-dataset = Dataset.get_dataset(dataset_name)
+dataset = Dataset.get_dataset(dataset_name, llm_judge)
 
 results = {}
 all_true = {}
@@ -47,94 +74,54 @@ for lang in languages:
         data, label_options, prompt = dataset.get_data(lang, dataset_name, points_per_language)
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
-    os.makedirs(os.path.dirname("output/results.json"), exist_ok=True)
-
-    if os.path.exists("output/results.json"):
-        with open("output/results.json", "r", encoding="utf-8") as f:
-            try:
-                existing_data = json.load(f)
-                if not isinstance(existing_data, list):
-                    existing_data = []
-            except json.JSONDecodeError:
-                existing_data = []
-    else:
-        existing_data = []
-
-    before_attack = [entry["text"] for entry in data[:5]]
-    after_attack = []
-
     if adversarial_attack:
         # mapped_data = dataset.get_mapped_data(data)
         mapped_data = None
-        data = attack(data, adversarial_attack, lang, mapped_data, p)
+        before_attack = [entry["text"] for entry in data[:5]]
+        data = attack(data, adversarial_attack, lang, mapped_data)
         after_attack = [entry["text"] for entry in data[:5]]
-
-    result_entry = {
-        "before_attack": before_attack,
-        "after_attack": after_attack
-    }
-
-    existing_data.append(result_entry)
-
-    with open("output/results.json", "w", encoding="utf-8") as f:
-        json.dump(existing_data, f, ensure_ascii=False, indent=4)
-
+        store_attack(before_attack, after_attack, lang, dataset_name, points_per_language, model_name, adversarial_attack)
 
     # Get the predicted labels
-    predicted, first_ten_answers = model.predict(data, prompt, lang)
+    predicted, first_ten_answers = model.predict(data, prompt)
 
-    # if not generation:
-    #     predicted = dataset.extract_labels_from_generated_text(predicted)
+    # Extract the predicted labels from the generated text
+    if not generation:
+        predicted = dataset.extract_labels_from_generated_text(predicted)
 
+    # Get the true labels/text
     true = dataset.get_true(data)
 
-    predicted = np.concatenate([np.array(sublist) for sublist in predicted])
+    # Create a file with the answers
+    store_predicted(predicted, true, lang, dataset_name, points_per_language, model_name, adversarial_attack)
 
-    filtered_true = [true[i] for i in range(len(true)) if true[i] is not None and predicted[i] is not None]
-    filtered_predicted = [predicted[i] for i in range(len(true)) if true[i] is not None and predicted[i] is not None]
+    # Extract questions from data if available
+    questions = [item.get("question") for item in data] if "question" in data[0] else None
 
+    filtered_true = []
+    filtered_predicted = []
+    filtered_questions = []
 
-    # Count missing values in filtered_true and filtered_predicted
-    missing_in_true = sum(1 for ref in filtered_true if ref is None)
-    missing_in_predicted = sum(1 for pred in filtered_predicted if pred is None)
-    print("Missing predicted:", missing_in_predicted)
-    print("Filtered true:", filtered_true)
-    print("Filtered predicted:", filtered_predicted)
-    if len(filtered_predicted) == 0:
-        print("All predicted values are missing. Skipping this language.")
-        continue
+    # Remove any inconsistencies
+    for i in range(len(true)):
+        if true[i] is not None and predicted[i] is not None:
+            filtered_true.append(true[i])
+            filtered_predicted.append(predicted[i])
+            if questions:
+                filtered_questions.append(questions[i])
 
-    # Convert back to lists
-    filtered_true = list(filtered_true)
-    filtered_predicted = list(filtered_predicted)
-    # filtered_predicted = np.concatenate([np.array(sublist) for sublist in filtered_predicted])
+    # Print missing counts
+    missing_in_true = sum(1 for ref in true if ref is None)
+    missing_in_predicted = sum(1 for pred in predicted if pred is None)
 
-    # Filter both lists together
-    filtered_true, filtered_predicted = zip(*[
-        (ref, pred) for ref, pred in zip(filtered_true, filtered_predicted) if ref is not None and pred is not None
-    ])
-
-    # # Convert back to lists
-    filtered_true = list(filtered_true)
-    filtered_predicted = list(filtered_predicted)
-    # filtered_predicted = np.concatenate([np.array(sublist) for sublist in filtered_predicted])
-
-    print("True values: ", true)
-    print("Fitered true values: ", filtered_true)
-    print("Predicted values: ", predicted)
-    print("Filtered predicted values: ", filtered_predicted)
-    print("Data points: ", len(filtered_true))
-
-    data_points.append(len(filtered_true))
-    predicted_points[lang] = predicted
-    true_points[lang] = true
-
-    # Print the counts
     if missing_in_true or missing_in_predicted:
-        print(f"Number of missing values in 'filtered_true': {missing_in_true}")
-        print(f"Number of missing values in 'filtered_predicted': {missing_in_predicted}")
+        print(f"Number of missing values in 'true': {missing_in_true}")
+        print(f"Number of missing values in 'predicted': {missing_in_predicted}")
 
-    results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
+    if questions:
+        results[lang] = dataset.evaluate(filtered_true, filtered_predicted, questions)
+    else:
+        results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
     all_true[lang] = filtered_true
     all_predicted[lang] = filtered_predicted
 

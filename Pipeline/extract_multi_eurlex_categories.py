@@ -5,8 +5,8 @@ import json
 # The base URL for the EuroVoc categories
 base_url = "https://eur-lex.europa.eu/browse/eurovoc.html?locale="
 
-languages = ['en', 'de', 'fr', 'it', 'es', 'pl','ro', 'nl', 'el', 'hu', 'pt', 'cs',
-             'sv', 'bg', 'da', 'fi', 'sk', 'lt','hr', 'sl', 'et', 'lv', 'mt']
+languages = ['en', 'de', 'fr', 'it', 'es', 'pl', 'ro', 'nl', 'el', 'hu', 'pt', 'cs',
+             'sv', 'bg', 'da', 'fi', 'sk', 'lt', 'hr', 'sl', 'et', 'lv', 'mt']
 
 # Dictionary to store categories by language
 eurovoc_categories = {}

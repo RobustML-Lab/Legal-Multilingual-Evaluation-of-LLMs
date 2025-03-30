@@ -54,13 +54,22 @@ nlpaug_lang_map = {
 }
 
 lang_map = {
+    "ar": "ara",  # Arabic
     "bg": "bul",  # Bulgarian
+    "de": "deu",  # German
     "el": "ell",  # Greek
     "en": "eng",  # English
     "es": "spa",  # Spanish
     "fr": "fra",  # French
+    "hi": "hin",  # Hindi
+    "ro": "ron",  # Romanian
+    "ru": "rus",  # Russian
     "th": "tha",  # Thai
+    "tr": "tur",  # Turkish
+    "vi": "vie",  # Vietnamese
+    "zh": "zho",  # Chinese (Simplified)
 }
+
 
 
 # Mapping NLTK POS tags to WordNet POS tags
@@ -82,20 +91,29 @@ pos_map = {
 }
 
 LANG_TO_MODEL = {
+    'ara': 'asafaya/bert-base-arabic',  # Arabic-specific BERT
     'bul': 'bert-base-multilingual-uncased',  # No dedicated Bulgarian model, use mBERT
+    'deu': 'dbmdz/bert-base-german-uncased',  # German BERT
     'ell': 'nlpaueb/bert-base-greek-uncased-v1',  # Greek-specific BERT
     'eng': 'bert-base-uncased',  # Standard English BERT
     'spa': 'dccuchile/bert-base-spanish-wwm-uncased',  # Spanish-specific BERT
     'fra': 'camembert-base',  # French-specific RoBERTa-based model
-    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT model
+    'hin': 'google/muril-base-cased',  # Hindi-specific multilingual model
+    'ron': 'dumitrescustefan/bert-base-romanian-uncased',  # Romanian-specific BERT
+    'rus': 'DeepPavlov/rubert-base-cased',  # Russian BERT
+    'tha': 'airesearch/wangchanberta-base-att-spm-uncased',  # Thai-specific BERT
+    'tur': 'dbmdz/bert-base-turkish-uncased',  # Turkish-specific BERT
+    'vie': 'NlpHUST/vibert4news-base-cased',  # Vietnamese-specific BERT
+    'zho': 'bert-base-chinese',  # Chinese (Simplified) BERT
 }
 
-nltk.download("averaged_perceptron_tagger")
-nltk.download("punkt")
-nltk.download("punkt_tab")
-nltk.download("wordnet")
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('omw-1.4')
+
+# nltk.download("averaged_perceptron_tagger")
+# nltk.download("punkt")
+# nltk.download("punkt_tab")
+# nltk.download("wordnet")
+# nltk.download('averaged_perceptron_tagger_eng')
+# nltk.download('omw-1.4')
 
 
 
@@ -134,9 +152,12 @@ def attack(data, attack_type, lang, mapped_data, p=0.3):
     changed_words = 0
 
     for i, entry in enumerate(data):
-        if "text" in entry and "label" in entry:
+        if "text" in entry:
             original_text = entry["text"]
-            ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
+
+            ground_truth_label = None
+            if "label" in entry:
+                ground_truth_label = mapped_data[i]["label"] if mapped_data and i < len(mapped_data) else None
 
             modified_text, changes = adversarial_attack(original_text, attack_type, lang, ground_truth_label, p)
 
@@ -145,7 +166,7 @@ def attack(data, attack_type, lang, mapped_data, p=0.3):
             entry["text"] = modified_text
 
     change_percentage = (changed_words / total_words) if total_words > 0 else 0
-    save_results(lang, change_percentage)
+    save_results(lang, change_percentage, attack_type)
     return data
 
 def adversarial_attack(text, attack_type, lang, ground_truth_label, p=0.3):
@@ -440,7 +461,15 @@ def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""
     return sum(1 for o, m in zip(original_text.split(), modified_text.split()) if o != m)
 
-def save_results(lang, percentage):
+import os
+
+def save_results(lang, percentage, attack_type):
     """Save attack results to a file."""
-    with open("output/attack_results.txt", "a", encoding="utf-8") as f:
-        f.write(f"{lang}: {percentage:.2f}% words modified\n")
+
+    # Ensure the output/attacks directory exists
+    os.makedirs("output/attacks", exist_ok=True)
+
+    # Append the results to the file
+    with open("output/attacks/attack_percentage.txt", "a", encoding="utf-8") as f:
+        f.write(f"{lang}: {percentage:.2f}% words modified, attack {attack_type}\n")
+

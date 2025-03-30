@@ -1,14 +1,9 @@
-from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer, \
-    LlamaTokenizer, LlamaForCausalLM
+from transformers import BartTokenizer, BartForConditionalGeneration, AutoModelForCausalLM, AutoTokenizer
 from deep_translator import GoogleTranslator
 from translator import translate
 import ollama
 import torch
-import transformers
-import logging
-
 import google.generativeai as ggai
-import re
 import time
 import functools
 
@@ -112,6 +107,12 @@ class LLaMa(Model):
         """Initializes LLaMa model and tokenizer."""
         self.label_options = label_options
         self.multi_class = multi_class
+
+        # model_dir = "meta-llama/Meta-Llama-
+        # 3.1-8B-Instruct"
+        model_dir = "meta-llama/Llama-3.2-1B"
+        self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+        self.model = AutoModelForCausalLM.from_pretrained(model_dir)
         self.generation = generation
 
         # Load the model & tokenizer
@@ -151,7 +152,6 @@ class LLaMa(Model):
         else:
             return self.extract_labels_from_generated_text(generated_text, self.label_options)
 
-
 class OLLaMa(Model):
     """
     Using the OLLaMa models
@@ -183,10 +183,10 @@ class OLLaMa(Model):
         :return: a list of all the labels corresponding to the given text
         """
         print("Reached classify_text")
-        # translator = GoogleTranslator(source="en", target=language)
-        # translated_prompt, text = translate(language, prompt)
-        complete_prompt = text + prompt
-        print("Input: ", complete_prompt)
+        translator = GoogleTranslator(source="en", target=language)
+        print("Type of the prompt: ", type(prompt))
+        translated_prompt = translator.translate(prompt)
+        complete_prompt = text + translated_prompt
         generated_text = self.generate_text(complete_prompt)
         with open("responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text + "\n###################################################\n")
@@ -202,7 +202,6 @@ class OLLaMa(Model):
             prediction = [x if x != -1 else None for x in prediction]
             print("Extracted labels: ", prediction)
         return prediction
-
 
 class Google(Model):
     """
@@ -275,3 +274,5 @@ class Google(Model):
                 all_predicted.append(None)
 
         return all_predicted, first_ten_answers
+
+
