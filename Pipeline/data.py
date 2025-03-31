@@ -856,9 +856,10 @@ class OnlineTermsOfServiceDataset(Dataset):
         self.label_options = self.LABELS
         self.prompt = (
             "<|endoftext|>\n\n\nYou are a legal document fairness classifier. Above is a clause from an online Terms of Service document.\n"
-            "Your task is to classify the fairness of the clause based strictly on its legal implications and potential consumer impact.\n"
+            "Your task is to classify the fairness of the clause strictly based on its legal implications and potential consumer impact.\n"
             "- Do not let tone, phrasing, or politeness influence your decision.\n"
-            "- Be objective and impartial — base your judgment only on how the clause affects users' rights or obligations.\n"
+            "- Be objective and impartial — focus solely on how the clause affects users’ rights and obligations.\n"
+            "- Do not hesitate to select a strong classification if the clause imposes a significant imbalance or limitation.\n"
             "- Only select one of the following labels:\n"
             "0: clearly fair\n"
             "1: potentially unfair\n"
@@ -962,7 +963,7 @@ class OnlineTermsOfServiceDataset(Dataset):
 
         with open(output_path, "w", encoding="utf-8") as f:
             for lang, metrics in results.items():
-                f.write(f"Accuracy: {metrics['Recall']:.4f}\n")
+                f.write(f"Accuracy: {metrics['Accuracy']:.4f}\n")
                 f.write(f"Penalty: {metrics['Penalty Mean']:.4f} ± {metrics['Penalty Variance']:.4f}\n")
                 f.write(f"Length: {metrics['Length']}\n")
                 f.write("Confusion Pairs:\n")

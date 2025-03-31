@@ -455,9 +455,13 @@ def nlpaug_attack(text, lang, attack_type):
 
     elif attack_type == 14:
         # Contextual word embeddings using BERT
-        bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
-        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
-        augmented_text = contextual_aug.augment(text)
+        try:
+            bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
+            contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
+            augmented_text = contextual_aug.augment(text)
+        except IndexError as e:
+            print(f"Error in attack 14: {e}")
+            augmented_text = text
 
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}. Supported types are 10-14.")
