@@ -1,0 +1,128 @@
+
+annotationId,language,sdg_categories,predicted
+f6693106-7e94-44ba-b26b-ba8cab42d518,en,['5de2d533-80be-44d9-8087-4acc3ea1c454'],"<think>
+Alright, so I need to classify this text into one of the given SDG categories. The text is about Pakistan promoting the right to education. Let me think through each category.
+
+SDG 4 is Quality Education, which makes sense because it's directly related to education for all. Pakistan's efforts align here since they're focusing on education, a key component under this goal.
+
+Looking at other options like GENDER EQUALITY (5), could be relevant but the text doesn't mention gender aspects specifically. Similarly, 12 is responsible consumption and production, which isn't directly addressed either.
+
+So the most fitting category for Pakistan's efforts in education is definitely SDG 4.
+</think>
+
+The text is about promoting education rights, aligning with SDG 4: Quality Education.
+
+**Answer:** 4"
+ea79e9b1-5fa5-49c9-894c-0f6d0242e224,en,['5de2d533-80be-44d9-8087-4acc3ea1c454'],"<think>
+Alright, I need to classify this text into one of the SDG categories provided. The text says, ""115.85 .Continue to ensure full access to education for children (Egypt);"" So, first, let me understand what each part means.
+
+The number 115 is likely an indicator or a code for a specific goal. Then "".Continue"" probably refers to the action of continuing something. The rest says ""ensure full access to education for children in Egypt.""
+
+Looking at the list of SDG categories: Number 4 is Quality Education, which includes ensuring equitable and quality education for all. Since the text mentions continued efforts to provide education to children in a specific country, it's directly related to education access.
+
+Other categories like Zero Hunger or Clean Water are also important but don't directly relate here. The text isn't about poverty (No 1) or health (No 3), so those can be ruled out. It's definitely not about work or inequalities either. Therefore, the most relevant category is Quality Education.
+</think>
+
+4"
+annotationId,language,sdg_categories,predicted
+f6693106-7e94-44ba-b26b-ba8cab42d518,en,['5de2d533-80be-44d9-8087-4acc3ea1c454'],"<think>
+Alright, so I need to classify this text into one of the SDG categories provided. Let me start by understanding what each category represents.
+
+The text mentions ""promote and safeguard the right to education for all"" in the context of Pakistan. The key term here is ""education."" Looking at the list of categories:
+
+1 - NO POVERTY
+2 - ZERO HUNGER
+3 - GOOD HEALTH AND WELL-BEING
+4 - QUALITY EDUCATION
+5 - GENDER EQUALITY
+6 - CLEAN WATER AND SANITATION
+7 - AFFORDABLE AND CLEAN ENERGY
+8 - DECENT WORK AND ECONOMIC GROWTH
+9 - INDUSTRY, INNOVATION AND INFRASTRUCTURE
+10 - REDUCED INEQUALITIES
+11 - SUSTAINABLE CITIES AND COMMUNITIES
+12 - RESPONSIBLE CONSUMPTION AND PRODUCTION
+13 - CLIMATE ACTION
+14 - LIFE BELOW WATER
+15 - LIFE ON LAND
+16 - PEACE, JUSTICE AND STRONG INSTITUTIONS
+17 - PARTNERSHIPS FOR THE GOALS
+
+The text is specifically about education. So the most relevant category would be Number 4: QUALITY EDUCATION.
+
+I don't see any direct connection to health (3), work and growth (8), infrastructure (9), or other areas here. It's all about ensuring that everyone has access to quality education, which falls directly under SDG 4.
+</think>
+
+The text discusses promoting education for all in Pakistan, making it most relevant to the Quality Education category.
+
+4"
+ea79e9b1-5fa5-49c9-894c-0f6d0242e224,en,['5de2d533-80be-44d9-8087-4acc3ea1c454'],"<think>
+Alright, let's try to figure out which SDG category this text belongs to. The text is about ensuring full access to education for children in Egypt and mentions a specific indicator value of 115.85.
+
+First, I need to recall what each SDG category covers. Looking at the list:
+
+- **9 - INDUSTRY, INNOVATION AND INFRASTRUCTURE**: This category deals with economic growth and industrial development.
+  
+The text isn't talking about economy or industry; it's specifically about education access. So, that doesn't fit.
+
+Then there are categories related to education like 4 (QUALITY EDUCATION) which is directly relevant because the text is about educational access. But wait, let me check other possibilities.
+
+There's also **12 - RESPONSIBLE CONSUMPTION AND PRODUCTION**, but that relates more to sustainable practices in consumption and production, not education.
+
+The categories related to health are 3 (GOOD HEALTH AND WELL-BEING) and maybe 8 (DECENT WORK...), but the text is about education specifically.
+
+Looking at the other options like 16 (PEACE and institutions) or 7 (energy), none seem relevant here. The key term here is ""full access to education,"" which directly points to **4 - QUALITY EDUCATION**.
+</think>
+
+4"
+6996de12-9816-4b90-8dcf-c14a5b93b5a6,en,['5de2d533-80be-44d9-8087-4acc3ea1c454'],"<think>
+Alright, so I need to figure out which Sustainable Development Goal (SDG) category the given text falls into. Let's break it down step by step.
+
+First, let me read the text again: ""89.90 Increase efforts to integrate a human rights culture in to school curricula at all stages of education (Bahrain)."" Okay, so it's talking about increasing efforts to include human rights education in schools across different levels of education.
+
+Now, I need to match this with one of the 17 SDG categories provided. The options are from 1 to 17, each representing a specific goal. Let me list out what each category entails quickly:
+
+1. NO POVERTY
+2. ZERO HUNGER
+3. GOOD HEALTH AND WELL-BEING
+4. QUALITY EDUCATION
+5. GENDER EQUALITY
+6. CLEAN WATER AND SANITATION
+7. AFFORDABLE AND CLEAN ENERGY
+8. DECENT WORK AND ECONOMIC GROWTH
+9. INDUSTRY, INNOVATION AND INFRASTRUCTURE
+10. REDUCED INEQUALITIES
+11. SUSTAINABLE CITIES AND COMMUNITIES
+12. RESPONSIBLE CONSUMPTION AND PRODUCTION
+13. CLIMATE ACTION
+14. LIFE BELOW WATER
+15. LIFE ON LAND
+16. PEACE, JUSTICE AND STRONG INSTITUTIONS
+17. PARTNERSHIPS FOR THE GOALS
+
+Looking at the text again: it's about integrating human rights into school curricula. Human rights education is a broader area that touches on various aspects of development. I remember that SDG 5 is GENDER EQUALITY, but this seems more about inclusion rather than just gender-related issues.
+
+Wait, actually, there's another category related to education and inclusion: I think it might be part of the Quality Education category (4), which deals with equitable access and quality in education. But then again, integrating human rights specifically into curricula could also relate to ensuring that all children are educated regardless of their background, which ties into equity.
+
+But looking at the categories list provided, number 10 is REDUCED INEQUALITIES. That seems closer because it's about reducing inequalities through education and policies. However, another thought: integrating human rights into education might be part of Quality Education (4) as well since it ensures that children learn about their rights from an early age.
+
+Wait, I'm getting a bit confused here. Let me think again. The text is specifically about increasing efforts in school curricula to include human rights. That's more about the system and how education is structured, which ties into ensuring equality by providing equal opportunities through education.
+
+But looking back at the options provided: 10 is REDUCED INEQUALITIES. Since integrating human rights into education can help reduce inequalities by teaching children respect for diversity and inclusion, that might fall under Goal 10.
+
+However, another angle could be that this relates to Quality Education (4), which focuses on equitable access and quality in education, but the specific mention of human rights makes me think it's more about fostering equality through education rather than just having quality schools.
+
+Alternatively, considering that human rights are part of broader social inclusion goals, which might overlap with Goal 10. But I'm not entirely sure if it's specifically categorized under 10 or another number.
+
+Wait, looking at the SDG framework, the education aspect related to human rights and promoting equality is covered in Goal 5 (Gender Equality), but this seems more about including all aspects of human rights rather than just gender equality. So perhaps it's better aligned with Goal 10: Reduced Inequalities.
+
+Alternatively, if we look at how integrating human rights into education helps address inequalities by ensuring everyone has access to education regardless of their background, that would make it part of the Quality Education category (4). But I'm not certain because the text specifically mentions curricula integration rather than equity in education resources.
+
+Wait, another approach: The UNSDG 5 is about gender equality, which includes aspects like women's participation and protection of children. However, integrating human rights into education isn't just about gender; it's a broader inclusion. So perhaps this falls under Goal 10 as well because it aims to reduce inequalities by providing equal educational opportunities.
+
+But I'm not sure if the categories provided in the question map exactly to the official SDG numbers. The user provided their own list, so maybe they want me to match based on that list.
+
+Looking back at their options: number 5 is GENDER EQUALITY and number 10 is REDUCED INEQUALITIES. So integrating human rights into education would be about reducing inequalities, hence category 10.
+</think>
+
+10"
