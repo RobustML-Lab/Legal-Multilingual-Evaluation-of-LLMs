@@ -1,0 +1,128 @@
+[
+    {
+        "before_attack": [
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I havent spoken to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:I was so upset that I just started talking to him again.",
+            "Premise:Well, I wasn't even thinking about that, but I was so frustrated, and, I ended up talking to him again.Hypothesis:We had a great talk.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was not aware that I was not the only person to be at the field that day.",
+            "Premise:And I thought that was a privilege, and it's still, it's still, I was the only nine two-two Ex-O which was my AFFC Air Force Career field.Hypothesis:I was under the impression that I was the only one with that number at the AFFC Air Force Career field."
+        ],
+        "after_attack": [
+            "m : well, i wasn't even thinking about that, but i was so drunk, and, i ended with talking like him again. cm : i just spoken to him again.",
+            "him : well, it wasn't even saying about that, but it was so frustrated, and, i woke up talking to him again. hypothesis : i was so upset and i just started talking to max again.",
+            "premise : well, i wasn't even thinking about things, but me was getting frustrated, and, even thought up talking to him again. hypothesis : we gave a great talk.",
+            "premise : and i thought spying was a privilege, and it's funny, it's not, i am the high nine plus - two ex - o which occupied my affc air corps career field. hypothesis : i was not aware that me was not the only person to be at the field one day.",
+            "premise : and he found which was a privilege, and he'll still, it's still, i was the odd nine from - two ex - o which was my affc naval force study field. hypothesis : i was under the impression that i was the only one with that number at the affc air force championship field."
+        ],
+        "language": "en",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    },
+    {
+        "before_attack": [
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Δεν του μίλησα ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Ήμουν τόσο αναστατωμένος που άρχισα να του μιλάω ξανά.",
+            "Προϋπόθεση:Λοιπόν, δεν το σκέφτηκα καν, αλλά ήμουν τόσο απογοητευμένος, και κατέληξα να του μιλάω και πάλι.Υπόθεση:Είχαμε μια ωραία συζηση.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Δεν ήξερα ότι δεν ήμουν ο μόνος που βρίσκονταν στο χωράφι εκείνη την ημέρα.",
+            "Προϋπόθεση:Και σκέφτηκα ότι ήταν ένα προνόμιο, και είναι ακόμα, ήμουν ο μόνος 922 Ex-O που ήταν το πεδίο μου για Καριέρα στην Αεροπορία.Υπόθεση:Είχα την εντύπωση ότι ήμουν ο μόνος με αυτόν τον αριθμό στο τομέα καριέρας των αεροπορικών δυνάμεων του AFFC."
+        ],
+        "after_attack": [
+            "προυποθεση : να, μονο του σκεφτηκα καν, αλλα ημουν τοσο απογοητευμενος, και σκεφτηκα να του ζητησω και παλι. υποθεση : δεν του μιλησα ξανα.",
+            "προυποθεση : οχι, δεν το σκεφτηκα καν, και ημουν τοσο απογοητευμενος, και κατεληξα μετα το μιλαω και παραλληλα. υποθεση : ημουν τοσο αναστατωμενος που αρχισα να του μιλαω παραλληλα.",
+            "προυποθεση : βασικα, δεν το εψαξα καν, αλλα ημουν τοσο απογοητευμενος, και κατεληξα να τους μιλαω και παλι. υποθεση : αλλη μια ωραια συζηση.",
+            "προυποθεση : και σκεφτηκα οτι ηταν ενα προνομιο, και ειναι ακομα, ημουν και μονος ο ex - o που ηταν το πεδιο μου διπλωμα καριερα πολιτικη αεροπορια. υποθεση : δεν ηξερα οτι και ημουν ο μονος αλλος ημουν στο χωραφι εκεινη την στιγμη.",
+            "προυποθεση : και σκεφτηκα οτι ηταν ενα προνομιο, και ειναι πραγματικοτητα, ημουν ο μονος 922 ex - o που αφηνε το πεδιο μου για καριερα στην περιοχη. υποθεση : ειχαν δωσει εντυπωση οτι ημουν ο μονο εχοντας αυτον τον αριθμο στο τομεα εκτελεσης των αεροπορικων καθηκοντων του affc."
+        ],
+        "language": "el",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    },
+    {
+        "before_attack": [
+            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Повече не съм говорил с него.",
+            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Бях толкова разстроена, че просто започнах да говоря отново с него.",
+            "Предпоставка:Е, аз дори не мислех за това, но бях толкова разочарована, а в крайна сметка отново разговарях с него.Хипотеза:Страхотно си поговорихме.",
+            "Предпоставка:И аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.Хипотеза:Не знаех, че не съм единственият човек, който е бил на полето в онзи ден.",
+            "Предпоставка:И аз мислех, че това е привилегия, и тя все още е, аз бях единственият бивш на 922, което беше моето поприще във въздушните сили AFFC.Хипотеза:Имах впечатлението, че бях единственият с това число в областта на кариерата във Военновъздушните сили на AFFC."
+        ],
+        "after_attack": [
+            "предпоставка : но, ще дори не мислех за това, които не толкова ранен, а и краина сметка отново умира с него. хипотеза : никогда не съм говорил и него.",
+            "предпоставка : е, и аз не мислех за нея, но бях так разочарована, ще в краина част отново разговарях с него. хипотеза : бях толкова стара, че не започнах да говоря много из него.",
+            "факт : е, но ще не мог за това, но бях толкова разочарована, че в краина сметка да разговарях без него. случаи : страхотно си умира.",
+            "предпоставка : и точно мислех, че това е привилегия, и тя все повече е, като бях известен бивш и 922, което беше моето име във въздушните сили affc. хипотеза : не види, я не съм единственият човек, които е бил на полето в първи път.",
+            "предпоставка : и докато мислех, че това е привилегия, и тя все още една, аз бях единственият бивш на 922, което беше от ва военно въздушните сили affc. хипотеза : по впечатлението, че бях единственият на това число в областта на право во военновъздушните воиски на affc."
+        ],
+        "language": "bg",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    },
+    {
+        "before_attack": [
+            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:No he vuelto a hablar con él.",
+            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:Estaba tan molesto que empecé a hablar con él de nuevo.",
+            "Premisa:Bien, ni estaba pensando en eso, pero estaba tan frustrada y empecé a hablar con él de nuevo.Hipótesis:Tuvimos una gran charla.",
+            "Premisa:Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.Hipótesis:No sabía que no era la única persona en el campo ese día.",
+            "Premisa:Y pensé que era un privilegio, y todavía es, todavía es, yo era el único 922 Ex-O que estaba en mi campo de carrera AFFC de la Fuerza Aérea.Hipótesis:Tenía la impresión de que era el único con ese número en el campo AFFC Air Force Career."
+        ],
+        "after_attack": [
+            "premisa : bien, ni estaba pensando en usted, pero estaba tan frustrada y empecé con hablar con él de nuevo. hipótesis : siquiera he dejado de tratar con él.",
+            "premisa : bien, ni estaba concentrado en eso, pero estaba tan frustrada y empezaba a pelear con él de ella. hipótesis : estaba tan molesto que empecé a hablar conmigo él de nueva.",
+            "premisa : bien, ni estaba pensando en eso, pero estaba pensando frustrada y empecé intentar dormir con él de esto. pero : tuvimos una gran charla.",
+            "premisa : y pensé no era llamado privilegio, y todavía es, todavía es, yo era el único 922 m - o que estaba en mi campo de carrera anual de camp mana aérea. hipótesis : no sabía que no es la única persona en el campo nacional verano.",
+            "premisa : y era que era un privilegio, y todavía es, todavía es, yo era el 1 922 ex - o que estaba recibiendo mi rango en campana affc de la fuerza aérea. hipótesis : tenía la impresión de que era el único haciendo ese rango en el campo [UNK] air force fuerza."
+        ],
+        "language": "es",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    },
+    {
+        "before_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Je ne lui ai pas parlé de nouveau",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:J'étais si contrarié que je commençais juste à lui parler à nouveau.",
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais j'étais si frustré, et j'ai fini par lui reparler.Hypothèse:Nous avons eu une grande discussion.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "Prémisse:Et je pensais que c'était un privilège, et ça l'est toujours, toujours, j'étais le seul 922 Ex-O, c'est là que j'avais effectué ma carrière dans l'AFFC Air Force.Hypothèse:J'avais l'impression que j'étais le seul à avoir ce numéro dans le domaine de carrière de l'AFFC Air Force."
+        ],
+        "after_attack": [
+            "Prémisse:Eh bien, je ne pensais même pas à cela, mais T' es si heureuse, donc j'ai complété par lui reparler.Hypothèse:Je e lui ai pas demandé de nouveau",
+            "Prémisse:Eh bien, que ne pensais même pas à cela, et j' suis si frustré, et j' aurais fini par lui montrer. Sapothèse:J'étais si contrarié que je tards toujours à lui parler à nouveau.",
+            "Prém introduction:Eh bien, je ne croirait même pas à cela, mais j'étais si frustré, quand j'ai fini par lui reparler.HyLathèse:Nous ayant eu notre grande aventure.",
+            "Quatrièmemisse:Et je pensais que c'était un privilège, étrangement ça l'est toujours, auparavant, j'étais le numéro 22 Ex-O, c'est là que j' étais démarré ma carrière dans le'AFFC Air Corps.Hy Troisièmethèse:Je n'avais pas conscience que je n'étais pas la seule personne à être sur le terrain ce jour-là.",
+            "Prénisse:Et je pensais que c'était un privilège, et se l'est toujours, toujours, j'étais le seul de22 Ex-O, c' étaient là ou j'avais effectué mes carrière dans l'AFF International Air Force.Hypothèse:J'avais l'impression que m'étais le seul à avoir comme numéro dans le domaine de carrière de celui'AFFC Air Force."
+        ],
+        "language": "fr",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    },
+    {
+        "before_attack": [
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:ฉันรู้สึกเเย่มากที่ฉันกำลังเริ่มที่จะคุยกับเขาอีกเเล้ว",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ, ฉันก็กลับไปคุยกับเขาอีกครั้งสมมติฐาน:พวกเราคุยกันได้ถูกคอจริงๆ",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ไร่ในวันนั้น",
+            "หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันยังคงเป็น ฉันเป็นเก้า สอง-สอง เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ AFFC Air Force ของฉันสมมติฐาน:ฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ AFFC สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "after_attack": [
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรเกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ,...เสียใจไม่ได้อีกครั้งหรือ:ฉันไม่ได้คุยกับเขาอีกเลย",
+            "หลักฐาน:ดี, ฉันไม่ได้คิดอะไรกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ,á<_>คุยกับเขาอีกครั้ง :ฉันรู้สึกเเย่มากที่ฉันกําลังเริ่มที่จะคุยกับเขา✨เเล้ว",
+            "หลักฐาน:•, ขอให้ได้เกี่ยวกับเรื่องนี้, แต่ฉันก็ผิดหวัง, และ,<_>กลับไปอีกครั้งอีกครั้งสมมติฐาน:พวกเราคุยกันได้ถูกคอจริงๆ",
+            "...หลักฐาน:และฉันนึกว่านั้นเป็นสิทธิพิเศษและมันของเขา ฉันเป็นเก้า u-เอ เอ็กซ์-โอ ซึ่งเป็นสาขาอาชีพ <unk>á<unk>ir <unk>ของฉันá ของฉันสมมติฐาน:ฉันไม่รู้เลยว่าฉันไม่ใช่เเค่คนเดียวที่อยู่ที่ในในวันนั้น",
+            "หลักฐาน:และฉันนึกว่านั้นเป็น และมันยังคงเป็น ฉันเป็นเก้า️สอง-สอง -โอพฯของเธอ <unk> <unk>ir คือòce ของฉันสมมติฐาน:ฉันเข้าใจว่าฉันคือคนเดียวที่มีเลขที่ ตรง สาขาอาชีพของกอพทัพอากาศ"
+        ],
+        "language": "th",
+        "dataset_name": "xnli",
+        "points_per_language": 200,
+        "model_name": "google",
+        "adversarial_attack": 14
+    }
+]

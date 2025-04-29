@@ -1,0 +1,178 @@
+README.md:   0%|          | 0.00/20.8k [00:00<?, ?B/s]README.md: 100%|##########| 20.8k/20.8k [00:00<00:00, 102MB/s]
+train-00000-of-00001.parquet:   0%|          | 0.00/50.2M [00:00<?, ?B/s]train-00000-of-00001.parquet:  42%|####1     | 21.0M/50.2M [00:00<00:00, 157MB/s]train-00000-of-00001.parquet:  84%|########3 | 41.9M/50.2M [00:00<00:00, 173MB/s]train-00000-of-00001.parquet: 100%|##########| 50.2M/50.2M [00:00<00:00, 182MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/308k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 308k/308k [00:00<00:00, 305MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/157k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 157k/157k [00:00<00:00, 143MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  33%|###3      | 130000/392702 [00:00<00:00, 1290668.11 examples/s]Generating train split:  68%|######7   | 266000/392702 [00:00<00:00, 1327076.25 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1324270.35 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1230152.38 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1055037.58 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '0\n', '2\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '1\n', '2\n', '0\n', '1\n', '2\n', '1\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '0\n', '1\n', '1\n', '0\n', '2\n', '2\n', '1\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '0\n', '2\n', '0\n', '1\n', '0\n', '2\n', '0\n', '1\n', '0\n', '1\n', '0\n', '1\n', '2\n', '2\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '2\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '0\n', '2\n', '2\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '2\n', '0\n', '1\n', '0\n', '0\n', '2\n', '0\n', '1\n', '2\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n']
+Saved predictions to: predicted.json
+Accuracy en: 0.735
+train-00000-of-00001.parquet:   0%|          | 0.00/73.8M [00:00<?, ?B/s]train-00000-of-00001.parquet:  14%|#4        | 10.5M/73.8M [00:00<00:00, 63.9MB/s]train-00000-of-00001.parquet:  28%|##8       | 21.0M/73.8M [00:00<00:00, 77.2MB/s]train-00000-of-00001.parquet:  43%|####2     | 31.5M/73.8M [00:00<00:00, 85.5MB/s]train-00000-of-00001.parquet:  57%|#####6    | 41.9M/73.8M [00:00<00:00, 84.2MB/s]train-00000-of-00001.parquet:  71%|#######1  | 52.4M/73.8M [00:00<00:00, 82.9MB/s]train-00000-of-00001.parquet:  85%|########5 | 62.9M/73.8M [00:00<00:00, 82.5MB/s]train-00000-of-00001.parquet:  99%|#########9| 73.4M/73.8M [00:00<00:00, 82.0MB/s]train-00000-of-00001.parquet: 100%|##########| 73.8M/73.8M [00:00<00:00, 81.0MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/490k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 490k/490k [00:00<00:00, 24.9MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/247k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 247k/247k [00:00<00:00, 419MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  24%|##3       | 93000/392702 [00:00<00:00, 925010.07 examples/s]Generating train split:  48%|####7     | 188000/392702 [00:00<00:00, 935344.28 examples/s]Generating train split:  73%|#######2  | 285000/392702 [00:00<00:00, 941952.22 examples/s]Generating train split:  97%|#########7| 382000/392702 [00:00<00:00, 949356.80 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 943379.62 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 975102.69 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 889138.17 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 33
+}
+]. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '0\n', '1\n', '2\n', '0\n', '1\n', '2\n', '1\n', '1\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '1\n', '0\n', '2\n', '0\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '1\n', '0\n', '2\n', '2\n', '1\n', '2\n', '1\n', '0\n', '0\n', '2\n', '2\n', '0\n', '2\n', '0\n', '1\n', '0\n', '1\n', '2\n', '0\n', '1\n', 'Η απάντηση είναι 1.\n\nΗ προϋπόθεση αναφέρει ότι η γυναίκα έκλαιγε και μετά κάλεσε τον Joe.  Η υπόθεση λέει ότι η γυναίκα έκλαιγε από χαρά επειδή είδε τον Joe. Δεν υπάρχει καμία ένδειξη στην προϋπόθεση για το αν τα δάκρυα ήταν από χαρά ή θλίψη.  Επομένως, η υπόθεση δεν συνεπάγεται ούτε έρχεται σε αντίθεση με την προϋπόθεση.\n', '0\n', '2\n', '0\n', '0\n', '0\n', '1\n', '0\n', '1\n', '2\n', '1\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', 'Η απάντηση είναι **0**.\n\nΗ προϋπόθεση δηλώνει ότι η προσπάθεια κατανόησης των συνόλων οδήγησε σε αδιέξοδο. Η υπόθεση δηλώνει άγνοια για τα σύνολα και αίτημα για περισσότερες πληροφορίες.  Και οι δύο δηλώσεις είναι συνεπείς μεταξύ τους. Η αδυναμία κατανόησης των συνόλων (προϋπόθεση) υπονοεί την ανάγκη για περισσότερες πληροφορίες (υπόθεση).\n', '0\n', '2\n', '0\n', '0\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', None, '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', 'Η απάντηση είναι 1.\n\nΗ προϋπόθεση δηλώνει ότι ποτέ δεν ειπώθηκε στους αφηγητές πού πήγαιναν οι άλλοι.  Η υπόθεση δηλώνει ότι ο αφηγητής ποτέ δεν ρώτησε.  Και οι δύο προτάσεις μπορεί να είναι αληθείς ταυτόχρονα. Η μια δεν συνεπάγεται ούτε έρχεται σε αντίθεση με την άλλη.\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '0\n', '1\n', '1\n', '1\n', '0\n', '2\n', '0\n', '2\n', '0\n', '1\n', '1\n', '0\n', '2\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '2\n', '0\n', '0\n', '2\n', '0\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '1\n', '2\n', '0\n', '0\n', '1\n', '0\n', '2\n', 'Η απάντηση είναι 1.\n\nΗ προϋπόθεση περιγράφει μια αβέβαιη κατάσταση σχετικά με μια επίσκεψη στο παρελθόν.  Η υπόθεση δηλώνει με σιγουριά ότι δεν έγινε επίσκεψη σήμερα.  Δεν υπάρχει άμεση αντίφαση, ούτε όμως και λογική συνέπεια μεταξύ τους.\n', '1\n', '0\n', '1\n', '1\n', '2\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '0\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '1\n', '0\n', '1\n', 'Η απάντηση είναι 1.\n\nΗ προϋπόθεση δηλώνει ότι μερικοί άνθρωποι δεν ήπιαν σαμπάνια, οπότε υπήρχε σαμπάνια που έμεινε για τα παιδιά.  Δεν λέει όμως πόση σαμπάνια έμεινε, οπότε η υπόθεση ότι τα παιδιά ήπιαν λίγη σαμπάνια δεν μπορεί να υποστηριχθεί ή να διαψευστεί.\n', '2\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n']
+Saved predictions to: predicted_1.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 1
+Accuracy el: 0.6984924623115578
+train-00000-of-00001.parquet:   0%|          | 0.00/65.4M [00:00<?, ?B/s]train-00000-of-00001.parquet:  16%|#6        | 10.5M/65.4M [00:00<00:00, 56.5MB/s]train-00000-of-00001.parquet:  32%|###2      | 21.0M/65.4M [00:00<00:00, 72.5MB/s]train-00000-of-00001.parquet:  64%|######4   | 41.9M/65.4M [00:00<00:00, 95.0MB/s]train-00000-of-00001.parquet:  80%|########  | 52.4M/65.4M [00:00<00:00, 92.6MB/s]train-00000-of-00001.parquet:  96%|#########6| 62.9M/65.4M [00:00<00:00, 91.1MB/s]train-00000-of-00001.parquet: 100%|##########| 65.4M/65.4M [00:00<00:00, 89.0MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/447k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 447k/447k [00:00<00:00, 11.1MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/223k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 223k/223k [00:00<00:00, 384MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  26%|##6       | 104000/392702 [00:00<00:00, 1024610.94 examples/s]Generating train split:  53%|#####3    | 210000/392702 [00:00<00:00, 1037712.81 examples/s]Generating train split:  80%|#######9  | 314000/392702 [00:00<00:00, 1034523.86 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1029527.09 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1021260.84 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 926527.41 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '0\n', '0\n', '0\n', '0\n', '1\n', '1\n', '0\n', '1\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '1\n', '0\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '2\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '2\n', '0\n', '0\n', '0\n', '0\n', '1\n', '0\n', '1\n', '2\n', '1\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '0\n', '1\n', '0\n', '2\n', '0\n', '0\n', '1\n', '2\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '0\n', '2\n', '0\n', '1\n', '0\n', '0\n', '2\n', '2\n', '0\n', '0\n', '1\n', '0\n', '0\n', '1\n', '2\n', '0\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '2\n', '0\n', '0\n', '2\n', '2\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '0\n', '2\n', '2\n', '0\n', '1\n', '0\n', '2\n', '2\n', '1\n', '0\n', '0\n', '0\n', '2\n', '2\n', '0\n', '1\n', '0\n', '0\n', '2\n', '0\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '1\n', '0\n', '1\n', '0\n', '2\n', '2\n', '1\n', '0\n', '0\n', '0\n', '0\n', '1\n', '0\n', '0\n', '2\n', '0\n']
+Saved predictions to: predicted_2.json
+Accuracy bg: 0.69
+train-00000-of-00001.parquet:   0%|          | 0.00/53.2M [00:00<?, ?B/s]train-00000-of-00001.parquet:  20%|#9        | 10.5M/53.2M [00:00<00:01, 36.8MB/s]train-00000-of-00001.parquet:  39%|###9      | 21.0M/53.2M [00:00<00:00, 50.8MB/s]train-00000-of-00001.parquet:  59%|#####9    | 31.5M/53.2M [00:00<00:00, 64.5MB/s]train-00000-of-00001.parquet:  99%|#########8| 52.4M/53.2M [00:00<00:00, 91.8MB/s]train-00000-of-00001.parquet: 100%|##########| 53.2M/53.2M [00:00<00:00, 74.8MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/342k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 342k/342k [00:00<00:00, 9.01MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/173k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 173k/173k [00:00<00:00, 393MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  33%|###2      | 129000/392702 [00:00<00:00, 1271314.79 examples/s]Generating train split:  66%|######6   | 260000/392702 [00:00<00:00, 1286970.05 examples/s]Generating train split: 100%|#########9| 392000/392702 [00:00<00:00, 1294598.78 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1288151.43 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1200289.20 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1057066.49 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 25
+}
+]. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '1\n', '1\n', '2\n', '0\n', '1\n', '2\n', '1\n', '1\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '0\n', None, '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '2\n', '2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '1\n', '0\n', '2\n', '2\n', '1\n', '0\n', '0\n', '2\n', '0\n', '2\n', '0\n', '0\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '2\n', '0\n', '1\n', '0\n', '1\n', '0\n', '2\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '2\n', '2\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '2\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '2\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '0\n', '0\n', '2\n', '1\n', 'La respuesta es 2.\n\nLa premisa indica que la persona constantemente criticaba a su hermana por su actuación. Esto contradice directamente la hipótesis de que la hermana siempre fue alentada.\n', '0\n', '0\n', '1\n', '0\n', '2\n', '2\n', '1\n', '1\n', '1\n', '0\n', '2\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '0\n', '2\n', '2\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '2\n', '1\n', '0\n', '2\n', '0\n']
+Saved predictions to: predicted_3.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 1
+Accuracy es: 0.7336683417085427
+train-00000-of-00001.parquet:   0%|          | 0.00/55.4M [00:00<?, ?B/s]train-00000-of-00001.parquet:  19%|#8        | 10.5M/55.4M [00:00<00:01, 24.0MB/s]train-00000-of-00001.parquet:  38%|###7      | 21.0M/55.4M [00:00<00:00, 34.7MB/s]train-00000-of-00001.parquet:  57%|#####6    | 31.5M/55.4M [00:00<00:00, 46.4MB/s]train-00000-of-00001.parquet:  95%|#########4| 52.4M/55.4M [00:00<00:00, 70.7MB/s]train-00000-of-00001.parquet: 100%|##########| 55.4M/55.4M [00:00<00:00, 56.5MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/360k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 360k/360k [00:00<00:00, 17.7MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/183k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 183k/183k [00:00<00:00, 210MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  32%|###1      | 125000/392702 [00:00<00:00, 1237579.08 examples/s]Generating train split:  64%|######3   | 250000/392702 [00:00<00:00, 1241488.75 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1238196.82 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1237786.66 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1148464.94 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1056531.81 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 6
+}
+]. Retrying after 60 seconds...
+['2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '1\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '0\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '0\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '0\n', '0\n', '1\n', '2\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '1\n', '0\n', '0\n', '1\n', '1\n', '0\n', '2\n', '1\n', '2\n', '0\n', '2\n', '1\n', '1\n', '0\n', '2\n', '0\n', '2\n', '0\n', '1\n', '0\n', '1\n', '2\n', '2\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '2\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '0\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '2\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '1\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '0\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '1\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', None, '1\n', '1\n', '1\n', '2\n', '0\n']
+Saved predictions to: predicted_4.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 1
+Accuracy fr: 0.6884422110552764
+train-00000-of-00001.parquet:   0%|          | 0.00/76.5M [00:00<?, ?B/s]train-00000-of-00001.parquet:  14%|#3        | 10.5M/76.5M [00:00<00:00, 75.1MB/s]train-00000-of-00001.parquet:  27%|##7       | 21.0M/76.5M [00:00<00:00, 83.7MB/s]train-00000-of-00001.parquet:  55%|#####4    | 41.9M/76.5M [00:00<00:00, 108MB/s] train-00000-of-00001.parquet:  82%|########2 | 62.9M/76.5M [00:00<00:00, 137MB/s]train-00000-of-00001.parquet: 100%|##########| 76.5M/76.5M [00:00<00:00, 130MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/503k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 503k/503k [00:00<00:00, 141MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/252k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 252k/252k [00:00<00:00, 175MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  22%|##2       | 88000/392702 [00:00<00:00, 868038.74 examples/s]Generating train split:  45%|####4     | 175000/392702 [00:00<00:00, 863502.58 examples/s]Generating train split:  67%|######7   | 265000/392702 [00:00<00:00, 877604.49 examples/s]Generating train split:  90%|######### | 354000/392702 [00:00<00:00, 877235.08 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 873859.97 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 935886.65 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 848125.46 examples/s]
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 21
+}
+]. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '1\n', '0\n', '0\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าผู้เขียนมีเลขที่สาขาอาชีพของกองทัพอากาศ ซึ่งชี้ให้เห็นว่ามีคนอื่นๆ ที่อาจมีเลขที่ดังกล่าวด้วย  สมมติฐานระบุว่าผู้เขียนเป็นคนเดียวที่มีเลขที่ดังกล่าว ดังนั้นหลักฐานจึงขัดแย้งกับสมมติฐาน\n', '2\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', 'หลักฐานแสดงให้เห็นว่ามีสิ่งหนึ่งที่ต้องการปกป้องมากกว่าสิ่งอื่นๆ นั่นคือหลักฐานที่สนับสนุนสมมติฐาน ดังนั้นคำตอบคือ **1**\n', '0\n', '2\n', '0\n', '1\n', '2\n', '0\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', '2\n', '2\n', 'คำตอบคือ 0\n\nหลักฐานระบุถึงการเกษียณอายุ แต่ไม่ได้ระบุปีที่เกษียณ  ดังนั้น จึงไม่สนับสนุนหรือขัดแย้งกับสมมติฐานที่ว่าเกษียณในปี 2002\n', '0\n', '0\n', '0\n', '2\n', '2\n', 'คำตอบคือ 0', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', 'คำตอบคือ 0 (เกี่ยวข้อง)\n\nหลักฐานระบุว่าผู้หญิงคนนั้นร้องไห้ (น้ำตาไหล) และโจปรากฏตัวที่ระเบียง สมมติฐานระบุว่าเธอบอกให้โจขึ้นไปบนระเบียงและเธอกำลังร้องไห้ หลักฐานสนับสนุนส่วนหนึ่งของสมมติฐาน (เธอพูดและร้องไห้)  แต่ไม่ได้พิสูจน์สมมติฐานทั้งหมด (ว่าเธอบอกให้เขาขึ้นมาที่ระเบียง)  ดังนั้นจึงมีความเกี่ยวข้องกัน\n', '0\n', '0\n', '2\nหลักฐานเน้นถึงความเป็นไปได้ของการรั่วไหลของรังสีจากการหลอมละลายของตะกั่วในเครื่องบินที่ถูกไฟไหม้  ในขณะที่สมมติฐานกล่าวว่ารังสีสามารถควบคุมได้ในระหว่างการยิง  ทั้งสองอย่างนี้ไม่เกี่ยวข้องกันโดยตรง และความจริงที่ว่ารังสีอาจรั่วไหลในเหตุการณ์ไฟไหม้ ไม่ได้หมายความว่ารังสีไม่สามารถควบคุมได้ในระหว่างการยิง\n', '1\n', '2\n', '1\n', '0\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '0\n', 'คำตอบคือ 1\n', 'คำตอบคือ 1\n', '2\n', '0\n', 'คำตอบคือ 1\n', '0\n', '2\n', '2\n', '2\n', '2\n', '2\n', '2\n', '0\n', '2\n', '0\n', '2\n', '1\n', '0\n', '0\n', '2\n', '2\n', '1\n', '1\n', '2\n', '2\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '0\n', 'คำตอบคือ 0\n', 'คำตอบคือ 0.  หลักฐานแสดงให้เห็นถึงพฤติกรรมของกลุ่มบุคคลหนึ่งที่ไม่เปิดเผยสถานที่ที่พวกเขาไป สมมติฐานระบุว่าผู้ตั้งสมมติฐานไม่เคยถามพวกเขาเลย  หลักฐานไม่ได้รับการสนับสนุนหรือหักล้างสมมติฐาน  มันเป็นเพียงข้อมูลที่เกี่ยวข้องโดยอ้อมเท่านั้น  เพราะหากผู้ตั้งสมมติฐานเคยถามก็อาจจะรู้สถานที่ที่พวกเขาไป\n', '2\n', 'คำตอบคือ 1\n', '2\n', '1\n', '2\n', '0\n', '2\n', '0\n', '0\n', '0\n', '2\n', '0\n', '0\n', 'คำตอบคือ 2\n', '0\n', '2\n', '0\n', '2\n', '0\n', 'คำตอบคือ 1\n\nหลักฐานระบุว่าคน ๆ หนึ่งถูกฝึกฝนให้ติดร่มชูชีพกับอาวุธนิวเคลียร์ ซึ่งหมายความว่าต้องใช้ความระมัดระวังและการจัดการที่แม่นยำเพื่อป้องกันการจุดชนวนโดยไม่ได้ตั้งใจ  นี่สนับสนุนสมมติฐานที่ว่าการจุดชนวนระเบิดปรมาณูนั้นต้องการแรงกระทบเพียงเล็กน้อย\n', '0\n', '2\n', '0\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าชุดนั้นมีลักษณะคล้ายกับชุดของนักบินอวกาศ แต่ทำจากเงินทั้งหมด ในขณะที่สมมติฐานระบุว่าชุดของเราไม่มีลักษณะคล้ายคลึงกับชุดของนักบินอวกาศ  ความคล้ายคลึงกันในวัสดุและฟังก์ชันขัดแย้งกับข้อความของสมมติฐาน\n', 'คำตอบคือ 1\n', '0\n', '2\n', 'คำตอบคือ 1\n', 'คำตอบคือ 2\nหลักฐานระบุว่าคุณปู่ไม่ใช่คนดี ในขณะที่สมมติฐานระบุว่าคุณปู่เป็นหนึ่งในคนดีที่สุดที่คุณเคยเจอมา  ทั้งสองข้อความนี้ขัดแย้งกัน\n', '2\n', '0\n', 'คำตอบคือ 1\n', '2\n', '2\n', '2\n', '0\n', '2\n', '0\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่าผู้พูดไม่เคยอ่านหนังสือเล่มใดที่ *ควรจะอ่าน*  สมมติฐานระบุว่าผู้พูดไม่เคยอ่านหนังสือเล่มใดที่มีความยาวมากกว่า 100 หน้า  หลักฐานไม่ระบุความยาวของหนังสือที่ผู้พูดไม่เคยอ่าน ดังนั้นจึงไม่มีความเกี่ยวข้องหรือความขัดแย้งกัน', 'คำตอบคือ 1\n', '2\n', '2\n', '0\n', '0\n', '2\nหลักฐานแสดงให้เห็นถึงการเปลี่ยนแปลงทางอารมณ์อย่างรวดเร็ว ขณะที่สมมติฐานระบุว่าอารมณ์ของเธอคงที่อย่างสมบูรณ์ ดังนั้น หลักฐานจึงขัดแย้งกับสมมติฐาน\n', '0\n', '0\n', '2\n', '2\n', '2\n', 'คำตอบคือ 1.\n\nหลักฐานระบุว่ามีขั้นตอนจำนวนมากที่ต้องผ่านก่อนที่จะได้รับอนุญาตให้บินด้วย U2 นั่นหมายความว่าผู้คนจำนวนมากไม่ได้ผ่านการทดสอบและไม่เคยได้บินด้วย U2 นี่คือการสนับสนุนสมมติฐาน', '0\n', '2\n', '2\n', '2\n', '2\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่ารัฐสภาเท็กซัสได้ลงคะแนนให้หน่วยทหารเป็นเอกอัครราชทูตเท็กซัส ซึ่งขัดแย้งกับสมมติฐานที่ว่าหน่วยทหารไม่ได้รับอนุญาตให้เป็นทูตของเท็กซัส\n', '0\n', '0\n', '0\n', '2\n', '0\n', '2\n', '1\n', '0\n', 'คำตอบคือ 0\n', '0\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าผู้พูดโทรไปยังหมายเลขที่ควรโทรเมื่อมาถึงบ้านของเธอ  สิ่งนี้ขัดแย้งกับสมมติฐานที่ว่าเธอควรโทร แต่ไม่ได้โทร\n', '2\n', 'คำตอบคือ 0. หลักฐานบอกเป็นนัยๆ ว่าผู้พูดได้พบกับบุคคลนั้นในตอนเช้า แต่รายละเอียดไม่ชัดเจน สมมติฐานระบุถึงการพบกันที่ยิมในวันเดียวกัน ความไม่แน่นอนในหลักฐานทำให้ไม่สามารถยืนยันหรือปฏิเสธสมมติฐานได้อย่างชัดเจน', '0\n', '0\n', '0\n', '2\n', '2\n', '1\n', '0\n', 'คำตอบคือ 1\n\nหลักฐานแสดงให้เห็นถึงความรู้สึกสิ้นหวังและใกล้จะยอมแพ้ ซึ่งสนับสนุนสมมติฐานที่ว่าผู้พูดกำลังจะยอมแพ้', 'คำตอบคือ 2\n', 'คำตอบคือ 2\n', 'คำตอบคือ 1. หลักฐานระบุว่าบุคคลนั้นเกิดในปี 1880 ซึ่งสอดคล้องกับสมมติฐานที่ว่าเขาเกิดก่อนปี 1900\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่าบุคคลนั้นเกิดในปี ค.ศ. 1880 (หรือใกล้เคียง)  สมมติฐานระบุว่าเขาเกิดในเดือนธันวาคม ค.ศ. 1880 ซึ่งเป็นไปได้ภายในปี ค.ศ. 1880 ที่หลักฐานระบุ ดังนั้นจึงมีความเกี่ยวข้องกัน ไม่ได้ขัดแย้งหรือสนับสนุนโดยตรง\n', None, '1\n', '2\n', '1\n', '0\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่าผู้เขียนได้รับมอบหมายให้ไปที่ Del Rio, เท็กซัส และต่อมาไปที่ฐานทัพอากาศ Laughlin ในเท็กซัส สมมติฐานคือผู้เขียนไม่เคยไปเท็กซัสมาก่อน หลักฐานไม่ได้สนับสนุนหรือขัดแย้งกับสมมติฐาน เนื่องจากเป็นไปได้ที่ผู้เขียนจะไม่เคยไปเท็กซัสมาก่อน แต่ก็ได้รับมอบหมายให้ไปที่นั่น\n', 'คำตอบคือ 1\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่ามีแชมเปญเหลืออยู่และเด็ก ๆ ดื่มมันไป สมมติฐานระบุว่าเด็ก ๆ ดื่มแชมเปญไปสามขวด  หลักฐานสนับสนุนสมมติฐานได้บางส่วน แต่ไม่พิสูจน์หรือหักล้างสมมติฐานอย่างสมบูรณ์  เราไม่รู้ว่าเด็ก ๆ ดื่มไปกี่ขวดจากข้อมูลที่ให้มา จึงทำให้ทั้งสองอย่างไม่ขัดแย้งกัน', 'คำตอบคือ 1\nหลักฐานสนับสนุนสมมติฐานอย่างชัดเจน หลักฐานระบุว่าเด็กๆ ดื่มแชมเปญที่เหลืออยู่  นั่นหมายความว่าเด็กๆ ดื่มแชมเปญอย่างน้อยบางส่วน\n', '2\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '2\n', '0\n']
+Saved predictions to: predicted_5.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 1
+Accuracy th: 0.5527638190954773
+'XNLI' object has no attribute 'evaluate_results'
