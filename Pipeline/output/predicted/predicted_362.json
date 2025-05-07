@@ -1,0 +1,17 @@
+{
+    "predicted": [
+        2,
+        1,
+        1
+    ],
+    "true": [
+        2,
+        0,
+        1
+    ],
+    "language": "en",
+    "dataset_name": "xnli",
+    "points_per_language": 3,
+    "model_name": "ollama",
+    "adversarial_attack": 0
+}

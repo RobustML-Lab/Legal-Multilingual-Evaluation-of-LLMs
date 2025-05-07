@@ -10,12 +10,12 @@ from adversarial_attack import attack
 from huggingface_hub import login
 
 dataset_name = "xnli"
-languages = ["bg", "el", "en"]
-points_per_language = 100
+languages = ["en"]
+points_per_language = 300
 generation = False
 model_name = "ollama"
 api_key = None
-adversarial_attack = 12
+adversarial_attack = 0
 # arguments = sys.argv[1:]
 # dataset_name = arguments[0]
 # languages = ast.literal_eval(arguments[1])

@@ -183,11 +183,9 @@ class OLLaMa(Model):
         :return: a list of all the labels corresponding to the given text
         """
         print("Reached classify_text")
-        translator = GoogleTranslator(source="en", target=language)
-        print("Type of the prompt: ", type(prompt))
-        translated_prompt = translator.translate(prompt)
-        complete_prompt = text + translated_prompt
+        complete_prompt = text + prompt
         generated_text = self.generate_text(complete_prompt)
+        print("Complete prompt: ", complete_prompt)
         with open("responses.txt", "a", encoding="utf-8") as file:
             file.write(generated_text + "\n###################################################\n")
         if self.generation:
@@ -200,6 +198,8 @@ class OLLaMa(Model):
             #     for x in prediction]
             prediction = [int(x) for x in prediction]
             prediction = [x if x != -1 else None for x in prediction]
+            if not self.multi_class:
+                prediction = prediction[0]
             print("Extracted labels: ", prediction)
         return prediction
 

@@ -16,7 +16,6 @@ import textwrap
 import re
 from sentence_transformers import SentenceTransformer
 from nltk.tokenize import word_tokenize
-from deep_translator import GoogleTranslator
 import evaluate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from rapidfuzz import fuzz
@@ -538,10 +537,7 @@ class XNLI(Dataset):
     def __init__(self):
         self.label_options = ["0", "1", "2"]
         self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
-        self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
-                           "the hypothesis, or neither. The answer should be '0' for entailment, "
-                           "'1' for neither, or '2' for contradiction. The answer should be exactly '0', '1', or '2'."
-                           )
+        self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts the hypothesis, or neither. The answer should be exactly '0' for entailment, '1' for neutral, or '2' for contradiction. No further explanation should be provided.")
 
     def get_data(self, language, dataset_name, points):
         """
@@ -555,7 +551,7 @@ class XNLI(Dataset):
             data = self.extract_text_all_languages(dataset)
         else:
             data = self.extract_text(dataset, points)
-        return data, self.label_options, translate(language, self.prompt)[0]
+        return data, self.label_options, translate(language, self.prompt)
 
     def extract_text_all_languages(self, dataset):
         """
@@ -582,11 +578,10 @@ class XNLI(Dataset):
         for item in dataset:
             if count == points:
                 break
-            translator = GoogleTranslator(source="en", target=self.language)
             if self.language == "ar":
-                text = item["hypothesis"] + translator.translate("Hypothesis: ") + item["premise"] + translator.translate("Premise: ")
+                text = item["hypothesis"] + translate(self.language, "Hypothesis: ") + item["premise"] + translate(self.language, "Premise: ")
             else:
-                text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
+                text = translate(self.language, "Premise: ") + item["premise"] + translate(self.language, " Hypothesis: ") + item["hypothesis"]
             data.append({"text": text, "label": item['label']})
             count += 1
         return data
