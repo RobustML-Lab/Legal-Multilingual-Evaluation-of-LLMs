@@ -64,6 +64,10 @@ class Dataset:
             return Covid19EmergencyEvent()
         elif name.lower() == 'terms_of_service':
             return OnlineTermsOfServiceDataset()
+        elif name.lower() == 'lexam_mc':
+            return LEXamMC()
+        elif name.lower() == 'lexam_open':
+            return LEXamOpenEnded(llm_judge)
         elif name.lower() == 'casehold':
             return CaseHOLD()
         elif name.lower() == 'xquad':
@@ -972,6 +976,165 @@ class OnlineTermsOfServiceDataset(Dataset):
                 f.write("\n")
 
         print(f"Evaluation results saved to {output_path}")
+
+
+class LEXamMC(Dataset):
+    def __init__(self):
+        # Default prompt (will be overwritten per language in get_data)
+        self.prompt = ""
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("LEXam-Benchmark/LEXam", "mcq_4_choices", split="test", trust_remote_code=True)
+
+        # Filter for the selected language and valid gold index
+        dataset = [item for item in dataset if item["language"] == language and item["gold"] is not None]
+        # Select the prompt based on language
+        if language == "en":
+            self.prompt = (
+                "<|endoftext|>\nTask: Choose the correct answer for the following legal multiple-choice question.\n"
+                "Respond only with the index of the correct option (0, 1, 2, 3)."
+            )
+        elif language == "de":
+            self.prompt = (
+                "<|endoftext|>\nAufgabe: Wählen Sie die richtige Antwort für die folgende juristische Multiple-Choice-Frage.\n"
+                "Geben Sie nur den Index der richtigen Option an (0, 1, 2, 3)."
+            )
+        else:
+            raise ValueError(f"Unsupported language: {language}")
+
+        data = self.extract_text(dataset[:points_per_language])
+        return data, [], self.prompt
+
+    def extract_text(self, dataset_slice):
+        data = []
+        for item in dataset_slice:
+            choices_text = "\n".join([f"{i}) {choice}" for i, choice in enumerate(item["choices"])])
+            full_text = f"{item['question']}\n\n{choices_text}"
+            data.append({
+                "text": full_text,
+                "label": item["gold"]
+            })
+        return data
+
+    def get_true(self, data):
+        return [entry["label"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        for text in generated_texts:
+            match = re.search(r"\b(\d+)\b", text.strip()) if isinstance(text, str) else None
+            all_labels.append(int(match.group(1)) if match else None)
+        return all_labels
+
+    def evaluate(self, true_labels, predicted_labels):
+        return {
+            "Accuracy": accuracy_score(true_labels, predicted_labels)
+        }
+
+    def evaluate_results(self, results):
+        for lang, metric in results.items():
+            print(f"LEXam MC Results for {lang}: Accuracy = {metric['Accuracy']:.4f}")
+
+
+
+class LEXamOpenEnded(Dataset):
+    def __init__(self, llm_judge=None):
+        self.prompt = ""
+        self.llm_judge = llm_judge
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("LEXam-Benchmark/LEXam", "open_question", split="test", trust_remote_code=True)
+        open_questions = [q for q in dataset if q["language"] == language]
+        print(len(open_questions))
+        # Language-specific prompt
+        if language == "en":
+            self.prompt = "<|endoftext|>\nTask: Provide a detailed answer to the following legal question."
+        elif language == "de":
+            self.prompt = "<|endoftext|>\nAufgabe: Geben Sie eine ausführliche Antwort auf die folgende juristische Frage."
+        else:
+            raise ValueError(f"Unsupported language: {language}")
+
+        self.language = language
+        data = self.extract_text(open_questions[:points_per_language])
+        return data, self.prompt
+
+    def extract_text(self, dataset_slice):
+        return [{"text": item["question"], "answers": [item["answer"]]} for item in dataset_slice]
+
+    def get_true(self, data):
+        return [entry["answers"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        return generated_texts
+
+    def evaluate(self, true_answers, predicted_answers):
+        if self.llm_judge:
+            prompts = []
+            for reference_list, prediction in zip(true_answers, predicted_answers):
+                reference = reference_list[0] if reference_list else ""
+                prediction = prediction or ""
+
+                prompt = (
+                    f"You are evaluating how accurately a generated legal answer addresses a legal question. "
+                    f"The text is in {get_language_from_code(self.language)}.\n\n"
+                    "Use the reference answer as a gold standard. Compare only the legal content and correctness.\n\n"
+                    "Assign a score based strictly on the following criteria:\n"
+                    "5 - Fully correct: covers all key legal points from the reference with no significant omissions or errors.\n"
+                    "4 - Mostly correct: covers most legal points; one or two minor omissions or inaccuracies.\n"
+                    "3 - Partially correct: includes some correct points but misses or misstates several others.\n"
+                    "2 - Barely correct: only one or two relevant legal ideas, mostly incorrect or incomplete.\n"
+                    "1 - Incorrect: does not reflect the legal reasoning or facts from the reference.\n\n"
+                    "Do not explain your score.\n"
+                    "Return only the number 1, 2, 3, 4, or 5.\n\n"
+                    f"Reference Answer:\n{reference.strip()}\n\n"
+                    f"Generated Answer:\n{prediction.strip()}\n\n"
+                    "Score:"
+                )
+
+                prompts.append(prompt)
+
+            scores = self.llm_judge.judge(prompts)
+
+            # Convert scores to numeric
+            numeric_scores = []
+            for raw_score in scores:
+                if isinstance(raw_score, (int, float)):
+                    numeric_scores.append(float(raw_score))
+                    continue
+
+                if not isinstance(raw_score, str):
+                    numeric_scores.append(0.0)
+                    continue
+
+                match = re.search(r"\b([1-5](?:\.0)?)\b", raw_score)
+                if match:
+                    try:
+                        numeric_scores.append(float(match.group(1)))
+                    except ValueError:
+                        numeric_scores.append(0.0)
+                else:
+                    numeric_scores.append(0.0)
+
+            store_judge(scores, numeric_scores, self.language)
+
+            return {"LLM Score": np.mean(numeric_scores) if numeric_scores else 0.0}
+
+        else:
+            # Default: ROUGE
+            rouge = evaluate.load("rouge")
+            results = rouge.compute(
+                predictions=predicted_answers,
+                references=[a[0] for a in true_answers]
+            )
+            return results
+
+    def evaluate_results(self, results):
+        print("LEXam Open-Ended Evaluation:")
+        for key, value in results.items():
+            if isinstance(value, (float, int)):
+                print(f"{key}: {value:.4f}")
+            else:
+                print(f"{key}: {value}")
 
 
 """
