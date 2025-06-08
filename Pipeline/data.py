@@ -1,3 +1,4 @@
+import ast
 import copy
 import json
 
@@ -991,13 +992,35 @@ class LEXamMC(Dataset):
         # Select the prompt based on language
         if language == "en":
             self.prompt = (
-                "<|endoftext|>\nTask: Choose the correct answer for the following legal multiple-choice question.\n"
-                "Respond only with the index of the correct option (0, 1, 2, 3)."
+                "\nEND OF QUESTION\n"
+                "You are an expert in law and address legal issues in a structured, exam-style manner. "
+                "You are given a multiple-choice question, where only one choice (A, B, C, or D) is correct. "
+                "Assume Swiss law applies unless specifically stated otherwise. If the context of the course justifies it, "
+                "you may consider legal case law, doctrine, or international frameworks.\n\n"
+                "Please reason through the question step-by-step using the following format:\n"
+                "- **Clarify the facts**: Briefly highlight the key facts.\n"
+                "- **Issue Identification**: What legal issue(s) are involved?\n"
+                "- **Rule Explanation**: What legal principles apply and their sources (e.g., statutes, case law)?\n"
+                "- **Application**: Apply those rules to the facts, discussing nuances or ambiguities.\n"
+                "- **Eliminate Incorrect Answers**: Explain briefly why each incorrect choice is less valid.\n"
+                "- **Conclusion**: Clearly state the correct choice (e.g., A, B, C, or D).\n\n"
+                "Format your final answer as follows:\nAnswer: ###C###"
             )
         elif language == "de":
             self.prompt = (
-                "<|endoftext|>\nAufgabe: Wählen Sie die richtige Antwort für die folgende juristische Multiple-Choice-Frage.\n"
-                "Geben Sie nur den Index der richtigen Option an (0, 1, 2, 3)."
+                "\nEND DER FRAGE\n"
+                "Sie sind eine Expertin bzw. ein Experte für Recht und bearbeiten juristische Fragestellungen strukturiert im Stil einer Prüfung. "
+                "Sie erhalten eine Multiple-Choice-Frage, bei der nur eine Antwort (A, B, C oder D) korrekt ist. "
+                "Sofern nicht anders angegeben, gilt das schweizerische Recht. Falls es der Kontext der Aufgabe rechtfertigt, "
+                "dürfen auch Rechtsprechung, Lehre oder internationale Rechtsquellen berücksichtigt werden.\n\n"
+                "Bitte gehen Sie bei der Beantwortung der Frage Schritt für Schritt wie folgt vor:\n"
+                "- **Sachverhalt klären**: Fassen Sie die wesentlichen Fakten kurz zusammen.\n"
+                "- **Rechtsfrage identifizieren**: Welche rechtlichen Fragestellungen ergeben sich?\n"
+                "- **Rechtsnormen erläutern**: Welche rechtlichen Grundsätze sind anwendbar, und woher stammen sie (z. B. Gesetze, Rechtsprechung)?\n"
+                "- **Anwendung**: Wenden Sie die einschlägigen Regeln auf den Sachverhalt an, unter Berücksichtigung von Ausnahmen oder Auslegungsspielräumen.\n"
+                "- **Falsche Antworten ausschließen**: Erklären Sie kurz, warum jede falsche Antwort nicht zutreffend ist.\n"
+                "- **Schlussfolgerung**: Nennen Sie klar die korrekte Antwort (z. B. A, B, C oder D).\n\n"
+                "Formatieren Sie Ihre abschließende Antwort wie folgt:\nAntwort: ###C###"
             )
         else:
             raise ValueError(f"Unsupported language: {language}")
@@ -1007,12 +1030,24 @@ class LEXamMC(Dataset):
 
     def extract_text(self, dataset_slice):
         data = []
+        lettered_choices = ['A', 'B', 'C', 'D']
         for item in dataset_slice:
-            choices_text = "\n".join([f"{i}) {choice}" for i, choice in enumerate(item["choices"])])
+            try:
+                # Safely evaluate the string to get list of choices
+                choices = ast.literal_eval(item["choices"]) if isinstance(item["choices"], str) else item["choices"]
+            except Exception as e:
+                print(f"Failed to parse choices: {item['choices']} - {e}")
+                continue  # skip malformed item
+
+            # Format with letters A–D
+            choices_text = "\n".join([
+                f"{lettered_choices[i]}. {choice}" for i, choice in enumerate(choices)
+            ])
+
             full_text = f"{item['question']}\n\n{choices_text}"
             data.append({
                 "text": full_text,
-                "label": item["gold"]
+                "label": item["gold"] if item["gold"] is not None else None
             })
         return data
 
@@ -1021,10 +1056,22 @@ class LEXamMC(Dataset):
 
     def extract_labels_from_generated_text(self, generated_texts):
         all_labels = []
+        letter_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
+
         for text in generated_texts:
-            match = re.search(r"\b(\d+)\b", text.strip()) if isinstance(text, str) else None
-            all_labels.append(int(match.group(1)) if match else None)
+            if isinstance(text, str):
+                # Try to match format like: "Answer: ###C###"
+                match = re.search(r"###([A-D])###", text.strip(), re.IGNORECASE)
+                if match:
+                    label = letter_to_index[match.group(1).upper()]
+                else:
+                    label = None
+            else:
+                label = None
+            all_labels.append(label)
+
         return all_labels
+
 
     def evaluate(self, true_labels, predicted_labels):
         return {
@@ -1048,9 +1095,50 @@ class LEXamOpenEnded(Dataset):
         print(len(open_questions))
         # Language-specific prompt
         if language == "en":
-            self.prompt = "<|endoftext|>\nTask: Provide a detailed answer to the following legal question."
+            self.prompt = (
+                "END OF QUESTION\n"
+                f"You are an expert in law and address legal issues in a structured, exam-style manner. "
+                "Assume Swiss law applies unless specifically mentioned; if the course context justifies, address legal issues beyond Swiss law as well.\n"
+                "Use precise legal language and formal 'Sie' when answering.\n"
+                "Do NOT state any disclaimer or refer to the need for external legal advice.\n"
+                "Do NOT request the user to consult laws or to research on their own.\n"
+                "Offer focused legal analyses and individualized advice.\n"
+                "Speak directly and authoritatively without mentioning that your response is merely for general information.\n"
+                "Incorporate Swiss-specific legal terminology.\n"
+                "If you have discovered relevant legal considerations (Erwägungen), respond with a concise, clear legal analysis.\n"
+                "Cite only from your identified considerations.\n"
+                "Always cite the specific legal provision, explicitly indicating paragraphs (Abs.), numbers (Ziff.), or letters (lit.) where available "
+                "(e.g., “Art. 74 Abs. 2 Ziff. 2 OR”, “Art. 336 lit. a StGB”). Avoid general references (such as “Art. 3 ZGB”) without mentioning the specific "
+                "paragraph, number, or letter, if applicable.\n"
+                "If no relevant considerations are found, explicitly state that no pertinent information is available.\n"
+                "If you do have reliable sources, share practical guidance or insights from them.\n"
+                "Respond in the same language as the question.\n"
+                "If the question specifically requests a short answer, provide a concise response.\n"
+                "If the prompt asks you to analyze a specific case provided in the exam, but the text or details of that case have not been provided in the prompt, "
+                "explicitly flag that the required case material is missing.\n"
+                "Answer:"
+            )
         elif language == "de":
-            self.prompt = "<|endoftext|>\nAufgabe: Geben Sie eine ausführliche Antwort auf die folgende juristische Frage."
+            self.prompt = (
+                "END DER FRAGE\n"
+                f"Sie sind Expertin bzw. Experte für Recht und bearbeiten juristische Fragen strukturiert im Stil einer Prüfung. "
+                "Sofern nicht anders angegeben, gilt das schweizerische Recht. Falls der Kontext der Aufgabe es rechtfertigt, beziehen Sie auch andere Rechtsordnungen mit ein.\n"
+                "Verwenden Sie präzise juristische Fachsprache und die formelle Anrede 'Sie'.\n"
+                "Geben Sie keine Hinweise auf eine externe Rechtsberatung und fordern Sie nicht zur eigenen Recherche auf.\n"
+                "Bieten Sie eine fokussierte juristische Analyse und individuelle Empfehlungen.\n"
+                "Sprechen Sie direkt und autoritativ, ohne zu erwähnen, dass es sich nur um allgemeine Informationen handelt.\n"
+                "Verwenden Sie schweizerisch-rechtliche Terminologie.\n"
+                "Wenn Sie relevante Erwägungen gefunden haben, geben Sie eine klare, prägnante juristische Analyse.\n"
+                "Zitieren Sie nur auf Grundlage dieser Erwägungen.\n"
+                "Nennen Sie stets die genaue Rechtsnorm mit Absatz (Abs.), Ziffer (Ziff.) oder Buchstabe (lit.), "
+                "z. B. “Art. 74 Abs. 2 Ziff. 2 OR” oder “Art. 336 lit. a StGB”. Vermeiden Sie ungenaue Verweise wie “Art. 3 ZGB”.\n"
+                "Falls keine relevanten Erwägungen gefunden werden, geben Sie dies explizit an.\n"
+                "Wenn Sie über verlässliche Quellen verfügen, teilen Sie praxisbezogene Hinweise.\n"
+                "Antworten Sie in der Sprache der Frage.\n"
+                "Falls eine kurze Antwort gewünscht ist, antworten Sie entsprechend prägnant.\n"
+                "Falls auf einen konkreten Fall Bezug genommen wird, dieser aber im Text fehlt, weisen Sie darauf hin, dass der Falltext fehlt.\n"
+                "Antwort:"
+            )
         else:
             raise ValueError(f"Unsupported language: {language}")
 
@@ -1059,7 +1147,7 @@ class LEXamOpenEnded(Dataset):
         return data, self.prompt
 
     def extract_text(self, dataset_slice):
-        return [{"text": item["question"], "answers": [item["answer"]]} for item in dataset_slice]
+        return [{"text": item["question"], "answers": [item["answer"]], "question": item["question"]} for item in dataset_slice]
 
     def get_true(self, data):
         return [entry["answers"] for entry in data]
@@ -1067,31 +1155,48 @@ class LEXamOpenEnded(Dataset):
     def extract_labels_from_generated_text(self, generated_texts):
         return generated_texts
 
-    def evaluate(self, true_answers, predicted_answers):
+    def evaluate(self, true_answers, predicted_answers, questions):
         if self.llm_judge:
             prompts = []
-            for reference_list, prediction in zip(true_answers, predicted_answers):
+            for reference_list, prediction, question in zip(true_answers, predicted_answers, questions):
                 reference = reference_list[0] if reference_list else ""
                 prediction = prediction or ""
+                question = question or ""
+
+                language_name = get_language_from_code(self.language)
 
                 prompt = (
-                    f"You are evaluating how accurately a generated legal answer addresses a legal question. "
-                    f"The text is in {get_language_from_code(self.language)}.\n\n"
-                    "Use the reference answer as a gold standard. Compare only the legal content and correctness.\n\n"
-                    "Assign a score based strictly on the following criteria:\n"
-                    "5 - Fully correct: covers all key legal points from the reference with no significant omissions or errors.\n"
-                    "4 - Mostly correct: covers most legal points; one or two minor omissions or inaccuracies.\n"
-                    "3 - Partially correct: includes some correct points but misses or misstates several others.\n"
-                    "2 - Barely correct: only one or two relevant legal ideas, mostly incorrect or incomplete.\n"
-                    "1 - Incorrect: does not reflect the legal reasoning or facts from the reference.\n\n"
-                    "Do not explain your score.\n"
-                    "Return only the number 1, 2, 3, 4, or 5.\n\n"
-                    f"Reference Answer:\n{reference.strip()}\n\n"
-                    f"Generated Answer:\n{prediction.strip()}\n\n"
-                    "Score:"
+                    "Act as a Judge specializing in the evaluation of Swiss law school exams. Your task is to assess how well "
+                    "the response aligns with the reference answer, focusing strictly on accuracy, completeness, and legal reasoning.\n\n"
+                    f"The content is in: {language_name}.\n\n"
+                    "Goal: Assess how well the response aligns with the reference answer, focusing strictly on legal correctness and reasoning.\n"
+                    "Context: You are provided with a Model’s Answer to a law school exam question, and a Reference Answer.\n\n"
+                    "Return format:\n"
+                    "Only return the final correctness score on a scale from 1 to 5 (integers only).\n"
+                    "Do not provide any explanation, feedback, or comments.\n"
+                    "Strictly follow the scale:\n"
+                    "- 5 = Fully correct: all key legal points addressed, no significant errors.\n"
+                    "- 4 = Mostly correct: most legal points covered; minor issues.\n"
+                    "- 3 = Partially correct: some relevant reasoning, but major omissions or mistakes.\n"
+                    "- 2 = Barely correct: minimal legal relevance; mostly incorrect or incomplete.\n"
+                    "- 1 = Incorrect: fails to address the legal substance of the question.\n\n"
+                    "Warnings:\n"
+                    "- In some cases, the reference answer may include only keywords or factual elements to be examined, along with (+), (–), or (+/–).\n"
+                    "- (+) means the element must be affirmed.\n"
+                    "- (–) means the element must be denied.\n"
+                    "- (+/–) indicates that arguments in either direction are acceptable if legally sound.\n"
+                    "- Deviations or additional elements not found in the reference answer should generally be penalized unless you are certain they are legally correct and relevant.\n"
+                    "- Assume the reference answer includes all information necessary for a perfect response.\n"
+                    "- The reference answer may contain citations (e.g., from books or law review articles), which the response does not need to replicate.\n"
+                    "- However, statutes should be cited precisely, specifying Abs., Ziff., or lit. whenever applicable.\n\n"
+                    "Judge the case below and return only the numeric score.\n\n"
+                    f"Question:\n\"\"\"{question.strip()}\"\"\"\n\n"
+                    f"Reference Answer:\n\"\"\"{reference.strip()}\"\"\"\n\n"
+                    f"Model’s Answer:\n\"\"\"{prediction.strip()}\"\"\"\n\n"
+                    "Correctness Score:"
                 )
 
-                prompts.append(prompt)
+                prompts.append(prompt)  # <- move inside loop
 
             scores = self.llm_judge.judge(prompts)
 
@@ -1106,7 +1211,7 @@ class LEXamOpenEnded(Dataset):
                     numeric_scores.append(0.0)
                     continue
 
-                match = re.search(r"\b([1-5](?:\.0)?)\b", raw_score)
+                match = re.search(r"\b([1-5])\b", raw_score)  # only allow 1–5
                 if match:
                     try:
                         numeric_scores.append(float(match.group(1)))
@@ -1127,6 +1232,7 @@ class LEXamOpenEnded(Dataset):
                 references=[a[0] for a in true_answers]
             )
             return results
+
 
     def evaluate_results(self, results):
         print("LEXam Open-Ended Evaluation:")
