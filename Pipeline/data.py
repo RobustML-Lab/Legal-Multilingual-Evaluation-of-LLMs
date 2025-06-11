@@ -992,35 +992,35 @@ class LEXamMC(Dataset):
         # Select the prompt based on language
         if language == "en":
             self.prompt = (
-                "\nEND OF QUESTION\n"
-                "You are an expert in law and address legal issues in a structured, exam-style manner. "
-                "You are given a multiple-choice question, where only one choice (A, B, C, or D) is correct. "
-                "Assume Swiss law applies unless specifically stated otherwise. If the context of the course justifies it, "
-                "you may consider legal case law, doctrine, or international frameworks.\n\n"
-                "Please reason through the question step-by-step using the following format:\n"
-                "- **Clarify the facts**: Briefly highlight the key facts.\n"
-                "- **Issue Identification**: What legal issue(s) are involved?\n"
-                "- **Rule Explanation**: What legal principles apply and their sources (e.g., statutes, case law)?\n"
-                "- **Application**: Apply those rules to the facts, discussing nuances or ambiguities.\n"
-                "- **Eliminate Incorrect Answers**: Explain briefly why each incorrect choice is less valid.\n"
-                "- **Conclusion**: Clearly state the correct choice (e.g., A, B, C, or D).\n\n"
-                "Format your final answer as follows:\nAnswer: ###C###"
+                "\n\nEND OF QUESTION\n"
+                "You are an expert in law and must answer a multiple-choice question (A, B, C, or D). Only one answer is correct. "
+                "Assume Swiss law applies unless stated otherwise. You must reason internally in a structured, exam-style way to determine the correct answer.\n\n"
+                "Internally, follow this legal reasoning structure:\n"
+                "- **Clarify the Facts**: Identify the key facts.\n"
+                "- **Issue Identification**: What are the relevant legal issue(s)?\n"
+                "- **Rule Explanation**: Apply the correct legal principles and cite their sources (e.g., statutes, case law, doctrine).\n"
+                "- **Application**: Apply the rules to the facts, considering nuances and ambiguities.\n"
+                "- **Eliminate Incorrect Answers**: Identify why each wrong option is invalid.\n"
+                "- **Conclusion**: Choose the correct answer based on this analysis.\n\n"
+                "⚠️ IMPORTANT: You must do this reasoning **internally** and output **only and exactly** the following on a new line:\n"
+                "Answer: ###X###\n"
+                "Where \"X\" is A, B, C, or D. Do NOT write anything else."
             )
         elif language == "de":
             self.prompt = (
-                "\nEND DER FRAGE\n"
-                "Sie sind eine Expertin bzw. ein Experte für Recht und bearbeiten juristische Fragestellungen strukturiert im Stil einer Prüfung. "
-                "Sie erhalten eine Multiple-Choice-Frage, bei der nur eine Antwort (A, B, C oder D) korrekt ist. "
-                "Sofern nicht anders angegeben, gilt das schweizerische Recht. Falls es der Kontext der Aufgabe rechtfertigt, "
-                "dürfen auch Rechtsprechung, Lehre oder internationale Rechtsquellen berücksichtigt werden.\n\n"
-                "Bitte gehen Sie bei der Beantwortung der Frage Schritt für Schritt wie folgt vor:\n"
-                "- **Sachverhalt klären**: Fassen Sie die wesentlichen Fakten kurz zusammen.\n"
-                "- **Rechtsfrage identifizieren**: Welche rechtlichen Fragestellungen ergeben sich?\n"
-                "- **Rechtsnormen erläutern**: Welche rechtlichen Grundsätze sind anwendbar, und woher stammen sie (z. B. Gesetze, Rechtsprechung)?\n"
-                "- **Anwendung**: Wenden Sie die einschlägigen Regeln auf den Sachverhalt an, unter Berücksichtigung von Ausnahmen oder Auslegungsspielräumen.\n"
-                "- **Falsche Antworten ausschließen**: Erklären Sie kurz, warum jede falsche Antwort nicht zutreffend ist.\n"
-                "- **Schlussfolgerung**: Nennen Sie klar die korrekte Antwort (z. B. A, B, C oder D).\n\n"
-                "Formatieren Sie Ihre abschließende Antwort wie folgt:\nAntwort: ###C###"
+                "\n\nENDE DER FRAGE\n"
+                "Du bist eine juristische Expertin bzw. ein juristischer Experte und musst eine Multiple-Choice-Frage beantworten (A, B, C oder D). Nur eine Antwort ist korrekt. "
+                "Sofern nicht anders angegeben, ist schweizerisches Recht anzuwenden. Du musst die Frage intern in strukturierter, examensartiger Weise analysieren, um die richtige Antwort zu bestimmen.\n\n"
+                "Führe intern folgende juristische Prüfungsschritte durch:\n"
+                "- **Sachverhalt klären**: Erkenne die entscheidenden Tatsachen.\n"
+                "- **Rechtsfrage identifizieren**: Welche rechtlichen Probleme stellen sich?\n"
+                "- **Rechtsgrundlagen erklären**: Welche rechtlichen Grundsätze sind anwendbar, und was sind ihre Quellen (z.B. Gesetze, Rechtsprechung, Lehre)?\n"
+                "- **Subsumtion/Anwendung**: Wende die Regeln auf den Sachverhalt an und beachte dabei mögliche Nuancen oder Unklarheiten.\n"
+                "- **Falsche Antworten ausschließen**: Begründe intern, warum jede falsche Option nicht zutrifft.\n"
+                "- **Schlussfolgerung**: Wähle auf dieser Grundlage die richtige Antwort.\n\n"
+                "⚠️ WICHTIG: Diese Überlegungen erfolgen **nur intern**. Gib **ausschließlich und exakt** Folgendes auf einer neuen Zeile aus:\n"
+                "Answer: ###X###\n"
+                "Dabei steht \"X\" für A, B, C oder D. Schreibe **nichts anderes**."
             )
         else:
             raise ValueError(f"Unsupported language: {language}")
@@ -1096,7 +1096,7 @@ class LEXamOpenEnded(Dataset):
         # Language-specific prompt
         if language == "en":
             self.prompt = (
-                "END OF QUESTION\n"
+                "\n\nEND OF QUESTION\n"
                 f"You are an expert in law and address legal issues in a structured, exam-style manner. "
                 "Assume Swiss law applies unless specifically mentioned; if the course context justifies, address legal issues beyond Swiss law as well.\n"
                 "Use precise legal language and formal 'Sie' when answering.\n"
@@ -1112,15 +1112,15 @@ class LEXamOpenEnded(Dataset):
                 "paragraph, number, or letter, if applicable.\n"
                 "If no relevant considerations are found, explicitly state that no pertinent information is available.\n"
                 "If you do have reliable sources, share practical guidance or insights from them.\n"
-                "Respond in the same language as the question.\n"
                 "If the question specifically requests a short answer, provide a concise response.\n"
                 "If the prompt asks you to analyze a specific case provided in the exam, but the text or details of that case have not been provided in the prompt, "
                 "explicitly flag that the required case material is missing.\n"
+                "IMPORTANT: Answer in English"
                 "Answer:"
             )
         elif language == "de":
             self.prompt = (
-                "END DER FRAGE\n"
+                "\n\nEND DER FRAGE\n"
                 f"Sie sind Expertin bzw. Experte für Recht und bearbeiten juristische Fragen strukturiert im Stil einer Prüfung. "
                 "Sofern nicht anders angegeben, gilt das schweizerische Recht. Falls der Kontext der Aufgabe es rechtfertigt, beziehen Sie auch andere Rechtsordnungen mit ein.\n"
                 "Verwenden Sie präzise juristische Fachsprache und die formelle Anrede 'Sie'.\n"
@@ -1134,7 +1134,6 @@ class LEXamOpenEnded(Dataset):
                 "z. B. “Art. 74 Abs. 2 Ziff. 2 OR” oder “Art. 336 lit. a StGB”. Vermeiden Sie ungenaue Verweise wie “Art. 3 ZGB”.\n"
                 "Falls keine relevanten Erwägungen gefunden werden, geben Sie dies explizit an.\n"
                 "Wenn Sie über verlässliche Quellen verfügen, teilen Sie praxisbezogene Hinweise.\n"
-                "Antworten Sie in der Sprache der Frage.\n"
                 "Falls eine kurze Antwort gewünscht ist, antworten Sie entsprechend prägnant.\n"
                 "Falls auf einen konkreten Fall Bezug genommen wird, dieser aber im Text fehlt, weisen Sie darauf hin, dass der Falltext fehlt.\n"
                 "Antwort:"
