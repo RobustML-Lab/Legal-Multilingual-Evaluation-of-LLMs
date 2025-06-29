@@ -87,7 +87,7 @@ def compute_cosine_similarities(languages, feature_set):
     return results
 
 def save_results(results, feature_set):
-    output_dir = f'../output/language_similarity/lang2vec/{feature_set}/'
+    output_dir = f'../data/language_similarity/lang2vec/{feature_set}/'
     os.makedirs(output_dir, exist_ok=True)
     df = pd.DataFrame(results)
     filename = 'language_similarity.csv' if feature_set != 'geo' and feature_set != 'fam' else 'language_distance.csv'
