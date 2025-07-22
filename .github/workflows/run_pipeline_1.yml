@@ -24,8 +24,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_1 }}
           LLM_JUDGE_KEY: ${{ secrets.GEMINI_API_KEY_1 }}
+        working-directory: Pipeline
         run: |
-          python "Pipeline/evaluation_pipeline.py" xquad "['en', 'el', 'ar', 'zh', 'hi', 'ru', 'th']"  200 1 google 0 $LLM_JUDGE_KEY $GEMINI_API_KEY
+          python evaluation_pipeline.py xquad "['en', 'el', 'ar', 'zh', 'tr', 'ru', 'th']"  200 1 google 0 $LLM_JUDGE_KEY $GEMINI_API_KEY
 
       - name: Upload results
         uses: actions/upload-artifact@v4

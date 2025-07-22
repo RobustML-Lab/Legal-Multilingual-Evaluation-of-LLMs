@@ -1,3 +1,4 @@
+import ast
 import copy
 import json
 
@@ -5,7 +6,7 @@ import os
 import csv
 
 import unicodedata
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from nltk.translate.meteor_score import meteor_score
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, average_precision_score
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -16,6 +17,7 @@ import textwrap
 import re
 from sentence_transformers import SentenceTransformer
 from nltk.tokenize import word_tokenize
+from collections import Counter
 from deep_translator import GoogleTranslator
 import evaluate
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
@@ -23,6 +25,8 @@ from rapidfuzz import fuzz
 
 from utils import get_embedding_bert, get_language_from_code, store_judge
 from sklearn.metrics.pairwise import cosine_similarity
+
+from sklearn.metrics import precision_score, recall_score, f1_score
 
 
 
@@ -52,21 +56,27 @@ class Dataset:
         :return: the dataset object
         """
         if name.lower() == 'multi_eurlex':
-            return Multi_Eurlex()
-        elif name.lower() == 'go_emotions':
-            return Go_Emotions()
-        elif name.lower() == 'casehold':
-            return CaseHOLD()
-        elif name.lower() == 'xnli':
-            return XNLI()
+            return Multi_Eurlex(llm_judge)
         elif name.lower() == 'eur_lex_sum':
             return Eur_Lex_Sum()
-        # elif name.lower() == 'multi_legal_pile':
-        #     return Multi_Legal_Pile()
         elif name.lower() == 'europa_random_split':
-            return Europa_Random_Split()
+            return Europa_Random_Split(llm_judge)
+        elif name.lower() == 'covid19':
+            return Covid19EmergencyEvent()
+        elif name.lower() == 'terms_of_service':
+            return OnlineTermsOfServiceDataset()
+        elif name.lower() == 'lexam_mc':
+            return LEXamMC()
+        elif name.lower() == 'lexam_open':
+            return LEXamOpenEnded(llm_judge)
+        elif name.lower() == 'casehold':
+            return CaseHOLD()
         elif name.lower() == 'xquad':
             return XQuAD(llm_judge)
+        elif name.lower() == 'xnli':
+            return XNLI()
+        elif name.lower() == 'go_emotions':
+            return Go_Emotions()
         elif name.lower() == 'sst2':
             return SST2()
         elif name.lower() == 'qqp':
@@ -97,6 +107,10 @@ class Dataset:
         return relevant_labels
 
 
+    ###########################################################################################
+    ###################################### Legal Datasets #####################################
+    ###########################################################################################
+
 class Multi_Eurlex(Dataset):
     """
     Child class of Dataset representing the Multi-EUR-Lex dataset.
@@ -104,63 +118,86 @@ class Multi_Eurlex(Dataset):
 
     label_options = None
 
-    def __init__(self):
-        self.prompt = ("<|endoftext|>Question: Which of the following labels apply? Only answer with the numbers of "
-                       "the labels that are relevant and no"
-                       "further explanation! (You can select more than one): ")
+    def __init__(self, llm_judge):
+        self.prompt = (
+            "<|endoftext|>\n\n\nYou are a legal document classifier. Above is a legal document and below is a list of possible labels.\n"
+            "Your task is to assign the most relevant labels based on the content of the document.\n"
+            "- You may select multiple labels.\n"
+            "- Only select relevant ones.\n"
+            "Return **only the label numbers**, separated by commas, in order of importance (most important first).\n"
+            "- Do not explain your answer or include any other text.\n\n"
+            "Label Options:\n"
+        )
 
-    def load_label_options(self, lang_code):
-        with open("output/eurovoc_categories.json", "r", encoding="utf-8") as file:
-            # Load the JSON data
-            eurovoc_data = json.load(file)
+        self.llm_judge = llm_judge
 
-            # Retrieve categories for the specified language
-            categories = eurovoc_data.get(lang_code, [])
+    def load_label_options(self, lang):
+        # Load files
+        with open("data/multi_eurlex/eurovoc_concepts.json", "r", encoding="utf-8") as f:
+            concepts = json.load(f)
 
-            # Format as a.py lowercase list for label_options
-            label_options = [option.lower() for option in categories]
-            return label_options
+        with open("data/multi_eurlex/eurovoc_descriptors.json", "r", encoding="utf-8") as f:
+            descriptors = json.load(f)
+
+        # Get Level 3 IDs
+        level_3_ids = concepts["level_3"]
+
+        # Filter Level 3 descriptors with IDs
+        level_3_label_tuples = []
+        for concept_id in level_3_ids:
+            label = descriptors.get(concept_id, {}).get(lang)
+            if label:
+                level_3_label_tuples.append((concept_id, label.strip().lower()))
+
+        # Build concept_id → index mapping (starting from 0)
+        self.concept_id_to_index = {
+            cid: i for i, (cid, _) in enumerate(level_3_label_tuples)
+        }
+
+        # Return just the list of label strings (not numbered)
+        return [label for _, label in level_3_label_tuples]
+
+
+    def load_level_3_ids(self):
+        with open("data/multi_eurlex/eurovoc_concepts.json", "r", encoding="utf-8") as f:
+            concepts = json.load(f)
+        return set(concepts["level_3"])
 
     def get_data(self, language, dataset_name, points_per_language):
         """
         :param language: the language for which data should be retrieved
         :return: the data corresponding to the language parameter
         """
+        self.lang = language
+        dataset = load_dataset('coastalcph/multi_eurlex', language, split='test', label_level='level_3', trust_remote_code=True)
+
+        # Get the mapping from label indices to concept IDs
+        self.label_id_to_concept = dataset.features["labels"].feature.names
+
+        # Load level 3 IDs for filtering
+        self.level_3_ids = self.load_level_3_ids()
+
+        # Load label options in the target language, only for Level 3
         self.label_options = self.load_label_options(language)
-        dataset = load_dataset(dataset_name, language, split='test', trust_remote_code=True)
-        if language == 'all_languages':
-            data = self.extract_text_all_languages(dataset)
-        else:
-            data = self.extract_text(dataset)
+
+        # Get the processed document-text + labels
+        data = self.extract_text(dataset)
+
+        # Translate prompt
         inst = translate(language, self.prompt)
         return data[:points_per_language], self.label_options, inst
 
-    def extract_text_all_languages(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a.py list of text data from all languages
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == 5:
-                break
-            documents = item['text']
-            texts = documents.keys()
-            data.append({"text:": text, "labels": item['labels']} for text in texts)
-            count += 1
-        return data
-
     def extract_text(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a.py list of text data in the specified language
-        """
         preprocessed_data = []
+
         for item in dataset:
-            text = item['text']  # Extract text
-            labels = item['labels']  # True label numbers
-            preprocessed_data.append({"text": text, "labels": labels})
+            text = item['text']
+            label_indices = [i for i in item['labels'] if 0 <= i < len(self.label_options)]
+            preprocessed_data.append({
+                "text": text,
+                "labels": label_indices
+            })
+
         return preprocessed_data
 
     def get_true(self, data):
@@ -172,22 +209,78 @@ class Multi_Eurlex(Dataset):
 
     def extract_labels_from_generated_text(self, generated_texts):
         """
-        :param generated_text: the generated text
-        :param label_options: the list of label options
-        :return: a list of predicted labels for the generated text
+        :param generated_texts: list of generated texts
+        :return: a list of predicted labels for each generated text, in order of appearance
         """
+        if self.llm_judge:
+            return [text for text in generated_texts]
+
         all_labels = []
         for text in generated_texts:
-            labels = []
-            for i in range(21):
-                # Use regex to match only whole words for each index, avoiding partial matches
-                if re.search(rf'\b{i}\b', text):
-                    labels.append(i)
-            all_labels.append(labels)
+            if not isinstance(text, str):
+                all_labels.append([])
+                continue
+
+            # Build a list of (position, label) tuples
+            matches = []
+            for i in range(len(self.label_options)):
+                # Match whole word using word boundaries
+                for match in re.finditer(rf'\b{i}\b', text):
+                    matches.append((match.start(), i))
+
+            # Sort by position and extract labels in order
+            ordered_labels = [label for _, label in sorted(matches)]
+            all_labels.append(ordered_labels)
 
         return all_labels
 
+
+    def extract_label_indices(self, response: str) -> list[int] | None:
+        if not response or not isinstance(response, str):
+            return None
+
+        response = response.strip().lower()
+
+        if 'none' in response:
+            return None
+
+        # Extract all numbers from the response
+        numbers = re.findall(r'\d+', response)
+        return [int(num) for num in numbers if 0 <= int(num) < len(self.label_options)]
+
+
     def evaluate(self, true_labels, predicted_labels):
+        if self.llm_judge:
+            prompts = []
+            for pred_answer in predicted_labels:
+                pred_answer = pred_answer or ""
+                prompt = (
+                        "You are evaluating how well a model assigned labels to a text. "
+                        "Multiple labels may apply. The model may have responded using the label numbers, label names, or both. "
+                        f"All content (model answer and labels) is in {get_language_from_code(self.lang)}.\n\n"
+                        "Your task:\n"
+                        "- Use the numbered 'Labels' list below to determine which labels were identified in the model's answer.\n"
+                        "- Return only the numbers of the labels that the model has identified in the order that they were identified, separated by commas.\n"
+                        "- If no labels were identified, return 'None'.\n\n"
+                        f"Answer: {pred_answer.strip()}\n"
+                        "Labels:\n" +
+                        "\n".join(f"{i}: {label}" for i, label in enumerate(self.label_options)) + "\n\n"
+                                                                                                   "Labels identified:"
+                )
+                prompts.append(prompt)
+
+            # Batch call to judge
+            responses = self.llm_judge.judge(prompts)
+
+            # Extract labels from responses
+            labels = [self.extract_label_indices(resp) or [] for resp in responses]
+            predicted_labels = labels
+
+            store_judge(responses, labels, self.lang)
+
+        # Ensure predicted_labels has no None values
+        predicted_labels = [lbl if lbl is not None else [] for lbl in predicted_labels]
+
         mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
 
         # Binarize the true and predicted labels
@@ -200,53 +293,46 @@ class Multi_Eurlex(Dataset):
         # Filter binary_true and binary_pred to only include relevant labels
         filtered_binary_true = binary_true[:, relevant_labels]
         filtered_binary_pred = binary_pred[:, relevant_labels]
+
         # Calculate precision, recall, F1-score
         precision, recall, f1, _ = precision_recall_fscore_support(
             filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
         )
 
+        # Compute mean R-Precision (mRP)
+        r_precisions = []
+        for true, pred in zip(true_labels, predicted_labels):
+            if not true:
+                continue  # Skip samples with no gold labels
+            k = len(true)
+            top_k_pred = pred[:k]  # Take top-k predicted labels
+            correct = len(set(top_k_pred) & set(true))
+            r_precision = correct / k
+            r_precisions.append(r_precision)
+
+        mean_r_precision = np.mean(r_precisions) if r_precisions else 0.0
+
         return {
             "Precision": precision,
             "Recall": recall,
             "F1 Score": f1,
+            "mRP": mean_r_precision,
             "Length": len(true_labels)
         }
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metrics in results.items():
             print(f"Results for {lang}:")
             print(f"Precision: {metrics['Precision']}")
             print(f"Recall: {metrics['Recall']}")
             print(f"F1 Score: {metrics['F1 Score']}")
-            print(f"Length: {metrics['Length']}")
-            print("ENDMETRICS")
-            true_labels = all_true[lang]
-            predicted_labels = all_predicted[lang]
-            for idx, label in enumerate(self.label_options):
-                tp = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx in pred and idx in true])
-                fp = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx in pred and idx not in true])
-                fn = sum([1 for true, pred in zip(true_labels, predicted_labels) if idx not in pred and idx in true])
-                true_num = sum([1 for true in true_labels if idx in true])
-                predicted_num = sum([1 for true in predicted_labels if idx in true])
+            print(f"mRP: {metrics['mRP']}")
+            print(f"Length: {metrics['Length']}\n")
 
-                # Precision and Recall calculations
-                precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-                recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-                f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-
-                print(f"{label} Precision: {precision}")
-                print(f"{label} Recall: {recall}")
-                print(f"{label} F1 Score: {f1}")
-                print(f"True Num: {true_num}")
-                print(f"Predicted Num: {predicted_num}")
-                print("ENDCLASS")
-            print("ENDLANGUAGE")
-
-    def save_first_10_results_to_file_by_language(self, first_ten_answers, true_labels, predicted_labels, label_options,
-                                                  language):
+    def save_first_10_results_to_file_by_language(self, first_ten_answers, language):
         # Define the output folder path
-        output_folder = "output/10_first"
+        output_folder = "output/multi_eurlex/10_first"
 
         # Create the directory if it doesn't exist
         os.makedirs(output_folder, exist_ok=True)
@@ -257,17 +343,12 @@ class Multi_Eurlex(Dataset):
         # Check if the file exists; if not, create it and write headers
         if not os.path.exists(filename):
             with open(filename, 'w', encoding='utf-8') as file:
-                file.write("Text\tTrue Labels\tPredicted Labels\n")
+                file.write("")
 
-        # Write the first 10 samples' text, true labels, and predicted labels to the file
         with open(filename, 'a', encoding='utf-8') as file:
-            for i in range(min(10, len(first_ten_answers))):  # Ensure we don't go out of bounds
+            for i in range(min(10, len(first_ten_answers))):
                 text = first_ten_answers[i]
-                true_label_names = [label_options[idx] for idx in true_labels[i]]
-                predicted_label_names = [label_options[idx] for idx in predicted_labels[i]]
-
-                # Format the data to write
-                file.write(f"{text}\t{', '.join(true_label_names)}\t{', '.join(predicted_label_names)}\n\n\n")
+                file.write(f"{text}\n")
 
 
 class Eur_Lex_Sum(Dataset):
@@ -289,7 +370,7 @@ class Eur_Lex_Sum(Dataset):
         self.language = language
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
-        return data, inst[0]
+        return data, inst
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -349,7 +430,7 @@ class Eur_Lex_Sum(Dataset):
 
         return results
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metrics in results.items():
             print(f"Results for {lang}:")
@@ -376,80 +457,794 @@ class Eur_Lex_Sum(Dataset):
         return labels
 
 
-class Go_Emotions(Dataset):
+class Europa_Random_Split(Dataset):
     """
-    Child class of Dataset representing the GoEmotions dataset.
+    Child class of Dataset representing the Eur-Lex-sum dataset.
     """
 
-    def __init__(self):
-        self.label_options = [
-            "admiration", "amusement", "anger", "annoyance", "approval",
-            "caring", "confusion", "curiosity", "desire", "disappointment",
-            "disapproval", "disgust", "embarrassment", "excitement", "fear",
-            "gratitude", "grief", "joy", "love", "nervousness", "optimism",
-            "pride", "realization", "relief", "remorse", "sadness", "surprise"
-        ]
-        self.prompt = "<|endoftext|>" + (
-                "Question: Which of the following emotions apply to this text? (You can select more than one): "
-                + ', '.join(self.label_options) + " "
-                                                  "Answer:"
+    def __init__(self, llm_judge):
+        self.prompt = (
+            "\n<|endoftext|>\n"
+            "Task: Given the text above, extract a list of keyphrases (short phrases that describe the text) that best summarize the content.\n"
+            "List the keyphrases one per line, in order of importance (most important first).\n"
+            "Include all essential information from the text.\n"
+            "Only return the keyphrases—no explanations or additional text."
         )
+        self.llm_judge = llm_judge
 
-    def get_data(self, language=None):
-        """
-        Loads the GoEmotions dataset.
-        :return: the data and label options
-        """
-        dataset = load_dataset('go_emotions', split='test')
-        return self.extract_text(dataset)
 
-    def extract_text(self, dataset):
+    def get_data(self, language, dataset_name, points_per_language):
         """
-        Extracts and formats the data from the GoEmotions dataset.
+        :param language: the language for which data should be retrieved
+        :return: the data corresponding to the language parameter
+        """
+
+        dataset = load_dataset('NCube/europa-random-split', streaming=True, split='train', trust_remote_code=True)
+        filtered_dataset = (example for example in dataset if example["lang"] == language)
+        self.language = language
+        data = self.extract_text(filtered_dataset, points_per_language)
+        inst = translate(language, self.prompt)
+        return data, inst
+
+    def extract_text(self, dataset, points_per_language):
+        """
         :param dataset: the dataset containing the text data
-        :return: a list of text data and labels
+        :return: a list of text data in the specified language
         """
         data = []
         count = 0
         for item in dataset:
-            if count == 50:
+            if count == points_per_language:
                 break
+            data.append({"text": item['input_text'], "keyphrases": item['keyphrases']})
             count += 1
-            data.append({"text": item['text'], "labels": item['labels']})
         return data
 
-    def get_true_labels(self, data):
+    def get_true(self, data):
         """
-        :param data: list of data entries
-        :return: list of true labels for the dataset
+        :return: the true summary of the data
         """
-        true_labels = [entry['labels'] for entry in data]
-        return true_labels
+        summary = [entry['keyphrases'] for entry in data]
+        return summary
+
+    def format_text_to_width(self, text, width):
+        """
+        Splits a text into lines of a given width.
+        """
+        return "<br>".join(textwrap.wrap(text, width))
+
+    def calculate_f1(self, true_set, pred_list, k=None, threshold=70):
+        """
+        Calculate F1 score using fuzzy matching to account for order insensitivity.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: If specified, use only the top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: Precision, Recall, and F1 score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        matched_pred = set()
+
+        # Iterate over predicted keyphrases
+        for pred in pred_list:
+            # Find the best match in the true set
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    matched_pred.add(pred)
+                    break
+
+        # Calculate true positives
+        true_positives = len(matched_true)
+
+        # Calculate precision and recall
+        precision = true_positives / len(pred_list) if len(pred_list) > 0 else 0.0
+        recall = true_positives / len(true_set) if len(true_set) > 0 else 0.0
+
+        # Calculate F1 score
+        f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+
+        return precision, recall, f1
+
+    def calculate_map(self, true_set, pred_list, k=50, threshold=70):
+        """
+        Calculate Mean Average Precision (MAP) at k using fuzzy matching.
+        :param true_set: Set of true keyphrases.
+        :param pred_list: List of predicted keyphrases.
+        :param k: Use only top-k predictions.
+        :param threshold: Fuzzy matching similarity threshold (0-100).
+        :return: MAP@k score.
+        """
+        if k:
+            pred_list = pred_list[:k]
+
+        matched_true = set()
+        binary_relevance = []
+
+        # Iterate over predictions to calculate binary relevance
+        for pred in pred_list:
+            match_found = False
+            for true in true_set:
+                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
+                    matched_true.add(true)
+                    match_found = True
+                    break
+            binary_relevance.append(1 if match_found else 0)
+
+        if not binary_relevance:
+            return 0.0
+
+        # Calculate precision at each relevant index (1-based)
+        relevant_indices = [i + 1 for i, rel in enumerate(binary_relevance) if rel == 1]
+        precisions = [sum(binary_relevance[:i]) / i for i in relevant_indices]
+
+        # Return mean average precision
+        return sum(precisions) / len(relevant_indices) if relevant_indices else 0.0
+
+    def evaluate(self, references, predictions):
+        """
+        Evaluate predictions using either LLM-based semantic judgment or classic F1/MAP metrics.
+
+        :param references: List of lists of ground truth keyphrases.
+        :param predictions: List of strings (predicted keyphrases, separated by newlines).
+        :param texts: List of original input texts (required for LLM judge).
+        :return: Dictionary of evaluation metrics.
+        """
+        if self.llm_judge:
+            prompts = []
+            for true_list, pred_str in zip(references, predictions):
+                true_keyphrases = "\n".join(true_list)
+                pred_keyphrases = pred_str.strip()
+
+                prompt = (
+                    "You are evaluating how well a generated list of keyphrases produced by a model summarizes a given text.\n"
+                    f"The content is in {get_language_from_code(self.language)}. Use the real (reference) keyphrases as a gold standard.\n\n"
+                    "Your task is to rate how well the generated keyphrases capture the meaning and key ideas of the text, using the following scale:\n\n"
+                    "5 - Excellent: The keyphrases cover all essential topics and match the reference very closely in meaning.\n"
+                    "4 - Good: Most important topics are covered with only minor omissions or differences.\n"
+                    "3 - Fair: Some important information is missing, or keyphrases are partially incorrect.\n"
+                    "2 - Poor: Few key ideas are captured correctly; many important ones are missing.\n"
+                    "1 - Very poor: The keyphrases do not reflect the text meaningfully.\n\n"
+                    "Return only the number.\n\n"
+                    f"Reference keyphrases:\n{true_keyphrases.strip()}\n\n"
+                    f"Generated keyphrases (answer produced by a model):\n{pred_keyphrases}\n\n"
+                    "Score:"
+                )
+
+                prompts.append(prompt)
+
+            scores = self.llm_judge.judge(prompts)
+
+            # Convert scores to numeric
+            numeric_scores = []
+            for raw_score in scores:
+                if isinstance(raw_score, (int, float)):
+                    numeric_scores.append(float(raw_score))
+                    continue
+
+                if not isinstance(raw_score, str):
+                    numeric_scores.append(0.0)
+                    continue
+
+                match = re.search(r"\b([1-5](?:\.0)?)\b", raw_score)
+                if match:
+                    try:
+                        numeric_scores.append(float(match.group(1)))
+                    except ValueError:
+                        numeric_scores.append(0.0)
+                else:
+                    numeric_scores.append(0.0)
+
+            store_judge(scores, numeric_scores, self.language)
+
+            #     return {
+            #         "LLM Similarity Score (1–5)": np.mean(numeric_scores) if numeric_scores else 0.0
+            #     }
+            # else:
+            metrics = {
+                "F1@5": [],
+                "F1@10": [],
+                "F1@M": [],
+                "MAP@50": []
+            }
+
+            for ref, pred_str in zip(references, predictions):
+                # Convert predictions to a list of keyphrases
+                pred_list = [phrase.strip() for phrase in pred_str.split('\n') if phrase.strip()]
+
+                # Convert references to a set for comparison
+                true_set = set(ref)
+
+                # Calculate F1@5, F1@10, and F1@M
+                _, _, f1_5 = self.calculate_f1(true_set, pred_list, k=5)
+                _, _, f1_10 = self.calculate_f1(true_set, pred_list, k=10)
+                _, _, f1_m = self.calculate_f1(true_set, pred_list)
+
+                # Calculate MAP@50
+                map_50 = self.calculate_map(true_set, pred_list, k=50)
+
+                # Append metrics for this instance
+                metrics["F1@5"].append(f1_5)
+                metrics["F1@10"].append(f1_10)
+                metrics["F1@M"].append(f1_m)
+                metrics["MAP@50"].append(map_50)
+
+            # Aggregate metrics across all instances
+            aggregated_metrics = {metric: sum(scores) / len(scores) if scores else 0.0 for metric, scores in metrics.items()}
+
+            aggregated_metrics["LLM Similarity Score"] = np.mean(numeric_scores) if numeric_scores else 0.0
+
+            return aggregated_metrics
+
+    def evaluate_results(self, results):
+        """
+        Display aggregated F1@k, F1@M, and MAP@50 results.
+
+        :param results: Dictionary where each key is a language (e.g., en, el)
+                        and the value is a map of metrics and scores.
+        """
+        for language, scores in results.items():
+            print(f"{language}:")
+            for metric, score in scores.items():
+                print(f"  {metric}: {score:.3f}")
+
+class Covid19EmergencyEvent(Dataset):
+    """
+    Child class of Dataset representing the COVID-19 Emergency Event dataset.
+    """
+
+    def __init__(self):
+        self.label_options = None
+        self.prompt = (
+            "<|endoftext|>\n\n\nYou are a legal document classifier. Above is a legal document and below is a list of possible measures types.\n"
+            "Your task is to assign the most relevant types based on the content of the document.\n"
+            "- You may select multiple labels.\n"
+            "- Only select relevant ones.\n"
+            "Return **only the label numbers**, separated by commas, in order of importance (most important first).\n"
+            "- Do not explain your answer or include any other text.\n\n"
+            "Label Options:\n"
+        )
+
+    def get_data(self, language, dataset_name, points_per_language):
+        """
+        :param language: ISO code (e.g., 'fr', 'en')
+        :param dataset_name: unused
+        :param points_per_language: how many points to return
+        :return: (data, label_options, prompt)
+        """
+        # Load dataset and filter by language
+        dataset_dict = load_dataset("joelniklaus/covid19_emergency_event")
+
+        # Combine train + validation + test into one unified dataset
+        dataset = concatenate_datasets([
+            dataset_dict['train'],
+            dataset_dict['validation'],
+            dataset_dict['test']
+        ])
+        dataset = dataset.filter(lambda x: x["language"] == language and len(x["all_events"]) > 0)
+
+        # Load label translations from a single file, then select the language
+        with open("data/covid19_emergency_event/covid19_measures.json", "r", encoding="utf-8") as f:
+            all_labels = json.load(f)
+            self.label_options = all_labels[language]
+
+        # Preprocess and extract texts and label indices
+        data = self.extract_text(dataset)
+
+        inst = translate(language, self.prompt)
+        return data[:points_per_language], self.label_options, inst
+
+    def extract_text(self, dataset):
+        preprocessed_data = []
+
+        for item in dataset:
+            text = item["text"]
+            events = item.get("all_events", [])
+
+            # Convert event names like "event3" to indices (i.e., 2)
+            label_indices = [
+                int(re.sub(r"event", "", event)) - 1  # start from 0
+                for event in events
+                if event.startswith("event")
+            ]
+
+            preprocessed_data.append({
+                "text": text,
+                "labels": label_indices
+            })
+
+        return preprocessed_data
+
+    def get_true(self, data):
+        return [entry["labels"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        for text in generated_texts:
+            if not isinstance(text, str):
+                all_labels.append([])
+                continue
+
+            matches = []
+            for i in range(len(self.label_options)):
+                for match in re.finditer(rf"\b{i}\b", text):
+                    matches.append((match.start(), i))
+
+            ordered_labels = [label for _, label in sorted(matches)]
+            all_labels.append(ordered_labels)
+        return all_labels
+
+    def extract_label_indices(self, response: str) -> list[int] | None:
+        if not response or not isinstance(response, str):
+            return None
+        response = response.strip().lower()
+        if "none" in response:
+            return None
+        numbers = re.findall(r"\d+", response)
+        return [int(num) for num in numbers if 0 <= int(num) < len(self.label_options)]
 
     def evaluate(self, true_labels, predicted_labels):
-        """
-        Evaluates the model using precision, recall, and F1 score.
-        :param true_labels: list of true labels
-        :param predicted_labels: list of predicted labels
-        """
+        predicted_labels = [lbl if lbl is not None else [] for lbl in predicted_labels]
         mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
-
         binary_true = mlb.fit_transform(true_labels)
         binary_pred = mlb.transform(predicted_labels)
 
+        # Filter to relevant labels (used at least once)
         relevant_labels = np.where((binary_true.sum(axis=0) + binary_pred.sum(axis=0)) > 0)[0]
         filtered_binary_true = binary_true[:, relevant_labels]
         filtered_binary_pred = binary_pred[:, relevant_labels]
 
-        precision, recall, f1, _ = precision_recall_fscore_support(
+        # Per-sample F1
+        per_sample_f1 = []
+        for t, p in zip(filtered_binary_true, filtered_binary_pred):
+            precision_i = np.sum(t & p) / np.sum(p) if np.sum(p) > 0 else 0.0
+            recall_i = np.sum(t & p) / np.sum(t) if np.sum(t) > 0 else 0.0
+            f1_i = 2 * precision_i * recall_i / (precision_i + recall_i) if (precision_i + recall_i) > 0 else 0.0
+            per_sample_f1.append(f1_i)
+
+        mean_f1 = np.mean(per_sample_f1)
+        var_f1 = np.var(per_sample_f1)
+
+        # Global macro metrics
+        precision, recall, _, _ = precision_recall_fscore_support(
             filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
         )
 
-        print(f"Precision: {precision}")
-        print(f"Recall: {recall}")
-        print(f"F1 Score: {f1}")
+        # Per-sample R-Precision
+        r_precisions = []
+        for true, pred in zip(true_labels, predicted_labels):
+            if not true:
+                continue
+            k = len(true)
+            top_k_pred = pred[:k]
+            correct = len(set(top_k_pred) & set(true))
+            r_precision = correct / k
+            r_precisions.append(r_precision)
+
+        mean_r_precision = np.mean(r_precisions) if r_precisions else 0.0
+        var_r_precision = np.var(r_precisions) if r_precisions else 0.0
+
+        return {
+            "Precision": precision,
+            "Recall": recall,
+            "F1 Score": mean_f1,
+            "F1 Variance": var_f1,
+            "mRP": mean_r_precision,
+            "mRP Variance": var_r_precision,
+            "Length": len(true_labels)
+        }
+
+    def evaluate_results(self, results):
+        for lang, metrics in results.items():
+            print(f"Results for {lang}:")
+            print(f"Precision: {metrics['Precision']:.4f}")
+            print(f"Recall: {metrics['Recall']:.4f}")
+            print(f"F1 Score: {metrics['F1 Score']:.4f} ± {metrics['F1 Variance']:.4f}")
+            print(f"mRP: {metrics['mRP']:.4f} ± {metrics['mRP Variance']:.4f}")
+            print(f"Length: {metrics['Length']}\n")
 
 
+class OnlineTermsOfServiceDataset(Dataset):
+    """
+    Dataset for classifying fairness of online terms of service.
+    It should be called as a generative task even though it is classification.
+    """
+
+    LABELS = ["clearly_fair", "potentially_unfair", "clearly_unfair"]
+    LABEL_TO_INDEX = {label: idx for idx, label in enumerate(LABELS)}
+    INDEX_TO_LABEL = {idx: label for label, idx in LABEL_TO_INDEX.items()}
+
+    def __init__(self):
+        self.label_options = self.LABELS
+        self.prompt = (
+            "<|endoftext|>\n\n\nYou are a legal document fairness classifier. Above is a clause from an online Terms of Service document.\n"
+            "Your task is to classify the fairness of the clause strictly based on its legal implications and potential consumer impact.\n"
+            "- Do not let tone, phrasing, or politeness influence your decision.\n"
+            "- Be objective and impartial — focus solely on how the clause affects users’ rights and obligations.\n"
+            "- Do not hesitate to select a strong classification if the clause imposes a significant imbalance or limitation.\n"
+            "- Only select one of the following labels:\n"
+            "0: clearly fair\n"
+            "1: potentially unfair\n"
+            "2: clearly unfair\n"
+            "Return **only the label number**.\n"
+            "- Do not explain your answer or include any other text.\n"
+        )
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("joelniklaus/online_terms_of_service", split='train')
+
+        # Filter for language and non-empty fairness
+        dataset = dataset.filter(lambda x: x.get("language") == language and x.get("unfairness_level") in self.LABELS)
+
+        self.label_options = [0, 1, 2]
+        # Build data list
+        data = [{
+            "text": item["sentence"],
+            "labels": [self.LABEL_TO_INDEX[item["unfairness_level"]]]
+        } for item in dataset]
+
+        return data[:points_per_language], [], self.prompt
+
+    def get_true(self, data):
+        return [entry["labels"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        for text in generated_texts:
+            if not isinstance(text, str):
+                all_labels.append([])
+                continue
+            matches = re.findall(r"\b\d+\b", text)
+            if matches:
+                all_labels.append([int(matches[0])])
+            else:
+                all_labels.append([])
+        return all_labels
+
+    def extract_label_indices(self, response: str):
+        if not response or not isinstance(response, str):
+            return None
+        numbers = re.findall(r"\d+", response)
+        return [int(numbers[0])] if numbers else None
+
+    def evaluate(self, true_labels, predicted_labels):
+        y_true = []
+        y_pred = []
+        confusion_counter = Counter()
+        penalties = []
+
+        for i, (t, p) in enumerate(zip(true_labels, predicted_labels)):
+            true_label = t[0] if t and len(t) > 0 else None
+            pred_label = p[0] if p and len(p) > 0 else None
+
+            if true_label is None or pred_label is None:
+                print(f"[Missing] Index {i}: true = {t}, predicted = {p}")
+
+            # Use -1 to mark missing
+            true_idx = true_label if true_label is not None else -1
+            pred_idx = pred_label if pred_label is not None else -1
+
+            y_true.append(true_idx)
+            y_pred.append(pred_idx)
+
+            # Record confusion
+            confusion_counter[
+                (self.INDEX_TO_LABEL.get(true_idx, "NONE"),
+                 self.INDEX_TO_LABEL.get(pred_idx, "NONE"))
+            ] += 1
+
+            # Penalty logic
+            if true_idx == -1 or pred_idx == -1:
+                penalty = 1.0
+            elif true_idx == pred_idx:
+                penalty = 0.0
+            elif abs(true_idx - pred_idx) == 1:
+                penalty = 0.5
+            else:
+                penalty = 1.0
+            penalties.append(penalty)
+
+        # Calculate accuracy (ignoring -1s)
+        valid = [(t, p) for t, p in zip(y_true, y_pred) if t != -1 and p != -1]
+        correct = sum(1 for t, p in valid if t == p)
+        accuracy = correct / len(valid) if valid else 0.0
+
+        return {
+            "Accuracy": accuracy,
+            "Penalty Mean": np.mean(penalties),
+            "Penalty Variance": np.var(penalties),
+            "Length": len(y_true),
+            "Confusion Pairs": dict(confusion_counter)
+        }
+
+
+
+    def evaluate_results(self, results):
+        output_path = "output/terms_of_service/results.txt"
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            for lang, metrics in results.items():
+                f.write(f"Accuracy: {metrics['Accuracy']:.4f}\n")
+                f.write(f"Penalty: {metrics['Penalty Mean']:.4f} ± {metrics['Penalty Variance']:.4f}\n")
+                f.write(f"Length: {metrics['Length']}\n")
+                f.write("Confusion Pairs:\n")
+                for (true_label, pred_label), count in metrics["Confusion Pairs"].items():
+                    f.write(f"  True: {true_label} → Pred: {pred_label}: {count}\n")
+                f.write("\n")
+
+        print(f"Evaluation results saved to {output_path}")
+
+
+class LEXamMC(Dataset):
+    def __init__(self):
+        # Default prompt (will be overwritten per language in get_data)
+        self.prompt = ""
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("LEXam-Benchmark/LEXam", "mcq_4_choices", split="test", trust_remote_code=True)
+
+        # Filter for the selected language and valid gold index
+        dataset = [item for item in dataset if item["language"] == language and item["gold"] is not None]
+        # Select the prompt based on language
+        if language == "en":
+            self.prompt = (
+                "\n\nEND OF QUESTION\n"
+                "You are an expert in law and must answer a multiple-choice question (A, B, C, or D). Only one answer is correct. "
+                "Assume Swiss law applies unless stated otherwise. You must reason internally in a structured, exam-style way to determine the correct answer.\n\n"
+                "Internally, follow this legal reasoning structure:\n"
+                "- **Clarify the Facts**: Identify the key facts.\n"
+                "- **Issue Identification**: What are the relevant legal issue(s)?\n"
+                "- **Rule Explanation**: Apply the correct legal principles and cite their sources (e.g., statutes, case law, doctrine).\n"
+                "- **Application**: Apply the rules to the facts, considering nuances and ambiguities.\n"
+                "- **Eliminate Incorrect Answers**: Identify why each wrong option is invalid.\n"
+                "- **Conclusion**: Choose the correct answer based on this analysis.\n\n"
+                "⚠️ IMPORTANT: You must do this reasoning **internally** and output **only and exactly** the following on a new line:\n"
+                "Answer: ###X###\n"
+                "Where \"X\" is A, B, C, or D. Do NOT write anything else."
+            )
+        elif language == "de":
+            self.prompt = (
+                "\n\nENDE DER FRAGE\n"
+                "Du bist eine juristische Expertin bzw. ein juristischer Experte und musst eine Multiple-Choice-Frage beantworten (A, B, C oder D). Nur eine Antwort ist korrekt. "
+                "Sofern nicht anders angegeben, ist schweizerisches Recht anzuwenden. Du musst die Frage intern in strukturierter, examensartiger Weise analysieren, um die richtige Antwort zu bestimmen.\n\n"
+                "Führe intern folgende juristische Prüfungsschritte durch:\n"
+                "- **Sachverhalt klären**: Erkenne die entscheidenden Tatsachen.\n"
+                "- **Rechtsfrage identifizieren**: Welche rechtlichen Probleme stellen sich?\n"
+                "- **Rechtsgrundlagen erklären**: Welche rechtlichen Grundsätze sind anwendbar, und was sind ihre Quellen (z.B. Gesetze, Rechtsprechung, Lehre)?\n"
+                "- **Subsumtion/Anwendung**: Wende die Regeln auf den Sachverhalt an und beachte dabei mögliche Nuancen oder Unklarheiten.\n"
+                "- **Falsche Antworten ausschließen**: Begründe intern, warum jede falsche Option nicht zutrifft.\n"
+                "- **Schlussfolgerung**: Wähle auf dieser Grundlage die richtige Antwort.\n\n"
+                "⚠️ WICHTIG: Diese Überlegungen erfolgen **nur intern**. Gib **ausschließlich und exakt** Folgendes auf einer neuen Zeile aus:\n"
+                "Answer: ###X###\n"
+                "Dabei steht \"X\" für A, B, C oder D. Schreibe **nichts anderes**."
+            )
+        else:
+            raise ValueError(f"Unsupported language: {language}")
+
+        data = self.extract_text(dataset[:points_per_language])
+        return data, [], self.prompt
+
+    def extract_text(self, dataset_slice):
+        data = []
+        lettered_choices = ['A', 'B', 'C', 'D']
+        for item in dataset_slice:
+            try:
+                # Safely evaluate the string to get list of choices
+                choices = ast.literal_eval(item["choices"]) if isinstance(item["choices"], str) else item["choices"]
+            except Exception as e:
+                print(f"Failed to parse choices: {item['choices']} - {e}")
+                continue  # skip malformed item
+
+            # Format with letters A–D
+            choices_text = "\n".join([
+                f"{lettered_choices[i]}. {choice}" for i, choice in enumerate(choices)
+            ])
+
+            full_text = f"{item['question']}\n\n{choices_text}"
+            data.append({
+                "text": full_text,
+                "label": item["gold"] if item["gold"] is not None else None
+            })
+        return data
+
+    def get_true(self, data):
+        return [entry["label"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        all_labels = []
+        letter_to_index = {"A": 0, "B": 1, "C": 2, "D": 3}
+
+        for text in generated_texts:
+            if isinstance(text, str):
+                # Try to match format like: "Answer: ###C###"
+                match = re.search(r"###([A-D])###", text.strip(), re.IGNORECASE)
+                if match:
+                    label = letter_to_index[match.group(1).upper()]
+                else:
+                    label = None
+            else:
+                label = None
+            all_labels.append(label)
+
+        return all_labels
+
+
+    def evaluate(self, true_labels, predicted_labels):
+        return {
+            "Accuracy": accuracy_score(true_labels, predicted_labels)
+        }
+
+    def evaluate_results(self, results):
+        for lang, metric in results.items():
+            print(f"LEXam MC Results for {lang}: Accuracy = {metric['Accuracy']:.4f}")
+
+
+
+class LEXamOpenEnded(Dataset):
+    def __init__(self, llm_judge=None):
+        self.prompt = ""
+        self.llm_judge = llm_judge
+
+    def get_data(self, language, dataset_name, points_per_language):
+        dataset = load_dataset("LEXam-Benchmark/LEXam", "open_question", split="test", trust_remote_code=True)
+        open_questions = [q for q in dataset if q["language"] == language]
+        print(len(open_questions))
+        # Language-specific prompt
+        if language == "en":
+            self.prompt = (
+                "\n\nEND OF QUESTION\n"
+                f"You are an expert in law and address legal issues in a structured, exam-style manner. "
+                "Assume Swiss law applies unless specifically mentioned; if the course context justifies, address legal issues beyond Swiss law as well.\n"
+                "Use precise legal language and formal 'Sie' when answering.\n"
+                "Do NOT state any disclaimer or refer to the need for external legal advice.\n"
+                "Do NOT request the user to consult laws or to research on their own.\n"
+                "Offer focused legal analyses and individualized advice.\n"
+                "Speak directly and authoritatively without mentioning that your response is merely for general information.\n"
+                "Incorporate Swiss-specific legal terminology.\n"
+                "If you have discovered relevant legal considerations (Erwägungen), respond with a concise, clear legal analysis.\n"
+                "Cite only from your identified considerations.\n"
+                "Always cite the specific legal provision, explicitly indicating paragraphs (Abs.), numbers (Ziff.), or letters (lit.) where available "
+                "(e.g., “Art. 74 Abs. 2 Ziff. 2 OR”, “Art. 336 lit. a StGB”). Avoid general references (such as “Art. 3 ZGB”) without mentioning the specific "
+                "paragraph, number, or letter, if applicable.\n"
+                "If no relevant considerations are found, explicitly state that no pertinent information is available.\n"
+                "If you do have reliable sources, share practical guidance or insights from them.\n"
+                "If the question specifically requests a short answer, provide a concise response.\n"
+                "If the prompt asks you to analyze a specific case provided in the exam, but the text or details of that case have not been provided in the prompt, "
+                "explicitly flag that the required case material is missing.\n"
+                "IMPORTANT: Answer in English"
+                "Answer:"
+            )
+        elif language == "de":
+            self.prompt = (
+                "\n\nEND DER FRAGE\n"
+                f"Sie sind Expertin bzw. Experte für Recht und bearbeiten juristische Fragen strukturiert im Stil einer Prüfung. "
+                "Sofern nicht anders angegeben, gilt das schweizerische Recht. Falls der Kontext der Aufgabe es rechtfertigt, beziehen Sie auch andere Rechtsordnungen mit ein.\n"
+                "Verwenden Sie präzise juristische Fachsprache und die formelle Anrede 'Sie'.\n"
+                "Geben Sie keine Hinweise auf eine externe Rechtsberatung und fordern Sie nicht zur eigenen Recherche auf.\n"
+                "Bieten Sie eine fokussierte juristische Analyse und individuelle Empfehlungen.\n"
+                "Sprechen Sie direkt und autoritativ, ohne zu erwähnen, dass es sich nur um allgemeine Informationen handelt.\n"
+                "Verwenden Sie schweizerisch-rechtliche Terminologie.\n"
+                "Wenn Sie relevante Erwägungen gefunden haben, geben Sie eine klare, prägnante juristische Analyse.\n"
+                "Zitieren Sie nur auf Grundlage dieser Erwägungen.\n"
+                "Nennen Sie stets die genaue Rechtsnorm mit Absatz (Abs.), Ziffer (Ziff.) oder Buchstabe (lit.), "
+                "z. B. “Art. 74 Abs. 2 Ziff. 2 OR” oder “Art. 336 lit. a StGB”. Vermeiden Sie ungenaue Verweise wie “Art. 3 ZGB”.\n"
+                "Falls keine relevanten Erwägungen gefunden werden, geben Sie dies explizit an.\n"
+                "Wenn Sie über verlässliche Quellen verfügen, teilen Sie praxisbezogene Hinweise.\n"
+                "Falls eine kurze Antwort gewünscht ist, antworten Sie entsprechend prägnant.\n"
+                "Falls auf einen konkreten Fall Bezug genommen wird, dieser aber im Text fehlt, weisen Sie darauf hin, dass der Falltext fehlt.\n"
+                "Antwort:"
+            )
+        else:
+            raise ValueError(f"Unsupported language: {language}")
+
+        self.language = language
+        data = self.extract_text(open_questions[:points_per_language])
+        return data, self.prompt
+
+    def extract_text(self, dataset_slice):
+        return [{"text": item["question"], "answers": [item["answer"]], "question": item["question"]} for item in dataset_slice]
+
+    def get_true(self, data):
+        return [entry["answers"] for entry in data]
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        return generated_texts
+
+    def evaluate(self, true_answers, predicted_answers, questions):
+        if self.llm_judge:
+            prompts = []
+            for reference_list, prediction, question in zip(true_answers, predicted_answers, questions):
+                reference = reference_list[0] if reference_list else ""
+                prediction = prediction or ""
+                question = question or ""
+
+                language_name = get_language_from_code(self.language)
+
+                prompt = (
+                    "Act as a Judge specializing in the evaluation of Swiss law school exams. Your task is to assess how well "
+                    "the response aligns with the reference answer, focusing strictly on accuracy, completeness, and legal reasoning.\n\n"
+                    f"The content is in: {language_name}.\n\n"
+                    "Goal: Assess how well the response aligns with the reference answer, focusing strictly on legal correctness and reasoning.\n"
+                    "Context: You are provided with a Model’s Answer to a law school exam question, and a Reference Answer.\n\n"
+                    "Return format:\n"
+                    "Only return the final correctness score on a scale from 1 to 5 (integers only).\n"
+                    "Do not provide any explanation, feedback, or comments.\n"
+                    "Strictly follow the scale:\n"
+                    "- 5 = Fully correct: all key legal points addressed, no significant errors.\n"
+                    "- 4 = Mostly correct: most legal points covered; minor issues.\n"
+                    "- 3 = Partially correct: some relevant reasoning, but major omissions or mistakes.\n"
+                    "- 2 = Barely correct: minimal legal relevance; mostly incorrect or incomplete.\n"
+                    "- 1 = Incorrect: fails to address the legal substance of the question.\n\n"
+                    "Warnings:\n"
+                    "- In some cases, the reference answer may include only keywords or factual elements to be examined, along with (+), (–), or (+/–).\n"
+                    "- (+) means the element must be affirmed.\n"
+                    "- (–) means the element must be denied.\n"
+                    "- (+/–) indicates that arguments in either direction are acceptable if legally sound.\n"
+                    "- Deviations or additional elements not found in the reference answer should generally be penalized unless you are certain they are legally correct and relevant.\n"
+                    "- Assume the reference answer includes all information necessary for a perfect response.\n"
+                    "- The reference answer may contain citations (e.g., from books or law review articles), which the response does not need to replicate.\n"
+                    "- However, statutes should be cited precisely, specifying Abs., Ziff., or lit. whenever applicable.\n\n"
+                    "Judge the case below and return only the numeric score.\n\n"
+                    f"Question:\n\"\"\"{question.strip()}\"\"\"\n\n"
+                    f"Reference Answer:\n\"\"\"{reference.strip()}\"\"\"\n\n"
+                    f"Model’s Answer:\n\"\"\"{prediction.strip()}\"\"\"\n\n"
+                    "Correctness Score:"
+                )
+
+                prompts.append(prompt)  # <- move inside loop
+
+            scores = self.llm_judge.judge(prompts)
+
+            # Convert scores to numeric
+            numeric_scores = []
+            for raw_score in scores:
+                if isinstance(raw_score, (int, float)):
+                    numeric_scores.append(float(raw_score))
+                    continue
+
+                if not isinstance(raw_score, str):
+                    numeric_scores.append(0.0)
+                    continue
+
+                match = re.search(r"\b([1-5])\b", raw_score)  # only allow 1–5
+                if match:
+                    try:
+                        numeric_scores.append(float(match.group(1)))
+                    except ValueError:
+                        numeric_scores.append(0.0)
+                else:
+                    numeric_scores.append(0.0)
+
+            store_judge(scores, numeric_scores, self.language)
+
+            return {"LLM Score": np.mean(numeric_scores) if numeric_scores else 0.0}
+
+        else:
+            # Default: ROUGE
+            rouge = evaluate.load("rouge")
+            results = rouge.compute(
+                predictions=predicted_answers,
+                references=[a[0] for a in true_answers]
+            )
+            return results
+
+
+    def evaluate_results(self, results):
+        print("LEXam Open-Ended Evaluation:")
+        for key, value in results.items():
+            if isinstance(value, (float, int)):
+                print(f"{key}: {value:.4f}")
+            else:
+                print(f"{key}: {value}")
+
+
+"""
+Non Multilingual Dataset
+"""
 class CaseHOLD(Dataset):
     """
     Child class of Dataset representing the CaseHOLD dataset.
@@ -531,384 +1326,9 @@ class CaseHOLD(Dataset):
         return ["F"]
 
 
-class XNLI(Dataset):
-    """
-    Child class of Dataset representing the XNLI dataset.
-    """
-    def __init__(self):
-        self.label_options = ["0", "1", "2"]
-        self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
-        self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
-                           "the hypothesis, or neither. The answer should be '0' for entailment, "
-                           "'1' for neither, or '2' for contradiction. The answer should be exactly '0', '1', or '2'."
-                           )
-
-    def get_data(self, language, dataset_name, points):
-        """
-        Loads the XNLI dataset for the specified language.
-        :param language: the language of the dataset
-        :return: the data and label options
-        """
-        dataset = load_dataset('xnli', language, split='test', trust_remote_code=True)
-        self.language = language
-        if language == 'all_languages':
-            data = self.extract_text_all_languages(dataset)
-        else:
-            data = self.extract_text(dataset, points)
-        return data, self.label_options, translate(language, self.prompt)[0]
-
-    def extract_text_all_languages(self, dataset):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a list of text data from all languages
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == 5:
-                break
-            documents = item['text']
-            texts = documents.keys()
-            data.append({"text:": text, "labels": item['labels']} for text in texts)
-            count += 1
-
-    def extract_text(self, dataset, points):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a list of text data in the specified language
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == points:
-                break
-            translator = GoogleTranslator(source="en", target=self.language)
-            if self.language == "ar":
-                text = item["hypothesis"] + translator.translate("Hypothesis: ") + item["premise"] + translator.translate("Premise: ")
-            else:
-                text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
-            data.append({"text": text, "label": item['label']})
-            count += 1
-        return data
-
-    def evaluate(self, true_labels, predicted_labels):
-        """
-        Evaluates the model using precision, recall, F1 score, and accuracy.
-        :param true_labels: list of true labels
-        :param predicted_labels: list of predicted labels
-        """
-        accuracy = accuracy_score(true_labels, predicted_labels)
-        file_path = "XNLI_evaluation.csv"
-        file_exists = os.path.isfile(file_path)
-        with open(file_path, mode='a', newline='') as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(["Language", "Accuracy"])
-            writer.writerow([self.language, accuracy])
-
-        print(f"Accuracy {self.language}: {accuracy}")
-
-    import re
-
-    def extract_labels_from_generated_text(self, generated_texts):
-        """
-        Extracts the first predicted label (0, 1, or 2) from the model's response.
-        :param generated_texts: List of generated model outputs.
-        :return: List of extracted labels (0, 1, 2), or None if no valid label is found.
-        """
-        word_to_digit = {"zero": 0, "one": 1, "two": 2}  # Handle word numbers
-        all_labels = []
-
-        print(generated_texts)
-
-        for text in generated_texts:
-            if text is not None:
-                text_lower = text.lower()
-
-                # Remove punctuation for easier matching
-                text_lower = re.sub(r"[^\w\s]", "", text_lower)
-
-                # Try to find exact numbers first
-                match = re.findall(r"\b(0|1|2)\b", text_lower)
-
-                if match:
-                    all_labels.append(int(match[0]))  # Extract first match
-                    continue  # Skip to next iteration
-
-                # Try matching word numbers ("zero", "one", "two")
-                for word, digit in word_to_digit.items():
-                    if re.search(rf"\b{word}\b", text_lower):
-                        all_labels.append(digit)
-                        break  # Stop after first valid match
-                else:
-                    all_labels.append(None)  # No valid label found
-            else:
-                all_labels.append(None)
-
-        return all_labels
-
-
-
-    def get_true(self, data):
-        """
-        :return: A list of true labels for the dataset
-        """
-        return [entry['label'] for entry in data]
-
-# class Multi_Legal_Pile(Dataset):
-#     """
-#     Child class of Dataset representing the Eur-Lex-sum dataset.
-#     """
-#
-#     def __init__(self):
-#         self.prompt = "\n<|endoftext|>\nTask: Summarize the text above. Include all the important information."
-#
-#     def get_data(self, language, dataset_name, points_per_language):
-#         """
-#         :param language: the language for which data should be retrieved
-#         :return: the data corresponding to the language parameter
-#         """
-#         config = f"{language}_legal-mc4"
-#         dataset = load_dataset('joelniklaus/Multi_Legal_Pile', config, streaming=True, split='train', trust_remote_code=True)
-#         limited_data = list(islice(dataset, points_per_language))
-#         print(limited_data[0])
-#         self.language = language
-#         data = self.extract_text(limited_data, points_per_language)
-#         inst = translate(language, self.prompt)
-#         return data, inst[0]
-#
-#     def extract_text(self, dataset, points_per_language):
-#         """
-#         :param dataset: the dataset containing the text data
-#         :return: a list of text data in the specified language
-#         """
-#         data = []
-#         count = 0
-#         for item in dataset:
-#             if count == points_per_language:
-#                 break
-#             data.append({"text": item['reference'], "summary": item['summary']})
-#             count += 1
-#         return data
-#
-#     def get_true(self, data):
-#         """
-#         :return: the true summary of the data
-#         """
-#         summary = [entry['summary'] for entry in data]
-#         return summary
-#
-#     def format_text_to_width(self, text, width):
-#         """
-#         Splits a text into lines of a given width.
-#         """
-#         return "<br>".join(textwrap.wrap(text, width))
-#
-#     def evaluate(self, references, predictions):
-#         rouge = evaluate.load("rouge", cache_dir=f"/tmp/huggingface_cache/{os.getpid()}")
-#
-#         results = rouge.compute(predictions=predictions, references=references)
-#
-#         file_path = "output/Eur_Lex_Sum_evaluation.md"
-#         file_exists = os.path.isfile(file_path)
-#         with open(file_path, mode='a', encoding='utf-8') as f:
-#             if not file_exists:
-#                 f.write("| Language | Reference Summary                          | Predicted Summary                           |\n")
-#                 f.write("|----------|------------------------------------------|--------------------------------------------|\n")
-#             count = 0
-#             for reference, prediction in zip(references, predictions):
-#                 # Wrap text to fit within 50 characters
-#                 formatted_reference = self.format_text_to_width(reference, 50)
-#                 formatted_prediction = self.format_text_to_width(prediction, 50)
-#                 # Write formatted text into md table
-#                 f.write(f"| {self.language} | {formatted_reference} | {formatted_prediction} |\n")
-#                 count += 1
-#                 if count == 3:
-#                     break
-#
-#         return results
-#
-#     def evaluate_results(self, results, all_true, all_predicted):
-#         # Print out the results for each language
-#         for lang, metrics in results.items():
-#             print(f"Results for {lang}:")
-#             print(f"Rouge1: {metrics['rouge1']}")
-#             print(f"Rouge2: {metrics['rouge2']}")
-#             print(f"RougeL: {metrics['rougeL']}")
-#             print("-------------------------------------------------------------")
-
-
-class Europa_Random_Split(Dataset):
-    """
-    Child class of Dataset representing the Eur-Lex-sum dataset.
-    """
-
-    def __init__(self):
-        self.prompt = "\n<|endoftext|>\nTask: Give me a list of keyphrases for the text above. Only give me the keyphrases separated by a new line. Give the most important keyphrases first. Include all the important information."
-
-    def get_data(self, language, dataset_name, points_per_language):
-        """
-        :param language: the language for which data should be retrieved
-        :return: the data corresponding to the language parameter
-        """
-
-        print("Reached get_data")
-        dataset = load_dataset('NCube/europa-random-split', streaming=True, split='train', trust_remote_code=True)
-        filtered_dataset = (example for example in dataset if example["lang"] == language)
-        self.language = language
-        data = self.extract_text(filtered_dataset, points_per_language)
-        inst = translate(language, self.prompt)
-        return data, inst[0]
-
-    def extract_text(self, dataset, points_per_language):
-        """
-        :param dataset: the dataset containing the text data
-        :return: a list of text data in the specified language
-        """
-        data = []
-        count = 0
-        for item in dataset:
-            if count == points_per_language:
-                break
-            data.append({"text": item['input_text'], "keyphrases": item['keyphrases']})
-            count += 1
-        return data
-
-    def get_true(self, data):
-        """
-        :return: the true summary of the data
-        """
-        summary = [entry['keyphrases'] for entry in data]
-        return summary
-
-    def format_text_to_width(self, text, width):
-        """
-        Splits a text into lines of a given width.
-        """
-        return "<br>".join(textwrap.wrap(text, width))
-
-    def calculate_f1(self, true_set, pred_list, k=None, threshold=80):
-        """
-        Calculate F1 score using fuzzy matching to account for order insensitivity.
-        :param true_set: Set of true keyphrases.
-        :param pred_list: List of predicted keyphrases.
-        :param k: If specified, use only the top-k predictions.
-        :param threshold: Fuzzy matching similarity threshold (0-100).
-        :return: Precision, Recall, and F1 score.
-        """
-        if k:
-            pred_list = pred_list[:k]
-
-        matched_true = set()
-        matched_pred = set()
-
-        # Iterate over predicted keyphrases
-        for pred in pred_list:
-            # Find the best match in the true set
-            for true in true_set:
-                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
-                    matched_true.add(true)
-                    matched_pred.add(pred)
-                    break
-
-        # Calculate true positives
-        true_positives = len(matched_true)
-
-        # Calculate precision and recall
-        precision = true_positives / len(pred_list) if len(pred_list) > 0 else 0.0
-        recall = true_positives / len(true_set) if len(true_set) > 0 else 0.0
-
-        # Calculate F1 score
-        f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
-
-        return precision, recall, f1
-
-    def calculate_map(self, true_set, pred_list, k=50, threshold=80):
-        """
-        Calculate Mean Average Precision (MAP) at k using fuzzy matching.
-        :param true_set: Set of true keyphrases.
-        :param pred_list: List of predicted keyphrases.
-        :param k: Use only top-k predictions.
-        :param threshold: Fuzzy matching similarity threshold (0-100).
-        :return: MAP score.
-        """
-        if k:
-            pred_list = pred_list[:k]
-
-        matched_true = set()
-        binary_relevance = []
-
-        # Iterate over predictions to calculate binary relevance
-        for pred in pred_list:
-            match_found = False
-            for true in true_set:
-                if true not in matched_true and fuzz.ratio(pred, true) >= threshold:
-                    matched_true.add(true)
-                    match_found = True
-                    break
-            binary_relevance.append(1 if match_found else 0)
-
-        if not binary_relevance:
-            return 0.0
-
-        # Calculate precision at each relevant index
-        relevant_indices = [i + 1 for i, rel in enumerate(binary_relevance) if rel == 1]
-        precisions = [sum(binary_relevance[:i]) / i for i in relevant_indices]
-
-        # Calculate MAP
-        return sum(precisions) / len(true_set) if len(true_set) > 0 else 0.0
-
-    def evaluate(self, references, predictions):
-        """
-        Evaluate predictions using F1@k, F1@M, and MAP@50 for present and absent keyphrases.
-        :param references: List of lists, where each sublist contains true keyphrases for an instance.
-        :param predictions: List of strings, where each string contains predicted keyphrases separated by newlines.
-        :return: Dictionary of evaluation metrics.
-        """
-        metrics = {
-            "F1@5": [],
-            "F1@10": [],
-            "F1@M": [],
-            "MAP@50": []
-        }
-
-        for ref, pred_str in zip(references, predictions):
-            # Convert predictions to a list of keyphrases
-            pred_list = [phrase.strip() for phrase in pred_str.split('\n') if phrase.strip()]
-
-            # Convert references to a set for comparison
-            true_set = set(ref)
-
-            # Calculate F1@5, F1@10, and F1@M
-            _, _, f1_5 = self.calculate_f1(true_set, pred_list, k=5)
-            _, _, f1_10 = self.calculate_f1(true_set, pred_list, k=10)
-            _, _, f1_m = self.calculate_f1(true_set, pred_list)
-
-            # Calculate MAP@50
-            map_50 = self.calculate_map(true_set, pred_list, k=50)
-
-            # Append metrics for this instance
-            metrics["F1@5"].append(f1_5)
-            metrics["F1@10"].append(f1_10)
-            metrics["F1@M"].append(f1_m)
-            metrics["MAP@50"].append(map_50)
-
-        # Aggregate metrics across all instances
-        aggregated_metrics = {metric: sum(scores) / len(scores) if scores else 0.0 for metric, scores in metrics.items()}
-
-        return aggregated_metrics
-
-    def evaluate_results(self, results, all_true, all_predicted):
-        """
-        Display aggregated F1@k, F1@M, and MAP@50 results.
-
-        :param results: Dictionary where each key is a language (e.g., en, el)
-                        and the value is a map of metrics and scores.
-        """
-        print("\nAggregated Keyphrase Generation Metrics:\n")
-        for language, scores in results.items():
-            print(f"{language}: {scores}")
-        print("-" * 40)
+    ###########################################################################################
+    ################################## Non-Legal Datasets #####################################
+    ###########################################################################################
 
 class XQuAD(Dataset):
     """
@@ -934,7 +1354,7 @@ class XQuAD(Dataset):
         data = self.extract_text(dataset, points_per_language)
         inst = translate(language, self.prompt)
         self.lang = language
-        return data, inst[0]
+        return data, inst
 
     def extract_text(self, dataset, points_per_language):
         """
@@ -987,7 +1407,7 @@ class XQuAD(Dataset):
                     "Your task is to rate how well the generated answer answers the question, based on meaning and correctness, using the following scale:\n\n"
                     "5 - Fully answers the question with the same meaning as the real answer.\n"
                     "4 - Mostly answers the question with only minor differences from the real answer.\n"
-                    "3 - Answers the question partially or with noticeable differences.\n"
+                    "3 - Answers the question partially or includes significant inaccuracies.\n"
                     "2 - Barely answers the question or includes significant inaccuracies.\n"
                     "1 - Does not answer the question or is entirely incorrect.\n\n"
                     "Return only the number.\n\n"
@@ -1096,7 +1516,7 @@ class XQuAD(Dataset):
         """
         return generated_texts  # Directly return the generated answers as predictions
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints BLEU, METEOR and Cosine Similarity scores for the dataset.
         """
@@ -1110,12 +1530,210 @@ class XQuAD(Dataset):
                 print(f"Cosine Similarity: {metrics['Cosine Similarity']}")
 
 
+class XNLI(Dataset):
+    """
+    Child class of Dataset representing the XNLI dataset.
+    """
+    def __init__(self):
+        self.label_options = ["0", "1", "2"]
+        self.languages = ["ar", "bg", "de", "el", "en", "es", "fr", "hi", "ru", "sw", "th", "tr", "ur", "vi", "zh"]
+        self.prompt = ("<|endoftext|>\nTask: Please identify whether the premise entails or contradicts "
+                       "the hypothesis, or neither. The answer should be '0' for entailment, "
+                       "'1' for neither, or '2' for contradiction. The answer should be exactly '0', '1', or '2'."
+                       )
+
+    def get_data(self, language, dataset_name, points):
+        """
+        Loads the XNLI dataset for the specified language.
+        :param language: the language of the dataset
+        :return: the data and label options
+        """
+        dataset = load_dataset('xnli', language, split='test', trust_remote_code=True)
+        self.language = language
+        if language == 'all_languages':
+            data = self.extract_text_all_languages(dataset)
+        else:
+            data = self.extract_text(dataset, points)
+        return data, [], translate(language, self.prompt)
+
+    def extract_text_all_languages(self, dataset):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data from all languages
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 5:
+                break
+            documents = item['text']
+            texts = documents.keys()
+            data.append({"text:": text, "labels": item['labels']} for text in texts)
+            count += 1
+
+    def extract_text(self, dataset, points):
+        """
+        :param dataset: the dataset containing the text data
+        :return: a list of text data in the specified language
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == points:
+                break
+            translator = GoogleTranslator(source="en", target=self.language)
+            if self.language == "ar":
+                text = item["hypothesis"] + translator.translate("Hypothesis: ") + item["premise"] + translator.translate("Premise: ")
+            else:
+                text = translator.translate("Premise: ") + item["premise"] + translator.translate(" Hypothesis: ") + item["hypothesis"]
+            data.append({"text": text, "label": item['label']})
+            count += 1
+        return data
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using precision, recall, F1 score, and accuracy.
+        :param true_labels: list of true labels
+        :param predicted_labels: list of predicted labels
+        """
+        accuracy = accuracy_score(true_labels, predicted_labels)
+        file_path = "XNLI_evaluation.csv"
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, mode='a', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["Language", "Accuracy"])
+            writer.writerow([self.language, accuracy])
+
+        print(f"Accuracy {self.language}: {accuracy}")
+
+    import re
+
+    def extract_labels_from_generated_text(self, generated_texts):
+        """
+        Extracts the first predicted label (0, 1, or 2) from the model's response.
+        :param generated_texts: List of generated model outputs.
+        :return: List of extracted labels (0, 1, 2), or None if no valid label is found.
+        """
+        word_to_digit = {"zero": 0, "one": 1, "two": 2}  # Handle word numbers
+        all_labels = []
+
+        print(generated_texts)
+
+        for text in generated_texts:
+            if text is not None:
+                text_lower = text.lower()
+
+                # Remove punctuation for easier matching
+                text_lower = re.sub(r"[^\w\s]", "", text_lower)
+
+                # Try to find exact numbers first
+                match = re.findall(r"\b(0|1|2)\b", text_lower)
+
+                if match:
+                    all_labels.append(int(match[0]))  # Extract first match
+                    continue  # Skip to next iteration
+
+                # Try matching word numbers ("zero", "one", "two")
+                for word, digit in word_to_digit.items():
+                    if re.search(rf"\b{word}\b", text_lower):
+                        all_labels.append(digit)
+                        break  # Stop after first valid match
+                else:
+                    all_labels.append(None)  # No valid label found
+            else:
+                all_labels.append(None)
+
+        return all_labels
 
 
+
+    def get_true(self, data):
+        """
+        :return: A list of true labels for the dataset
+        """
+        return [entry['label'] for entry in data]
 
 
 """
-Datasets from decoding trust paper: https://arxiv.org/pdf/2306.11698
+Non Multilingual Dataset
+"""
+class Go_Emotions(Dataset):
+    """
+    Child class of Dataset representing the GoEmotions dataset.
+    """
+
+    def __init__(self):
+        self.label_options = [
+            "admiration", "amusement", "anger", "annoyance", "approval",
+            "caring", "confusion", "curiosity", "desire", "disappointment",
+            "disapproval", "disgust", "embarrassment", "excitement", "fear",
+            "gratitude", "grief", "joy", "love", "nervousness", "optimism",
+            "pride", "realization", "relief", "remorse", "sadness", "surprise"
+        ]
+        self.prompt = "<|endoftext|>" + (
+                "Question: Which of the following emotions apply to this text? (You can select more than one): "
+                + ', '.join(self.label_options) + " "
+                                                  "Answer:"
+        )
+
+    def get_data(self, language=None):
+        """
+        Loads the GoEmotions dataset.
+        :return: the data and label options
+        """
+        dataset = load_dataset('go_emotions', split='test')
+        return self.extract_text(dataset)
+
+    def extract_text(self, dataset):
+        """
+        Extracts and formats the data from the GoEmotions dataset.
+        :param dataset: the dataset containing the text data
+        :return: a list of text data and labels
+        """
+        data = []
+        count = 0
+        for item in dataset:
+            if count == 50:
+                break
+            count += 1
+            data.append({"text": item['text'], "labels": item['labels']})
+        return data
+
+    def get_true_labels(self, data):
+        """
+        :param data: list of data entries
+        :return: list of true labels for the dataset
+        """
+        true_labels = [entry['labels'] for entry in data]
+        return true_labels
+
+    def evaluate(self, true_labels, predicted_labels):
+        """
+        Evaluates the model using precision, recall, and F1 score.
+        :param true_labels: list of true labels
+        :param predicted_labels: list of predicted labels
+        """
+        mlb = MultiLabelBinarizer(classes=list(range(len(self.label_options))))
+
+        binary_true = mlb.fit_transform(true_labels)
+        binary_pred = mlb.transform(predicted_labels)
+
+        relevant_labels = np.where((binary_true.sum(axis=0) + binary_pred.sum(axis=0)) > 0)[0]
+        filtered_binary_true = binary_true[:, relevant_labels]
+        filtered_binary_pred = binary_pred[:, relevant_labels]
+
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            filtered_binary_true, filtered_binary_pred, average='macro', zero_division=0
+        )
+
+        print(f"Precision: {precision}")
+        print(f"Recall: {recall}")
+        print(f"F1 Score: {f1}")
+
+
+"""
+Datasets (non-multilingual) from decoding trust paper: https://arxiv.org/pdf/2306.11698
 """
 class SST2(Dataset):
     """
@@ -1201,12 +1819,11 @@ class SST2(Dataset):
         true_labels = [entry['label'] for entry in data]
         return true_labels
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         # Print out the results for each language
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1301,14 +1918,13 @@ class QQP(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though QQP is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1405,14 +2021,13 @@ class MNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though MNLI is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)
@@ -1510,14 +2125,13 @@ class QNLI(Dataset):
         """
         return [entry['label'] for entry in data]
 
-    def evaluate_results(self, results, all_true, all_predicted):
+    def evaluate_results(self, results):
         """
         Prints accuracy and results for each language (even though QNLI is monolingual).
         """
         for lang, metric in results.items():
             print(f"Results for {lang}:")
             print(f"Accuracy: {metric['Accuracy']}")
-            print(f"True Labels: {all_true[lang]}, Predicted Labels: {all_predicted[lang]}")
 
     def get_mapped_data(self, data):
         new_data = copy.deepcopy(data)

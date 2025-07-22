@@ -1,0 +1,39 @@
+name: Run Europa Pipeline Attack first half
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run the script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_3 }}
+          LLM_JUDGE_KEY: ${{ secrets.GEMINI_API_KEY_3 }}
+        working-directory: Pipeline
+        run: |
+          python evaluation_pipeline.py europa_random_split "['en', 'el', 'bg']" 200  1 google 14 $LLM_JUDGE_KEY $GEMINI_API_KEY
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-files
+          path: |
+            *.json
+            *.csv
+            *.txt
+            Pipeline/output/

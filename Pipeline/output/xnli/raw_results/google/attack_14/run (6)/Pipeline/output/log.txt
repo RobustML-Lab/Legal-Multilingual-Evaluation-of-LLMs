@@ -1,0 +1,227 @@
+README.md:   0%|          | 0.00/20.8k [00:00<?, ?B/s]README.md: 100%|##########| 20.8k/20.8k [00:00<00:00, 134MB/s]
+train-00000-of-00001.parquet:   0%|          | 0.00/50.2M [00:00<?, ?B/s]train-00000-of-00001.parquet:  63%|######2   | 31.5M/50.2M [00:00<00:00, 288MB/s]train-00000-of-00001.parquet: 100%|##########| 50.2M/50.2M [00:00<00:00, 306MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/308k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 308k/308k [00:00<00:00, 334MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/157k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 157k/157k [00:00<00:00, 324MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  33%|###2      | 129000/392702 [00:00<00:00, 1273753.98 examples/s]Generating train split:  67%|######6   | 263000/392702 [00:00<00:00, 1307444.83 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1314349.76 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1209547.17 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1080916.68 examples/s]
+tokenizer_config.json:   0%|          | 0.00/48.0 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 48.0/48.0 [00:00<00:00, 592kB/s]
+config.json:   0%|          | 0.00/570 [00:00<?, ?B/s]config.json: 100%|##########| 570/570 [00:00<00:00, 4.25MB/s]
+vocab.txt:   0%|          | 0.00/232k [00:00<?, ?B/s]vocab.txt: 100%|##########| 232k/232k [00:00<00:00, 7.74MB/s]
+tokenizer.json:   0%|          | 0.00/466k [00:00<?, ?B/s]tokenizer.json: 100%|##########| 466k/466k [00:00<00:00, 33.8MB/s]
+model.safetensors:   0%|          | 0.00/440M [00:00<?, ?B/s]model.safetensors:   7%|7         | 31.5M/440M [00:00<00:01, 298MB/s]model.safetensors:  14%|#4        | 62.9M/440M [00:00<00:01, 302MB/s]model.safetensors:  21%|##1       | 94.4M/440M [00:00<00:01, 302MB/s]model.safetensors:  29%|##8       | 126M/440M [00:00<00:01, 299MB/s] model.safetensors:  36%|###5      | 157M/440M [00:00<00:00, 304MB/s]model.safetensors:  43%|####2     | 189M/440M [00:00<00:00, 304MB/s]model.safetensors:  52%|#####2    | 231M/440M [00:00<00:00, 317MB/s]model.safetensors:  62%|######1   | 273M/440M [00:00<00:00, 324MB/s]model.safetensors:  71%|#######1  | 315M/440M [00:00<00:00, 332MB/s]model.safetensors:  81%|########  | 357M/440M [00:01<00:00, 329MB/s]model.safetensors:  90%|######### | 398M/440M [00:01<00:00, 332MB/s]model.safetensors: 100%|#########9| 440M/440M [00:01<00:00, 329MB/s]model.safetensors: 100%|##########| 440M/440M [00:01<00:00, 318MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+['2\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', None, '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '2\n', None, '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', None, '1\n', '0\n']
+Saved predictions to: predicted.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 10
+Accuracy en: 0.4473684210526316
+train-00000-of-00001.parquet:   0%|          | 0.00/73.8M [00:00<?, ?B/s]train-00000-of-00001.parquet:  43%|####2     | 31.5M/73.8M [00:00<00:00, 312MB/s]train-00000-of-00001.parquet:  99%|#########9| 73.4M/73.8M [00:00<00:00, 334MB/s]train-00000-of-00001.parquet: 100%|##########| 73.8M/73.8M [00:00<00:00, 321MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/490k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 490k/490k [00:00<00:00, 339MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/247k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 247k/247k [00:00<00:00, 420MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  22%|##2       | 88000/392702 [00:00<00:00, 867699.99 examples/s]Generating train split:  47%|####6     | 183000/392702 [00:00<00:00, 913101.68 examples/s]Generating train split:  71%|#######1  | 280000/392702 [00:00<00:00, 937651.33 examples/s]Generating train split:  96%|#########5| 376000/392702 [00:00<00:00, 940774.48 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 930011.40 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 984144.95 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 849021.78 examples/s]
+tokenizer_config.json:   0%|          | 0.00/2.00 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 2.00/2.00 [00:00<00:00, 16.0kB/s]
+config.json:   0%|          | 0.00/459 [00:00<?, ?B/s]config.json: 100%|##########| 459/459 [00:00<00:00, 4.40MB/s]
+vocab.txt:   0%|          | 0.00/530k [00:00<?, ?B/s]vocab.txt: 100%|##########| 530k/530k [00:00<00:00, 49.7MB/s]
+special_tokens_map.json:   0%|          | 0.00/112 [00:00<?, ?B/s]special_tokens_map.json: 100%|##########| 112/112 [00:00<00:00, 1.03MB/s]
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+pytorch_model.bin:   0%|          | 0.00/454M [00:00<?, ?B/s]pytorch_model.bin:   9%|9         | 41.9M/454M [00:00<00:01, 354MB/s]pytorch_model.bin:  18%|#8        | 83.9M/454M [00:00<00:01, 315MB/s]pytorch_model.bin:  28%|##7       | 126M/454M [00:00<00:01, 325MB/s] pytorch_model.bin:  37%|###6      | 168M/454M [00:00<00:00, 322MB/s]pytorch_model.bin:  46%|####6     | 210M/454M [00:00<00:00, 328MB/s]pytorch_model.bin:  55%|#####5    | 252M/454M [00:00<00:00, 339MB/s]pytorch_model.bin:  65%|######4   | 294M/454M [00:00<00:00, 321MB/s]pytorch_model.bin:  74%|#######3  | 336M/454M [00:01<00:00, 328MB/s]pytorch_model.bin:  83%|########3 | 377M/454M [00:01<00:00, 334MB/s]pytorch_model.bin:  92%|#########2| 419M/454M [00:01<00:00, 335MB/s]pytorch_model.bin: 100%|##########| 454M/454M [00:01<00:00, 331MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '2\n', '2\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '2\n', '2\n', '1\n', '2\n', '0\n', '1\n', '1\n', '1\n', '0\n', None, '1\n', '1\n', '0\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '2\n', '2\n', '1\n', '0\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', 'Η απάντηση είναι 1.\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '2\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '2\n', '1\n', '1\n', '2\n', '2\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '2\n', '0\n', '0\n', '1\n', '1\n', '1\n', '2\n', '2\n', '2\n', '0\n', '2\n', '1\n', '1\n', '2\n', '2\n', '1\n', '2\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '0\n']
+Saved predictions to: predicted_1.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 3
+Accuracy el: 0.49238578680203043
+train-00000-of-00001.parquet:   0%|          | 0.00/65.4M [00:00<?, ?B/s]train-00000-of-00001.parquet:  48%|####8     | 31.5M/65.4M [00:00<00:00, 267MB/s]train-00000-of-00001.parquet: 100%|##########| 65.4M/65.4M [00:00<00:00, 306MB/s]train-00000-of-00001.parquet: 100%|##########| 65.4M/65.4M [00:00<00:00, 297MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/447k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 447k/447k [00:00<00:00, 183MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/223k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 223k/223k [00:00<00:00, 388MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  24%|##3       | 93000/392702 [00:00<00:00, 923820.50 examples/s]Generating train split:  50%|####9     | 195000/392702 [00:00<00:00, 974667.78 examples/s]Generating train split:  76%|#######5  | 297000/392702 [00:00<00:00, 992642.73 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 990609.73 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 994720.14 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 919754.91 examples/s]
+tokenizer_config.json:   0%|          | 0.00/48.0 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 48.0/48.0 [00:00<00:00, 427kB/s]
+config.json:   0%|          | 0.00/625 [00:00<?, ?B/s]config.json: 100%|##########| 625/625 [00:00<00:00, 5.63MB/s]
+vocab.txt:   0%|          | 0.00/872k [00:00<?, ?B/s]vocab.txt: 100%|##########| 872k/872k [00:00<00:00, 21.2MB/s]
+tokenizer.json:   0%|          | 0.00/1.72M [00:00<?, ?B/s]tokenizer.json: 100%|##########| 1.72M/1.72M [00:00<00:00, 17.5MB/s]
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+model.safetensors:   0%|          | 0.00/672M [00:00<?, ?B/s]model.safetensors:   5%|4         | 31.5M/672M [00:00<00:02, 278MB/s]model.safetensors:   9%|9         | 62.9M/672M [00:00<00:02, 297MB/s]model.safetensors:  14%|#4        | 94.4M/672M [00:00<00:01, 304MB/s]model.safetensors:  19%|#8        | 126M/672M [00:00<00:01, 297MB/s] model.safetensors:  25%|##4       | 168M/672M [00:00<00:01, 312MB/s]model.safetensors:  30%|##9       | 199M/672M [00:00<00:01, 312MB/s]model.safetensors:  36%|###5      | 241M/672M [00:00<00:01, 321MB/s]model.safetensors:  42%|####2     | 283M/672M [00:00<00:01, 325MB/s]model.safetensors:  48%|####8     | 325M/672M [00:01<00:01, 324MB/s]model.safetensors:  55%|#####4    | 367M/672M [00:01<00:00, 322MB/s]model.safetensors:  61%|######    | 409M/672M [00:01<00:00, 329MB/s]model.safetensors:  67%|######7   | 451M/672M [00:01<00:00, 319MB/s]model.safetensors:  73%|#######3  | 493M/672M [00:01<00:00, 315MB/s]model.safetensors:  80%|#######9  | 535M/672M [00:01<00:00, 320MB/s]model.safetensors:  86%|########5 | 577M/672M [00:01<00:00, 320MB/s]model.safetensors:  92%|#########2| 619M/672M [00:01<00:00, 320MB/s]model.safetensors:  98%|#########8| 661M/672M [00:02<00:00, 327MB/s]model.safetensors: 100%|##########| 672M/672M [00:02<00:00, 318MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+['1\n', '1\n', '1\n', '0\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', None, '1\n', '1\n', '2\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '2\n', None, '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', None, '1\n', '0\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', None, '2\n', '1\n', '2\n', '0\n', '2\n', None, '0\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '2\n', None, '1\n', '1\n', '1\n', '1\n', None, '1\n', '0\n', '0\n', None, '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '0\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', None, '0\n', '1\n', '1\n', '1\n', None, '1\n', '2\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '0\n', None, '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', None, '0\n', '0\n', '0\n', '1\n', '0\n', None, '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '0\n', '2\n', '1\n', '1\n', '2\n', '1\n', None, '1\n', '1\n']
+Saved predictions to: predicted_2.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 29
+Accuracy bg: 0.39766081871345027
+train-00000-of-00001.parquet:   0%|          | 0.00/53.2M [00:00<?, ?B/s]train-00000-of-00001.parquet:  59%|#####9    | 31.5M/53.2M [00:00<00:00, 307MB/s]train-00000-of-00001.parquet: 100%|##########| 53.2M/53.2M [00:00<00:00, 318MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/342k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 342k/342k [00:00<00:00, 365MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/173k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 173k/173k [00:00<00:00, 296MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  33%|###3      | 130000/392702 [00:00<00:00, 1284078.46 examples/s]Generating train split:  66%|######6   | 261000/392702 [00:00<00:00, 1292897.70 examples/s]Generating train split: 100%|#########9| 391000/392702 [00:00<00:00, 1291202.54 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1287635.84 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1178809.77 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1082372.99 examples/s]
+tokenizer_config.json:   0%|          | 0.00/310 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 310/310 [00:00<00:00, 3.73MB/s]
+config.json:   0%|          | 0.00/650 [00:00<?, ?B/s]config.json: 100%|##########| 650/650 [00:00<00:00, 6.87MB/s]
+vocab.txt:   0%|          | 0.00/248k [00:00<?, ?B/s]vocab.txt: 100%|##########| 248k/248k [00:00<00:00, 20.6MB/s]
+tokenizer.json:   0%|          | 0.00/486k [00:00<?, ?B/s]tokenizer.json: 100%|##########| 486k/486k [00:00<00:00, 42.3MB/s]
+special_tokens_map.json:   0%|          | 0.00/134 [00:00<?, ?B/s]special_tokens_map.json: 100%|##########| 134/134 [00:00<00:00, 1.26MB/s]
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+pytorch_model.bin:   0%|          | 0.00/440M [00:00<?, ?B/s]pytorch_model.bin:  10%|9         | 41.9M/440M [00:00<00:01, 339MB/s]pytorch_model.bin:  19%|#9        | 83.9M/440M [00:00<00:01, 334MB/s]pytorch_model.bin:  29%|##8       | 126M/440M [00:00<00:00, 324MB/s] pytorch_model.bin:  38%|###8      | 168M/440M [00:00<00:00, 323MB/s]pytorch_model.bin:  48%|####7     | 210M/440M [00:00<00:00, 328MB/s]pytorch_model.bin:  57%|#####7    | 252M/440M [00:00<00:00, 331MB/s]pytorch_model.bin:  67%|######6   | 294M/440M [00:00<00:00, 341MB/s]pytorch_model.bin:  76%|#######6  | 336M/440M [00:01<00:00, 326MB/s]pytorch_model.bin:  86%|########5 | 377M/440M [00:01<00:00, 331MB/s]pytorch_model.bin:  95%|#########5| 419M/440M [00:01<00:00, 328MB/s]pytorch_model.bin: 100%|##########| 440M/440M [00:01<00:00, 328MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '2\n', '0\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '2\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '2\n', '1\n', '0\n', '1\n', None, '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', None, '1\n', '2\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', None, '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '0\n', '0\n', '0\n', '0\n', '2\n', '2\n', '1\n', '2\n', '0\n', '2\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '0\n', '1\n', '1\n']
+Saved predictions to: predicted_3.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 10
+Accuracy es: 0.48947368421052634
+train-00000-of-00001.parquet:   0%|          | 0.00/55.4M [00:00<?, ?B/s]train-00000-of-00001.parquet:  38%|###7      | 21.0M/55.4M [00:00<00:00, 207MB/s]train-00000-of-00001.parquet:  95%|#########4| 52.4M/55.4M [00:00<00:00, 242MB/s]train-00000-of-00001.parquet: 100%|##########| 55.4M/55.4M [00:00<00:00, 236MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/360k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 360k/360k [00:00<00:00, 206MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/183k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 183k/183k [00:00<00:00, 173MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  31%|###1      | 122000/392702 [00:00<00:00, 1209241.59 examples/s]Generating train split:  63%|######3   | 249000/392702 [00:00<00:00, 1240877.90 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1231625.40 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 1230118.59 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 1176565.68 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 1021400.19 examples/s]
+tokenizer_config.json:   0%|          | 0.00/25.0 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 25.0/25.0 [00:00<00:00, 231kB/s]
+config.json:   0%|          | 0.00/508 [00:00<?, ?B/s]config.json: 100%|##########| 508/508 [00:00<00:00, 4.30MB/s]
+sentencepiece.bpe.model:   0%|          | 0.00/811k [00:00<?, ?B/s]sentencepiece.bpe.model: 100%|##########| 811k/811k [00:00<00:00, 41.5MB/s]
+tokenizer.json:   0%|          | 0.00/1.40M [00:00<?, ?B/s]tokenizer.json: 100%|##########| 1.40M/1.40M [00:00<00:00, 15.9MB/s]
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+model.safetensors:   0%|          | 0.00/445M [00:00<?, ?B/s]model.safetensors:   7%|7         | 31.5M/445M [00:00<00:01, 311MB/s]model.safetensors:  16%|#6        | 73.4M/445M [00:00<00:01, 328MB/s]model.safetensors:  26%|##5       | 115M/445M [00:00<00:00, 333MB/s] model.safetensors:  35%|###5      | 157M/445M [00:00<00:00, 326MB/s]model.safetensors:  45%|####4     | 199M/445M [00:00<00:00, 324MB/s]model.safetensors:  54%|#####4    | 241M/445M [00:00<00:00, 328MB/s]model.safetensors:  64%|######3   | 283M/445M [00:00<00:00, 326MB/s]model.safetensors:  73%|#######3  | 325M/445M [00:00<00:00, 328MB/s]model.safetensors:  82%|########2 | 367M/445M [00:01<00:00, 320MB/s]model.safetensors:  92%|#########1| 409M/445M [00:01<00:00, 318MB/s]model.safetensors: 100%|##########| 445M/445M [00:01<00:00, 325MB/s]model.safetensors: 100%|##########| 445M/445M [00:01<00:00, 324MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 Resource has been exhausted (e.g. check quota).. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '0\n', '0\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '2\n', '2\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '2\n', '1\n', '1\n', '1\n', '2\n', '0\n', '0\n', '1\n', '2\n', '1\n', '1\n', '1\n', None, '1\n', '1\n', '0\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '0\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '0\n', '1\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n', '0\n', '0\n', '0\n', '1\n', '2\n', '2\n', '2\n', '0\n', '2\n', '0\n', '1\n', '0\n', '2\n', '1\n', '1\n', '1\n', '1\n', '1\n', '0\n', '1\n', '1\n', '1\n', '1\n', '1\n', '1\n', '2\n', '1\n']
+Saved predictions to: predicted_4.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 1
+Accuracy fr: 0.45226130653266333
+train-00000-of-00001.parquet:   0%|          | 0.00/76.5M [00:00<?, ?B/s]train-00000-of-00001.parquet:  41%|####1     | 31.5M/76.5M [00:00<00:00, 285MB/s]train-00000-of-00001.parquet:  96%|#########5| 73.4M/76.5M [00:00<00:00, 300MB/s]train-00000-of-00001.parquet: 100%|##########| 76.5M/76.5M [00:00<00:00, 296MB/s]
+test-00000-of-00001.parquet:   0%|          | 0.00/503k [00:00<?, ?B/s]test-00000-of-00001.parquet: 100%|##########| 503k/503k [00:00<00:00, 270MB/s]
+validation-00000-of-00001.parquet:   0%|          | 0.00/252k [00:00<?, ?B/s]validation-00000-of-00001.parquet: 100%|##########| 252k/252k [00:00<00:00, 178MB/s]
+Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:  20%|##        | 80000/392702 [00:00<00:00, 790163.05 examples/s]Generating train split:  42%|####2     | 166000/392702 [00:00<00:00, 827718.77 examples/s]Generating train split:  65%|######5   | 256000/392702 [00:00<00:00, 855274.32 examples/s]Generating train split:  87%|########7 | 343000/392702 [00:00<00:00, 857140.86 examples/s]Generating train split: 100%|##########| 392702/392702 [00:00<00:00, 850587.01 examples/s]
+Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split: 100%|##########| 5010/5010 [00:00<00:00, 934180.81 examples/s]
+Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split: 100%|##########| 2490/2490 [00:00<00:00, 829532.72 examples/s]
+tokenizer_config.json:   0%|          | 0.00/282 [00:00<?, ?B/s]tokenizer_config.json: 100%|##########| 282/282 [00:00<00:00, 1.88MB/s]
+config.json:   0%|          | 0.00/546 [00:00<?, ?B/s]config.json: 100%|##########| 546/546 [00:00<00:00, 3.80MB/s]
+sentencepiece.bpe.model:   0%|          | 0.00/905k [00:00<?, ?B/s]sentencepiece.bpe.model: 100%|##########| 905k/905k [00:00<00:00, 4.01MB/s]sentencepiece.bpe.model: 100%|##########| 905k/905k [00:00<00:00, 3.99MB/s]
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+model.safetensors:   0%|          | 0.00/423M [00:00<?, ?B/s]model.safetensors:   7%|7         | 31.5M/423M [00:00<00:01, 267MB/s]model.safetensors:  15%|#4        | 62.9M/423M [00:00<00:01, 282MB/s]model.safetensors:  22%|##2       | 94.4M/423M [00:00<00:01, 295MB/s]model.safetensors:  32%|###2      | 136M/423M [00:00<00:00, 308MB/s] model.safetensors:  40%|###9      | 168M/423M [00:00<00:00, 307MB/s]model.safetensors:  50%|####9     | 210M/423M [00:00<00:00, 317MB/s]model.safetensors:  59%|#####9    | 252M/423M [00:00<00:00, 326MB/s]model.safetensors:  69%|######9   | 294M/423M [00:00<00:00, 334MB/s]model.safetensors:  79%|#######9  | 336M/423M [00:01<00:00, 347MB/s]model.safetensors:  89%|########9 | 377M/423M [00:01<00:00, 342MB/s]model.safetensors:  99%|#########9| 419M/423M [00:01<00:00, 347MB/s]model.safetensors: 100%|##########| 423M/423M [00:01<00:00, 327MB/s]
+Attack entry stored in: output/attacks/attack.txt
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Error occurred: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 43
+}
+]. Retrying after 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+Reached request limit (15 per minute). Sleeping for 60 seconds...
+['2\n', '2\nหลักฐานกล่าวถึงความผิดหวังและการตัดสินใจที่จะพูดคุยกับใครบางคนอีกครั้ง ซึ่งไม่เกี่ยวข้องโดยตรงกับความรู้สึกของผู้พูดเกี่ยวกับการเริ่มต้นรักใครบางคนอีกครั้ง  หลักฐานมุ่งเน้นไปที่ปฏิสัมพันธ์กับบุคคลหนึ่ง ในขณะที่สมมติฐานมุ่งเน้นไปที่ความรู้สึกของผู้พูดที่มีต่อบุคคลอื่น  ดังนั้นจึงมีความขัดแย้งกัน\n', '2\n', '0\n', '2\n', '2\n', '2\n', '0\n', '2\n', 'คำตอบคือ **1**\n\nหลักฐาน ("มันมีอีกมากในขณะที่คุณสามารถพูดคุยเกี่ยวกับเรื่องนั้น") สนับสนุนสมมติฐาน ("ฉันต้องการจะบอกคุณทุกอย่างที่ฉันรู้เกี่ยวกับเรื่องนี้!")  เพราะมันบ่งบอกว่ามีข้อมูลเพิ่มเติมที่จะแชร์  ดังนั้นจึงเป็นหลักฐานที่สนับสนุนสมมติฐาน\n', 'คำตอบคือ 2\nหลักฐานระบุว่ามีสิ่งที่ต้องปิดบัง ในขณะที่สมมติฐานกล่าวว่าจะไม่พูดถึงมัน  นี่เป็นความขัดแย้งกัน\n', '0\n', '2\n', '2\n', '2\n', '0\n', '0\n', '1\n', 'ฉันไม่สามารถให้คะแนนความสัมพันธ์ระหว่างหลักฐานและสมมติฐานได้เพราะไม่มีสมมติฐานให้ประเมิน ข้อความนั้นดูเหมือนจะเป็นส่วนหนึ่งของข้อความที่เสียหายหรือมีการเข้ารหัส และไม่สามารถระบุความหมายได้อย่างชัดเจน', '0\n', '2\n', '2\n', '2\n', 'คำตอบคือ 0\n\nหลักฐานกล่าวถึงการดึง "ห้ากอง" ออกจาก "U" ซึ่งไม่เกี่ยวข้องกับข้อความของสมมติฐานที่กล่าวถึงประสิทธิภาพการทำงานของทีมเป็นเวลาเกือบ 30 ปี  ไม่มีความเชื่อมโยงหรือความขัดแย้งระหว่างทั้งสองอย่าง\n', '1\n', '2\n', '2\n', '2\n', '0\n', '2\n', 'คำตอบคือ **1**\n\nหลักฐานแสดงให้เห็นว่าลูกค้าชื่อคัตตี้ทำรายได้ 10,000 ดอลลาร์ต่อเดือน ซึ่งสนับสนุนสมมติฐานโดยตรง\n', '1\n', '1\n', '2\n', '2\n', '2\n', '2\n', '1\n', 'คำตอบคือ 1\n\nหลักฐานระบุว่ากลุ่มคนถูกแบ่งออกเป็นกลุ่มที่ทำงานในนาและกลุ่มที่ทำงานบ้าน  สมมติฐานระบุว่ากลุ่มคนสามารถระบุได้ว่าใครควรทำงานในไร่ฝ้ายและใครไม่ควรตัดหญ้า  ทั้งหลักฐานและสมมติฐานเกี่ยวข้องกับการแบ่งงาน  แต่สมมติฐานให้รายละเอียดมากขึ้นเกี่ยวกับประเภทของงานที่แบ่งออกไป\n', '0\n', '2\n', 'คำตอบคือ 0 (เกี่ยวข้อง)\n\nหลักฐานกล่าวถึงหัวข้อสามหัวข้อที่เขาจะพูดคุย: <unk>q เรื่อง <unk>, <unk>2 <unk>uick และ \x81la เรื่อง bird สมมติฐานระบุว่าเขาจะพูดถึงวัตถุสามอย่าง  แม้ว่าเราจะไม่รู้ว่า "<unk>q เรื่อง <unk>", "<unk>2 <unk>uick", และ "\x81la เรื่อง bird" คืออะไร แต่ก็ยังเป็นไปได้ว่าวัตถุเหล่านั้นเป็นหัวข้อที่เกี่ยวกับวัตถุสามอย่าง  ดังนั้นหลักฐานจึงเกี่ยวข้องกับสมมติฐาน\n', '2\nหลักฐานระบุว่าหนึ่งในห้าพันล้านลูกเสียชีวิต สมมติฐานระบุว่าลูก ๆ ของเขาทุกคนรอดชีวิต ดังนั้นหลักฐานและสมมติฐานจึงขัดแย้งกัน\n', '2\n', None, '2\n', '2\nหลักฐานไม่เกี่ยวข้องกับสมมติฐาน  หลักฐานพูดถึงภาพยนตร์เรื่องหนึ่งและผู้กำกับที่ไม่เกี่ยวข้องกับการถ่ายทำใต้น้ำ  สมมติฐานกล่าวถึงทีมต่างๆ ที่ถ่ายทำใต้น้ำ  ไม่มีความเชื่อมโยงกัน\n', '0\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่าหญิงสาวร้องไห้และเห็นโจที่ระเบียง สมมติฐานระบุว่าเธอต้องการให้คนอื่นตื่นเต้นที่ระเบียง  หลักฐานไม่ได้สนับสนุนหรือขัดแย้งกับสมมติฐานโดยตรง  มันเกี่ยวข้องกันโดยอ้อม  เพราะการปรากฏตัวของโจที่ระเบียงอาจเป็นสาเหตุที่ทำให้เธอต้องการให้คนอื่นตื่นเต้น  แต่ไม่มีอะไรที่บ่งชี้ว่าเป็นเช่นนั้นอย่างแน่ชัด\n', '2\n', '2\n', '2\n', '2\n', '2\n', '2\n', '1\n', '2\n', '2\n', 'คำตอบคือ 0\n\nหลักฐานแสดงให้เห็นถึงการเพิ่มขึ้นของการจราจรทางอากาศ (เครื่องบินสี่ลำต่อสัปดาห์ที่ลงจอดในเวลากลางคืน) ซึ่งสนับสนุนสมมติฐานที่ว่าการเพิ่มขึ้นของการจราจรทางอากาศทำให้เกิดปัญหา\n', '2\n', '0\n', '0\n', 'คำตอบคือ 0. หลักฐานกล่าวถึงการฝึกฝนชุดแรงดันสูง แต่ไม่ได้ระบุว่าการฝึกดังกล่าวจะเสร็จสิ้นภายในหนึ่งวัน  ดังนั้นจึงไม่สนับสนุนหรือขัดแย้งกับสมมติฐานโดยตรง\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าระเบิดปลอดภัยไม่ว่าจะตกจากที่สูงแค่ไหน ในขณะที่สมมติฐานระบุว่าภารกิจยกเลิกเพราะนักบิน  ทั้งสองข้อความไม่เกี่ยวข้องกันและไม่ขัดแย้งกันโดยตรง แต่ไม่ได้สนับสนุนหรือหักล้างซึ่งกันและกัน  ดังนั้นคำตอบจึงเป็น 2 (ความขัดแย้ง)\n', '2\n', '2\nหลักฐานระบุว่าน้ำแข็งไม่ระเบิดไม่ว่าจะตกกระทบพื้นแรงแค่ไหน  ซึ่งขัดแย้งกับสมมติฐานที่ว่ามีอันตรายจากการระเบิดสูง\n', '0\n', 'คำตอบคือ 1\n', '0\n', '2\n', '2\n', '2\nหลักฐานระบุว่าแพะเสียเวลา  ซึ่งขัดแย้งกับสมมติฐานที่บอกว่าแพะถูกเก็บไว้โดยปลอดภัยและไร้กังวล\n', '0\n', '0\n', '2\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าผู้พูดคนหนึ่งพยายามคำนวณผลรวมโดยไม่ใช้โปรแกรม  สมมติฐานระบุว่าจำเป็นต้องมีโปรแกรมเพื่อแก้ปัญหา  ดังนั้นจึงขัดแย้งกัน\n', 'คำตอบคือ 2.  หลักฐานที่ให้มาขัดแย้งกับสมมติฐาน  สมมติฐานระบุว่าผู้พูดไม่รู้จะทำอะไรกับยอดรวม ในขณะที่หลักฐานแสดงให้เห็นว่าผู้พูดรู้วิธีที่จะคำนวณยอดรวมเหล่านั้น (กล่าวคือ "และคำนวณมันแบบนั้น")\n', 'คำตอบคือ 0. หลักฐานแสดงให้เห็นถึงกระบวนการคำนวณผลรวม ซึ่งสนับสนุนสมมติฐานที่ว่าผลรวมนั้นจะถูกนำมาใช้เป็นยอดรวม\n', '2\nหลักฐานระบุว่าบุคคลนั้น "รู้สึกผิดหวัง" ซึ่งขัดแย้งกับสมมติฐานที่ว่าเขา "ตื่นเต้นและมีความสุข"\n', 'คำตอบคือ **1**\n\nหลักฐานสนับสนุนสมมติฐาน  หลักฐานแสดงให้เห็นว่าบุคคลนั้นรู้สึกผิดและพยายามปกปิดความรู้สึกนั้น  ซึ่งสอดคล้องกับสมมติฐานที่ว่าเขากำลังพยายามไม่ให้รู้สึกผิด  แต่ไม่สามารถรู้ได้ว่าพวกเขาทำให้เขาเดือดร้อน\n', '0\n', '2\n', '0\n', 'คำตอบคือ 0\n\nหลักฐาน "ร้านค้ามากมาย" ไม่ได้สนับสนุนหรือขัดแย้งกับสมมติฐานที่ไม่มีการระบุ  หลักฐานนั้นไม่เกี่ยวข้องกับสมมติฐาน  ดังนั้นคำตอบจึงเป็น 0\n', '2\n', '2\n', '2\n', '2\n', '0\n', '0\n', '2\n', '2\n', '0\n', '2\n', '2\n', 'คำตอบคือ 0', '0\n', '2\nหลักฐานระบุว่ามีการบันทึกกิจกรรมของกลุ่มคน  แต่สมมติฐานระบุว่าพวกเขาไม่ได้แจ้งตำแหน่งปัจจุบันและตำแหน่งปลายทาง ซึ่งเป็นความขัดแย้งกัน  ดังนั้นคำตอบคือ 2\n', '0\n', '2\n', '2\n', '2\n', '0\n', '0\n', 'ขออภัย ฉันไม่สามารถจัดการกับการร้องขอได้เนื่องจากหลักฐานไม่สมบูรณ์', '2\n', '2\n', '2\n', 'คำตอบคือ 0\n\nหลักฐานกล่าวถึงการมีช่วงเวลาที่ดีที่บ้านปู่ย่าตายาย  สิ่งนี้ไม่ได้บอกเราอะไรเกี่ยวกับระยะเวลาในการขับรถไปที่นั่นโดยตรง ดังนั้นจึงไม่เกี่ยวข้องหรือขัดแย้งกับสมมติฐาน', '0\n', '2\n', '0\n', '2\n', '2\n', '2\n', '2\n', '2\n', '0\n', '1\n', '0\n', 'คำตอบคือ 2\n', 'คำตอบคือ 1\n\nหลักฐานระบุว่าชุดความทรงจำเย็นของเครื่องบินมีลักษณะคล้ายกับชุดนักบินอวกาศในแง่ของการสะท้อนความร้อน  สมมติฐานระบุว่าชุดสภาพอากาศคล้ายกับชุดนักบินอวกาศยกเว้นสีเงิน ดังนั้นหลักฐานจึงสนับสนุนสมมติฐาน', '2\n', '2\n', '2\n', '2\n', '2\n', 'ฉันไม่สามารถให้คำตอบได้เพราะฉันไม่รู้ว่าสมมติฐานคืออะไร  ฉันต้องการรู้สมมติฐานก่อนจึงจะสามารถประเมินความเกี่ยวข้องหรือความขัดแย้งของข้อความได้\n', 'คำตอบคือ 0\n\nหลักฐานระบุจำนวนนักบินจีนที่เข้าร่วมการฝึกซ้อม แต่ไม่ได้ระบุว่าพวกเขาเข้าร่วมกับบุคลากรทางทหารหรือพลเรือนอื่นๆ  สมมติฐานกล่าวถึงการมีส่วนร่วมของทหารหรือบุคลากรอื่นๆ  หลักฐานไม่ได้ยืนยันหรือปฏิเสธสมมติฐานนี้\n', '0\n', '2\n', '2\n', '0\n', '2\n', '0\n', '0\n', 'คำตอบคือ 1\n', '2\n', '2\n', 'คำตอบคือ 0 (ไม่เกี่ยวข้อง)\n\nหลักฐานแสดงให้เห็นว่าฉันได้นำสัมภาระไปยังสถานที่หนึ่ง สมมติฐานกล่าวถึงคนอื่น (เธอ) นำรถเข็นไปยังที่อยู่ที่แตกต่างกัน (อพาร์ตเมนต์ของเขา)  ทั้งสองเหตุการณ์ไม่มีความสัมพันธ์กัน\n', 'คำตอบคือ 1\n', '0\n', '0\n', '2\n', 'คำตอบคือ 1\n', '2\n', '2\n', '2\n', '0\n', '2\nหลักฐานและสมมติฐานไม่มีความเกี่ยวข้องกัน  หลักฐานพูดถึงการฝึกอบรมนักบินก่อนการบินจริง ในขณะที่สมมติฐานพูดถึงการอนุญาตให้บินในวันแรก  ไม่มีความเชื่อมโยงกันระหว่างสองข้อความนี้\n', '2\n', '2\n', '2\n', '2\n', '2\n', '1\n', '0\n', '0\n', 'คำตอบคือ **2**\n\nหลักฐาน ("ถ้ามีอะไรที่ฉันทำได้") แสดงถึงความเป็นไปได้ที่จะช่วยเหลือได้  ในขณะที่สมมติฐาน ("ฉันคิดว่าฉันไม่สามารถทำอะไรเพื่อช่วยเขาได้")  แสดงถึงความเชื่อว่าไม่สามารถช่วยเหลือได้  ทั้งสองข้อความจึงขัดแย้งกัน\n', '2\n', 'คำตอบคือ 1\n\nหลักฐานแสดงให้เห็นว่าเธอได้บอกน้องสาวของเธอทุกวันว่าเธอทำผิด  นี่สนับสนุนสมมติฐานที่ว่าเธอทำให้ชัดเจนว่าน้องสาวของเธอไม่สามารถทำอะไรได้ถูกต้อง\n', '0\n', 'คำตอบคือ 0\n', '0\n', '0\n', '2\n', 'คำตอบคือ 1', '0\n', 'คำตอบคือ 0\n\nหลักฐานระบุว่าไม่ทราบตำแหน่งของบุคคลกลุ่มนี้  สิ่งนี้ไม่ได้สนับสนุนหรือหักล้างสมมติฐานใดๆ  เป็นเพียงการขาดข้อมูล\n', 'คำตอบคือ 0\n\nหลักฐานทั้งสองชิ้นบ่งชี้ถึงความไม่รู้เกี่ยวกับสถานที่ที่คนกลุ่มหนึ่งกำลังเดินทางไป  จึงไม่เกี่ยวข้องหรือขัดแย้งกัน  ทั้งสองประโยคแสดงความหมายเดียวกัน\n', 'คำตอบคือ 2\n\nสมมติฐานระบุว่าเรารู้ว่าผู้คนกำลังมุ่งหน้าไปที่ไหน แต่หลักฐานบอกว่าเราไม่รู้ว่าพวกเขากำลังจะไปที่ไหน นี่คือความขัดแย้งกัน', '2\n', '0\n', '0\n', '2\n', 'คำตอบคือ 1\n\nหลักฐานแสดงให้เห็นว่าผู้เขียนหมดความอดทนกับสมมติฐานและไม่สามารถรับความจริงได้อีกต่อไป  นี่แสดงให้เห็นถึงความเกี่ยวข้องกับสมมติฐานโดยตรง  โดยเฉพาะอย่างยิ่งถ้าสมมติฐานนั้นเป็นแรงผลักดันให้เกิดความเศร้าโศกของผู้เขียน\n', '2\n', 'หลักฐานระบุว่าเขาเกิดในปี ค.ศ. 1880 ซึ่งก่อนปี ค.ศ. 1900 ดังนั้นหลักฐานจึงสนับสนุนสมมติฐาน\n\nคำตอบคือ 1\n', '2\n', 'คำตอบคือ 2\n\nหลักฐานระบุว่าบุคคลนั้นเกิดในปี ค.ศ. 1880  สมมติฐานระบุว่าบุคคลนั้นไม่ได้กล่าวถึงจนถึงปี ค.ศ. 1984  หลักฐานไม่เกี่ยวข้องกับช่วงเวลาที่บุคคลนั้นเริ่มกล่าวถึง  ดังนั้นจึงเป็นความขัดแย้ง\n', '2\n', '2\n', '1\n', '2\n', '2\n', '2\n', 'คำตอบคือ 2\n\nข้อความนั้นขัดแย้งกันเอง  ประโยคแรกบอกว่าเด็กๆ ดื่มแชมเปญที่เหลือ  ประโยคที่สองบอกว่าเด็กๆ ดื่มแชมเปญไปสามขวด  ไม่มีข้อมูลที่เพียงพอที่จะยืนยันว่าจำนวนแชมเปญที่เด็กดื่มนั้นตรงกับปริมาณที่เหลืออยู่หรือไม่  ดังนั้นจึงเป็นความขัดแย้ง\n', 'คำตอบคือ 1\n', '2\n', '2\n', '0\n', '0\n', '2\n', '0\n', '0\n', '0\n', '0\n', '0\n', '2\n', '1\n']
+Saved predictions to: predicted_5.json
+Number of missing values in 'true': 0
+Number of missing values in 'predicted': 4
+Accuracy th: 0.40816326530612246
+'XNLI' object has no attribute 'evaluate_results'

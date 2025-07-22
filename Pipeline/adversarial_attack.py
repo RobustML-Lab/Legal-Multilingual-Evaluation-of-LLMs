@@ -68,7 +68,16 @@ lang_map = {
     "tr": "tur",  # Turkish
     "vi": "vie",  # Vietnamese
     "zh": "zho",  # Chinese (Simplified)
+    "nl": "nld",  # Dutch
+    "hu": "hun",  # Hungarian
+    "it": "ita",  # Italian
+    "no": "nob",  # Norwegian Bokmål (used as 'no' in deep-translator)
+    "nb": "nob",  # Alias for consistency
+    "pl": "pol",  # Polish
+    "mt": "mlt",  # Maltese
+    "sv": "swe",  # Swedish
 }
+
 
 
 
@@ -105,15 +114,22 @@ LANG_TO_MODEL = {
     'tur': 'dbmdz/bert-base-turkish-uncased',  # Turkish-specific BERT
     'vie': 'NlpHUST/vibert4news-base-cased',  # Vietnamese-specific BERT
     'zho': 'bert-base-chinese',  # Chinese (Simplified) BERT
+    "nld": "wietsedv/bert-base-dutch-cased",
+    "hun": "SZTAKI-HLT/hubert-base-cc",  # Hungarian
+    "ita": "dbmdz/bert-base-italian-xxl-cased",
+    "nob": "NbAiLab/nb-bert-base",  # Norwegian Bokmål
+    "pol": "dkleczek/bert-base-polish-cased-v1",
+    "mlt": "bert-base-multilingual-uncased",  # fallback for Maltese
+    "swe": "KBLab/bert-base-swedish-cased"
 }
 
 
-# nltk.download("averaged_perceptron_tagger")
-# nltk.download("punkt")
-# nltk.download("punkt_tab")
-# nltk.download("wordnet")
-# nltk.download('averaged_perceptron_tagger_eng')
-# nltk.download('omw-1.4')
+nltk.download("averaged_perceptron_tagger")
+nltk.download("punkt")
+nltk.download("punkt_tab")
+nltk.download("wordnet")
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('omw-1.4')
 
 
 
@@ -439,9 +455,13 @@ def nlpaug_attack(text, lang, attack_type):
 
     elif attack_type == 14:
         # Contextual word embeddings using BERT
-        bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
-        contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
-        augmented_text = contextual_aug.augment(text)
+        try:
+            bert_model = LANG_TO_MODEL.get(lang, 'bert-base-multilingual-uncased')
+            contextual_aug = naw.ContextualWordEmbsAug(model_path=bert_model, action="substitute")
+            augmented_text = contextual_aug.augment(text)
+        except IndexError as e:
+            print(f"Error in attack 14: {e}")
+            augmented_text = text
 
     else:
         raise ValueError(f"Unsupported attack_type: {attack_type}. Supported types are 10-14.")

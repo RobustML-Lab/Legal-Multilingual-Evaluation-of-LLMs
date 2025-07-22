@@ -253,7 +253,7 @@ class Google(Model):
 
         for index, entry in enumerate(dataset):
             text = entry['text']
-            if self.generation:
+            if self.generation or len(self.label_options) == 0:
                 complete_prompt = f"{text}{prompt}"
             else:
                 quoted_labels = "', '".join(f"{i}: {label}" for i, label in enumerate(self.label_options))

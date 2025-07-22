@@ -1,0 +1,811 @@
+{
+    "predicted": [
+        "The Panthers defense gave up 308 points.\n",
+        "136\n",
+        "Luke Kuechly registered 118 tackles.\n",
+        "Josh Norman intercepted four balls.\n",
+        "Kawann Short registered the most sacks on the team this season with 11.\n",
+        "The Panthers defense had 24 interceptions in 2015.\n",
+        "Kawann Short\n",
+        "Four\n",
+        "Four\n",
+        "Kurt Coleman led the team with seven interceptions.\n",
+        "The Panthers' defense had 24 interceptions in the 2015 season.\n",
+        "Kony Ealy\n",
+        "Luke Kuechly led the team in tackles with 118.\n",
+        "Two.\n",
+        "The Pittsburgh Steelers\n",
+        "11 points\n",
+        "The passage states that the New England Patriots were the defending Super Bowl XLIX champions.  Therefore, the **New England Patriots** won Super Bowl XLIX.\n",
+        "20–18\n",
+        "17 seconds\n",
+        "The Broncos\n",
+        "23–16\n",
+        "The passage states that the New England Patriots were the defending Super Bowl XLIX champions.  Therefore, the **New England Patriots** won Super Bowl XLIX.\n",
+        "17 seconds\n",
+        "The passage states that Manning didn't throw any interceptions in their two playoff games.  Therefore, the answer is **Manning**.\n",
+        "The Pittsburgh Steelers\n",
+        "11\n",
+        "The New England Patriots\n",
+        "The passage states the Broncos beat the Pittsburgh Steelers in the divisional round.  The passage doesn't specify that this was to win their division; it only describes their playoff wins.\n",
+        "The New England Patriots\n",
+        "17 seconds\n",
+        "39\n",
+        "John Elway\n",
+        "John Elway was 38 years old when he played in Super Bowl XXXIII.\n",
+        "John Elway is currently Denver's Executive Vice President of Football Operations and General Manager.\n",
+        "The Broncos\n",
+        "The Broncos\n",
+        "John Elway\n",
+        "38\n",
+        "Peyton Manning\n",
+        "Two\n",
+        "Two\n",
+        "Peyton Manning\n",
+        "John Elway\n",
+        "Super Bowl XXXIII\n",
+        "Peyton Manning\n",
+        "39\n",
+        "John Elway\n",
+        "Six\n",
+        "The national anthem\n",
+        "Academy Award\n",
+        "American Sign Language (ASL) translation of the national anthem.\n",
+        "American Sign Language (ASL)\n",
+        "Lady Gaga\n",
+        "Marlee Matlin\n",
+        "Lady Gaga\n",
+        "Marlee Matlin\n",
+        "Lady Gaga\n",
+        "Six\n",
+        "Marlee Matlin\n",
+        "Carolina began on their own 24-yard line.\n",
+        "Newton\n",
+        "Josh Norman\n",
+        "Anderson\n",
+        "Bennie Fowler\n",
+        "Miller\n",
+        "Ward\n",
+        "Newton\n",
+        "Josh Norman\n",
+        "3:08\n",
+        "4:51\n",
+        "Miller\n",
+        "Ward\n",
+        "Three.\n",
+        "Anderson\n",
+        "Ogród Saski\n",
+        "In Ogród Saski (the Saxon Garden).\n",
+        "The Summer Theatre was in operation from 1870 to 1939.\n",
+        "Momus\n",
+        "The Wojciech Bogusławski Theatre.\n",
+        "Polonia Warsaw\n",
+        "1946\n",
+        "Twice.\n",
+        "Polonia's home venue is located at Konwiktorska Street, a ten-minute walk north from the Old Town.\n",
+        "Polonia was relegated from the country's top flight in 2013 because of their disastrous financial situation.\n",
+        "A multi-cultural city.\n",
+        "Warsaw's population in 1901 was 711,988.\n",
+        "56.2%\n",
+        "2.8%\n",
+        "In the aftermath of the Warsaw Uprising of 1944.\n",
+        "The basic unit of territorial division in Poland is a commune (gmina).\n",
+        "Counties or powiats.\n",
+        "Kraków.\n",
+        "1817\n",
+        "World War II\n",
+        "April 1991\n",
+        "374\n",
+        "The Polish United Workers' Party (PZPR).\n",
+        "Rollo.\n",
+        "Drogo\n",
+        "William Iron Arm\n",
+        "The Seljuk Turks.\n",
+        "Afranji\n",
+        "Oursel\n",
+        "Turkish forces.\n",
+        "Africa\n",
+        "1943\n",
+        "The SI unit of magnetic flux density.\n",
+        "A series of New York hotels.\n",
+        "Tesla's reputation in popular culture was that of an archetypal \"mad scientist\".\n",
+        "Tesla financed his work with money earned from his patents.\n",
+        "1943\n",
+        "The SI unit of magnetic flux density.\n",
+        "Since the 1990s.\n",
+        "His showmanship and his reputation as an archetypal \"mad scientist\" in popular culture.\n",
+        "Robert Lane and Benjamin Vail\n",
+        "Tesla Electric Light & Manufacturing.\n",
+        "Tesla Electric Light & Manufacturing installed electrical arc light based illumination systems designed by Tesla and also had designs for dynamo electric machine commutators.\n",
+        "His first US patents.\n",
+        "Electrical arc light based illumination systems and dynamo electric machine commutators.\n",
+        "Robert Lane and Benjamin Vail\n",
+        "1886\n",
+        "Tesla Electric Light & Manufacturing\n",
+        "Tesla Electric Light & Manufacturing installed electrical arc light based illumination systems designed by Tesla and also had designs for dynamo electric machine commutators.\n",
+        "Tesla\n",
+        "1900\n",
+        "Guglielmo Marconi\n",
+        "1901\n",
+        "1943\n",
+        "The Supreme Court of the United States\n",
+        "38\n",
+        "Edison\n",
+        "1937\n",
+        "\"A Machine to End War\"\n",
+        "Uncertain.\n",
+        "War\n",
+        "Computational complexity theory\n",
+        "Their inherent difficulty.\n",
+        "Computational problem\n",
+        "A problem instance.\n",
+        "The binary alphabet ({0,1}).\n",
+        "Bitstring\n",
+        "In binary notation.\n",
+        "Graphs can be encoded directly via their adjacency matrices, or by encoding their adjacency lists in binary.\n",
+        "Function problems can be recast as decision problems.\n",
+        "The passage calls this set of triples (a, b, c) where a × b = c holds a \"decision problem\".\n",
+        "The total number of state transitions, or steps, the machine makes before it halts and outputs the answer.\n",
+        "Their difficulty.\n",
+        "DTIME(f(n))\n",
+        "The most critical resource measured in assessing a Turing machine's ability to solve problems is **time**, specifically the number of state transitions (steps) it takes before halting.  The passage explicitly defines this as the measure of time required by a Turing machine.\n",
+        "The unproven assumption is that many known complexity classes (like P, NP, PP, PSPACE, etc.) are unequal.\n",
+        "P ⊆ NP ⊆ PP ⊆ PSPACE\n",
+        "Between P and PSPACE.\n",
+        "Proving that any of the complexity classes (P, NP, PP, PSPACE, RP, BPP, BQP, MA, PH, etc.) are unequal would be a major breakthrough in complexity theory.\n",
+        "In past times, corporal punishment was one of the most common forms of school discipline throughout much of the world.\n",
+        "Most Western countries, and some others.\n",
+        "The passage states that corporal punishment remains lawful in the United States.\n",
+        "The US Supreme Court\n",
+        "Physical pain.\n",
+        "Trade unions such as ATL, NUT or NASUWT.\n",
+        "The average age of teachers in Wales is falling.\n",
+        "Between 2005 and 2010.\n",
+        "The passage states that NASUWT is a trade union for teachers in Wales.\n",
+        "The passage states that attacks on teachers in Welsh schools are a \"growing cause of concern,\" but it does not specify what that concern is regarding the effects of the attacks.  The passage does not detail the consequences of these attacks.\n",
+        "Each state determines the requirements for getting a license to teach in public schools.\n",
+        "Ten years.\n",
+        "A bachelor's degree.\n",
+        "Many charter schools.\n",
+        "No Child Left Behind.\n",
+        "guru\n",
+        "High.  The passage states that in many traditions of Hinduism, especially those common in the West, the emphasis on spiritual mentorship is extremely high.\n",
+        "The lives of their disciples.\n",
+        "Many traditions of Hinduism, especially those common in the West.\n",
+        "Lama\n",
+        "A Lama who is a Tulku has consciously determined to be reborn many times to continue their Bodhisattva vow.\n",
+        "The passage doesn't state the name of a Bodhisattva vow, only that a Tulku continues their Bodhisattva vow.\n",
+        "A Tulku, a type of Lama, has consciously determined to be reborn often many times.\n",
+        "Phowa and siddhi.\n",
+        "As early as 1519.\n",
+        "Students\n",
+        "The early part of Luther's career.\n",
+        "1520\n",
+        "On the Freedom of a Christian\n",
+        "In the summer of 1521.\n",
+        "Luther condemned the idea that the mass is a sacrifice as idolatry.\n",
+        "Luther called the mass a gift.\n",
+        "Luther called for private confession and absolution.\n",
+        "Luther assured monks and nuns that they could break their vows without sin, because vows were an illegitimate and vain attempt to win salvation.\n",
+        "German-language publications.\n",
+        "Luther's version of the Bible.\n",
+        "The popularity of Luther's translation contributed to the evolution of the German language and literature and the spread of Luther's doctrine throughout Germany.  It also influenced other vernacular translations.\n",
+        "Lucas Cranach\n",
+        "William Tyndale's\n",
+        "Particular events in his life and the unfolding Reformation, such as learning of the execution of Johann Esch and Heinrich Voes, the first individuals martyred for Lutheran views.\n",
+        "Johann Esch and Heinrich Voes were executed by the Roman Catholic Church for holding Lutheran views.\n",
+        "Luther wrote the hymn \"Ein neues Lied wir heben an\" (\"A new song we raise\"), also known as \"Flung to the Heedless Winds\".\n",
+        "John C. Messenger\n",
+        "\"Flung to the Heedless Winds\"\n",
+        "Luther's last statement.\n",
+        "Latin\n",
+        "\"We are beggars\"\n"
+    ],
+    "true": [
+        [
+            "308"
+        ],
+        [
+            "136"
+        ],
+        [
+            "118"
+        ],
+        [
+            "four"
+        ],
+        [
+            "Kawann Short"
+        ],
+        [
+            "24"
+        ],
+        [
+            "Kawann Short"
+        ],
+        [
+            "four"
+        ],
+        [
+            "four"
+        ],
+        [
+            "Kurt Coleman"
+        ],
+        [
+            "24"
+        ],
+        [
+            "Kony Ealy"
+        ],
+        [
+            "Luke Kuechly."
+        ],
+        [
+            "two."
+        ],
+        [
+            "Pittsburgh Steelers"
+        ],
+        [
+            "11"
+        ],
+        [
+            "New England Patriots"
+        ],
+        [
+            "20–18"
+        ],
+        [
+            "17 seconds"
+        ],
+        [
+            "Broncos"
+        ],
+        [
+            "23–16"
+        ],
+        [
+            "New England Patriots"
+        ],
+        [
+            "17"
+        ],
+        [
+            "Manning"
+        ],
+        [
+            "Pittsburgh Steelers"
+        ],
+        [
+            "11"
+        ],
+        [
+            "New England Patriots"
+        ],
+        [
+            "Pittsburgh Steelers"
+        ],
+        [
+            "New England Patriots"
+        ],
+        [
+            "17"
+        ],
+        [
+            "39"
+        ],
+        [
+            "John Elway"
+        ],
+        [
+            "38"
+        ],
+        [
+            "Executive Vice President of Football Operations and General Manager"
+        ],
+        [
+            "Broncos"
+        ],
+        [
+            "Broncos"
+        ],
+        [
+            "John Elway"
+        ],
+        [
+            "38"
+        ],
+        [
+            "Peyton Manning"
+        ],
+        [
+            "two"
+        ],
+        [
+            "two"
+        ],
+        [
+            "Peyton Manning"
+        ],
+        [
+            "John Elway"
+        ],
+        [
+            "Super Bowl XXXIII"
+        ],
+        [
+            "Peyton Manning"
+        ],
+        [
+            "39"
+        ],
+        [
+            "John Elway"
+        ],
+        [
+            "Six"
+        ],
+        [
+            "the national anthem"
+        ],
+        [
+            "Academy Award"
+        ],
+        [
+            "the national anthem"
+        ],
+        [
+            "American Sign Language"
+        ],
+        [
+            "Lady Gaga"
+        ],
+        [
+            "Marlee Matlin"
+        ],
+        [
+            "Lady Gaga"
+        ],
+        [
+            "Marlee Matlin"
+        ],
+        [
+            "Lady Gaga"
+        ],
+        [
+            "Six"
+        ],
+        [
+            "Marlee Matlin"
+        ],
+        [
+            "24"
+        ],
+        [
+            "Newton"
+        ],
+        [
+            "Josh Norman"
+        ],
+        [
+            "Anderson"
+        ],
+        [
+            "Bennie Fowler"
+        ],
+        [
+            "Miller"
+        ],
+        [
+            "Ward"
+        ],
+        [
+            "Newton"
+        ],
+        [
+            "Josh Norman"
+        ],
+        [
+            "3:08"
+        ],
+        [
+            "4:51"
+        ],
+        [
+            "Miller"
+        ],
+        [
+            "Ward"
+        ],
+        [
+            "three"
+        ],
+        [
+            "Anderson"
+        ],
+        [
+            "Ogród Saski"
+        ],
+        [
+            "Saxon Garden"
+        ],
+        [
+            "1870 to 1939"
+        ],
+        [
+            "Momus"
+        ],
+        [
+            "Wojciech Bogusławski Theatre"
+        ],
+        [
+            "Polonia Warsaw"
+        ],
+        [
+            "1946"
+        ],
+        [
+            "twice"
+        ],
+        [
+            "Konwiktorska Street"
+        ],
+        [
+            "disastrous financial situation"
+        ],
+        [
+            "multi-cultural"
+        ],
+        [
+            "711,988"
+        ],
+        [
+            "56.2%"
+        ],
+        [
+            "2.8%"
+        ],
+        [
+            "1944"
+        ],
+        [
+            "commune"
+        ],
+        [
+            "counties or powiats"
+        ],
+        [
+            "Kraków"
+        ],
+        [
+            "1817"
+        ],
+        [
+            "World War II"
+        ],
+        [
+            "April 1991"
+        ],
+        [
+            "374"
+        ],
+        [
+            "Polish United Workers' Party"
+        ],
+        [
+            "Rollo"
+        ],
+        [
+            "Drogo"
+        ],
+        [
+            "William Iron Arm"
+        ],
+        [
+            "Seljuk Turks"
+        ],
+        [
+            "Afranji"
+        ],
+        [
+            "Oursel"
+        ],
+        [
+            "Turkish forces"
+        ],
+        [
+            "Africa"
+        ],
+        [
+            "1943"
+        ],
+        [
+            "SI unit of magnetic flux density"
+        ],
+        [
+            "New York hotels"
+        ],
+        [
+            "mad scientist"
+        ],
+        [
+            "His patents"
+        ],
+        [
+            "1943"
+        ],
+        [
+            "SI unit of magnetic flux density"
+        ],
+        [
+            "1990s"
+        ],
+        [
+            "showmanship"
+        ],
+        [
+            "Robert Lane and Benjamin Vail"
+        ],
+        [
+            "Tesla Electric Light & Manufacturing"
+        ],
+        [
+            "installed electrical arc light based illumination systems designed by Tesla"
+        ],
+        [
+            "patents"
+        ],
+        [
+            "electrical arc light based illumination systems"
+        ],
+        [
+            "Robert Lane and Benjamin Vail"
+        ],
+        [
+            "1886"
+        ],
+        [
+            "Tesla Electric Light & Manufacturing"
+        ],
+        [
+            "installed electrical arc light based illumination systems"
+        ],
+        [
+            "Tesla"
+        ],
+        [
+            "1900"
+        ],
+        [
+            "Guglielmo Marconi"
+        ],
+        [
+            "1901"
+        ],
+        [
+            "1943"
+        ],
+        [
+            "Supreme Court of the United States"
+        ],
+        [
+            "38"
+        ],
+        [
+            "Edison"
+        ],
+        [
+            "1937"
+        ],
+        [
+            "\"A Machine to End War\""
+        ],
+        [
+            "uncertain"
+        ],
+        [
+            "War"
+        ],
+        [
+            "Computational complexity theory"
+        ],
+        [
+            "inherent difficulty"
+        ],
+        [
+            "computational problems"
+        ],
+        [
+            "problem instance"
+        ],
+        [
+            "binary"
+        ],
+        [
+            "bitstrings"
+        ],
+        [
+            "binary notation"
+        ],
+        [
+            "adjacency matrices"
+        ],
+        [
+            "as decision problems"
+        ],
+        [
+            "set of triples"
+        ],
+        [
+            "state transitions"
+        ],
+        [
+            "difficulty"
+        ],
+        [
+            "DTIME(f(n))"
+        ],
+        [
+            "time"
+        ],
+        [
+            "suspected to be unequal"
+        ],
+        [
+            "P ⊆ NP ⊆ PP ⊆ PSPACE"
+        ],
+        [
+            "between P and PSPACE"
+        ],
+        [
+            "Proving that any of these classes are unequal"
+        ],
+        [
+            "one of the most common"
+        ],
+        [
+            "Most Western countries"
+        ],
+        [
+            "United States"
+        ],
+        [
+            "US Supreme Court"
+        ],
+        [
+            "physical pain"
+        ],
+        [
+            "trade unions"
+        ],
+        [
+            "falling"
+        ],
+        [
+            "between 2005 and 2010"
+        ],
+        [
+            "trade unions"
+        ],
+        [
+            "concern"
+        ],
+        [
+            "each state"
+        ],
+        [
+            "ten years"
+        ],
+        [
+            "bachelor's degree"
+        ],
+        [
+            "charter schools"
+        ],
+        [
+            "No Child Left Behind"
+        ],
+        [
+            "guru"
+        ],
+        [
+            "extremely high"
+        ],
+        [
+            "their disciples"
+        ],
+        [
+            "the West"
+        ],
+        [
+            "Lama"
+        ],
+        [
+            "be reborn"
+        ],
+        [
+            "Tulku"
+        ],
+        [
+            "many times"
+        ],
+        [
+            "phowa and siddhi"
+        ],
+        [
+            "1519"
+        ],
+        [
+            "Students"
+        ],
+        [
+            "early"
+        ],
+        [
+            "1520"
+        ],
+        [
+            "On the Freedom of a Christian"
+        ],
+        [
+            "summer of 1521"
+        ],
+        [
+            "condemned as idolatry"
+        ],
+        [
+            "gift"
+        ],
+        [
+            "private confession and absolution"
+        ],
+        [
+            "break their vows"
+        ],
+        [
+            "German-language publications"
+        ],
+        [
+            "Bible"
+        ],
+        [
+            "evolution of the German language and literature"
+        ],
+        [
+            "Lucas Cranach"
+        ],
+        [
+            "William Tyndale"
+        ],
+        [
+            "events in his life"
+        ],
+        [
+            "for Lutheran views"
+        ],
+        [
+            "Ein neues Lied wir heben an"
+        ],
+        [
+            "John C. Messenger"
+        ],
+        [
+            "Flung to the Heedless Winds"
+        ],
+        [
+            "his last statement"
+        ],
+        [
+            "Latin"
+        ],
+        [
+            "\"We are beggars,\""
+        ]
+    ],
+    "language": "en",
+    "dataset_name": "xquad",
+    "points_per_language": 200,
+    "model_name": "google",
+    "adversarial_attack": 0
+}

@@ -1,0 +1,6 @@
+en: 67.60% words modified, attack 14
+el: 87.61% words modified, attack 14
+bg: 72.17% words modified, attack 14
+es: 68.53% words modified, attack 14
+fr: 72.59% words modified, attack 14
+th: 98.49% words modified, attack 14
