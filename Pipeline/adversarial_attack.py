@@ -19,6 +19,7 @@ from difflib import SequenceMatcher
 
 import torch
 import nltk
+import os
 
 import nlpaug.augmenter.word as naw
 import nlpaug.augmenter.char as nac
@@ -186,7 +187,8 @@ def attack(data, attack_type, lang, mapped_data):
     return data
 
 def adversarial_attack(text, attack_type, lang, ground_truth_label):
-    """Applies different adversarial attack strategies based on the attack type."""
+    """Applies different adversarial attack strategies based on the attack type.
+    Attacks used in the paper: 11, 14"""
     if attack_type == 1:  # Word substitution and augmentation attack
         return word_substitution_attack(text, lang)
     elif attack_type == 2:  # Typo-based attack
@@ -324,7 +326,6 @@ def textbugger_attack(text, ground_truth_label):
     attack_result = attack.attack(text, ground_truth_label)
 
     if isinstance(attack_result, textattack.attack_results.FailedAttackResult):
-        print('aaaaaaaaaaaaaaaaaaa')
         return text, 0
 
     return attack_result.perturbed_text(), count_changes(text, attack_result.perturbed_text())
@@ -480,8 +481,6 @@ def nlpaug_attack(text, lang, attack_type):
 def count_changes(original_text, modified_text):
     """Count modified words between the original and adversarial text."""
     return sum(1 for o, m in zip(original_text.split(), modified_text.split()) if o != m)
-
-import os
 
 def save_results(lang, percentage, attack_type):
     """Save attack results to a file."""

@@ -69,15 +69,19 @@ for lang in languages:
     model = Model.get_model(model_name, label_options, multi_class=True, api_key=api_key, generation=generation)
 
     if adversarial_attack:
-        # mapped_data = dataset.get_mapped_data(data)
-        mapped_data = None
+        try:
+            mapped_data = dataset.get_mapped_data(data)
+        except AttributeError:
+            mapped_data = None
         before_attack = [entry["text"] for entry in data[:5]]
         data = attack(data, adversarial_attack, lang, mapped_data)
         after_attack = [entry["text"] for entry in data[:5]]
+
+        # Store up to 5 texts before and after attack for comparison
         store_attack(before_attack, after_attack, lang, dataset_name, points_per_language, model_name, adversarial_attack)
 
     # Get the predicted labels
-    predicted, first_ten_answers = model.predict(data, prompt)
+    predicted = model.predict(data, prompt)
 
     # Extract the predicted labels from the generated text
     if not generation:
@@ -118,9 +122,6 @@ for lang in languages:
         results[lang] = dataset.evaluate(filtered_true, filtered_predicted)
     all_true[lang] = filtered_true
     all_predicted[lang] = filtered_predicted
-
-    if dataset_name.lower() == 'multi_eurlex':
-        dataset.save_first_10_results_to_file_by_language(first_ten_answers, lang)
 
 try:
     dataset.evaluate_results(results)
