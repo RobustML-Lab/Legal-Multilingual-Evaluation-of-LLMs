@@ -330,26 +330,6 @@ class Multi_Eurlex(Dataset):
             print(f"mRP: {metrics['mRP']}")
             print(f"Length: {metrics['Length']}\n")
 
-    def save_first_10_results_to_file_by_language(self, first_ten_answers, language):
-        # Define the output folder path
-        output_folder = "output/multi_eurlex/10_first"
-
-        # Create the directory if it doesn't exist
-        os.makedirs(output_folder, exist_ok=True)
-
-        # Create a.py filename specific to the language within the output folder
-        filename = os.path.join(output_folder, f"gemini_results_{language}.txt")
-
-        # Check if the file exists; if not, create it and write headers
-        if not os.path.exists(filename):
-            with open(filename, 'w', encoding='utf-8') as file:
-                file.write("")
-
-        with open(filename, 'a', encoding='utf-8') as file:
-            for i in range(min(10, len(first_ten_answers))):
-                text = first_ten_answers[i]
-                file.write(f"{text}\n")
-
 
 class Eur_Lex_Sum(Dataset):
     """
